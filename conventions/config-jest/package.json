@@ -1,0 +1,20 @@
+{
+  "name": "@frontend-bindings/conventions-config-jest",
+  "version": "1.0.0",
+  "description": "Reusable Jest configs",
+  "license": "UNLICENSED",
+  "files": [
+    "main.js"
+  ],
+  "main": "main",
+  "bin": {
+    "rush-jest": "./bin/rush-jest"
+  },
+  "scripts": {
+    "build": ""
+  },
+  "dependencies": {
+    "jest": "^24.9.0",
+    "ts-jest": "^24.0.2"
+  }
+}

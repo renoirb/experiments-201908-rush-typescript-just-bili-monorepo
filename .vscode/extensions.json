@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "alexdima.copy-relative-path",
+    "christian-kohler.path-intellisense",
+    "CoenraadS.bracket-pair-colorizer",
+    "editorconfig.editorconfig",
+    "jasonnutter.search-node-modules",
+    "kisstkondoros.vscode-codemetrics",
+    "redhat.vscode-yaml",
+    "richie5um2.vscode-sort-json",
+    "sourcegraph.javascript-typescript",
+    "wix.vscode-import-cost"
+  ]
+}

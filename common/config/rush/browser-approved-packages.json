@@ -1,0 +1,106 @@
+// DO NOT ADD COMMENTS IN THIS FILE.  They will be lost when the Rush tool resaves it.
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/approved-packages.schema.json",
+  "packages": [
+    {
+      "name": "@frontend-bindings/conventions-config-eslint",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@frontend-bindings/conventions-config-jest",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@frontend-bindings/conventions-config-prettier",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@frontend-bindings/conventions-config-typescript-3",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@frontend-bindings/tools-bundling-helpers",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@microsoft/eslint-config-scalable-ts",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "@microsoft/node-core-library",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "@typescript-eslint/eslint-plugin",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "@typescript-eslint/experimental-utils",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "@typescript-eslint/parser",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "@typescript-eslint/typescript-estree",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "eslint",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "eslint-plugin-promise",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "eslint-plugin-react",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "eslint-plugin-security",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "jest",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "just-scripts",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "npm-run-all",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "prettier",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "pretty-quick",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "rimraf",
+      "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "sort-package-json",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "ts-jest",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "tslib",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "typescript",
+      "allowedCategories": [ "conventions" ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "@frontend-bindings/tools-bundling-helpers",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "main": "dist",
+  "typings": "dist",
+  "bin": {
+    "rush-rimraf": "./bin/rush-rimraf",
+    "rush-run-all": "./bin/rush-run-all"
+  },
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "fix": "just-scripts fix",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
+    "test:snapshots": "just-scripts test --snapshots"
+  },
+  "prettier": "@frontend-bindings/conventions-config-prettier",
+  "dependencies": {
+    "npm-run-all": "^4.1.0",
+    "rimraf": "~3.0.0"
+  },
+  "devDependencies": {
+    "@frontend-bindings/conventions-config-eslint": "~1.0.0",
+    "@frontend-bindings/conventions-config-jest": "~1.0.0",
+    "@frontend-bindings/conventions-config-prettier": "~1.0.0",
+    "@frontend-bindings/conventions-config-typescript-3": "~1.0.0",
+    "@microsoft/node-core-library": "~3.14.0",
+    "@types/core-js": "^2.5.2",
+    "@types/jest": "^24.0.15",
+    "@types/node": "^10.9.4",
+    "just-scripts": "^0.28.1"
+  }
+}

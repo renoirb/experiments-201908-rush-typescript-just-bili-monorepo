@@ -1,0 +1,16 @@
+{
+  "yaml.schemas": {
+    "http://json.schemastore.org/gitlab-ci": ["gitlab-ci.yml"]
+  },
+  "files.associations": {
+    "*.json": "jsonc"
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "dist": true,
+    "lib": true,
+    "temp": true
+  },
+  "search-node-modules.path": "common/temp/node_modules",
+  "typescript.tsc.autoDetect": "off"
+}

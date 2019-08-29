@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+/**
+ * In Rush.js, if we do not use this script, we would need to import
+ * the required module in EVERY PACKAGES.
+ * This exposes it for other modules to use.
+ */
+
+Promise.all([require('rimraf/bin')])

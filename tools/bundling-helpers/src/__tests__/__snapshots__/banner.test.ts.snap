@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createBannerFooter Snapshot sample 1`] = `
+Object {
+  "banner": "/**
+ * assimilate v436.0.1
+ *
+ * Maintainer: ACME Corp.
+ *
+ * LicenseRef-LICENSE
+ *
+ * © 2015-2019 ACME Corp.
+ */",
+  "footer": "/** ACME Corp.  */",
+}
+`;
+
+exports[`createBannerInfo Snapshot sample 1`] = `
+Object {
+  "author": "ACME Corp.",
+  "copyright": "Copyright (c) 2015-2019 ACME Corp.",
+  "license": "LicenseRef-LICENSE",
+  "name": "assimilate",
+  "vendor": "ACME Corp.",
+  "version": "436.0.1",
+}
+`;
+
+exports[`createBannerInfo Supports defining own author 1`] = `
+Object {
+  "author": "Seven Of Nine <7.9@adjunct.3.unimatrix.1.borg>",
+  "copyright": "Copyright (c) 2015-2019 ACME Corp.",
+  "license": "LicenseRef-LICENSE",
+  "name": "assimilate",
+  "vendor": "ACME Corp.",
+  "version": "436.0.1",
+}
+`;
+
+exports[`createBannerInfo Supports defining own license 1`] = `
+Object {
+  "author": "ACME Corp.",
+  "copyright": "Copyright (c) 2015-2019 ACME Corp.",
+  "license": "MIT",
+  "name": "assimilate",
+  "vendor": "ACME Corp.",
+  "version": "436.0.1",
+}
+`;

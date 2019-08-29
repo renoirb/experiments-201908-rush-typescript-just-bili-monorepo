@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+
+/**
+ * In Rush.js, if we do not use this script, we would need to import
+ * the required module in EVERY PACKAGES.
+ * This exposes it for other modules to use.
+ */
+
+const { normalize, dirname, join } = require('path')
+const { existsSync } = require('fs')
+
+const localConfigBasedir = dirname(__dirname)
+const localConfigPath = normalize(join(localConfigBasedir, 'main.js'))
+const localConfigIgnorePath = normalize(join(localConfigBasedir, '.prettierignore'))
+const localConfigFound = existsSync(localConfigPath)
+
+/**
+ * Idea is to give our own stored config file instead of asking users to fill it in.
+ * But let's not superseed if the argument is already given.
+ */
+const hasConfigPath = process.argv.includes('--config')
+const usePackagedPrettierConfig = localConfigFound && !hasConfigPath
+
+const messagePrefix = '@frontend-bindings/conventions-config-prettier bin/rush-prettier'
+const message = usePackagedPrettierConfig ? `, using prettier config at ${localConfigPath}.` : '.'
+console.log(messagePrefix+message)
+
+/**
+ * If the project importing this library, when calling the helper, finds the config.
+ * Otherwise, just pass as if this package was prettier itself.
+ */
+if (usePackagedPrettierConfig) {
+  process.argv.push('--config')
+  process.argv.push(localConfigPath)
+}
+
+process.argv.push('--ignore-path')
+process.argv.push(localConfigIgnorePath)
+
+require('prettier/bin-prettier')
+
+

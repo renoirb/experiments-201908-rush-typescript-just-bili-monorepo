@@ -1,0 +1,18 @@
+stages:
+  - build
+
+build:
+  image: node:10-alpine
+  stage: build
+  script:
+    - node common/scripts/install-run-rush.js install --bypass-policy
+    - node common/scripts/install-run-rush.js rebuild --quiet --verbose
+    - node common/scripts/install-run-rush.js publish --publish --pack --include-all --prerelease-name dev --release-folder dist
+  cache:
+    key: ${CI_BUILD_REF_NAME}
+    paths:
+      - common/temp/
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - dist/
