@@ -5,6 +5,8 @@
   "license": "UNLICENSED",
   "files": [
     "main.js",
+    "typescript.js",
+    ".eslintignore",
     "bin"
   ],
   "main": "main",

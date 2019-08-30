@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires  */
 const {
   tscTask,
   task,
@@ -21,10 +22,25 @@ const {
  * - our own jest config
  */
 
+/**
+ * Notice the following CLI flags ONLY WORK if we call them directly
+ * `npx just-scripts test --snapshots`, not when we use `rushx test --snapshots`,
+ * nor when we do globally `rush test --snapshots`.
+ * Gota figure why. @TODO
+ */
 option('snapshots');
+option('fix');
 
 const eslintTaskOptions = {
-  configPath: resolveCwd('./node_modules/@microsoft/eslint-config-scalable-ts'),
+  // No need to put a global one, each project could have only flags to toggle off
+  // configPath: resolveCwd('./node_modules/@microsoft/eslint-config-scalable-ts'),
+  // configPath: resolveCwd(
+  //   './node_modules/@frontend-bindings/conventions-config-eslint/typescript',
+  // ),
+  ignorePath: resolveCwd(
+    './node_modules/@frontend-bindings/conventions-config-eslint/.eslintignore',
+  ),
+  fix: argv().fix ? true : false,
 };
 
 const jestTaskOptions = {

@@ -17,6 +17,7 @@
     "clean": "just-scripts clean",
     "fix": "just-scripts fix",
     "lint": "just-scripts lint",
+    "lint:fix": "just-scripts lint --fix",
     "test": "just-scripts test",
     "test:snapshots": "just-scripts test --snapshots"
   },

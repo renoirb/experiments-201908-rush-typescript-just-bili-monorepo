@@ -1,4 +1,5 @@
 /* tslint:disable:no-any no-implicit-any */
+/* eslint-disable */
 
 /**
  * IPackageJson

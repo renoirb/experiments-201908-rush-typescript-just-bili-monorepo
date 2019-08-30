@@ -132,15 +132,23 @@
     {
       "commandKind": "global",
       "name": "fix",
-      "summary": "Normalize coding conventions.",
+      "summary": "Pass prettier to normalize code structure format conventions.",
       "description": "In order to keep predictable code, normalize all source code with Prettier",
       "shellCommand": "common/temp/node_modules/.bin/pretty-quick"
     },
     {
       "commandKind": "bulk",
+      "name": "lint",
+      "summary": "Run lint",
+      "description": "Run lint task, apply fixable issues by going in the project folder, and run `rushx lint:fix`",
+      "enableParallelism": false,
+      "ignoreMissingScript": true
+    },
+    {
+      "commandKind": "bulk",
       "name": "test",
       "summary": "Run tests",
-      "description": "Run tests, update test snapshots by adding --snapshots option",
+      "description": "Run tests, update test snapshots by going in the project folder, and run `rushx test:snapshots`",
       "enableParallelism": false,
       "ignoreMissingScript": true
     },
@@ -248,6 +256,12 @@
     //   ]
     // }
 
+    {
+      "parameterKind": "flag",
+      "longName": "--fix",
+      "description": "Make build mute off console log so CI will not fail because of console.log notes left around.",
+      "associatedCommands": ["lint"]
+    },
     {
       "parameterKind": "flag",
       "longName": "--quiet",

@@ -11,6 +11,9 @@ export interface DependenciesHashMap {
   [name: string]: string;
 }
 
+/**
+ * Strip off @ sign in package name (e.g. "@frontend-bindings/foo-bar" => "frontend-bindings-foo-bar")
+ */
 export const packageNameToModuleName = cached((name: string): string =>
   camelCase(name.replace(/@/g, '').replace('/', '-')),
 );

@@ -76,7 +76,7 @@ ${banner.copyright}
 
 export const createBannerInfo = (
   pkg: Partial<PackageJson> = {},
-  vendor: string = 'ACME Corp.',
+  vendor = 'ACME Corp.',
 ): BannerInfo => {
   const firstYear = 2015;
   const currentYear = new Date().getFullYear();

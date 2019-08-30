@@ -1,4 +1,5 @@
-/* tslint:disable:no-any no-unsave-any no-restricted-globals typedef no-console */
+/* tslint:disable:no-any no-unsafe-any no-restricted-globals typedef no-console */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 
 /**
  * Create cached version of a pure function
