@@ -17,6 +17,7 @@ echo Starting Git hook: pre-commit
 if [ -f $PRETTYQUICK ]; then
   echo Invoking $PRETTYQUICK
   $PRETTYQUICK --staged
+  $PRETTYQUICK --pattern "**/*.yml"
 else
   echo Did not run pre-commit hook. Utility not installed: $PRETTYQUICK
 fi

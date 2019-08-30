@@ -130,11 +130,19 @@
       "shellCommand": "node common/temp/node_modules/sort-package-json/index.js */*/package.json"
     },
     {
-      "commandKind": "global",
+      "commandKind": "bulk",
       "name": "fix",
       "summary": "Pass prettier to normalize code structure format conventions.",
-      "description": "In order to keep predictable code, normalize all source code with Prettier",
-      "shellCommand": "common/temp/node_modules/.bin/pretty-quick"
+      "enableParallelism": true,
+      "ignoreMissingScript": true
+    },
+    {
+      "commandKind": "bulk",
+      "name": "prettier",
+      "summary": "ESLint and Prettier",
+      "description": "For each project, run eslint and prettier",
+      "enableParallelism": true,
+      "ignoreMissingScript": true
     },
     {
       "commandKind": "bulk",

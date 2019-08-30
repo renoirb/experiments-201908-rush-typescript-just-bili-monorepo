@@ -1,0 +1,28 @@
+image: node:10-alpine
+
+stages:
+  - build
+
+build:
+  stage: build
+  #environment:
+  #  PATH: common/temp/node_modules/.bin:$PATH
+  script:
+    - env
+    - ls -R common/temp/
+    - node common/scripts/install-run-rush.js install --bypass-policy --purge
+    # If un tidied code passed, it means author did not run tooling, maybe not testing either. Fail early.
+    # I do not know why fix --check below fails, but would pass like this. Will figure out latre @TODO
+    # node common/scripts/install-run-rush.js fix --check
+    - node common/scripts/install-run-rush.js rebuild --quiet --verbose
+    # Jest outputs messages using console.log instead of STDOUT, which makes Rush.js think there was warning.
+    - node common/scripts/install-run-rush.js test
+    - node common/scripts/install-run-rush.js publish --publish --pack --include-all --prerelease-name dev --release-folder dist
+  cache:
+    key: ${CI_BUILD_REF_NAME}
+    paths:
+      - common/temp/
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - dist/

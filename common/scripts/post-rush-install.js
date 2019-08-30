@@ -15,7 +15,10 @@ const fs = require("fs");
 // For example, ignore files we want in a package, where we can sync.
 // where there is a monorepo file called '.prettierignore' in a module
 // we know we maintain, and we want that to be synced in the monorepo root.
-const filesToCopyToMonorepoRoot = ['conventions/config-prettier/.prettierignore']
+const filesToCopyToMonorepoRoot = [
+  "conventions/config-prettier/.prettierignore",
+  "conventions/config-prettier/prettier.config.js"
+];
 
 /**
  * Copy-pasta/butchery from install-run.js
@@ -24,36 +27,41 @@ const filesToCopyToMonorepoRoot = ['conventions/config-prettier/.prettierignore'
 let _rushJsonFolder;
 function findRushJsonFolder() {
   if (!_rushJsonFolder) {
-      let basePath = __dirname;
-      let tempPath = __dirname;
-      do {
-          const testRushJsonPath = path.join(basePath, 'rush.json');
-          if (fs.existsSync(testRushJsonPath)) {
-              _rushJsonFolder = basePath;
-              break;
-          }
-          else {
-              basePath = tempPath;
-          }
-      } while (basePath !== (tempPath = path.dirname(basePath))); // Exit the loop when we hit the disk root
-      if (!_rushJsonFolder) {
-          throw new Error('Unable to find rush.json.');
+    let basePath = __dirname;
+    let tempPath = __dirname;
+    do {
+      const testRushJsonPath = path.join(basePath, "rush.json");
+      if (fs.existsSync(testRushJsonPath)) {
+        _rushJsonFolder = basePath;
+        break;
+      } else {
+        basePath = tempPath;
       }
+    } while (basePath !== (tempPath = path.dirname(basePath))); // Exit the loop when we hit the disk root
+    if (!_rushJsonFolder) {
+      throw new Error("Unable to find rush.json.");
+    }
   }
   return _rushJsonFolder;
 }
 function getNodeModulesPath(rushJsonDir) {
-  const packageInstallFolder = path.normalize(path.join(rushJsonDir, 'common', 'temp'))
+  const packageInstallFolder = path.normalize(
+    path.join(rushJsonDir, "common", "temp")
+  );
   try {
-      const nodeModulesFolder = path.resolve(packageInstallFolder, 'node_modules');
-      const exists = fs.existsSync(nodeModulesFolder)
-      if (exists) {
-        return nodeModulesFolder;
-      }
-      throw new Error(`node_modules not found`);
-  }
-  catch (e) {
-      throw new Error(`Error finding the node_modules folder (${packageInstallFolder}): ${e}`);
+    const nodeModulesFolder = path.resolve(
+      packageInstallFolder,
+      "node_modules"
+    );
+    const exists = fs.existsSync(nodeModulesFolder);
+    if (exists) {
+      return nodeModulesFolder;
+    }
+    throw new Error(`node_modules not found`);
+  } catch (e) {
+    throw new Error(
+      `Error finding the node_modules folder (${packageInstallFolder}): ${e}`
+    );
   }
 }
 /** ************************ /Is there a better way? ************************ */
@@ -63,14 +71,16 @@ function getNodeModulesPath(rushJsonDir) {
  * Partial copy-pasta from just-scripts, in `src/tasks/__tests__/callTaskForTest.ts`
  */
 function wrapTaskFunction(fn, ctx) {
-  return fn.call(ctx, () => ({/* ??? in which situation does this */}));
+  return fn.call(ctx, () => ({
+    /* ??? in which situation does this */
+  }));
 }
 
 /** @type {import('just-scripts').CopyTaskOptions} */
 const copyTaskOpts = {
   // For example, ignore files we want in a package, where we can sync.
   paths: [...filesToCopyToMonorepoRoot],
-  dest: '.'
+  dest: "."
 };
 
 (() => {
@@ -78,19 +88,22 @@ const copyTaskOpts = {
    * just-scripts is all we need.
    * As it encapsulates logic to move files around without any more boilerplate.
    */
-  const mustHaveDependencyName = 'just-scripts';
+  const mustHaveDependencyName = "just-scripts";
 
   const rushFolder = findRushJsonFolder();
   const nodeModules = getNodeModulesPath(rushFolder);
 
   try {
-    const { copyTask, logger } = require(`${nodeModules}/${mustHaveDependencyName}`);
+    const {
+      copyTask,
+      logger
+    } = require(`${nodeModules}/${mustHaveDependencyName}`);
     // TODO: Improve this.
     logger.enableVerbose = true;
-    const  { argv = {} } = process;
+    const { argv = {} } = process;
     const context = {
-        argv: argv || { _: [], $0: '' },
-        logger
+      argv: argv || { _: [], $0: "" },
+      logger
     };
     // try-catch?
     wrapTaskFunction(copyTask(copyTaskOpts), context);

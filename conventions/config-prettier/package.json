@@ -4,10 +4,10 @@
   "description": "Reusable Prettier configs",
   "license": "UNLICENSED",
   "files": [
-    "main.js",
+    "prettier.config.js",
     ".prettierignore"
   ],
-  "main": "main",
+  "main": "prettier.config.js",
   "bin": {
     "rush-prettier": "./bin/rush-prettier"
   },

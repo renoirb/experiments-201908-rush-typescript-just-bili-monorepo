@@ -23,6 +23,10 @@
       "allowedCategories": [ "tools" ]
     },
     {
+      "name": "@jest/reporters",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
       "name": "@microsoft/eslint-config-scalable-ts",
       "allowedCategories": [ "conventions" ]
     },
@@ -64,6 +68,10 @@
     },
     {
       "name": "jest",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "jest-cli",
       "allowedCategories": [ "conventions" ]
     },
     {

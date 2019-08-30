@@ -20,6 +20,6 @@ module.exports = {
   testEnvironment: "node",
   testPathIgnorePatterns: ["/lib/", "/node_modules/"],
   testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-  verbose: true,
+  reporters: [path.join(__dirname, "reporter.js")],
   verbose: true
 };

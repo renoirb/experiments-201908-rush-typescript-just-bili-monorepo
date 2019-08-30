@@ -8,18 +8,18 @@
  */
 module.exports = {
   printWidth: 80,
-  trailingComma: "all",
+  trailingComma: 'all',
   semi: true,
-  endOfLine: "lf",
+  endOfLine: 'lf',
   tabWidth: 2,
   useTabs: false,
   singleQuote: true,
   overrides: [
     {
-      files: "*.aspx,cmd,config,cs,csproj,ps1,rels,resx,sln",
+      files: '*.aspx,cmd,config,cs,csproj,ps1,rels,resx,sln',
       options: {
-        endOfLine: "clrf"
-      }
-    }
-  ]
+        endOfLine: 'clrf',
+      },
+    },
+  ],
 };
