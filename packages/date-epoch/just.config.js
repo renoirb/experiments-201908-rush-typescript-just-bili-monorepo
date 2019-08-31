@@ -26,6 +26,7 @@ const {
  * nor when we do globally `rush test --snapshots`.
  * Gota figure why. @TODO
  */
+
 option('snapshots');
 option('fix');
 
@@ -40,6 +41,7 @@ const eslintTaskOptions = {
   ),
   fix: argv().fix ? true : false,
 };
+task('lint', eslintTask(eslintTaskOptions));
 
 const jestTaskOptions = {
   runInBand: true,
@@ -53,16 +55,13 @@ const jestTaskOptions = {
   updateSnapshot: argv().snapshots ? true : false,
   _: ['--detectOpenHandles'],
 };
+task('test', jestTask(jestTaskOptions));
 
 const prettierTaskOptions = {
   ignorePath: resolveCwd(
     './node_modules/@frontend-bindings/conventions-config-prettier/.prettierignore',
   ),
 };
-
-task('lint', eslintTask(eslintTaskOptions));
 task('fix', prettierTask(prettierTaskOptions));
-
-task('test', jestTask(jestTaskOptions));
 
 task('clean', cleanTask([...defaultCleanPaths(), '.rpt2_cache']));

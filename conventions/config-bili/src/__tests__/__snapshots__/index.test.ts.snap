@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`main Snapshot sample 1`] = `
+Object {
+  "input": Object {
+    "index": "foo/bar/bazz/buzz/bizz.ts",
+  },
+  "plugins": Object {
+    "babel": Object {
+      "presets": Array [
+        Array [
+          "@babel/preset-env",
+          Object {
+            "corejs": 3,
+            "debug": false,
+            "useBuiltIns": "usage",
+          },
+        ],
+      ],
+    },
+  },
+}
+`;

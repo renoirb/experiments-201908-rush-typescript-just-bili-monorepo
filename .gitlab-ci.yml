@@ -9,7 +9,6 @@ build:
   #  PATH: common/temp/node_modules/.bin:$PATH
   script:
     - env
-    - ls -R common/temp/
     - node common/scripts/install-run-rush.js install --bypass-policy --purge
     # If un tidied code passed, it means author did not run tooling, maybe not testing either. Fail early.
     # I do not know why fix --check below fails, but would pass like this. Will figure out latre @TODO

@@ -6,9 +6,12 @@
  * https://rushjs.io/pages/maintainer/add_to_repo/
  * https://github.com/Microsoft/web-build-tools/blob/master/core-build/gulp-core-build/src/tasks/JestReporter.ts
  * https://github.com/microsoft/web-build-tools/blob/master/core-build/gulp-core-build/src/tasks/JestTask.ts#L138
+ *
+ * Or, refactor like this:
+ * https://github.com/microsoft/just/blob/master/scripts/jest-reporter.js
  */
 
-let DEFAULT_REPORTER = require("@jest/reporters/build/default_reporter");
+let DEFAULT_REPORTER = require('@jest/reporters/build/default_reporter');
 if (!!DEFAULT_REPORTER.default) {
   DEFAULT_REPORTER = DEFAULT_REPORTER.default;
 }
@@ -23,7 +26,7 @@ class JestReporter extends DEFAULT_REPORTER {
   }
 
   log(message) {
-    process.stdout.write(message + "\n");
+    process.stdout.write(message + '\n');
   }
 }
 

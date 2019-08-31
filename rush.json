@@ -354,6 +354,12 @@
     // }
 
     {
+      "packageName": "@frontend-bindings/conventions-config-bili",
+      "projectFolder": "conventions/config-bili",
+      "shouldPublish": true,
+      "reviewCategory": "conventions"
+    },
+    {
       "packageName": "@frontend-bindings/conventions-config-eslint",
       "projectFolder": "conventions/config-eslint",
       "shouldPublish": true,
@@ -371,7 +377,6 @@
       "shouldPublish": true,
       "reviewCategory": "conventions"
     },
-
     {
       "packageName": "@frontend-bindings/conventions-config-typescript-3",
       "projectFolder": "conventions/config-typescript-3",
@@ -384,6 +389,13 @@
       "projectFolder": "tools/bundling-helpers",
       "shouldPublish": true,
       "reviewCategory": "tools"
+    },
+
+    {
+      "packageName": "@frontend-bindings/date-epoch",
+      "projectFolder": "packages/date-epoch",
+      "shouldPublish": true,
+      "reviewCategory": "libraries"
     }
   ]
 }

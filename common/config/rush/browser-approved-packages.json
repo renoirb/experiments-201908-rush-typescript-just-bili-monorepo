@@ -3,24 +3,40 @@
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/approved-packages.schema.json",
   "packages": [
     {
+      "name": "@babel/core",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "@babel/preset-env",
+      "allowedCategories": [ "conventions", "libraries" ]
+    },
+    {
+      "name": "@babel/runtime-corejs3",
+      "allowedCategories": [ "conventions", "libraries" ]
+    },
+    {
+      "name": "@frontend-bindings/conventions-config-bili",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@frontend-bindings/conventions-config-eslint",
-      "allowedCategories": [ "tools" ]
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
       "name": "@frontend-bindings/conventions-config-jest",
-      "allowedCategories": [ "tools" ]
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
       "name": "@frontend-bindings/conventions-config-prettier",
-      "allowedCategories": [ "tools" ]
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
       "name": "@frontend-bindings/conventions-config-typescript-3",
-      "allowedCategories": [ "tools" ]
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
       "name": "@frontend-bindings/tools-bundling-helpers",
-      "allowedCategories": [ "tools" ]
+      "allowedCategories": [ "conventions", "libraries" ]
     },
     {
       "name": "@jest/reporters",
@@ -32,7 +48,7 @@
     },
     {
       "name": "@microsoft/node-core-library",
-      "allowedCategories": [ "tools" ]
+      "allowedCategories": [ "conventions", "tools" ]
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
@@ -51,6 +67,14 @@
       "allowedCategories": [ "conventions" ]
     },
     {
+      "name": "bili",
+      "allowedCategories": [ "conventions", "tools" ]
+    },
+    {
+      "name": "core-js",
+      "allowedCategories": [ "conventions", "libraries" ]
+    },
+    {
       "name": "eslint",
       "allowedCategories": [ "conventions" ]
     },
@@ -59,24 +83,12 @@
       "allowedCategories": [ "conventions" ]
     },
     {
-      "name": "eslint-plugin-react",
-      "allowedCategories": [ "conventions" ]
-    },
-    {
-      "name": "eslint-plugin-security",
-      "allowedCategories": [ "conventions" ]
-    },
-    {
       "name": "jest",
       "allowedCategories": [ "conventions" ]
     },
     {
-      "name": "jest-cli",
-      "allowedCategories": [ "conventions" ]
-    },
-    {
       "name": "just-scripts",
-      "allowedCategories": [ "tools" ]
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
       "name": "npm-run-all",
@@ -93,6 +105,14 @@
     {
       "name": "rimraf",
       "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "rollup-plugin-babel",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "rollup-plugin-typescript2",
+      "allowedCategories": [ "conventions", "tools" ]
     },
     {
       "name": "sort-package-json",

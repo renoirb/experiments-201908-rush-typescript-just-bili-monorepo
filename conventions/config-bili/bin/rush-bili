@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+
+/**
+ * In Rush.js, if we do not use this script, we would need to import
+ * the required module in EVERY PACKAGES.
+ * This exposes it for other modules to use.
+ */
+
+const hasTargetBiliArgument = process.argv.includes('--target')
+const indexOfTargetBiliArgument = hasTargetBiliArgument ? process.argv.indexOf('--target') : 0
+
+let BROWSERSLIST = null
+
+const BROWSERLISTTARGETS = {
+  // @TODO Harmonize with other places we'd tell runtime target
+  browser: 'ie >= 10, > 1%', // IE10+, and when a browser worldwide usage is more than 1%
+  // browser: 'last 2 Chrome versions', // ONLY MODERN
+  // node: 'node 0.10' // When Node.js target, old version from 2016 https://nodejs.org/en/download/releases/
+  node: 'node 10', // Node.js Long Term Support of 2019
+}
+
+/**
+ * Change process.env.BROWSERSLIST accordingly to --target CLI argument
+ *
+ * Following up experiment;
+ * https://github.com/renoirb/experiments-201907-bili-babel-preset-env-multiple-target-builds#using-browserslist
+ */
+if (hasTargetBiliArgument) {
+  const targetIndex = indexOfTargetBiliArgument + 1
+  const targetKey = process.argv[targetIndex] || null
+  BROWSERSLIST = Reflect.has(BROWSERLISTTARGETS, targetKey) ? Reflect.get(BROWSERLISTTARGETS, targetKey) : null
+  // If we superseeded BROWSERSLIST environment, use it instead.
+  // Since we already have it, let's not superseed it.
+  // set -gx BROWSERSLIST "ie >= 10, > 1%"
+  // set -gx BROWSERSLIST "node 10"
+  // export BROWSERSLIST "ie >= 10, > 1%"
+  // export BROWSERSLIST "node 10"
+  if (!('BROWSERSLIST' in process.env)  && typeof BROWSERSLIST === 'string') {
+    process.env.BROWSERSLIST = BROWSERSLIST
+  }
+  // console.log('BROWSERSLIST', BROWSERSLIST)
+}
+
+Promise.all([require('bili/dist/cli')])

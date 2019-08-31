@@ -1,22 +1,22 @@
 {
-  "name": "@frontend-bindings/tools-bundling-helpers",
+  "name": "@frontend-bindings/conventions-config-bili",
   "version": "1.0.0",
+  "description": "Reusable Babel,Rollup configs leveraging https://github.com/egoist/bili",
   "license": "UNLICENSED",
   "files": [
     "dist",
     "bin"
   ],
-  "main": "dist/index.js",
+  "main": "dist",
   "module": "dist/index.esm.js",
   "typings": "dist/index.d.ts",
   "bin": {
-    "rush-rimraf": "./bin/rush-rimraf",
-    "rush-run-all": "./bin/rush-run-all"
+    "rush-bili": "./bin/rush-bili"
   },
   "scripts": {
-    "build": "npm-run-all build:*",
-    "build:cjs": "node_modules/.bin/bili --target node --format cjs-min --input src/index.ts --file-name index.js --quiet",
-    "build:esm": "node_modules/.bin/bili --target node --format esm-min --input src/index.ts --file-name index.esm.js --quiet",
+    "build": "rush-run-all build:*",
+    "build:cjs": "./bin/rush-bili --target node --verbose --format cjs-min --input src/index.ts --file-name index.js --quiet",
+    "build:esm": "./bin/rush-bili --target node --verbose --format esm-min --input src/index.ts --file-name index.esm.js --quiet",
     "clean": "just-scripts clean",
     "fix": "just-scripts fix",
     "lint": "just-scripts lint",
@@ -26,20 +26,25 @@
   },
   "prettier": "@frontend-bindings/conventions-config-prettier",
   "dependencies": {
-    "npm-run-all": "^4.1.0",
-    "rimraf": "~3.0.0"
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.0",
+    "@babel/runtime-corejs3": "~7.5.5",
+    "bili": "^4.8.1",
+    "core-js": "^3.1.4"
   },
   "devDependencies": {
     "@frontend-bindings/conventions-config-eslint": "~1.0.0",
     "@frontend-bindings/conventions-config-jest": "~1.0.0",
     "@frontend-bindings/conventions-config-prettier": "~1.0.0",
     "@frontend-bindings/conventions-config-typescript-3": "~1.0.0",
+    "@frontend-bindings/tools-bundling-helpers": "~1.0.0",
     "@microsoft/node-core-library": "~3.14.0",
-    "@types/core-js": "^2.5.2",
     "@types/jest": "^24.0.15",
     "@types/node": "^10.14.17",
     "bili": "^4.8.1",
+    "core-js": "^3.1.4",
     "just-scripts": "^0.28.1",
+    "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-typescript2": "^0.22.1"
   }
 }
