@@ -6,7 +6,7 @@
 #
 # https://rushjs.io/pages/maintainer/git_hooks/
 #
-# @TODO If we want more than one monorepo, yet share configuration. Find way to install/sync in monorepo host.
+# @TODO If we want more than one monorepo, yet share configuration. Find way to install/sync in monorepo host. #MultiMonorepoReUse
 #
 
 PRETTYQUICK=common/temp/node_modules/.bin/pretty-quick

@@ -1,4 +1,3 @@
-/* tslint:disable:no-any no-unsafe-any no-restricted-globals typedef no-console */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 
 /**
@@ -11,8 +10,7 @@
  *
  * @param {Function} fn
  */
-// @ts-ignore
-export function cached(fn: any) {
+export function cached(fn: any): any {
   const cache = Object.create(null);
   return function cachedFn(str: number | string) {
     const hit = cache[str];

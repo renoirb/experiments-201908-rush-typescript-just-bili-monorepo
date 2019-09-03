@@ -1,6 +1,3 @@
-/* tslint:disable:no-any no-implicit-any */
-/* eslint-disable */
-
 /**
  * IPackageJson
  * https://docs.npmjs.com/files/package.json#people-fields-author-contributors
@@ -23,7 +20,6 @@ const stripSlash = (str: string): string => {
  *
  * @public
  */
-// tslint:disable-next-line:no-implicit-any
 export const stringifyAuthor = (author: any): string => {
   if (typeof author !== 'object') {
     throw new Error('expected an author to be an object');

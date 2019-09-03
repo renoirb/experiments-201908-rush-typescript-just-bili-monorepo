@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`validatable Snapshot peek 1`] = `
+ValidatableRules {
+  "rules": Array [
+    Rule {
+      "expectation": true,
+      "key": "size",
+      "pattern": /\\^\\[0-9a-zA-z\\\\-_\\]\\{8,19\\}\\$/,
+    },
+  ],
+}
+`;
+
+exports[`validatable Snapshot peek 2`] = `
+Array [
+  Rule {
+    "expectation": true,
+    "key": "size",
+    "pattern": /\\^\\[0-9a-zA-z\\\\-_\\]\\{8,19\\}\\$/,
+  },
+]
+`;
+
+exports[`validatable Using other types of JavaScript objects, forms 1`] = `
+ValidatableRules {
+  "rules": Array [
+    Rule {
+      "expectation": true,
+      "key": "size",
+      "pattern": /\\^\\[0-9a-zA-z\\\\-_\\]\\{8,19\\}\\$/,
+    },
+  ],
+}
+`;
+
+exports[`validatable Using other types of JavaScript objects, forms 2`] = `
+ValidatableRules {
+  "rules": Array [
+    Rule {
+      "expectation": true,
+      "key": "size",
+      "pattern": /\\^\\[0-9a-zA-z\\\\-_\\]\\{8,19\\}\\$/,
+    },
+  ],
+}
+`;
+
+exports[`validatable Using other types of JavaScript objects, forms 3`] = `
+ValidatableRules {
+  "rules": Array [
+    Rule {
+      "expectation": true,
+      "key": "size",
+      "pattern": /\\^\\[0-9a-zA-z\\\\-_\\]\\{8,19\\}\\$/,
+    },
+  ],
+}
+`;

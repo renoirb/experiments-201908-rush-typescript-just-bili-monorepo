@@ -6,7 +6,7 @@
  * After `rush update`, copy files to the monorepo root.
  * https://gist.github.com/renoirb/b23b2d60fbe1ca25950005bb4056458d#gistcomment-3012183
  *
- * @TODO If we want more than one monorepo, yet share configuration. Find way to install/sync in monorepo host.
+ * @TODO If we want more than one monorepo, yet share configuration. Find way to install/sync in monorepo host. #MultiMonorepoReUse
  */
 
 const path = require("path");

@@ -1,0 +1,32 @@
+{
+  "name": "@frontend-bindings/conventions-use-jest",
+  "version": "1.0.0",
+  "description": "Reusable Jest configs",
+  "license": "UNLICENSED",
+  "files": [
+    "main.js",
+    "reporter.js",
+    "ecmascript-transformer.js",
+    "bin"
+  ],
+  "main": "main.js",
+  "bin": {
+    "use-jest": "./bin/jest"
+  },
+  "scripts": {
+    "build": ""
+  },
+  "dependencies": {
+    "@babel/core": "^7.4.0",
+    "@jest/reporters": "^24.9.0",
+    "babel-jest": "^24.9.0",
+    "babel-preset-jest": "^24.9.0",
+    "jest": "^24.9.0",
+    "jest-expect-message": "^1.0.2",
+    "ts-jest": "^24.0.2"
+  },
+  "devDependencies": {
+    "@types/babel__core": "^7.1.2",
+    "@types/jest": "^24.0.15"
+  }
+}

@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-var-requires  */
 const {
   task,
   prettierTask,
-  eslintTask,
   jestTask,
   resolveCwd,
   option,
@@ -29,17 +27,7 @@ const {
 option('snapshots');
 option('fix');
 
-const eslintTaskOptions = {
-  // No need to put a global one, each project could have only flags to toggle off
-  // configPath: resolveCwd('./node_modules/@microsoft/eslint-config-scalable-ts'),
-  // configPath: resolveCwd(
-  //   './node_modules/@frontend-bindings/conventions-config-eslint/typescript',
-  // ),
-  ignorePath: resolveCwd(
-    './node_modules/@frontend-bindings/conventions-config-eslint/.eslintignore',
-  ),
-  fix: argv().fix ? true : false,
-};
+task('clean', cleanTask([...defaultCleanPaths(), '.rpt2_cache']));
 
 const jestTaskOptions = {
   runInBand: true,
@@ -53,16 +41,11 @@ const jestTaskOptions = {
   updateSnapshot: argv().snapshots ? true : false,
   _: ['--detectOpenHandles'],
 };
+task('test', jestTask(jestTaskOptions));
 
 const prettierTaskOptions = {
   ignorePath: resolveCwd(
-    './node_modules/@frontend-bindings/conventions-config-prettier/.prettierignore',
+    './node_modules/@frontend-bindings/conventions-use-prettier/.prettierignore',
   ),
 };
-
-task('lint', eslintTask(eslintTaskOptions));
 task('fix', prettierTask(prettierTaskOptions));
-
-task('test', jestTask(jestTaskOptions));
-
-task('clean', cleanTask([...defaultCleanPaths(), '.rpt2_cache']));

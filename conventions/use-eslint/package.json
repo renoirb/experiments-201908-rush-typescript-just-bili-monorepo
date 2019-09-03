@@ -1,0 +1,22 @@
+{
+  "name": "@frontend-bindings/conventions-use-eslint",
+  "version": "1.0.0",
+  "description": "Reusable ESLint configs",
+  "license": "UNLICENSED",
+  "files": [
+    "main.js",
+    ".eslintignore",
+    "bin"
+  ],
+  "main": "main.js",
+  "bin": {
+    "use-eslint": "./bin/eslint"
+  },
+  "scripts": {
+    "build": ""
+  },
+  "dependencies": {
+    "eslint": "^6.0.0",
+    "eslint-plugin-promise": "~4.2.1"
+  }
+}

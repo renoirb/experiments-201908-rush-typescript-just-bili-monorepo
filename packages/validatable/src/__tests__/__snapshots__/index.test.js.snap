@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`validatable Use-Case for validating if a username matches business rules Snapshot peek 1`] = `
+UsernameValidator {
+  "validatable": ValidatableRules {
+    "rules": Array [
+      Rule {
+        "expectation": true,
+        "key": "size",
+        "pattern": /\\^\\[0-9a-zA-z\\\\-_\\]\\{8,19\\}\\$/,
+      },
+      Rule {
+        "expectation": false,
+        "key": "billable_format",
+        "pattern": /\\^\\[ABGKNPQSTWXZ\\]\\{1\\}\\[0-9\\]\\{8\\}\\$/,
+      },
+    ],
+  },
+  "validate": [Function],
+}
+`;
+
+exports[`validatable Use-Case for validating if a username matches business rules Snapshot peek to ValidatableOutcome 1`] = `
+ValidatableOutcome {
+  "failures": Array [],
+  "passes": Array [
+    Object {
+      "expectation": true,
+      "key": "size",
+      "outcome": true,
+      "value": "jameskirk",
+    },
+    Object {
+      "expectation": false,
+      "key": "billable_format",
+      "outcome": false,
+      "value": "jameskirk",
+    },
+  ],
+}
+`;

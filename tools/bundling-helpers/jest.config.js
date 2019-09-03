@@ -1,1 +1,1 @@
-module.exports = require('@frontend-bindings/conventions-config-jest');
+module.exports = require('@frontend-bindings/conventions-use-jest');

@@ -1,5 +1,3 @@
-/* tslint:disable:typedef no-any */
-
 import {
   getDateFromEpoch,
   getTimeNowUtcMillliseconds,

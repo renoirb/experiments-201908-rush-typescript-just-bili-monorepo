@@ -24,8 +24,7 @@
     "sort-package-json": "^1.22.1",
     "typescript": "~3.5.3",
     // Workaround for https://github.com/microsoft/web-build-tools/issues/1466
-    "eslint": "^6.0.0",
-    "just-scripts": "^0.28.1"
+    "eslint": "^6.0.0"
   },
 
   /**

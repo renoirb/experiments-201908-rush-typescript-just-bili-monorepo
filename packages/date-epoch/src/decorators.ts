@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* tslint:disable */
 
 import { DateEpoch } from './date-epoch';
 

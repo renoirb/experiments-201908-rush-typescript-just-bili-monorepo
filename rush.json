@@ -354,32 +354,38 @@
     // }
 
     {
-      "packageName": "@frontend-bindings/conventions-config-bili",
-      "projectFolder": "conventions/config-bili",
+      "packageName": "@frontend-bindings/conventions-use-bili",
+      "projectFolder": "conventions/use-bili",
       "shouldPublish": true,
       "reviewCategory": "conventions"
     },
     {
-      "packageName": "@frontend-bindings/conventions-config-eslint",
-      "projectFolder": "conventions/config-eslint",
+      "packageName": "@frontend-bindings/conventions-use-eslint",
+      "projectFolder": "conventions/use-eslint",
       "shouldPublish": true,
       "reviewCategory": "conventions"
     },
     {
-      "packageName": "@frontend-bindings/conventions-config-jest",
-      "projectFolder": "conventions/config-jest",
+      "packageName": "@frontend-bindings/conventions-use-typescript-eslint",
+      "projectFolder": "conventions/use-typescript-eslint",
       "shouldPublish": true,
       "reviewCategory": "conventions"
     },
     {
-      "packageName": "@frontend-bindings/conventions-config-prettier",
-      "projectFolder": "conventions/config-prettier",
+      "packageName": "@frontend-bindings/conventions-use-jest",
+      "projectFolder": "conventions/use-jest",
       "shouldPublish": true,
       "reviewCategory": "conventions"
     },
     {
-      "packageName": "@frontend-bindings/conventions-config-typescript-3",
-      "projectFolder": "conventions/config-typescript-3",
+      "packageName": "@frontend-bindings/conventions-use-prettier",
+      "projectFolder": "conventions/use-prettier",
+      "shouldPublish": true,
+      "reviewCategory": "conventions"
+    },
+    {
+      "packageName": "@frontend-bindings/conventions-use-typescript-3",
+      "projectFolder": "conventions/use-typescript-3",
       "shouldPublish": true,
       "reviewCategory": "conventions"
     },
@@ -394,6 +400,12 @@
     {
       "packageName": "@frontend-bindings/date-epoch",
       "projectFolder": "packages/date-epoch",
+      "shouldPublish": true,
+      "reviewCategory": "libraries"
+    },
+    {
+      "packageName": "@frontend-bindings/validatable",
+      "projectFolder": "packages/validatable",
       "shouldPublish": true,
       "reviewCategory": "libraries"
     }

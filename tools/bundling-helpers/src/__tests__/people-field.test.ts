@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 import { PeopleField, stringifyAuthor } from '..';
 
 const peopleFieldCollectionFixture: ReadonlyArray<

@@ -15,23 +15,27 @@
       "allowedCategories": [ "conventions", "libraries" ]
     },
     {
-      "name": "@frontend-bindings/conventions-config-bili",
+      "name": "@frontend-bindings/conventions-use-bili",
       "allowedCategories": [ "libraries" ]
     },
     {
-      "name": "@frontend-bindings/conventions-config-eslint",
+      "name": "@frontend-bindings/conventions-use-eslint",
+      "allowedCategories": [ "conventions", "libraries" ]
+    },
+    {
+      "name": "@frontend-bindings/conventions-use-jest",
       "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
-      "name": "@frontend-bindings/conventions-config-jest",
+      "name": "@frontend-bindings/conventions-use-prettier",
       "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
-      "name": "@frontend-bindings/conventions-config-prettier",
+      "name": "@frontend-bindings/conventions-use-typescript-3",
       "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
-      "name": "@frontend-bindings/conventions-config-typescript-3",
+      "name": "@frontend-bindings/conventions-use-typescript-eslint",
       "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
@@ -67,6 +71,14 @@
       "allowedCategories": [ "conventions" ]
     },
     {
+      "name": "babel-jest",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "babel-preset-jest",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
       "name": "bili",
       "allowedCategories": [ "conventions", "tools" ]
     },
@@ -84,6 +96,10 @@
     },
     {
       "name": "jest",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "jest-expect-message",
       "allowedCategories": [ "conventions" ]
     },
     {
@@ -105,6 +121,10 @@
     {
       "name": "rimraf",
       "allowedCategories": [ "tools" ]
+    },
+    {
+      "name": "rollup",
+      "allowedCategories": [ "conventions", "tools" ]
     },
     {
       "name": "rollup-plugin-babel",

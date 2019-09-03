@@ -130,6 +130,13 @@
       "shellCommand": "node common/temp/node_modules/sort-package-json/index.js */*/package.json"
     },
     {
+      "commandKind": "global",
+      "name": "pretty-quick",
+      "summary": "Runs pretty-quick on monorepo.",
+      "description": "In CI mode, it is useful to make sure all code is already linted before bundling, it is a good way to ensure code was not hurriedly worked on without any QA tools used.",
+      "shellCommand": "node common/temp/node_modules/pretty-quick/bin/pretty-quick.js"
+    },
+    {
       "commandKind": "bulk",
       "name": "fix",
       "summary": "Pass prettier to normalize code structure format conventions.",
@@ -281,7 +288,7 @@
       "parameterKind": "flag",
       "longName": "--check",
       "description": "Check that files are correctly formatted, but don't format them. This is useful on CI to verify that all changed files in the current branch were correctly formatted..",
-      "associatedCommands": ["fix"]
+      "associatedCommands": ["pretty-quick"]
     },
     {
       "parameterKind": "flag",

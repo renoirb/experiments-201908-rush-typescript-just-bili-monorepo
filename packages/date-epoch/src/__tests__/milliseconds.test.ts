@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { milliseconds, seconds } from '../';
+import { milliseconds, seconds } from '..';
 
 describe('milliseconds', () => {
   const inputEpochInt = 1533762055251;

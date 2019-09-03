@@ -1,3 +1,5 @@
+# @TODO If we want more than one monorepo, yet share configuration. Find way to install/sync in monorepo host. #MultiMonorepoReUse
+
 image: node:10-alpine
 
 stages:
@@ -5,15 +7,16 @@ stages:
 
 build:
   stage: build
-  #environment:
-  #  PATH: common/temp/node_modules/.bin:$PATH
+  # before_script:
+  #   - export PATH="${CI_PROJECT_DIR}/common/temp/node_modules/.bin:${PATH}"
   script:
     - env
     - node common/scripts/install-run-rush.js install --bypass-policy --purge
+    # - ls ${CI_PROJECT_DIR}/common/temp/node_modules/.bin
     # If un tidied code passed, it means author did not run tooling, maybe not testing either. Fail early.
     # I do not know why fix --check below fails, but would pass like this. Will figure out latre @TODO
-    # node common/scripts/install-run-rush.js fix --check
-    - node common/scripts/install-run-rush.js rebuild --quiet --verbose
+    # - node common/scripts/install-run-rush.js pretty-quick --check
+    - node common/scripts/install-run-rush.js rebuild
     # Jest outputs messages using console.log instead of STDOUT, which makes Rush.js think there was warning.
     - node common/scripts/install-run-rush.js test
     - node common/scripts/install-run-rush.js publish --publish --pack --include-all --prerelease-name dev --release-folder dist

@@ -10,36 +10,38 @@
   "module": "dist/index.esm.js",
   "typings": "dist/index.d.ts",
   "bin": {
-    "rush-rimraf": "./bin/rush-rimraf",
-    "rush-run-all": "./bin/rush-run-all"
+    "use-rimraf": "./bin/rimraf",
+    "use-run-all": "./bin/run-all"
   },
   "scripts": {
-    "build": "npm-run-all build:*",
-    "build:cjs": "node_modules/.bin/bili --target node --format cjs-min --input src/index.ts --file-name index.js --quiet",
-    "build:esm": "node_modules/.bin/bili --target node --format esm-min --input src/index.ts --file-name index.esm.js --quiet",
-    "clean": "just-scripts clean",
+    "build": "./bin/run-all build:*",
+    "build:cjs": "bili --target node --format cjs-min --input src/index.ts --file-name index.js --quiet",
+    "build:esm": "bili --target node --format esm-min --input src/index.ts --file-name index.esm.js --quiet",
+    "clean": "./bin/rimraf .rpt2_cache dist *.*.log",
     "fix": "just-scripts fix",
-    "lint": "just-scripts lint",
-    "lint:fix": "just-scripts lint --fix",
+    "lint": "./node_modules/@frontend-bindings/conventions-use-typescript-eslint/node_modules/.bin/use-eslint . -c .eslintrc.js --ext '.ts' --report-unused-disable-directives",
+    "lint:fix": "./node_modules/@frontend-bindings/conventions-use-typescript-eslint/node_modules/.bin/use-eslint . -c .eslintrc.js --ext '.ts' --fix",
+    "scripts": "just-scripts",
     "test": "just-scripts test",
     "test:snapshots": "just-scripts test --snapshots"
   },
-  "prettier": "@frontend-bindings/conventions-config-prettier",
+  "prettier": "@frontend-bindings/conventions-use-prettier",
   "dependencies": {
     "npm-run-all": "^4.1.0",
     "rimraf": "~3.0.0"
   },
   "devDependencies": {
-    "@frontend-bindings/conventions-config-eslint": "~1.0.0",
-    "@frontend-bindings/conventions-config-jest": "~1.0.0",
-    "@frontend-bindings/conventions-config-prettier": "~1.0.0",
-    "@frontend-bindings/conventions-config-typescript-3": "~1.0.0",
+    "@frontend-bindings/conventions-use-jest": "~1.0.0",
+    "@frontend-bindings/conventions-use-prettier": "~1.0.0",
+    "@frontend-bindings/conventions-use-typescript-3": "~1.0.0",
+    "@frontend-bindings/conventions-use-typescript-eslint": "~1.0.0",
     "@microsoft/node-core-library": "~3.14.0",
     "@types/core-js": "^2.5.2",
     "@types/jest": "^24.0.15",
     "@types/node": "^10.14.17",
     "bili": "^4.8.1",
-    "just-scripts": "^0.28.1",
+    "just-scripts": "~0.28.2",
+    "rollup": "^1.1.2",
     "rollup-plugin-typescript2": "^0.22.1"
   }
 }

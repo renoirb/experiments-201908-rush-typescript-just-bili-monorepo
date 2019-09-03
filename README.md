@@ -1,4 +1,4 @@
-# Experimenting with [Rush.js](https://rushjs.io/pages/maintainer/setup_new_repo/)
+# Experimenting with [a _monorepo_ with **Rush.js**][rush-maintainer-setup-repo]
 
 ## Expected outcome
 
@@ -20,3 +20,19 @@ Each package should have the minimum boilerplate for:
 - Easy to spot or get feedback when missing dependency between packages
 - Can depend between packages
 
+## Trying it out
+
+All examples below expects you first have `@microsoft/rush` installed globally, [refer to the docs][rush-maintainer-setup-repo].
+
+For Continuous integration mode, refer to [.gitlab-ci.yml](./.gitlab-ci.yml).
+
+### Run with debugging
+
+```bash
+export CI_SERVER="yes-capn" # Assuming GitLab or other CI would have such variable set in CI mode.
+export DEBUG="*,-babel,-agentkeepalive,-fetch-retry"
+rush update
+rush build
+```
+
+[rush-maintainer-setup-repo]: https://rushjs.io/pages/maintainer/setup_new_repo/ 'Setup new Rush.js repo'

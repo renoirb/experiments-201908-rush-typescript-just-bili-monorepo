@@ -1,0 +1,21 @@
+{
+  "name": "@frontend-bindings/conventions-use-typescript-eslint",
+  "version": "1.0.0",
+  "description": "Reusable typescript-eslint, TypeScript specialized ESLint configs",
+  "license": "UNLICENSED",
+  "files": [
+    "main.js"
+  ],
+  "main": "main.js",
+  "scripts": {
+    "build": ""
+  },
+  "dependencies": {
+    "@frontend-bindings/conventions-use-eslint": "~1.0.0",
+    "@microsoft/eslint-config-scalable-ts": "~0.2.2",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/experimental-utils": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "@typescript-eslint/typescript-estree": "^2.0.0"
+  }
+}

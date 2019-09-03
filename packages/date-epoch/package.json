@@ -1,6 +1,6 @@
 {
   "name": "@frontend-bindings/date-epoch",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "Date internal representation utilities using Numbers of seconds since January 1st 1970 (a.k.a. Epoch)",
   "license": "UNLICENSED",
   "files": [
@@ -10,32 +10,34 @@
   "module": "dist/index.esm.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "build": "rush-run-all build:*",
-    "build:browser": "rush-bili --target browser --format cjs --file-name browser.cjs.js --quiet",
-    "build:node": "rush-bili --target node --format cjs --file-name index.js --quiet",
-    "build:node-esm": "rush-bili --target node --format esm --file-name index.esm.js --quiet",
-    "clean": "just-scripts clean",
+    "build": "use-run-all build:*",
+    "build:browser": "use-bili --target browser --format cjs --file-name browser.cjs.js",
+    "build:node": "use-bili --target node --format cjs --file-name index.js",
+    "build:node-esm": "use-bili --target node --format esm --file-name index.esm.js",
+    "clean": "use-rimraf .rpt2_cache dist *.*.log",
     "fix": "just-scripts fix",
-    "lint": "just-scripts lint",
-    "lint:fix": "just-scripts lint --fix",
+    "just": "just-scripts",
+    "lint": "./node_modules/@frontend-bindings/conventions-use-typescript-eslint/node_modules/.bin/use-eslint . -c .eslintrc.js --ext '.ts' --report-unused-disable-directives",
+    "lint:fix": "./node_modules/@frontend-bindings/conventions-use-typescript-eslint/node_modules/.bin/use-eslint . -c .eslintrc.js --ext '.ts' --fix",
+    "scripts": "just-scripts",
     "test": "just-scripts test",
     "test:snapshots": "just-scripts test --snapshots"
   },
-  "prettier": "@frontend-bindings/conventions-config-prettier",
+  "prettier": "@frontend-bindings/conventions-use-prettier",
   "dependencies": {
     "@babel/preset-env": "^7.4.0",
     "@babel/runtime-corejs3": "~7.5.5"
   },
   "devDependencies": {
-    "@frontend-bindings/conventions-config-bili": "~1.0.0",
-    "@frontend-bindings/conventions-config-eslint": "~1.0.0",
-    "@frontend-bindings/conventions-config-jest": "~1.0.0",
-    "@frontend-bindings/conventions-config-prettier": "~1.0.0",
-    "@frontend-bindings/conventions-config-typescript-3": "~1.0.0",
+    "@frontend-bindings/conventions-use-bili": "~1.0.0",
+    "@frontend-bindings/conventions-use-jest": "~1.0.0",
+    "@frontend-bindings/conventions-use-prettier": "~1.0.0",
+    "@frontend-bindings/conventions-use-typescript-3": "~1.0.0",
+    "@frontend-bindings/conventions-use-typescript-eslint": "~1.0.0",
     "@frontend-bindings/tools-bundling-helpers": "~1.0.0",
     "@types/jest": "^24.0.15",
     "@types/node": "^10.14.17",
     "core-js": "^3.1.4",
-    "just-scripts": "^0.28.1"
+    "just-scripts": "~0.28.2"
   }
 }

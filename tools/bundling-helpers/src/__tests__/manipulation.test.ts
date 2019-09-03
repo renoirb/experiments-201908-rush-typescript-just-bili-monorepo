@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 import { camelCase } from '..';
 
 const assertionsGroupAlpha: ReadonlyArray<[string, string]> = [

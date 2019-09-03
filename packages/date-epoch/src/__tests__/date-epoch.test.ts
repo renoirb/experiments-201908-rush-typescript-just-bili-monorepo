@@ -1,4 +1,6 @@
-import { DateEpoch } from '../';
+/* eslint-env jest */
+
+import { DateEpoch } from '..';
 
 describe('DateEpoch', () => {
   const inputEpochInt = 1533762055251;
