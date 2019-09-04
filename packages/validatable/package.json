@@ -15,8 +15,8 @@
     "build:node-esm": "use-bili --target node --format esm --file-name index.esm.js",
     "clean": "use-rimraf .rpt2_cache dist *.*.log",
     "fix": "just-scripts fix",
-    "lint": "./node_modules/@frontend-bindings/conventions-use-eslint/node_modules/.bin/use-eslint . -c .eslintrc.js --report-unused-disable-directives",
-    "lint:fix": "./node_modules/@frontend-bindings/conventions-use-eslint/node_modules/.bin/use-eslint . -c .eslintrc.js --fix",
+    "lint": "./node_modules/.bin/use-eslint . -c .eslintrc.js --report-unused-disable-directives",
+    "lint:fix": "./node_modules/.bin/use-eslint . -c .eslintrc.js --fix",
     "scripts": "just-scripts",
     "test": "just-scripts test",
     "test:snapshots": "just-scripts test --snapshots"
@@ -35,6 +35,7 @@
     "@types/jest": "^24.0.15",
     "@types/node": "^10.14.17",
     "core-js": "^3.1.4",
+    "jest-expect-message": "^1.0.2",
     "just-scripts": "~0.28.2"
   }
 }

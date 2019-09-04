@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getProcessCliArgValuePair Snapshot 1`] = `
+Array [
+  "--config",
+  "/path/to/fictious/tools/bundling-helpers/jest.config.js",
+]
+`;

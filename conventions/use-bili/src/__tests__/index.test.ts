@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 import main from '..';
 
 describe('main', () => {

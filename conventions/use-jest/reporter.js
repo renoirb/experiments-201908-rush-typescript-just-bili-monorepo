@@ -27,8 +27,8 @@ class JestReporter extends DefaultReporter {
     const processEnvKeys = Object.keys(process.env);
     const isCI = processEnvKeys.includes('CI_SERVER');
     this.IS_CI = isCI;
-    const message = `JestReporter in IS_CI ${isCI}`;
-    process.stdout.write('\n' + message + '\n\n');
+    // const message = `JestReporter in IS_CI ${isCI}`;
+    // process.stdout.write('\n' + message + '\n\n');
   }
 
   log(message) {

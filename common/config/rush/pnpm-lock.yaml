@@ -4,7 +4,7 @@ dependencies:
   '@babel/runtime-corejs3': 7.5.5
   '@jest/reporters': 24.9.0
   '@microsoft/eslint-config-scalable-ts': 0.2.3_eslint@6.3.0+typescript@3.5.3
-  '@microsoft/node-core-library': 3.14.0
+  '@microsoft/node-core-library': 3.14.1
   '@rush-temp/conventions-use-bili': 'file:projects/conventions-use-bili.tgz_typescript@3.5.3'
   '@rush-temp/conventions-use-eslint': 'file:projects/conventions-use-eslint.tgz'
   '@rush-temp/conventions-use-jest': 'file:projects/conventions-use-jest.tgz'
@@ -14,10 +14,11 @@ dependencies:
   '@rush-temp/date-epoch': 'file:projects/date-epoch.tgz_@babel+core@7.5.5'
   '@rush-temp/tools-bundling-helpers': 'file:projects/tools-bundling-helpers.tgz_typescript@3.5.3'
   '@rush-temp/validatable': 'file:projects/validatable.tgz_@babel+core@7.5.5'
-  '@types/babel__core': 7.1.2
+  '@types/babel__core': 7.1.3
   '@types/core-js': 2.5.2
   '@types/jest': 24.0.18
   '@types/node': 10.14.17
+  '@types/resolve': 0.0.8
   '@typescript-eslint/eslint-plugin': 2.1.0_84c4baa3e10cd8cb9bb912a9380e86e6
   '@typescript-eslint/experimental-utils': 2.1.0_eslint@6.3.0
   '@typescript-eslint/parser': 2.1.0_eslint@6.3.0
@@ -34,6 +35,7 @@ dependencies:
   npm-run-all: 4.1.5
   prettier: 1.18.2
   pretty-quick: 1.11.1_prettier@1.18.2
+  resolve: 1.12.0
   rimraf: 3.0.0
   rollup: 1.20.3
   rollup-plugin-babel: 4.3.3_@babel+core@7.5.5+rollup@1.20.3
@@ -1010,7 +1012,7 @@ packages:
       typescript: '>=3.0.0'
     resolution:
       integrity: sha512-3dNyJOGkb8MBm2CdAiWw/s9+1/XKc8HwFqZ2zCCfX3qsfa+U+/R4VYmgApr5ThZuS30Jaw3SR6UGVPJwUsBXRQ==
-  /@microsoft/node-core-library/3.14.0:
+  /@microsoft/node-core-library/3.14.1:
     dependencies:
       '@types/fs-extra': 5.0.4
       '@types/jju': 1.4.1
@@ -1022,12 +1024,12 @@ packages:
       z-schema: 3.18.4
     dev: false
     resolution:
-      integrity: sha512-+gbTXTRfvR40hTH+C3Vno/RJ51sU/RZAyHb2bo9af8GCdOgxCxCs+qp2KCXklbpuolmIPFfbCmdTwv90yH5tJw==
-  /@microsoft/package-deps-hash/2.2.171:
+      integrity: sha512-KVYef9kjK6lmGOOjYRctYFX3ymZ71xobweBftwP8hQS5JTBX+QqpAOvfiFQmlMgfJ7/TS7u3u3QjVzeztuz5cg==
+  /@microsoft/package-deps-hash/2.2.173:
     dev: false
     resolution:
-      integrity: sha512-SaaDL4I2+JdNi9+7nfKoaIYBJEsjAYjm6Kp7kEhY9ekJpT1rdhtvEcZ5xFXJ7aec1CdVfQ+lqaGCpgx70uZV+Q==
-  /@types/babel__core/7.1.2:
+      integrity: sha512-nLxFquyxs9NZa+Ts4MuWw/eyjT8ucAmXsYnyfgxvfZK3Gteqio9H5zXAVvL4hb/Mo7y08G4KdPz7R55ZPjVQvA==
+  /@types/babel__core/7.1.3:
     dependencies:
       '@babel/parser': 7.5.5
       '@babel/types': 7.5.5
@@ -1036,7 +1038,7 @@ packages:
       '@types/babel__traverse': 7.0.7
     dev: false
     resolution:
-      integrity: sha512-cfCCrFmiGY/yq0NuKNxIQvZFy9kY/1immpSpTngOnyIbD4+eJOG5mxphhHDv3CHL9GltO4GcKr54kGBg3RNdbg==
+      integrity: sha512-8fBo0UR2CcwWxeX7WIIgJ7lXjasFxoYgRnFHUj+hRvKkpiBJbxhdAPTCY6/ZKM0uxANFVzt4yObSLuTiTnazDA==
   /@types/babel__generator/7.0.2:
     dependencies:
       '@babel/types': 7.5.5
@@ -1551,7 +1553,7 @@ packages:
       '@babel/core': 7.5.5
       '@jest/transform': 24.9.0
       '@jest/types': 24.9.0
-      '@types/babel__core': 7.1.2
+      '@types/babel__core': 7.1.3
       babel-plugin-istanbul: 5.2.0
       babel-preset-jest: 24.9.0_@babel+core@7.5.5
       chalk: 2.4.2
@@ -4405,7 +4407,7 @@ packages:
       integrity: sha512-IA5M26L9Qv2aD5V+Wjkd5ILUTerr00RHKNxAg22JZRRHF89KeUVJ6LYNUaYBnxH7cGXlC37OftPO/eYwgqCpaQ==
   /just-task/0.13.2:
     dependencies:
-      '@microsoft/package-deps-hash': 2.2.171
+      '@microsoft/package-deps-hash': 2.2.173
       chalk: 2.4.2
       fs-extra: 7.0.1
       just-task-logger: 0.3.0
@@ -7534,7 +7536,7 @@ packages:
       '@babel/core': 7.5.5
       '@babel/preset-env': 7.5.5_@babel+core@7.5.5
       '@babel/runtime-corejs3': 7.5.5
-      '@microsoft/node-core-library': 3.14.0
+      '@microsoft/node-core-library': 3.14.1
       '@types/jest': 24.0.18
       '@types/node': 10.14.17
       bili: 4.8.1
@@ -7566,7 +7568,7 @@ packages:
     dependencies:
       '@babel/core': 7.5.5
       '@jest/reporters': 24.9.0
-      '@types/babel__core': 7.1.2
+      '@types/babel__core': 7.1.3
       '@types/jest': 24.0.18
       babel-jest: 24.9.0_@babel+core@7.5.5
       babel-preset-jest: 24.9.0_@babel+core@7.5.5
@@ -7636,13 +7638,15 @@ packages:
     version: 0.0.0
   'file:projects/tools-bundling-helpers.tgz_typescript@3.5.3':
     dependencies:
-      '@microsoft/node-core-library': 3.14.0
+      '@microsoft/node-core-library': 3.14.1
       '@types/core-js': 2.5.2
       '@types/jest': 24.0.18
       '@types/node': 10.14.17
+      '@types/resolve': 0.0.8
       bili: 4.8.1
       just-scripts: 0.28.2
       npm-run-all: 4.1.5
+      resolve: 1.12.0
       rimraf: 3.0.0
       rollup: 1.20.3
       rollup-plugin-typescript2: 0.22.1_rollup@1.20.3+typescript@3.5.3
@@ -7652,7 +7656,7 @@ packages:
     peerDependencies:
       typescript: '*'
     resolution:
-      integrity: sha512-N79dDekNJJeuqzornVMxYhq+hQFbx8wUudkWEzu+Of1DIig8f5M+HVVQ9+YslMbPlkq5DiVHqYB/kNDf5FJm1g==
+      integrity: sha512-il8erKIfO2nWNGSgOYn69GQ6Np2NRUPVZPHqOl2ZGUpEtHxClEBacv2zOJmELmaqu5EOW+6ldifHB+b8BseTeA==
       tarball: 'file:projects/tools-bundling-helpers.tgz'
     version: 0.0.0
   'file:projects/validatable.tgz_@babel+core@7.5.5':
@@ -7662,6 +7666,7 @@ packages:
       '@types/jest': 24.0.18
       '@types/node': 10.14.17
       core-js: 3.2.1
+      jest-expect-message: 1.0.2
       just-scripts: 0.28.2
     dev: false
     id: 'file:projects/validatable.tgz'
@@ -7669,7 +7674,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-VE4vAtYKVvIcMwyhVnhO4EutBT1SCQQzYsf71B/L/VVI7nQ4cBWs6GoJuA/PEMP4d1loVpsHw3eBCJSb0YOWBQ==
+      integrity: sha512-amMyfqOvl3JmYv755tBoMoCgJf5cLVPxGbzmq57AbK+87aoOs/xvoDQxhcCZWZSdJcAfsjwNjsD3KjOgS7aZmQ==
       tarball: 'file:projects/validatable.tgz'
     version: 0.0.0
 specifiers:
@@ -7692,6 +7697,7 @@ specifiers:
   '@types/core-js': ^2.5.2
   '@types/jest': ^24.0.15
   '@types/node': ^10.14.17
+  '@types/resolve': ^0.0.8
   '@typescript-eslint/eslint-plugin': ^2.0.0
   '@typescript-eslint/experimental-utils': ^2.0.0
   '@typescript-eslint/parser': ^2.0.0
@@ -7708,6 +7714,7 @@ specifiers:
   npm-run-all: ^4.1.0
   prettier: ~1.18.0
   pretty-quick: ~1.11.0
+  resolve: ^1.8.1
   rimraf: ~3.0.0
   rollup: ^1.1.2
   rollup-plugin-babel: ^4.3.2

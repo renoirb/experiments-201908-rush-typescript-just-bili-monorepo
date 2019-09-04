@@ -1,6 +1,6 @@
 import { Config, ConfigOutput } from 'bili';
 import {
-  default as helper,
+  default as bundlingHelpersMain,
   PackageIdentityInterface,
 } from '@frontend-bindings/tools-bundling-helpers';
 
@@ -26,7 +26,7 @@ const brandObj = {
     name: vendor,
   },
 };
-const pkg: PackageIdentityInterface = helper(__dirname, brandObj);
+const pkg: PackageIdentityInterface = bundlingHelpersMain(__dirname, brandObj);
 if (pkg.banners.banner) {
   banner = pkg.banners.banner;
 }

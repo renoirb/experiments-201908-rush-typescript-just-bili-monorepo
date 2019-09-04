@@ -39,8 +39,10 @@
     "@types/core-js": "^2.5.2",
     "@types/jest": "^24.0.15",
     "@types/node": "^10.14.17",
+    "@types/resolve": "^0.0.8",
     "bili": "^4.8.1",
     "just-scripts": "~0.28.2",
+    "resolve": "^1.8.1",
     "rollup": "^1.1.2",
     "rollup-plugin-typescript2": "^0.22.1"
   }

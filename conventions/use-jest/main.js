@@ -1,11 +1,13 @@
 const path = require('path');
 
+const jestModuleDir = __dirname;
+
 /**
  * https://github.com/microsoft/just/blob/master/scripts/jest.config.js
  *
  * @type {import('jest').DefaultOptions}
  */
-module.exports = {
+const main = () => ({
   clearMocks: true,
   expand: true,
   forceExit: true,
@@ -22,8 +24,11 @@ module.exports = {
   testPathIgnorePatterns: ['/lib/', '/node_modules/'],
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
   transform: {
-    '^.+\\.jsx?$': path.join(__dirname, 'ecmascript-transformer.js'),
+    '\\.jsx?$': path.join(jestModuleDir, 'ecmascript-transformer.js'),
+    '\\.(ts|js)x?$': 'ts-jest',
   },
-  reporters: [path.join(__dirname, 'reporter.js')],
+  reporters: [path.join(jestModuleDir, 'reporter.js')],
   verbose: true,
-};
+});
+
+module.exports = main;

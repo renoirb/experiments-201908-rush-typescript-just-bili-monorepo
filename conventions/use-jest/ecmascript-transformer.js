@@ -14,7 +14,7 @@ const jestPreset = require('babel-preset-jest');
  *
  * @types {import('@jest/types').Transformer}
  */
-module.exports = {
+const main = {
   process(sourceText, filename) {
     const result = transform(sourceText, {
       filename,
@@ -24,3 +24,5 @@ module.exports = {
     return result ? result.code : sourceText;
   },
 };
+
+module.exports = main;
