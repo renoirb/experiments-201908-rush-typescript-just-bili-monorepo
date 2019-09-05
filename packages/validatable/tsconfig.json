@@ -1,0 +1,8 @@
+{
+  "extends": "./node_modules/@frontend-bindings/conventions-use-typescript-3/includes/tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true
+  },
+  "include": ["src"],
+  "exclude": ["src/__tests__"]
+}

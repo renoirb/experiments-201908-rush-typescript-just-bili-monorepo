@@ -366,12 +366,6 @@
       "reviewCategory": "conventions"
     },
     {
-      "packageName": "@frontend-bindings/conventions-use-typescript-eslint",
-      "projectFolder": "conventions/use-typescript-eslint",
-      "shouldPublish": true,
-      "reviewCategory": "conventions"
-    },
-    {
       "packageName": "@frontend-bindings/conventions-use-jest",
       "projectFolder": "conventions/use-jest",
       "shouldPublish": true,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const {
   task,
   prettierTask,
@@ -14,6 +15,7 @@ const {
  */
 
 option('snapshots');
+option('fix');
 
 // justTasksEslint();
 

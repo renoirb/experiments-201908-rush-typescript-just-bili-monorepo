@@ -2,34 +2,30 @@
 // This is a workaround for https://github.com/eslint/eslint/issues/3458
 require('@microsoft/eslint-config-scalable-ts/patch-eslint6');
 
-const base = require('@frontend-bindings/conventions-use-eslint');
-
 /**
  * TypeScript ruleset.
  *
  * https://eslint.org/blog/2019/01/future-typescript-eslint
  *
+ * Reason there are two blocks is that during initial experiments,
+ * I wanted two eslint plugins. One for TypeScript code, another
+ * for ECMAScript. Then realized that TypeScript CAN support ECMASCript
+ * projects. All we need is to have a `{"allowJs": true}` in tsconfig.json.
+ * Which then removes the need to have to support both babel and TypeScript,
+ * but instead use exactly the same.
+ *
+ * https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html
+ *
  * @type {import('@types/eslint').Linter.Config}
  */
-module.exports = {
-  ...base,
+const main = {
   // https://www.npmjs.com/package/@typescript-eslint/parser
   parser: '@typescript-eslint/parser',
   extends: ['plugin:@typescript-eslint/recommended'],
   plugins: [
-    ...(base.plugins || []),
     // https://www.npmjs.com/package/@typescript-eslint/eslint-plugin
     '@typescript-eslint/eslint-plugin',
   ],
-  overrides: [
-    {
-      files: ['*.test.js', '*.test.ts', '*.test.tsx', '*.test.jsx'],
-      globals: {
-        it: 'readonly',
-        expect: 'readonly',
-        test: 'readonly',
-        describe: 'readonly',
-      },
-    },
-  ],
 };
+
+module.exports = main;

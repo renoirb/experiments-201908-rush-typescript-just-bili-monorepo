@@ -5,6 +5,8 @@
   "license": "UNLICENSED",
   "files": [
     "main.js",
+    "ecmascript.js",
+    "typescript.js",
     ".eslintignore",
     "bin"
   ],
@@ -13,10 +15,23 @@
     "use-eslint": "./bin/eslint"
   },
   "scripts": {
-    "build": ""
+    "build": "",
+    "just-scripts": "just-scripts",
+    "lint": "just-scripts lint",
+    "lint:fix": "just-scripts lint --fix"
   },
+  "prettier": "@frontend-bindings/conventions-use-prettier",
   "dependencies": {
+    "@microsoft/eslint-config-scalable-ts": "~0.2.2",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/experimental-utils": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "@typescript-eslint/typescript-estree": "^2.0.0",
     "eslint": "^6.0.0",
-    "eslint-plugin-promise": "~4.2.1"
+    "eslint-plugin-promise": "~4.2.1",
+    "just-scripts": "~0.28.2"
+  },
+  "devDependencies": {
+    "@frontend-bindings/conventions-use-prettier": "~1.0.0"
   }
 }

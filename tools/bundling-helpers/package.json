@@ -15,13 +15,13 @@
   },
   "scripts": {
     "build": "./bin/run-all build:*",
-    "build:cjs": "bili --target node --format cjs-min --input src/index.ts --file-name index.js --quiet",
-    "build:esm": "bili --target node --format esm-min --input src/index.ts --file-name index.esm.js --quiet",
+    "build:cjs": "bili --target node --format cjs --input src/index.ts --file-name index.js --quiet",
+    "build:esm": "bili --target node --format esm --input src/index.ts --file-name index.esm.js --quiet",
     "clean": "./bin/rimraf .rpt2_cache dist *.*.log",
     "fix": "just-scripts fix",
-    "lint": "./node_modules/@frontend-bindings/conventions-use-typescript-eslint/node_modules/.bin/use-eslint . -c .eslintrc.js --ext '.ts' --report-unused-disable-directives",
-    "lint:fix": "./node_modules/@frontend-bindings/conventions-use-typescript-eslint/node_modules/.bin/use-eslint . -c .eslintrc.js --ext '.ts' --fix",
-    "scripts": "just-scripts",
+    "just-scripts": "just-scripts",
+    "lint": "just-scripts lint",
+    "lint:fix": "just-scripts lint --fix",
     "test": "just-scripts test",
     "test:snapshots": "just-scripts test --snapshots"
   },
@@ -31,10 +31,10 @@
     "rimraf": "~3.0.0"
   },
   "devDependencies": {
+    "@frontend-bindings/conventions-use-eslint": "~1.0.0",
     "@frontend-bindings/conventions-use-jest": "~1.0.0",
     "@frontend-bindings/conventions-use-prettier": "~1.0.0",
     "@frontend-bindings/conventions-use-typescript-3": "~1.0.0",
-    "@frontend-bindings/conventions-use-typescript-eslint": "~1.0.0",
     "@microsoft/node-core-library": "~3.14.0",
     "@types/core-js": "^2.5.2",
     "@types/jest": "^24.0.15",

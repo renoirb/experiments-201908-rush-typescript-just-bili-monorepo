@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const {
   task,
   prettierTask,
+  eslintTask,
   jestTask,
   resolveCwd,
   option,
@@ -49,3 +51,12 @@ const prettierTaskOptions = {
   ),
 };
 task('fix', prettierTask(prettierTaskOptions));
+
+const eslintTaskOptions = {
+  ignorePath: resolveCwd(
+    './node_modules/@frontend-bindings/conventions-use-eslint/.eslintignore',
+  ),
+  fix: argv().fix ? true : false,
+  _: ['--report-unused-disable-directives'],
+};
+task('lint', eslintTask(eslintTaskOptions));

@@ -20,7 +20,7 @@
     },
     {
       "name": "@frontend-bindings/conventions-use-eslint",
-      "allowedCategories": [ "conventions", "libraries" ]
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
       "name": "@frontend-bindings/conventions-use-jest",

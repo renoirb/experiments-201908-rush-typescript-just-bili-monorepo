@@ -6,11 +6,10 @@ dependencies:
   '@microsoft/eslint-config-scalable-ts': 0.2.3_eslint@6.3.0+typescript@3.5.3
   '@microsoft/node-core-library': 3.14.1
   '@rush-temp/conventions-use-bili': 'file:projects/conventions-use-bili.tgz_typescript@3.5.3'
-  '@rush-temp/conventions-use-eslint': 'file:projects/conventions-use-eslint.tgz'
+  '@rush-temp/conventions-use-eslint': 'file:projects/conventions-use-eslint.tgz_typescript@3.5.3'
   '@rush-temp/conventions-use-jest': 'file:projects/conventions-use-jest.tgz'
   '@rush-temp/conventions-use-prettier': 'file:projects/conventions-use-prettier.tgz'
   '@rush-temp/conventions-use-typescript-3': 'file:projects/conventions-use-typescript-3.tgz'
-  '@rush-temp/conventions-use-typescript-eslint': 'file:projects/conventions-use-typescript-eslint.tgz_eslint@6.3.0+typescript@3.5.3'
   '@rush-temp/date-epoch': 'file:projects/date-epoch.tgz_@babel+core@7.5.5'
   '@rush-temp/tools-bundling-helpers': 'file:projects/tools-bundling-helpers.tgz_typescript@3.5.3'
   '@rush-temp/validatable': 'file:projects/validatable.tgz_@babel+core@7.5.5'
@@ -1137,13 +1136,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
-  /@types/yargs-parser/13.0.0:
+  /@types/yargs-parser/13.1.0:
     dev: false
     resolution:
-      integrity: sha512-wBlsw+8n21e6eTd4yVv8YD/E3xq0O6nNnJIquutAsFGE7EyMKz7W6RNT6BRu1SmdgmlCZ9tb0X+j+D6HGr8pZw==
+      integrity: sha512-gCubfBUZ6KxzoibJ+SCUc/57Ms1jz5NjHe4+dI2krNmU5zCPAphyLJYyTOg06ueIyfj+SaCUqmzun7ImlxDcKg==
   /@types/yargs/13.0.2:
     dependencies:
-      '@types/yargs-parser': 13.0.0
+      '@types/yargs-parser': 13.1.0
     dev: false
     resolution:
       integrity: sha512-lwwgizwk/bIIU+3ELORkyuOgDjCh7zuWDFqRtPPhhVgq9N1F7CvLNKg1TX4f2duwtKQ0p044Au9r1PLIXHrIzQ==
@@ -2340,10 +2339,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-GBrLZYZ4X4x6/QEoBnIrqb8B/f5l4+8me2dkom/j1Gtbxy0kBv6OGzKuAsGM75bkGwGAFkt56Iwg28S3XTZgSA==
-  /cyclist/0.2.2:
+  /cyclist/1.0.1:
     dev: false
     resolution:
-      integrity: sha1-GzN5LhHpFKL9bW7WRHRkRE5fpkA=
+      integrity: sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
   /d/1.0.1:
     dependencies:
       es5-ext: 0.10.51
@@ -4802,7 +4801,7 @@ packages:
       end-of-stream: 1.4.1
       flush-write-stream: 1.1.1
       from2: 2.3.0
-      parallel-transform: 1.1.0
+      parallel-transform: 1.2.0
       pump: 3.0.0
       pumpify: 1.5.1
       stream-each: 1.2.3
@@ -5325,14 +5324,14 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==
-  /parallel-transform/1.1.0:
+  /parallel-transform/1.2.0:
     dependencies:
-      cyclist: 0.2.2
+      cyclist: 1.0.1
       inherits: 2.0.4
       readable-stream: 2.3.6
     dev: false
     resolution:
-      integrity: sha1-1BDwZbBdojCB/NEPKIVMKb2jOwY=
+      integrity: sha512-P2vSmIu38uIlvdcU7fDkyrxj33gTUy/ABO5ZUbGowxNCopBq/OoD42bP4UmMrJoPyk4Uqf0mu3mtWBhHCZD8yg==
   /parent-module/1.0.1:
     dependencies:
       callsites: 3.1.0
@@ -7551,17 +7550,26 @@ packages:
     peerDependencies:
       typescript: '*'
     resolution:
-      integrity: sha512-5hD4v3N+4HTohB+Z1PZVLyaHR02h/IzRZx3XJBn1r3PBusxPwhdiCW5hejf4DIjslpS2MoOJqsFCVxDwJmbIIA==
+      integrity: sha512-NSvzEx/7rf8o43wIk1Qm/CKdTX5LWbrV2L8yNPiNTtOJ054Hvu4PddfwHaZ5li8nldEZQjGpNLIRkin7JHgvcA==
       tarball: 'file:projects/conventions-use-bili.tgz'
     version: 0.0.0
-  'file:projects/conventions-use-eslint.tgz':
+  'file:projects/conventions-use-eslint.tgz_typescript@3.5.3':
     dependencies:
+      '@microsoft/eslint-config-scalable-ts': 0.2.3_eslint@6.3.0+typescript@3.5.3
+      '@typescript-eslint/eslint-plugin': 2.1.0_84c4baa3e10cd8cb9bb912a9380e86e6
+      '@typescript-eslint/experimental-utils': 2.1.0_eslint@6.3.0
+      '@typescript-eslint/parser': 2.1.0_eslint@6.3.0
+      '@typescript-eslint/typescript-estree': 2.1.0
       eslint: 6.3.0
       eslint-plugin-promise: 4.2.1
+      just-scripts: 0.28.2
     dev: false
+    id: 'file:projects/conventions-use-eslint.tgz'
     name: '@rush-temp/conventions-use-eslint'
+    peerDependencies:
+      typescript: '*'
     resolution:
-      integrity: sha512-WXJZ+6o0p8gfgDt1Cvi4yT1HULbJ4SO0I53WSTioCnMil9ubVvuR1kGpjTQing7baS+8S/bwIysVgLhtlFTZmA==
+      integrity: sha512-QTbAFBo023fbRcDbETqCnT4OZvWQljhuIKHVPiX/D5gJ/tmrYaAvMg0YgY796KlOdWnCjHG6wwhK6xgZISCU5Q==
       tarball: 'file:projects/conventions-use-eslint.tgz'
     version: 0.0.0
   'file:projects/conventions-use-jest.tgz':
@@ -7602,23 +7610,6 @@ packages:
       integrity: sha512-fs+bEzhOIKazUHrbb7woc+p6idVpYYq6M0tbMzh1tWu18NiDl0voMAyxCiFIZO4DonbWxArIn9Me50/UqIMHBg==
       tarball: 'file:projects/conventions-use-typescript-3.tgz'
     version: 0.0.0
-  'file:projects/conventions-use-typescript-eslint.tgz_eslint@6.3.0+typescript@3.5.3':
-    dependencies:
-      '@microsoft/eslint-config-scalable-ts': 0.2.3_eslint@6.3.0+typescript@3.5.3
-      '@typescript-eslint/eslint-plugin': 2.1.0_84c4baa3e10cd8cb9bb912a9380e86e6
-      '@typescript-eslint/experimental-utils': 2.1.0_eslint@6.3.0
-      '@typescript-eslint/parser': 2.1.0_eslint@6.3.0
-      '@typescript-eslint/typescript-estree': 2.1.0
-    dev: false
-    id: 'file:projects/conventions-use-typescript-eslint.tgz'
-    name: '@rush-temp/conventions-use-typescript-eslint'
-    peerDependencies:
-      eslint: '*'
-      typescript: '*'
-    resolution:
-      integrity: sha512-IIUe4Mwbp7TBav4K0u/19BBkT4qUQyB9TQXMPX+n7t/Q1sFgEZ6RHaYAkggN21h+j9UgX8HY7YPqqJ6MKRuSSg==
-      tarball: 'file:projects/conventions-use-typescript-eslint.tgz'
-    version: 0.0.0
   'file:projects/date-epoch.tgz_@babel+core@7.5.5':
     dependencies:
       '@babel/preset-env': 7.5.5_@babel+core@7.5.5
@@ -7633,7 +7624,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-qvIh2Wy+//0k3ulXTZwaRo0WeWqoiD/xKo+IqGwNgQHXC4J9/LZX7mHN77j5kNMdR0j4pznhoj51dCDcLpjUyA==
+      integrity: sha512-QH489EjIYoR+wxKP1W237iliI9DopDA9npQree2E9EyXpxadfXWuLGwgvGQTRMeBlfZl55UpQ0xJKlxax93zVw==
       tarball: 'file:projects/date-epoch.tgz'
     version: 0.0.0
   'file:projects/tools-bundling-helpers.tgz_typescript@3.5.3':
@@ -7656,7 +7647,7 @@ packages:
     peerDependencies:
       typescript: '*'
     resolution:
-      integrity: sha512-il8erKIfO2nWNGSgOYn69GQ6Np2NRUPVZPHqOl2ZGUpEtHxClEBacv2zOJmELmaqu5EOW+6ldifHB+b8BseTeA==
+      integrity: sha512-/p3Xx4HwO0xZewsqWVCg4JMztVMRPIMHSRvQFZIptVWxBiAF8zlBlwxzDoI+lEAbD5T+BdfcfwPY5A/2VLfg1w==
       tarball: 'file:projects/tools-bundling-helpers.tgz'
     version: 0.0.0
   'file:projects/validatable.tgz_@babel+core@7.5.5':
@@ -7674,7 +7665,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-amMyfqOvl3JmYv755tBoMoCgJf5cLVPxGbzmq57AbK+87aoOs/xvoDQxhcCZWZSdJcAfsjwNjsD3KjOgS7aZmQ==
+      integrity: sha512-lEiUAX8UDNfghX8dwTmbWiwLgZ+3POhijHHH8C8cAyqN8YJG/d5Ft1Z1K8WQCnasSgmXo0dGqDX8U0/anvthLg==
       tarball: 'file:projects/validatable.tgz'
     version: 0.0.0
 specifiers:
@@ -7689,7 +7680,6 @@ specifiers:
   '@rush-temp/conventions-use-jest': 'file:./projects/conventions-use-jest.tgz'
   '@rush-temp/conventions-use-prettier': 'file:./projects/conventions-use-prettier.tgz'
   '@rush-temp/conventions-use-typescript-3': 'file:./projects/conventions-use-typescript-3.tgz'
-  '@rush-temp/conventions-use-typescript-eslint': 'file:./projects/conventions-use-typescript-eslint.tgz'
   '@rush-temp/date-epoch': 'file:./projects/date-epoch.tgz'
   '@rush-temp/tools-bundling-helpers': 'file:./projects/tools-bundling-helpers.tgz'
   '@rush-temp/validatable': 'file:./projects/validatable.tgz'
