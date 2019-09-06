@@ -3,7 +3,7 @@
  * want to see what Babel has to say
  */
 const babel = (env: NodeJS.ProcessEnv = {}) => {
-  const { DEBUG = '', BILI_BUNDLE_NODE_MODULES = '' } = env;
+  const { DEBUG = "", BILI_BUNDLE_NODE_MODULES = "" } = env;
   const debug = String(DEBUG).length > 1;
 
   // const targets = {};
@@ -37,17 +37,19 @@ const babel = (env: NodeJS.ProcessEnv = {}) => {
    * - https://babeljs.io/docs/en/babel-plugin-transform-runtime#via-babelrc-recommended
    * - https://github.com/rollup/rollup/issues/2474#issuecomment-478130761
    */
-  const hasBiliBundleNodeModulesOption = BILI_BUNDLE_NODE_MODULES === 'true';
+  const hasBiliBundleNodeModulesOption = BILI_BUNDLE_NODE_MODULES === "true";
   const plugins = [];
   const exclude = [];
   if (hasBiliBundleNodeModulesOption) {
     plugins.push([
-      'module:@babel/plugin-transform-runtime',
+      "module:@babel/plugin-transform-runtime",
       {
         corejs: 3,
-      },
+        // TODO: Which of this here, or `/regenerator/` is needed to make it work. TBD. Later.
+        helpers: true
+      }
     ]);
-    exclude.push(...[/runtime-corejs3/, /core-js/]);
+    exclude.push(...[/regenerator/, /runtime-corejs3/, /core-js/]);
   }
 
   const out = {
@@ -55,18 +57,18 @@ const babel = (env: NodeJS.ProcessEnv = {}) => {
     presets: [
       [
         // '@frontend-bindings/conventions-use-bili',
-        '@babel/preset-env',
+        "@babel/preset-env",
         {
           // https://babeljs.io/docs/en/babel-plugin-transform-runtime#options
-          useBuiltIns: hasBiliBundleNodeModulesOption ? false : 'usage',
+          useBuiltIns: hasBiliBundleNodeModulesOption ? false : "usage",
           corejs: 3,
           // targets,
-          debug,
-        },
-      ],
+          debug
+        }
+      ]
     ],
     plugins,
-    exclude,
+    exclude
   };
 
   // console.log('hasBiliBundleNodeModulesOption', hasBiliBundleNodeModulesOption, JSON.stringify(out))
