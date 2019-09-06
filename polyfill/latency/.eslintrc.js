@@ -6,5 +6,6 @@ module.exports = {
     // See comments in @frontend-bindings/tools-bundling-helpers .eslintrc.js
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-inferrable-types': 'off',
   },
 };

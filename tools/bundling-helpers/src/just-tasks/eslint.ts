@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 
 /**
+ * UNFINISHED!
  * Almost Copy-Pasta from just-scripts/lib/tasks/eslintTask.js
  * But modified to work with workspace paths.
  * And in TypeScript.

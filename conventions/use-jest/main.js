@@ -7,7 +7,7 @@ const jestModuleDir = __dirname;
  *
  * @type {import('jest').DefaultOptions}
  */
-const main = () => ({
+const main = {
   clearMocks: true,
   expand: true,
   forceExit: true,
@@ -21,14 +21,14 @@ const main = () => ({
   roots: ['<rootDir>/src'],
   setupFilesAfterEnv: ['jest-expect-message'],
   testEnvironment: 'node',
-  testPathIgnorePatterns: ['/lib/', '/node_modules/'],
+  testPathIgnorePatterns: ['/dist/', '/node_modules/'],
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
   transform: {
-    '\\.jsx?$': path.join(jestModuleDir, 'ecmascript-transformer.js'),
+    // '\\.jsx?$': path.join(jestModuleDir, 'ecmascript-transformer.js'),
     '\\.(ts|js)x?$': 'ts-jest',
   },
   reporters: [path.join(jestModuleDir, 'reporter.js')],
   verbose: true,
-});
+};
 
 module.exports = main;

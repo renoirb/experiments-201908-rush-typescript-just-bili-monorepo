@@ -1,6 +1,6 @@
 import { Config, ConfigOutput } from 'bili';
 
-const input = 'src/index.ts';
+const input = { index: 'src/index.ts' };
 
 const output: ConfigOutput = {
   sourceMap: true,

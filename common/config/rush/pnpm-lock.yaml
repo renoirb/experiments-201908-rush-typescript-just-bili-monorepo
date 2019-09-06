@@ -7709,7 +7709,6 @@ packages:
       '@types/jest': 24.0.18
       '@types/node': 10.14.17
       core-js: 3.2.1
-      jest-expect-message: 1.0.2
       just-scripts: 0.28.2
     dev: false
     id: 'file:projects/validatable.tgz'
@@ -7717,7 +7716,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-lEiUAX8UDNfghX8dwTmbWiwLgZ+3POhijHHH8C8cAyqN8YJG/d5Ft1Z1K8WQCnasSgmXo0dGqDX8U0/anvthLg==
+      integrity: sha512-jEwcpedri867QDImf3jK5RMBmYvNDgN/dhyMbVTaxmIo3NP6mTpj6QapbsazoiYZRjF5eno2mXxTCXhzYPkczw==
       tarball: 'file:projects/validatable.tgz'
     version: 0.0.0
 specifiers:

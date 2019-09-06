@@ -4,6 +4,14 @@ const { transform } = require('@babel/core');
 const jestPreset = require('babel-preset-jest');
 
 /**
+ * MIGHT BE NOT NEEDED.
+ * If we can take ANY JavaScript project, and make them leverage TypeScript allowJs
+ * We will not need this file at all.
+ *
+ * See https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html
+ *
+ * ----
+ *
  * Transform ECMAScript code
  * Which will prevent us adding a `babel.config.js` inside non
  * TypeScript projects.

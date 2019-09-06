@@ -6,4 +6,21 @@
  * This exposes it for other modules to use.
  */
 
+
+ /**
+  * Because rushJS' command-line.json pattern is NOT camelCase but rather kebab-case
+  * let's replace --snapshot to --updateSnapshot for Jest.
+  */
+const hasSnapshotsCliOption = process.argv.includes('--snapshots')
+if (hasSnapshotsCliOption) {
+  const snapshotsArgRegExp = /snapshots$/
+  process.argv.forEach((currentValue, index) => {
+    // console.log('process.argv.forEach', { currentValue, index });
+    if (snapshotsArgRegExp.test(currentValue)) {
+      process.argv[index] = currentValue.replace(snapshotsArgRegExp, 'updateSnapshot')
+    }
+  })
+  // console.log('hasSnapshotsCliOption', { hasSnapshotsCliOption, argv: [...process.argv]})
+}
+
 require('jest/bin/jest')

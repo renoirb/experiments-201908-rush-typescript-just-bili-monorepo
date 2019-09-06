@@ -11,6 +11,21 @@ const {
 } = require('just-scripts');
 
 /**
+ * INCOMPLETE:
+ * This should contain notes from past experiments.
+ * Even though they aren't used in this package.
+ * Either we keep using just, or not.
+ *
+ * Objective of using just-scripts is:
+ * 1. Have ONE common set of commands
+ * 1. Re-usable between projects, without having to copy-paste around
+ *
+ * If none of the above is possible, we won't need just-scripts.
+ * There is no need of using just-scripts IF we can only use THE SAME SET of scripts in package.json
+ * Set aside for now.
+ *
+ * ----
+ *
  * This replicates pretty much just-scripts at src/task-presets/lib.ts
  *
  * But we want to bring in:
@@ -52,3 +67,17 @@ const eslintTaskOptions = {
   _: ['--report-unused-disable-directives'],
 };
 task('lint', eslintTask(eslintTaskOptions));
+
+// --------------------- Unfinished experiments ---------------------
+
+/**
+ * See tools/bundling-helpers/src/just-tasks/eslint.ts
+ *
+ * ```js
+ * const { justTasksEslint } = require('@frontend-bindings/tools-bundling-helpers');
+ * const eslintTaskTaskOptions = {
+ *   config: resolveCwd('./.eslintrc.js'),
+ * };
+ * task('lint', justTasksEslint(eslintTaskTaskOptions));
+ * ```
+ */

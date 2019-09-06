@@ -22,8 +22,8 @@
     "just-scripts": "just-scripts",
     "lint": "just-scripts lint",
     "lint:fix": "just-scripts lint --fix",
-    "test": "just-scripts test",
-    "test:snapshots": "just-scripts test --snapshots"
+    "test": "use-jest --detectOpenHandles",
+    "test:snapshots": "use-jest --detectOpenHandles -u"
   },
   "dependencies": {
     "@babel/core": "^7.4.0",

@@ -19,8 +19,8 @@
     "just-scripts": "just-scripts",
     "lint": "just-scripts lint",
     "lint:fix": "just-scripts lint --fix",
-    "test": "just-scripts test",
-    "test:snapshots": "just-scripts test --snapshots"
+    "test": "use-jest --detectOpenHandles",
+    "test:snapshots": "use-jest --detectOpenHandles -u"
   },
   "dependencies": {
     "@babel/preset-env": "^7.4.0",
@@ -36,7 +36,6 @@
     "@types/jest": "^24.0.15",
     "@types/node": "^10.14.17",
     "core-js": "^3.1.4",
-    "jest-expect-message": "^1.0.2",
     "just-scripts": "~0.28.2"
   }
 }

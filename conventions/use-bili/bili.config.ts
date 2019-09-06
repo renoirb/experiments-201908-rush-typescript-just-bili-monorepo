@@ -4,7 +4,7 @@ import {
   PackageIdentityInterface,
 } from '@frontend-bindings/tools-bundling-helpers';
 
-const input = 'src/index.ts';
+const input = { index: 'src/index.ts' };
 
 const output: ConfigOutput = {
   minify: true,

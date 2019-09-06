@@ -7,6 +7,8 @@ Object {
   },
   "plugins": Object {
     "babel": Object {
+      "exclude": Array [],
+      "plugins": Array [],
       "presets": Array [
         Array [
           "@babel/preset-env",
@@ -17,6 +19,7 @@ Object {
           },
         ],
       ],
+      "runtimeHelpers": true,
     },
   },
 }
