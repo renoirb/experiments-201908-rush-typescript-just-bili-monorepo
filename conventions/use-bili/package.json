@@ -18,16 +18,16 @@
     "build:cjs": "./bin/bili --target node --format cjs-min --input src/index.ts --file-name index.js",
     "build:esm": "./bin/bili --target node --format esm-min --input src/index.ts --file-name index.esm.js",
     "clean": "use-rimraf .rpt2_cache dist *.*.log",
-    "fix": "just-scripts fix",
+    "fix": "use-prettier **/*.{js,ts} --write",
     "just-scripts": "just-scripts",
     "lint": "just-scripts lint",
     "lint:fix": "just-scripts lint --fix",
     "test": "just-scripts test",
     "test:snapshots": "just-scripts test --snapshots"
   },
-  "prettier": "@frontend-bindings/conventions-use-prettier",
   "dependencies": {
     "@babel/core": "^7.4.0",
+    "@babel/plugin-transform-runtime": "7.5.5",
     "@babel/preset-env": "^7.4.0",
     "@babel/runtime-corejs3": "~7.5.5",
     "bili": "^4.8.1",

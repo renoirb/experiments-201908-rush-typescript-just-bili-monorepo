@@ -18,14 +18,13 @@
     "build:cjs": "bili --target node --format cjs --input src/index.ts --file-name index.js --quiet",
     "build:esm": "bili --target node --format esm --input src/index.ts --file-name index.esm.js --quiet",
     "clean": "./bin/rimraf .rpt2_cache dist *.*.log",
-    "fix": "just-scripts fix",
+    "fix": "use-prettier **/*.{js,ts} --write",
     "just-scripts": "just-scripts",
     "lint": "just-scripts lint",
     "lint:fix": "just-scripts lint --fix",
     "test": "just-scripts test",
     "test:snapshots": "just-scripts test --snapshots"
   },
-  "prettier": "@frontend-bindings/conventions-use-prettier",
   "dependencies": {
     "npm-run-all": "^4.1.0",
     "rimraf": "~3.0.0"

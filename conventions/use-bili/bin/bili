@@ -23,6 +23,16 @@ if (isCI) {
   process.argv.push('--verbose');
 }
 
+/**
+ * rel=#bundleNodeModulesBili
+ * For the moment, only support toggling inlining when CLI argument is present.
+ * Refer to #bundleNodeModulesBili in src/plugins.ts to learn the reasoning.
+ */
+const hasBiliBundleNodeModulesOption = process.argv.includes('--bundle-node-modules')
+if (hasBiliBundleNodeModulesOption) {
+  process.env.BILI_BUNDLE_NODE_MODULES = 'true'
+}
+
 const hasTargetBiliArgument = process.argv.includes('--target')
 const indexOfTargetBiliArgument = hasTargetBiliArgument ? process.argv.indexOf('--target') : 0
 

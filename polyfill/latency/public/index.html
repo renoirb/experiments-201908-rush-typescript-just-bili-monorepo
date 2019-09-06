@@ -1,15 +1,35 @@
 <html>
   <head>
     <title>Run me in an old Web Browser, please.</title>
-    <script src="dist.js"></script>
+    <script src="ie6to8.js"></script>
   </head>
   <body>
     <h1 id="loader">
       Loading...<!-- I would not use id in production, but that will work for demo. -->
     </h1>
     <script>
-      latency(1000).then(function() {
-        document.getElementById('loader').textContent = 'Done loading!';
+      function onReadyStateComplete() {
+        /**
+         * INCOMPLETE!
+         * Bundling miss importing regenerator.mark
+         */
+        try {
+          window.latency.latency(1000).then(function() {
+            document.getElementById('loader').textContent = 'Done loading!';
+          });
+        } catch (e) {
+          document.getElementById('loader').textContent =
+            'Done loading! But something is still missing in the bundling. Message ' +
+            String(e);
+        }
+      }
+      document.addEventListener('readystatechange', function readyStateChange(
+        event,
+      ) {
+        var readyState = document.readyState || '';
+        if (readyState === 'complete') {
+          onReadyStateComplete.call(null);
+        }
       });
     </script>
   </body>

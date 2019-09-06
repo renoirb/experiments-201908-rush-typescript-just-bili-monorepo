@@ -13,7 +13,8 @@
     "use-prettier": "./bin/prettier"
   },
   "scripts": {
-    "build": ""
+    "build": "",
+    "fix": "./bin/prettier **/*.{js,ts} --write"
   },
   "dependencies": {
     "prettier": "~1.18.0",

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const {
-  task,
-  prettierTask,
+  argv,
+  copyTask,
   eslintTask,
   jestTask,
-  resolveCwd,
   option,
-  argv,
+  resolveCwd,
+  task,
 } = require('just-scripts');
 
 /**
@@ -24,13 +24,6 @@ const jestTaskOptions = {
 };
 task('test', jestTask(jestTaskOptions));
 
-const prettierTaskOptions = {
-  ignorePath: resolveCwd(
-    './node_modules/@frontend-bindings/conventions-use-prettier/.prettierignore',
-  ),
-};
-task('fix', prettierTask(prettierTaskOptions));
-
 const eslintTaskOptions = {
   ignorePath: resolveCwd(
     './node_modules/@frontend-bindings/conventions-use-eslint/.eslintignore',
@@ -39,3 +32,8 @@ const eslintTaskOptions = {
   _: ['--report-unused-disable-directives'],
 };
 task('lint', eslintTask(eslintTaskOptions));
+
+/**
+ * Copy files from dist/ie6to8.js for demo in public/
+ */
+task('copy-to-public', copyTask({ paths: ['dist/ie6to8.js'], dest: 'public' }));

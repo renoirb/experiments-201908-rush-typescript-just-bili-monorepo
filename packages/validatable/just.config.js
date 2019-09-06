@@ -1,12 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const {
-  task,
-  prettierTask,
-  jestTask,
-  resolveCwd,
-  option,
-  argv,
-} = require('just-scripts');
+const { argv, jestTask, option, resolveCwd, task } = require('just-scripts');
 
 // const { justTasksEslint } = require('@frontend-bindings/tools-bundling-helpers');
 
@@ -31,10 +24,3 @@ const jestTaskOptions = {
   _: ['--detectOpenHandles'],
 };
 task('test', jestTask(jestTaskOptions));
-
-const prettierTaskOptions = {
-  ignorePath: resolveCwd(
-    './node_modules/@frontend-bindings/conventions-use-prettier/.prettierignore',
-  ),
-};
-task('fix', prettierTask(prettierTaskOptions));

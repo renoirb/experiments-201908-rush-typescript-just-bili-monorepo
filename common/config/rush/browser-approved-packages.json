@@ -7,6 +7,10 @@
       "allowedCategories": [ "conventions", "libraries" ]
     },
     {
+      "name": "@babel/plugin-transform-runtime",
+      "allowedCategories": [ "conventions", "libraries" ]
+    },
+    {
       "name": "@babel/preset-env",
       "allowedCategories": [ "conventions", "libraries" ]
     },
@@ -152,7 +156,7 @@
     },
     {
       "name": "tslib",
-      "allowedCategories": [ "conventions" ]
+      "allowedCategories": [ "conventions", "libraries" ]
     },
     {
       "name": "typescript",

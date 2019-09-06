@@ -1,11 +1,10 @@
 const {
-  task,
-  prettierTask,
+  argv,
   eslintTask,
   jestTask,
-  resolveCwd,
   option,
-  argv,
+  resolveCwd,
+  task,
 } = require('just-scripts');
 
 /**
@@ -22,13 +21,6 @@ const jestTaskOptions = {
   _: ['--detectOpenHandles'],
 };
 task('test', jestTask(jestTaskOptions));
-
-const prettierTaskOptions = {
-  ignorePath: resolveCwd(
-    './node_modules/@frontend-bindings/conventions-use-prettier/.prettierignore',
-  ),
-};
-task('fix', prettierTask(prettierTaskOptions));
 
 const eslintTaskOptions = {
   ignorePath: resolveCwd(
