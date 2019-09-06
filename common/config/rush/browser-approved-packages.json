@@ -8,19 +8,19 @@
     },
     {
       "name": "@babel/plugin-transform-runtime",
-      "allowedCategories": [ "conventions", "libraries" ]
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
       "name": "@babel/preset-env",
-      "allowedCategories": [ "conventions", "libraries" ]
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
       "name": "@babel/runtime-corejs3",
-      "allowedCategories": [ "conventions", "libraries" ]
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
       "name": "@frontend-bindings/conventions-use-bili",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "tools" ]
     },
     {
       "name": "@frontend-bindings/conventions-use-eslint",
@@ -44,7 +44,7 @@
     },
     {
       "name": "@frontend-bindings/tools-bundling-helpers",
-      "allowedCategories": [ "conventions", "libraries" ]
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
       "name": "@jest/reporters",
@@ -87,8 +87,12 @@
       "allowedCategories": [ "conventions", "tools" ]
     },
     {
+      "name": "consola",
+      "allowedCategories": [ "tools" ]
+    },
+    {
       "name": "core-js",
-      "allowedCategories": [ "conventions", "libraries" ]
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
       "name": "cross-env",
@@ -103,6 +107,10 @@
       "allowedCategories": [ "conventions" ]
     },
     {
+      "name": "fs-extra",
+      "allowedCategories": [ "tools" ]
+    },
+    {
       "name": "jest",
       "allowedCategories": [ "conventions", "libraries" ]
     },
@@ -113,6 +121,10 @@
     {
       "name": "just-scripts",
       "allowedCategories": [ "conventions", "libraries", "tools" ]
+    },
+    {
+      "name": "lodash",
+      "allowedCategories": [ "tools" ]
     },
     {
       "name": "npm-run-all",
@@ -148,7 +160,7 @@
     },
     {
       "name": "sort-package-json",
-      "allowedCategories": [ "conventions" ]
+      "allowedCategories": [ "conventions", "tools" ]
     },
     {
       "name": "ts-jest",

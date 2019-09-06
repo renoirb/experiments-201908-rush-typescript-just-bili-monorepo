@@ -7,6 +7,10 @@ stages:
 
 build:
   stage: build
+  except:
+    - tags
+  tags:
+    - docker
   # before_script:
   #   - export PATH="${CI_PROJECT_DIR}/common/temp/node_modules/.bin:${PATH}"
   script:

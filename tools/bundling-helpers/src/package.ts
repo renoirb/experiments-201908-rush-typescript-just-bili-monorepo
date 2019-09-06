@@ -3,6 +3,13 @@ import { camelCase } from './manipulation';
 import { PeopleField } from './people-field';
 import { cached } from './utils';
 
+/**
+ * ------------------------------------------------------------------------------------------
+ * @TODO: Clean this up and see to leverage @frontend-bindings/tools-normalize-package-json
+ * See https://github.com/nuxt/nuxt.js/pull/6373
+ * ------------------------------------------------------------------------------------------
+ */
+
 export interface PackageJson extends IPackageJson {
   author?: string | PeopleField;
 }

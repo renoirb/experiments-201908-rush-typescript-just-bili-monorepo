@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`normalize-package-json autoFix should sort 1`] = `
+"{
+  \\"name\\": \\"package-unsorted\\",
+  \\"version\\": \\"1.0.0\\",
+  \\"private\\": true,
+  \\"license\\": \\"MIT\\",
+  \\"bin\\": {
+    \\"test\\": \\"test\\"
+  },
+  \\"dependencies\\": {}
+}
+"
+`;

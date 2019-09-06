@@ -390,6 +390,12 @@
       "shouldPublish": true,
       "reviewCategory": "tools"
     },
+    {
+      "packageName": "@frontend-bindings/tools-normalize-package-json",
+      "projectFolder": "tools/normalize-package-json",
+      "shouldPublish": true,
+      "reviewCategory": "tools"
+    },
 
     {
       "packageName": "@frontend-bindings/date-epoch",

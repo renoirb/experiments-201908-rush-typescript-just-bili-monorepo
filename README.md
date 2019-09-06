@@ -1,4 +1,4 @@
-# Experimenting with [a _monorepo_ with **Rush.js**][rush-maintainer-setup-repo]
+# Experimenting with [a _monorepo_ using **Rush.js**][rush-maintainer-setup-repo]
 
 ## Expected outcome
 
