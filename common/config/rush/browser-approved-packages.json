@@ -87,6 +87,10 @@
       "allowedCategories": [ "conventions", "libraries" ]
     },
     {
+      "name": "cross-env",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "eslint",
       "allowedCategories": [ "conventions" ]
     },

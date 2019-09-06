@@ -402,6 +402,12 @@
       "projectFolder": "packages/validatable",
       "shouldPublish": true,
       "reviewCategory": "libraries"
+    },
+    {
+      "packageName": "@frontend-bindings/polyfill-latency",
+      "projectFolder": "polyfill/latency",
+      "shouldPublish": true,
+      "reviewCategory": "libraries"
     }
   ]
 }

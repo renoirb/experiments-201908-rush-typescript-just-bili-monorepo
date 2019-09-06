@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>Run me in an old Web Browser, please.</title>
+    <script src="dist.js"></script>
+  </head>
+  <body>
+    <h1 id="loader">
+      Loading...<!-- I would not use id in production, but that will work for demo. -->
+    </h1>
+    <script>
+      latency(1000).then(function() {
+        document.getElementById('loader').textContent = 'Done loading!';
+      });
+    </script>
+  </body>
+</html>
