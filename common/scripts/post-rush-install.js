@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /**
  * In order to run on Linux/Unix and Windows, we can't use `#!/usr/bin/env node` at the top.
@@ -9,15 +9,15 @@
  * @TODO If we want more than one monorepo, yet share configuration. Find way to install/sync in monorepo host. #MultiMonorepoReUse
  */
 
-const path = require("path");
-const fs = require("fs");
+const path = require('path');
+const fs = require('fs');
 
 // For example, ignore files we want in a package, where we can sync.
 // where there is a monorepo file called '.prettierignore' in a module
 // we know we maintain, and we want that to be synced in the monorepo root.
 const filesToCopyToMonorepoRoot = [
-  "conventions/config-prettier/.prettierignore",
-  "conventions/config-prettier/prettier.config.js"
+  'conventions/use-prettier/.prettierignore',
+  'conventions/use-prettier/prettier.config.js',
 ];
 
 /**
@@ -30,7 +30,7 @@ function findRushJsonFolder() {
     let basePath = __dirname;
     let tempPath = __dirname;
     do {
-      const testRushJsonPath = path.join(basePath, "rush.json");
+      const testRushJsonPath = path.join(basePath, 'rush.json');
       if (fs.existsSync(testRushJsonPath)) {
         _rushJsonFolder = basePath;
         break;
@@ -39,19 +39,19 @@ function findRushJsonFolder() {
       }
     } while (basePath !== (tempPath = path.dirname(basePath))); // Exit the loop when we hit the disk root
     if (!_rushJsonFolder) {
-      throw new Error("Unable to find rush.json.");
+      throw new Error('Unable to find rush.json.');
     }
   }
   return _rushJsonFolder;
 }
 function getNodeModulesPath(rushJsonDir) {
   const packageInstallFolder = path.normalize(
-    path.join(rushJsonDir, "common", "temp")
+    path.join(rushJsonDir, 'common', 'temp'),
   );
   try {
     const nodeModulesFolder = path.resolve(
       packageInstallFolder,
-      "node_modules"
+      'node_modules',
     );
     const exists = fs.existsSync(nodeModulesFolder);
     if (exists) {
@@ -60,7 +60,7 @@ function getNodeModulesPath(rushJsonDir) {
     throw new Error(`node_modules not found`);
   } catch (e) {
     throw new Error(
-      `Error finding the node_modules folder (${packageInstallFolder}): ${e}`
+      `Error finding the node_modules folder (${packageInstallFolder}): ${e}`,
     );
   }
 }
@@ -80,7 +80,7 @@ function wrapTaskFunction(fn, ctx) {
 const copyTaskOpts = {
   // For example, ignore files we want in a package, where we can sync.
   paths: [...filesToCopyToMonorepoRoot],
-  dest: "."
+  dest: '.',
 };
 
 (() => {
@@ -88,7 +88,7 @@ const copyTaskOpts = {
    * just-scripts is all we need.
    * As it encapsulates logic to move files around without any more boilerplate.
    */
-  const mustHaveDependencyName = "just-scripts";
+  const mustHaveDependencyName = 'just-scripts';
 
   const rushFolder = findRushJsonFolder();
   const nodeModules = getNodeModulesPath(rushFolder);
@@ -96,14 +96,14 @@ const copyTaskOpts = {
   try {
     const {
       copyTask,
-      logger
+      logger,
     } = require(`${nodeModules}/${mustHaveDependencyName}`);
     // TODO: Improve this.
     logger.enableVerbose = true;
     const { argv = {} } = process;
     const context = {
-      argv: argv || { _: [], $0: "" },
-      logger
+      argv: argv || { _: [], $0: '' },
+      logger,
     };
     // try-catch?
     wrapTaskFunction(copyTask(copyTaskOpts), context);

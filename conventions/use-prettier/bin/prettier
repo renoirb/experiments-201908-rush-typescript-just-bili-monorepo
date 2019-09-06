@@ -10,7 +10,7 @@ const { normalize, dirname, join } = require('path')
 const { existsSync } = require('fs')
 
 const localConfigBasedir = dirname(__dirname)
-const localConfigPath = normalize(join(localConfigBasedir, 'main.js'))
+const localConfigPath = normalize(join(localConfigBasedir, 'prettier.config.js'))
 const localConfigIgnorePath = normalize(join(localConfigBasedir, '.prettierignore'))
 const localConfigFound = existsSync(localConfigPath)
 

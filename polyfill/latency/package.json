@@ -9,8 +9,7 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "build": "use-run-all build:*",
-    "build:demo": "just-scripts copy-to-public",
+    "build": "use-run-all build:* && just-scripts copy-to-public",
     "build:ie6to8": "cross-env BROWSERSLIST='ie 6-8' use-bili --target browser --format umd --module-name latency --file-name ie6to8.js --bundle-node-modules",
     "build:ie6to8cjs": "cross-env BROWSERSLIST='ie 6-8' use-bili --target browser --format cjs --module-name latency --file-name ie6to8.cjs.js --bundle-node-modules",
     "build:main": "use-bili --target browser --format cjs --file-name index.js",

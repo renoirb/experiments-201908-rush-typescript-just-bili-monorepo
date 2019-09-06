@@ -21,10 +21,10 @@ dependencies:
   '@types/jest': 24.0.18
   '@types/node': 10.14.17
   '@types/resolve': 0.0.8
-  '@typescript-eslint/eslint-plugin': 2.1.0_84c4baa3e10cd8cb9bb912a9380e86e6
-  '@typescript-eslint/experimental-utils': 2.1.0_eslint@6.3.0
-  '@typescript-eslint/parser': 2.1.0_eslint@6.3.0
-  '@typescript-eslint/typescript-estree': 2.1.0
+  '@typescript-eslint/eslint-plugin': 2.2.0_92c07225dddb8267aa52884cfa0ba2b6
+  '@typescript-eslint/experimental-utils': 2.2.0_eslint@6.3.0
+  '@typescript-eslint/parser': 2.2.0_eslint@6.3.0
+  '@typescript-eslint/typescript-estree': 2.2.0
   bili: 4.8.1
   consola: 2.10.1
   core-js: 3.2.1
@@ -1183,7 +1183,6 @@ packages:
       functional-red-black-tree: 1.0.1
       regexpp: 2.0.1
       tsutils: 3.17.1_typescript@3.5.3
-      typescript: 3.5.3
     dev: false
     engines:
       node: ^8.10.0 || ^10.13.0 || >=11.10.1
@@ -1193,6 +1192,24 @@ packages:
       typescript: '*'
     resolution:
       integrity: sha512-3i/dLPwxaVfCsaLu3HkB8CAA1Uw3McAegrTs+VBJ0BrGRKW7nUwSqRfHfCS7sw7zSbf62q3v0v6pOS8MyaYItg==
+  /@typescript-eslint/eslint-plugin/2.2.0_92c07225dddb8267aa52884cfa0ba2b6:
+    dependencies:
+      '@typescript-eslint/experimental-utils': 2.2.0_eslint@6.3.0
+      '@typescript-eslint/parser': 2.2.0_eslint@6.3.0
+      eslint: 6.3.0
+      eslint-utils: 1.4.2
+      functional-red-black-tree: 1.0.1
+      regexpp: 2.0.1
+      tsutils: 3.17.1_typescript@3.5.3
+    dev: false
+    engines:
+      node: ^8.10.0 || ^10.13.0 || >=11.10.1
+    peerDependencies:
+      '@typescript-eslint/parser': ^2.0.0
+      eslint: ^5.0.0 || ^6.0.0
+      typescript: '*'
+    resolution:
+      integrity: sha512-rOodtI+IvaO8USa6ValYOrdWm9eQBgqwsY+B0PPiB+aSiK6p6Z4l9jLn/jI3z3WM4mkABAhKIqvGIBl0AFRaLQ==
   /@typescript-eslint/experimental-utils/2.1.0_eslint@6.3.0:
     dependencies:
       '@types/json-schema': 7.0.3
@@ -1206,6 +1223,19 @@ packages:
       eslint: '*'
     resolution:
       integrity: sha512-ZJGLYXa4nxjNzomaEk1qts38B/vludg2LOM7dRc7SppEKsMPTS1swaTKS/pom+x4d/luJGoG00BDIss7PR1NQA==
+  /@typescript-eslint/experimental-utils/2.2.0_eslint@6.3.0:
+    dependencies:
+      '@types/json-schema': 7.0.3
+      '@typescript-eslint/typescript-estree': 2.2.0
+      eslint: 6.3.0
+      eslint-scope: 5.0.0
+    dev: false
+    engines:
+      node: ^8.10.0 || ^10.13.0 || >=11.10.1
+    peerDependencies:
+      eslint: '*'
+    resolution:
+      integrity: sha512-IMhbewFs27Frd/ICHBRfIcsUCK213B8MsEUqvKFK14SDPjPR5JF6jgOGPlroybFTrGWpMvN5tMZdXAf+xcmxsA==
   /@typescript-eslint/parser/2.1.0_eslint@6.3.0:
     dependencies:
       '@types/eslint-visitor-keys': 1.0.0
@@ -1220,6 +1250,20 @@ packages:
       eslint: ^5.0.0 || ^6.0.0
     resolution:
       integrity: sha512-0+hzirRJoqE1T4lSSvCfKD+kWjIpDWfbGBiisK5CENcr+22pPkHB2sfV1giON+UxHV4A08SSrQonZk7X2zIQdw==
+  /@typescript-eslint/parser/2.2.0_eslint@6.3.0:
+    dependencies:
+      '@types/eslint-visitor-keys': 1.0.0
+      '@typescript-eslint/experimental-utils': 2.2.0_eslint@6.3.0
+      '@typescript-eslint/typescript-estree': 2.2.0
+      eslint: 6.3.0
+      eslint-visitor-keys: 1.1.0
+    dev: false
+    engines:
+      node: ^8.10.0 || ^10.13.0 || >=11.10.1
+    peerDependencies:
+      eslint: ^5.0.0 || ^6.0.0
+    resolution:
+      integrity: sha512-0mf893kj9L65O5sA7wP6EoYvTybefuRFavUNhT7w9kjhkdZodoViwVS+k3D+ZxKhvtL7xGtP/y/cNMJX9S8W4A==
   /@typescript-eslint/typescript-estree/2.1.0:
     dependencies:
       glob: 7.1.4
@@ -1231,6 +1275,17 @@ packages:
       node: ^8.10.0 || ^10.13.0 || >=11.10.1
     resolution:
       integrity: sha512-482ErJJ7QYghBh+KA9G+Fwcuk/PLTy+9NBMz8S+6UFrUUnVvHRNAL7I70kdws2te0FBYEZW7pkDaXoT+y8UARw==
+  /@typescript-eslint/typescript-estree/2.2.0:
+    dependencies:
+      glob: 7.1.4
+      is-glob: 4.0.1
+      lodash.unescape: 4.0.1
+      semver: 6.3.0
+    dev: false
+    engines:
+      node: ^8.10.0 || ^10.13.0 || >=11.10.1
+    resolution:
+      integrity: sha512-9/6x23A3HwWWRjEQbuR24on5XIfVmV96cDpGR9671eJv1ebFKHj2sGVVAwkAVXR2UNuhY1NeKS2QMv5P8kQb2Q==
   /JSONStream/1.3.5:
     dependencies:
       jsonparse: 1.3.1
@@ -3149,7 +3204,7 @@ packages:
       integrity: sha512-yhlQgA6mnOJUKOsRUFsgJdQCvkKhcz8tlZG5HBQfReYZy46OwLcY+Zia0mtdHsOo9y/hP+CxMN0TU9QxoOtG4g==
   /fs-minipass/1.2.6:
     dependencies:
-      minipass: 2.5.0
+      minipass: 2.5.1
     dev: false
     resolution:
       integrity: sha512-crhvyXcMejjv3Z5d2Fa9sf5xLYVCF5O1c71QxbVnbLsmYMBEvDAftewesN/HhY03YRoA7zOMxjNGrF5svGaaeQ==
@@ -4818,16 +4873,16 @@ packages:
     dev: false
     resolution:
       integrity: sha1-o1AIsg9BOD7sH7kU9M1d95omQoQ=
-  /minipass/2.5.0:
+  /minipass/2.5.1:
     dependencies:
       safe-buffer: 5.2.0
       yallist: 3.0.3
     dev: false
     resolution:
-      integrity: sha512-9FwMVYhn6ERvMR8XFdOavRz4QK/VJV8elU1x50vYexf9lslDcWe/f4HBRxCPd185ekRSjU6CfYyJCECa/CQy7Q==
+      integrity: sha512-dmpSnLJtNQioZFI5HfQ55Ad0DzzsMAb+HfokwRTNXwEQjepbTkl5mtIlSVxGIkOkxlpX7wIn5ET/oAd9fZ/Y/Q==
   /minizlib/1.2.1:
     dependencies:
-      minipass: 2.5.0
+      minipass: 2.5.1
     dev: false
     resolution:
       integrity: sha512-7+4oTUOWKg7AuL3vloEWekXY2/D20cevzsrNT2kGWm+39J9hGTCBv8VI5Pm5lXZ/o3/mdR4f8rflAPhnQb8mPA==
@@ -6980,7 +7035,7 @@ packages:
     dependencies:
       chownr: 1.1.2
       fs-minipass: 1.2.6
-      minipass: 2.5.0
+      minipass: 2.5.1
       minizlib: 1.2.1
       mkdirp: 0.5.1
       safe-buffer: 5.2.0
@@ -7588,16 +7643,16 @@ packages:
     peerDependencies:
       typescript: '*'
     resolution:
-      integrity: sha512-cJ3GT7hLT1YlVeUJWLfvu4aLhJkLXFvh7tF14ghjVrbqUxCTdT/nqjLTzgh2HWulF7DFPBo+6+7qwrLYvoqngg==
+      integrity: sha512-2NDsTQbA9TPPDsKvOP+XCRfXMh7fPKZT4h2fVc3GjRrAVq/AGjfNRwB9Kj4yVapIHwRXWm1Xo55veUhHHDLQMQ==
       tarball: 'file:projects/conventions-use-bili.tgz'
     version: 0.0.0
   'file:projects/conventions-use-eslint.tgz_typescript@3.5.3':
     dependencies:
       '@microsoft/eslint-config-scalable-ts': 0.2.3_eslint@6.3.0+typescript@3.5.3
-      '@typescript-eslint/eslint-plugin': 2.1.0_84c4baa3e10cd8cb9bb912a9380e86e6
-      '@typescript-eslint/experimental-utils': 2.1.0_eslint@6.3.0
-      '@typescript-eslint/parser': 2.1.0_eslint@6.3.0
-      '@typescript-eslint/typescript-estree': 2.1.0
+      '@typescript-eslint/eslint-plugin': 2.2.0_92c07225dddb8267aa52884cfa0ba2b6
+      '@typescript-eslint/experimental-utils': 2.2.0_eslint@6.3.0
+      '@typescript-eslint/parser': 2.2.0_eslint@6.3.0
+      '@typescript-eslint/typescript-estree': 2.2.0
       eslint: 6.3.0
       eslint-plugin-promise: 4.2.1
       just-scripts: 0.28.2
@@ -7607,7 +7662,7 @@ packages:
     peerDependencies:
       typescript: '*'
     resolution:
-      integrity: sha512-BfRlJd4nLjxykmZT2/k2bm+MsTfGT5kAoVhIgFNbf+4GZsJbMUeeoEXhyJjWyFuYma5Y47zmdr4sMWhGTujl8g==
+      integrity: sha512-vdh+Q5fbrdrHvcUO8xnKGghKwi+L35jFIc1ll8OBbwyt/OZICHc4voQDxOT9cyowlkZ9D39CqcFMEwMmxqZjHA==
       tarball: 'file:projects/conventions-use-eslint.tgz'
     version: 0.0.0
   'file:projects/conventions-use-jest.tgz':
@@ -7623,7 +7678,7 @@ packages:
     dev: false
     name: '@rush-temp/conventions-use-jest'
     resolution:
-      integrity: sha512-wAdfb2VMADsJ1A0qC5cQgdcZx7dCZnlH71rMbmTpUAOkpynuESg/MVyYmXxZ6xMi+iltCEZTwqS5tvFCVxpjBA==
+      integrity: sha512-atTZ3GSvPRylKD3PgHkOYSrXzv5e0vtKexvr6jJSHQZy100Btmk0KwYUWQSCnjNiUmVBI0mLsrqf5R1yRLCvvA==
       tarball: 'file:projects/conventions-use-jest.tgz'
     version: 0.0.0
   'file:projects/conventions-use-prettier.tgz':
@@ -7634,7 +7689,7 @@ packages:
     dev: false
     name: '@rush-temp/conventions-use-prettier'
     resolution:
-      integrity: sha512-u/qSQ4tOp821CaAvJgr0+f/sMfd+uwzxXtMbNerFYdqRPTzqWhhMv3rlSA9cNDEyfQuNiEeOwjS4SmE2jis66w==
+      integrity: sha512-wzDvK1h8uYXY49FfnyEnhtCKd+sN+kHCcaJ1ZaSWSDAjkIRRlcbI7aHxxYKxELS1dXl1XQ5ba4Xid/MLcT9sfQ==
       tarball: 'file:projects/conventions-use-prettier.tgz'
     version: 0.0.0
   'file:projects/conventions-use-typescript-3.tgz':
@@ -7644,7 +7699,7 @@ packages:
     dev: false
     name: '@rush-temp/conventions-use-typescript-3'
     resolution:
-      integrity: sha512-fs+bEzhOIKazUHrbb7woc+p6idVpYYq6M0tbMzh1tWu18NiDl0voMAyxCiFIZO4DonbWxArIn9Me50/UqIMHBg==
+      integrity: sha512-2jZP3zIKXlynVxxhR0EJ9mvxKe0WqOzLTtpbHZLOuNbaDOzejZmkpCGv4nD0xAykcffGnZ4QKQ72gsvd0vdQHw==
       tarball: 'file:projects/conventions-use-typescript-3.tgz'
     version: 0.0.0
   'file:projects/date-epoch.tgz_@babel+core@7.6.0':
@@ -7661,7 +7716,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-QH489EjIYoR+wxKP1W237iliI9DopDA9npQree2E9EyXpxadfXWuLGwgvGQTRMeBlfZl55UpQ0xJKlxax93zVw==
+      integrity: sha512-mieBWdBafKAz55+7w0PH0zwHqyxOnNjKkXyp6HfoQjbokJ12lPrx1R8NR6SPU5et4/9y6snC+xhef/aueYuGRg==
       tarball: 'file:projects/date-epoch.tgz'
     version: 0.0.0
   'file:projects/polyfill-latency.tgz_@babel+core@7.6.0':
@@ -7681,7 +7736,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-dlFQ/UMe6daF6L3RnysVhEMR2LZh7uZqQa+l4xhNjLXKm3aN+FTEDbFMXMIyCXIg9O5nb777s0nTos7inBWbiw==
+      integrity: sha512-xpM0BQsr1oTnSAZ6nXgz+KJ04i5ydYZkccJD4QuKXz/4p06n5CaujwkUGfOkh7gkGYwO0/0Ys3FZ3XyrSmHhww==
       tarball: 'file:projects/polyfill-latency.tgz'
     version: 0.0.0
   'file:projects/tools-bundling-helpers.tgz_typescript@3.5.3':
@@ -7704,7 +7759,7 @@ packages:
     peerDependencies:
       typescript: '*'
     resolution:
-      integrity: sha512-/p3Xx4HwO0xZewsqWVCg4JMztVMRPIMHSRvQFZIptVWxBiAF8zlBlwxzDoI+lEAbD5T+BdfcfwPY5A/2VLfg1w==
+      integrity: sha512-GvCh1bjaGXHaD3eINZhMVTdqnvKbQhqhmamVWdY9xR9HMLc8ZAm1p/Ig2BFg7PpJZgTz/tb6eWyUAeYunagZHg==
       tarball: 'file:projects/tools-bundling-helpers.tgz'
     version: 0.0.0
   'file:projects/tools-normalize-package-json.tgz_@babel+core@7.6.0':
@@ -7725,7 +7780,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-Uxr7Zaa5XydKYTHeuY4j6TcGTlrIw/zyUJuLsk0bsRXRelfvzh1gK3v6EQysP2WuAwjaZDFBrXqzwsVnRx3h0g==
+      integrity: sha512-cAVyQAeagf+3ujZ+rQ7+1L7uGIto3pEtuWDg5W+qXlHtm2F24Zjbf28UOx2P9B8Mr79TPeDe1WcGzO4T3fl6EA==
       tarball: 'file:projects/tools-normalize-package-json.tgz'
     version: 0.0.0
   'file:projects/validatable.tgz_@babel+core@7.6.0':
@@ -7742,7 +7797,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-jEwcpedri867QDImf3jK5RMBmYvNDgN/dhyMbVTaxmIo3NP6mTpj6QapbsazoiYZRjF5eno2mXxTCXhzYPkczw==
+      integrity: sha512-DKTezULkDtq5vt/kbtuaqmemPOpkp987DJdUXJNJH1bgMg+iSjbz+6lc6LFJzJxfqMOQBGWc5JbybvgaYU3OZQ==
       tarball: 'file:projects/validatable.tgz'
     version: 0.0.0
 specifiers:

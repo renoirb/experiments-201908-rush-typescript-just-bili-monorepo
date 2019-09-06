@@ -45,9 +45,11 @@ const babel = (env: NodeJS.ProcessEnv = {}) => {
       'module:@babel/plugin-transform-runtime',
       {
         corejs: 3,
+        // TODO: Which of this here, or `/regenerator/` is needed to make it work. TBD. Later.
+        helpers: true,
       },
     ]);
-    exclude.push(...[/runtime-corejs3/, /core-js/]);
+    exclude.push(...[/regenerator/, /runtime-corejs3/, /core-js/]);
   }
 
   const out = {
