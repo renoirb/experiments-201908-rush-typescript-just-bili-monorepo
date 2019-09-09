@@ -6,7 +6,6 @@
  * This exposes it for other modules to use.
  */
 
-
  /**
   * Because rushJS' command-line.json pattern is NOT camelCase but rather kebab-case
   * let's replace --snapshot to --updateSnapshot for Jest.
@@ -23,4 +22,9 @@ if (hasSnapshotsCliOption) {
   // console.log('hasSnapshotsCliOption', { hasSnapshotsCliOption, argv: [...process.argv]})
 }
 
-require('jest/bin/jest')
+// const passWithNoTests = process.argv.includes('--passWithNoTests')
+// if (!passWithNoTests) {
+//   process.argv.push('--passWithNoTests')
+// }
+
+require('jest-cli/build/cli/index.js').run()

@@ -5,7 +5,8 @@
   "homepage": "https://github.com/nuxt/nuxt.js/pull/6373",
   "license": "MIT",
   "author": {
-    "name": "Pooya Parsa"
+    "name": "Pooya Parsa",
+    "url": "https://github.com/pi0"
   },
   "files": [
     "dist"
@@ -26,6 +27,7 @@
     "test:snapshots": "use-jest --detectOpenHandles -u"
   },
   "dependencies": {
+    "@babel/runtime-corejs3": "~7.5.5",
     "consola": "^2.10.1",
     "fs-extra": "^8.1.0",
     "sort-package-json": "^1.22.1"
@@ -33,7 +35,6 @@
   "devDependencies": {
     "@babel/plugin-transform-runtime": "7.5.5",
     "@babel/preset-env": "^7.4.0",
-    "@babel/runtime-corejs3": "~7.5.5",
     "@frontend-bindings/conventions-use-bili": "~1.0.0",
     "@frontend-bindings/conventions-use-eslint": "~1.0.0",
     "@frontend-bindings/conventions-use-jest": "~1.0.0",
@@ -43,7 +44,6 @@
     "@types/jest": "^24.0.15",
     "@types/node": "^10.14.17",
     "core-js": "^3.1.4",
-    "just-scripts": "~0.28.2",
-    "lodash": "^4.17.15"
+    "just-scripts": "~0.28.2"
   }
 }

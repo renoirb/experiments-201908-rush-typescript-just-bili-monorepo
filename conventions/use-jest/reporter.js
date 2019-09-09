@@ -1,4 +1,15 @@
 /**
+ * Might not be needed anymore.
+ *
+ * Make sure @jest/reporters/build/default_reporter.js and base_reporter.js DO NOT USE `console.log(...)` but rather
+ * `process.stderr.write(message + '\n');`
+ *
+ * As of jest 24.9.0, it is no longer required to rewrite reporter.
+ *
+ * If we wanted to make a different behavior, we could re-use this file.
+ *
+ * -------
+ *
  * Because any console.log makes Rush.js think there had been warnings,
  * we have to tell Jest to use a different output strategy.
  *
@@ -10,11 +21,15 @@
  * Or, refactor like this:
  * https://github.com/microsoft/just/blob/master/scripts/jest-reporter.js
  */
-// const DefaultReporter = require('@jest/reporters').DefaultReporter;
-let DefaultReporter = require('@jest/reporters/build/default_reporter');
+let { DefaultReporter } = require('@jest/reporters');
+// console.log('DefaultReporter', DefaultReporter)
+
+// let DefaultReporter = require('@jest/reporters/build/default_reporter');
 if (!!DefaultReporter.default) {
   DefaultReporter = DefaultReporter.default;
 }
+
+// console.log('DefaultReporter 2', DefaultReporter)
 
 /**
  * Jest logs message to stderr. This class is to override that behavior so that
@@ -22,7 +37,8 @@ if (!!DefaultReporter.default) {
  */
 class JestReporter extends DefaultReporter {
   constructor(globalConfig) {
-    super(globalConfig);
+    super();
+    this._globalConfig = Object.assign({}, this._globalConfig, globalConfig);
     // See comments in @frontend-bindings/conventions-use-bili in bin/bili #IsCiServer
     const processEnvKeys = Object.keys(process.env);
     const isCI = processEnvKeys.includes('CI_SERVER');

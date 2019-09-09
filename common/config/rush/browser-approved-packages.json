@@ -115,8 +115,16 @@
       "allowedCategories": [ "conventions", "libraries" ]
     },
     {
+      "name": "jest-cli",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
       "name": "jest-expect-message",
       "allowedCategories": [ "conventions", "libraries" ]
+    },
+    {
+      "name": "jest-leak-detector",
+      "allowedCategories": [ "conventions" ]
     },
     {
       "name": "just-scripts",

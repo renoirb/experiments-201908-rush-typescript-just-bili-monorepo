@@ -66,3 +66,7 @@ package-deps.json
 
 # Build output
 dist/
+
+# Demo
+public/dist/
+

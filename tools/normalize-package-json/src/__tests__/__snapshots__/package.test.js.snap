@@ -13,3 +13,32 @@ exports[`normalize-package-json autoFix should sort 1`] = `
 }
 "
 `;
+
+exports[`normalize-package-json copyFields 1`] = `
+"{
+  \\"name\\": \\"foo\\",
+  \\"version\\": \\"1.0.0\\",
+  \\"license\\": \\"LicenseRef-LICENSE\\",
+  \\"author\\": {
+    \\"name\\": \\"Alpha Product Team\\",
+    \\"email\\": \\"alpha-team@acme-corp.example.org\\",
+    \\"url\\": \\"https://acme-corp.example.org/product/alpha\\"
+  }
+}
+"
+`;
+
+exports[`normalize-package-json copyFields 2`] = `
+"{
+  \\"name\\": \\"bar\\",
+  \\"version\\": \\"1.0.0\\",
+  \\"license\\": \\"LicenseRef-LICENSE\\",
+  \\"author\\": {
+    \\"name\\": \\"Alpha Product Team\\",
+    \\"email\\": \\"alpha-team@acme-corp.example.org\\",
+    \\"url\\": \\"https://acme-corp.example.org/product/alpha\\"
+  },
+  \\"main\\": \\"main.js\\"
+}
+"
+`;

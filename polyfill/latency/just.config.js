@@ -26,4 +26,7 @@ task('lint', eslintTask(eslintTaskOptions));
 /**
  * Copy files from dist/ie6to8.js for demo in public/
  */
-task('copy-to-public', copyTask({ paths: ['dist/ie6to8.js'], dest: 'public' }));
+task(
+  'copy-to-public',
+  copyTask({ paths: ['dist/ie6to8.js'], dest: 'public/dist' }),
+);
