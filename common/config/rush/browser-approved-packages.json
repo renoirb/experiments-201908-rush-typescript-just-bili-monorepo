@@ -96,7 +96,7 @@
     },
     {
       "name": "cross-env",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "libraries", "tools" ]
     },
     {
       "name": "eslint",
@@ -104,6 +104,10 @@
     },
     {
       "name": "eslint-plugin-promise",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "esm",
       "allowedCategories": [ "conventions" ]
     },
     {
@@ -172,6 +176,10 @@
     },
     {
       "name": "ts-jest",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "ts-node",
       "allowedCategories": [ "conventions" ]
     },
     {

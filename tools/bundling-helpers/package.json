@@ -1,6 +1,11 @@
 {
   "name": "@frontend-bindings/tools-bundling-helpers",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
+    "directory": "tools/bundling-helpers"
+  },
   "license": "UNLICENSED",
   "files": [
     "dist",
@@ -10,6 +15,7 @@
   "module": "dist/index.esm.js",
   "typings": "dist/index.d.ts",
   "bin": {
+    "use-cross-env": "./bin/cross-env",
     "use-rimraf": "./bin/rimraf",
     "use-run-all": "./bin/run-all"
   },
@@ -26,6 +32,7 @@
     "test:snapshots": "use-jest --detectOpenHandles -u"
   },
   "dependencies": {
+    "cross-env": "^5.2.0",
     "npm-run-all": "^4.1.0",
     "rimraf": "~3.0.0"
   },

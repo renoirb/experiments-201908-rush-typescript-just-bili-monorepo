@@ -21,10 +21,6 @@ const localConfigFound = existsSync(localConfigPath)
 const hasConfigPath = process.argv.includes('--config')
 const usePackagedPrettierConfig = localConfigFound && !hasConfigPath
 
-const messagePrefix = '@frontend-bindings/conventions-use-prettier bin/rush-prettier'
-const message = usePackagedPrettierConfig ? `, using prettier config at ${localConfigPath}.` : '.'
-console.log(messagePrefix+message)
-
 /**
  * If the project importing this library, when calling the helper, finds the config.
  * Otherwise, just pass as if this package was prettier itself.
@@ -36,6 +32,10 @@ if (usePackagedPrettierConfig) {
 
 process.argv.push('--ignore-path')
 process.argv.push(localConfigIgnorePath)
+
+const messagePrefix = '@frontend-bindings/conventions-use-prettier/bin/prettier'
+const message = usePackagedPrettierConfig ? ` --config ${localConfigPath}\n` : '\n'
+console.log(messagePrefix+message)
 
 require('prettier/bin-prettier')
 

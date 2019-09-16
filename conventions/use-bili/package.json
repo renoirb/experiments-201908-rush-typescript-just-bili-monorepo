@@ -2,6 +2,11 @@
   "name": "@frontend-bindings/conventions-use-bili",
   "version": "1.0.0",
   "description": "Reusable Babel,Rollup configs leveraging https://github.com/egoist/bili",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
+    "directory": "conventions/use-bili"
+  },
   "license": "UNLICENSED",
   "files": [
     "dist",

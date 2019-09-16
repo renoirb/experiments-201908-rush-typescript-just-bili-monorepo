@@ -2,6 +2,7 @@
 
 exports[`main Snapshot sample 1`] = `
 Object {
+  "banner": true,
   "input": Object {
     "index": "foo/bar/baz/buzz/bizz.ts",
   },

@@ -2,12 +2,20 @@
   "name": "@frontend-bindings/date-epoch",
   "version": "1.0.0",
   "description": "Date internal representation utilities using Numbers of seconds since January 1st 1970 (a.k.a. Epoch)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
+    "directory": "packages/date-epoch"
+  },
   "license": "UNLICENSED",
   "files": [
     "dist"
   ],
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
+  "browser": {
+    "./dist/index.js": "./dist/browser.cjs.js"
+  },
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "use-run-all build:*",
@@ -15,7 +23,7 @@
     "build:node": "use-bili --target node --format cjs --file-name index.js",
     "build:node-esm": "use-bili --target node --format esm --file-name index.esm.js",
     "clean": "use-rimraf .rpt2_cache dist *.*.log",
-    "fix": "use-prettier **/*.{js,ts} --write",
+    "fix": "use-prettier --write '**/*.{js,ts}'",
     "just-scripts": "just-scripts",
     "lint": "just-scripts lint",
     "lint:fix": "just-scripts lint --fix",
@@ -23,10 +31,10 @@
     "test:snapshots": "use-jest --detectOpenHandles -u"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.4.0",
     "@babel/runtime-corejs3": "~7.5.5"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.4.0",
     "@frontend-bindings/conventions-use-bili": "~1.0.0",
     "@frontend-bindings/conventions-use-eslint": "~1.0.0",
     "@frontend-bindings/conventions-use-jest": "~1.0.0",

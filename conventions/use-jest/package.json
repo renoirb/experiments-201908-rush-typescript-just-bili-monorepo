@@ -2,6 +2,11 @@
   "name": "@frontend-bindings/conventions-use-jest",
   "version": "1.0.0",
   "description": "Reusable Jest configs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
+    "directory": "conventions/use-jest"
+  },
   "license": "UNLICENSED",
   "files": [
     "main.js",

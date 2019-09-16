@@ -2,6 +2,11 @@
   "name": "@frontend-bindings/conventions-use-prettier",
   "version": "1.0.0",
   "description": "Reusable Prettier configs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
+    "directory": "conventions/use-prettier"
+  },
   "license": "UNLICENSED",
   "files": [
     "prettier.config.js",
@@ -18,7 +23,7 @@
   },
   "dependencies": {
     "prettier": "~1.18.0",
-    "pretty-quick": "~1.11.0",
+    "pretty-quick": "^1.11.1",
     "sort-package-json": "^1.22.1"
   }
 }

@@ -2,31 +2,40 @@
   "name": "@frontend-bindings/validatable",
   "version": "1.0.0",
   "description": "Add validation rules to an object, and ability to check if a given string passes the rules",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
+    "directory": "packages/validatable"
+  },
   "license": "UNLICENSED",
   "files": [
     "dist"
   ],
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
-  "typings": "dist/index.d.ts",
+  "browser": {
+    "./dist/index.js": "./dist/browser.cjs.js"
+  },
   "scripts": {
     "build": "use-run-all build:*",
     "build:browser": "use-bili --target browser --format cjs --file-name browser.cjs.js",
     "build:node": "use-bili --target node --format cjs --file-name index.js",
     "build:node-esm": "use-bili --target node --format esm --file-name index.esm.js",
     "clean": "use-rimraf .rpt2_cache dist *.*.log",
-    "fix": "use-prettier **/*.{js,ts} --write",
+    "fix": "use-prettier --write '**/*.{js,ts}'",
     "just-scripts": "just-scripts",
     "lint": "just-scripts lint",
     "lint:fix": "just-scripts lint --fix",
+    "pack": "yarn pack -f ../../pack/validatable.tgz",
+    "prepublishOnly": "rushx build",
     "test": "use-jest --detectOpenHandles",
     "test:snapshots": "use-jest --detectOpenHandles -u"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.4.0",
     "@babel/runtime-corejs3": "~7.5.5"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.4.0",
     "@frontend-bindings/conventions-use-bili": "~1.0.0",
     "@frontend-bindings/conventions-use-eslint": "~1.0.0",
     "@frontend-bindings/conventions-use-jest": "~1.0.0",

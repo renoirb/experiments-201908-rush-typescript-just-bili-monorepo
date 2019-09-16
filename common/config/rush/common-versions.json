@@ -19,10 +19,6 @@
      * When someone asks for "^1.0.0" make sure they get "1.2.3" when working in this repo,
      * instead of the latest version.
      */
-    "prettier": "~1.18.0",
-    "pretty-quick": "~1.11.0",
-    "sort-package-json": "^1.22.1",
-    "typescript": "~3.5.3",
     // Workaround for https://github.com/microsoft/web-build-tools/issues/1466
     "eslint": "^6.0.0"
   },

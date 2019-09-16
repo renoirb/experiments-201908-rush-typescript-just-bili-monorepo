@@ -2,6 +2,11 @@
   "name": "@frontend-bindings/conventions-use-eslint",
   "version": "1.0.0",
   "description": "Reusable ESLint configs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
+    "directory": "conventions/use-eslint"
+  },
   "license": "UNLICENSED",
   "files": [
     "main.js",

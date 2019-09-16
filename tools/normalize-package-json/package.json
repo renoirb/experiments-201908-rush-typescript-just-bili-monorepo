@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Copy-Pasta from https://github.com/nuxt/nuxt.js/pull/6373 also a JavaScript sample to work on migrating many projects",
   "homepage": "https://github.com/nuxt/nuxt.js/pull/6373",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
+    "directory": "tools/normalize-package-json"
+  },
   "license": "MIT",
   "author": {
     "name": "Pooya Parsa",
@@ -13,7 +18,6 @@
   ],
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
-  "typings": "dist/index.d.ts",
   "scripts": {
     "build": "use-run-all build:*",
     "build:node": "use-bili --target node --format cjs --file-name index.js",

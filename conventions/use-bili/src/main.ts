@@ -27,6 +27,7 @@ export const main = (
   // }
 
   const out: Config = {
+    banner: true,
     input,
     plugins,
   };

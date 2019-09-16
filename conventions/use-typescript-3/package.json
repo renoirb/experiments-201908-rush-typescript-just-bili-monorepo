@@ -2,6 +2,11 @@
   "name": "@frontend-bindings/conventions-use-typescript-3",
   "version": "1.0.0",
   "description": "Reusable TypeScript 3.x configs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
+    "directory": "conventions/use-typescript-3"
+  },
   "license": "UNLICENSED",
   "files": [
     "includes",
@@ -14,7 +19,9 @@
     "build": ""
   },
   "dependencies": {
+    "esm": "^3.2.0",
+    "ts-node": "^8.3.0",
     "tslib": "^1.10.0",
-    "typescript": "~3.5.3"
+    "typescript": "~3.6.0"
   }
 }

@@ -6,7 +6,10 @@
  * If an UNIX Epoch is already in milliseconds return the same value;
  * If an UNIX Epoch is close enough, and within hoursTreshold limit, multiply by 1000.
  */
-export const milliseconds = (maybeMilliseconds = 0, hoursTreshold = 25) => {
+export const milliseconds = (
+  maybeMilliseconds = 0,
+  hoursTreshold = 25,
+): number => {
   const ms = new Date().getTime();
   // const millisecondsDigitCount = ((ms).toString()).length
   const secs = Math.floor(ms / 1000);
@@ -28,7 +31,7 @@ export const milliseconds = (maybeMilliseconds = 0, hoursTreshold = 25) => {
   return maybeMilliseconds;
 };
 
-export const seconds = (maybeMilliseconds = 0) => {
+export const seconds = (maybeMilliseconds = 0): number => {
   const millisecondsLen = String(+new Date()).length;
   const argCharLen = String(maybeMilliseconds).length;
   const argIsMilliseconds = millisecondsLen === argCharLen;
@@ -59,7 +62,7 @@ export const getTimeDaysAgoMilliseconds = (
   return endTimeMilliseconds - begin;
 };
 
-export const getTimeNowUtcMillliseconds = () => new Date().getTime(); // Always UTC!
+export const getTimeNowUtcMillliseconds = (): number => new Date().getTime(); // Always UTC!
 
 /*
  * See @frontend-bindings/webapi-utils

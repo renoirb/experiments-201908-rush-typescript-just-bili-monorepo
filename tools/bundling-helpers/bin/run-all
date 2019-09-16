@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+'use strict';
 
 /**
  * In Rush.js, if we do not use this script, we would need to import

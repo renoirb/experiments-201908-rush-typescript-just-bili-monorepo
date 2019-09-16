@@ -59,7 +59,18 @@ const babel = (env: NodeJS.ProcessEnv = {}) => {
         // '@frontend-bindings/conventions-use-bili',
         '@babel/preset-env',
         {
-          // https://babeljs.io/docs/en/babel-plugin-transform-runtime#options
+          /**
+           * https://babeljs.io/docs/en/babel-plugin-transform-runtime#options
+           *
+           * @TODO: There might be a logic error here when we want bundleNodeModules
+           *
+           * When hasBiliBundleNodeModulesOption, we get message:
+           *
+           * > The `corejs` option only has an effect when the `useBuiltIns` option is not `false`
+           *
+           * Which makes sense, we should either have usage.
+           * But, that's not a priority for now, rework later.
+           */
           useBuiltIns: hasBiliBundleNodeModulesOption ? false : 'usage',
           corejs: 3,
           // targets,

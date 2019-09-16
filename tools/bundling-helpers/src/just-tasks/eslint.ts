@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 
 /**
+ * @TODO #ToolsBundlingHelpersESLintJustTasks
  * UNFINISHED!
  * Almost Copy-Pasta from just-scripts/lib/tasks/eslintTask.js
  * But modified to work with workspace paths.
  * And in TypeScript.
  */
 
-import { resolveCwd } from '../resolve';
-import { MaybeNodeProcessContext } from '..';
+import { resolveCwd, MaybeNodeProcessContext } from '..';
 
 export interface ContextualizedJustTaskOptionsInterface {
   moduleName: string;
