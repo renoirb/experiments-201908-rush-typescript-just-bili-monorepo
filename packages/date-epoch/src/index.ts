@@ -1,3 +1,3 @@
-export * from './decorators';
-export * from './date-epoch';
-export * from './helpers';
+export * from './decorators'
+export * from './date-epoch'
+export * from './helpers'

@@ -3,8 +3,8 @@
  * want to see what Babel has to say
  */
 const babel = (env: NodeJS.ProcessEnv = {}) => {
-  const { DEBUG = '', BILI_BUNDLE_NODE_MODULES = '' } = env;
-  const debug = String(DEBUG).length > 1;
+  const { DEBUG = '', BILI_BUNDLE_NODE_MODULES = '' } = env
+  const debug = String(DEBUG).length > 1
 
   // const targets = {};
 
@@ -37,9 +37,9 @@ const babel = (env: NodeJS.ProcessEnv = {}) => {
    * - https://babeljs.io/docs/en/babel-plugin-transform-runtime#via-babelrc-recommended
    * - https://github.com/rollup/rollup/issues/2474#issuecomment-478130761
    */
-  const hasBiliBundleNodeModulesOption = BILI_BUNDLE_NODE_MODULES === 'true';
-  const plugins = [];
-  const exclude = [];
+  const hasBiliBundleNodeModulesOption = BILI_BUNDLE_NODE_MODULES === 'true'
+  const plugins = []
+  const exclude = []
   if (hasBiliBundleNodeModulesOption) {
     plugins.push([
       'module:@babel/plugin-transform-runtime',
@@ -48,8 +48,8 @@ const babel = (env: NodeJS.ProcessEnv = {}) => {
         // TODO: Which of this here, or `/regenerator/` is needed to make it work. TBD. Later.
         helpers: true,
       },
-    ]);
-    exclude.push(...[/regenerator/, /runtime-corejs3/, /core-js/]);
+    ])
+    exclude.push(...[/regenerator/, /runtime-corejs3/, /core-js/])
   }
 
   const out = {
@@ -80,11 +80,11 @@ const babel = (env: NodeJS.ProcessEnv = {}) => {
     ],
     plugins,
     exclude,
-  };
+  }
 
   // console.log('hasBiliBundleNodeModulesOption', hasBiliBundleNodeModulesOption, JSON.stringify(out))
 
-  return out;
-};
+  return out
+}
 
-export const plugins = (env: NodeJS.ProcessEnv = {}) => ({ babel: babel(env) });
+export const plugins = (env: NodeJS.ProcessEnv = {}) => ({ babel: babel(env) })

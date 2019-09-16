@@ -1,11 +1,11 @@
-const ecmascript = require('./ecmascript');
-const typescript = require('./typescript');
+const ecmascript = require('./ecmascript')
+const typescript = require('./typescript')
 
-const plugins = [...ecmascript.plugins, ...typescript.plugins];
+const plugins = [...ecmascript.plugins, ...typescript.plugins]
 const main = {
   ...ecmascript,
   ...typescript,
   plugins,
-};
+}
 
-module.exports = main;
+module.exports = main

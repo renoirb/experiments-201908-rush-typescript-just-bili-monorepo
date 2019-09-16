@@ -6,13 +6,13 @@ const {
   option,
   resolveCwd,
   task,
-} = require('just-scripts');
+} = require('just-scripts')
 
 /**
  * See comments in @frontend-bindings/tools-bundling-helpers just.config.js
  */
 
-option('fix');
+option('fix')
 
 const eslintTaskOptions = {
   ignorePath: resolveCwd(
@@ -20,8 +20,8 @@ const eslintTaskOptions = {
   ),
   fix: argv().fix ? true : false,
   _: ['--report-unused-disable-directives'],
-};
-task('lint', eslintTask(eslintTaskOptions));
+}
+task('lint', eslintTask(eslintTaskOptions))
 
 /**
  * Copy files from dist/ie6to8.js for demo in public/
@@ -29,4 +29,4 @@ task('lint', eslintTask(eslintTaskOptions));
 task(
   'copy-to-public',
   copyTask({ paths: ['dist/ie6to8.js'], dest: 'public/dist' }),
-);
+)

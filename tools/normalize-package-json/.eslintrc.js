@@ -1,4 +1,4 @@
-const base = require('@frontend-bindings/conventions-use-eslint');
+const base = require('@frontend-bindings/conventions-use-eslint')
 
 module.exports = {
   ...base,
@@ -8,4 +8,4 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
   },
-};
+}

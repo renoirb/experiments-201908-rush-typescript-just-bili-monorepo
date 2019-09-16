@@ -6,10 +6,10 @@
  * Notice anything commented is what should be replaced.
  */
 
-import { sync as resolveSync } from 'resolve';
+import { sync as resolveSync } from 'resolve'
 // import path from 'path';
 
-import { getProcessCliArgValuePair } from './process';
+import { getProcessCliArgValuePair } from './process'
 
 // It is important to keep this line like this:
 // 1. it cannot be an import because TS will try to do type checks which isn't available in @types/yargs
@@ -20,14 +20,14 @@ import { getProcessCliArgValuePair } from './process';
 // const yargsFn = require('yargs/yargs');
 
 // @ts-ignore
-let resolvePaths: string[] = [__dirname];
+let resolvePaths: string[] = [__dirname]
 
 /**
  * Add a path to the list used by `resolve()`.
  * @param pathName Path to add
  */
 export function addResolvePath(pathName: string): void {
-  resolvePaths.push(pathName);
+  resolvePaths.push(pathName)
 }
 
 /**
@@ -35,7 +35,7 @@ export function addResolvePath(pathName: string): void {
  */
 export function resetResolvePaths(): void {
   // @ts-ignore
-  resolvePaths = [__dirname];
+  resolvePaths = [__dirname]
 }
 
 /**
@@ -45,7 +45,7 @@ export function resetResolvePaths(): void {
 export function _isFileNameLike(name: string): boolean {
   return (
     !!name && name.includes('.') && !name.includes('/') && !name.includes('\\')
-  );
+  )
 }
 
 /**
@@ -61,12 +61,12 @@ export function _tryResolve(
       return resolveSync(`./${moduleName}`, {
         basedir,
         preserveSymlinks: true,
-      });
+      })
     } else {
-      return resolveSync(moduleName, { basedir, preserveSymlinks: true });
+      return resolveSync(moduleName, { basedir, preserveSymlinks: true })
     }
   } catch (e) {
-    return null;
+    return null
   }
 }
 
@@ -82,7 +82,7 @@ export function _tryResolve(
 export function resolve(moduleName: string, cwd?: string): string | null {
   if (!cwd) {
     // @ts-ignore
-    cwd = process.cwd();
+    cwd = process.cwd()
   }
 
   // const configArg = yargsFn(process.argv.slice(1).filter(a => a !== '--help')).argv.config;
@@ -90,25 +90,25 @@ export function resolve(moduleName: string, cwd?: string): string | null {
   // const allResolvePaths = [cwd, ...(configFilePath ? [configFilePath] : []), ...resolvePaths];
 
   // @ts-ignore
-  const configArg = getProcessCliArgValuePair('--config', process);
-  let configFilePath: string[] = [];
+  const configArg = getProcessCliArgValuePair('--config', process)
+  let configFilePath: string[] = []
   if (Array.isArray(configArg)) {
-    configFilePath.push(configArg[1]);
+    configFilePath.push(configArg[1])
   }
 
-  const allResolvePaths = [cwd, ...configFilePath, ...resolvePaths];
+  const allResolvePaths = [cwd, ...configFilePath, ...resolvePaths]
 
-  let resolved: string | null = null;
+  let resolved: string | null = null
 
   for (const tryPath of allResolvePaths) {
     // @ts-ignore
-    resolved = _tryResolve(moduleName, tryPath);
+    resolved = _tryResolve(moduleName, tryPath)
     if (resolved) {
-      return resolved;
+      return resolved
     }
   }
 
-  return null;
+  return null
 }
 
 /**
@@ -123,8 +123,8 @@ export function resolve(moduleName: string, cwd?: string): string | null {
 export function resolveCwd(moduleName: string, cwd?: string): string | null {
   if (!cwd) {
     // @ts-ignore
-    cwd = process.cwd();
+    cwd = process.cwd()
   }
   // @ts-ignore
-  return _tryResolve(moduleName, cwd);
+  return _tryResolve(moduleName, cwd)
 }

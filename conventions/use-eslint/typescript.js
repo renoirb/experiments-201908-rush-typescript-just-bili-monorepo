@@ -1,6 +1,6 @@
 // See https://github.com/microsoft/tsdoc/blob/master/playground/.eslintrc.js#L2
 // This is a workaround for https://github.com/eslint/eslint/issues/3458
-require('@microsoft/eslint-config-scalable-ts/patch-eslint6');
+require('@microsoft/eslint-config-scalable-ts/patch-eslint6')
 
 /**
  * TypeScript ruleset.
@@ -26,6 +26,6 @@ const main = {
     // https://www.npmjs.com/package/@typescript-eslint/eslint-plugin
     '@typescript-eslint/eslint-plugin',
   ],
-};
+}
 
-module.exports = main;
+module.exports = main

@@ -8,7 +8,7 @@ const {
   option,
   resolveCwd,
   task,
-} = require('just-scripts');
+} = require('just-scripts')
 
 /**
  * INCOMPLETE:
@@ -40,10 +40,10 @@ const {
  * nor when we do globally `rush test --snapshots`.
  * Gota figure why. @TODO
  */
-option('snapshots');
-option('fix');
+option('snapshots')
+option('fix')
 
-task('clean', cleanTask([...defaultCleanPaths(), '.rpt2_cache']));
+task('clean', cleanTask([...defaultCleanPaths(), '.rpt2_cache']))
 
 const jestTaskOptions = {
   runInBand: true,
@@ -56,8 +56,8 @@ const jestTaskOptions = {
    */
   updateSnapshot: argv().snapshots ? true : false,
   _: ['--detectOpenHandles'],
-};
-task('test', jestTask(jestTaskOptions));
+}
+task('test', jestTask(jestTaskOptions))
 
 const eslintTaskOptions = {
   ignorePath: resolveCwd(
@@ -65,8 +65,8 @@ const eslintTaskOptions = {
   ),
   fix: argv().fix ? true : false,
   _: ['--report-unused-disable-directives'],
-};
-task('lint', eslintTask(eslintTaskOptions));
+}
+task('lint', eslintTask(eslintTaskOptions))
 
 // --------------------- Unfinished experiments ---------------------
 

@@ -1,20 +1,20 @@
-import { Config, ConfigOutput } from 'bili';
+import { Config, ConfigOutput } from 'bili'
 import {
   default as bundlingHelpersMain,
   PackageIdentityInterface,
-} from '@frontend-bindings/tools-bundling-helpers';
+} from '@frontend-bindings/tools-bundling-helpers'
 
-const input = { index: 'src/index.ts' };
+const input = { index: 'src/index.ts' }
 
 const output: ConfigOutput = {
   minify: true,
   sourceMap: true,
   target: 'node',
   format: ['esm', 'cjs'],
-};
+}
 
-let banner = true;
-const vendor = '@frontend-bindings/conventions-use-bili Author';
+let banner = true
+const vendor = '@frontend-bindings/conventions-use-bili Author'
 
 /**
  * What this package will encapsulate.
@@ -25,10 +25,10 @@ const brandObj = {
   author: {
     name: vendor,
   },
-};
-const pkg: PackageIdentityInterface = bundlingHelpersMain(__dirname, brandObj);
+}
+const pkg: PackageIdentityInterface = bundlingHelpersMain(__dirname, brandObj)
 if (pkg.banners.banner) {
-  banner = pkg.banners.banner;
+  banner = pkg.banners.banner
 }
 
 const config: Config = {
@@ -36,6 +36,6 @@ const config: Config = {
   bundleNodeModules: true,
   input,
   output,
-};
+}
 
-export default config;
+export default config

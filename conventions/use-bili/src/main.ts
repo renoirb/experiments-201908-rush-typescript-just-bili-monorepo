@@ -1,6 +1,6 @@
-import { Config } from 'bili';
-import { plugins as initPlugins } from './plugins';
-import { input as initInput, BiliInputDescriptor } from './input';
+import { Config } from 'bili'
+import { plugins as initPlugins } from './plugins'
+import { input as initInput, BiliInputDescriptor } from './input'
 
 // import { default as bundlingHelpersMain } from '@frontend-bindings/tools-bundling-helpers';
 // import { resolve, dirname } from 'path';
@@ -12,8 +12,8 @@ import { input as initInput, BiliInputDescriptor } from './input';
 export const main = (
   inputArg: string | BiliInputDescriptor = 'src/index.ts',
 ) => (env: NodeJS.ProcessEnv = {}): Config => {
-  const plugins = initPlugins(env);
-  const input = initInput(inputArg);
+  const plugins = initPlugins(env)
+  const input = initInput(inputArg)
 
   /**
    * Unfinished work.
@@ -30,7 +30,7 @@ export const main = (
     banner: true,
     input,
     plugins,
-  };
+  }
 
-  return out;
-};
+  return out
+}

@@ -1,4 +1,4 @@
-const base = require('./main');
+const base = require('./main')
 
 module.exports = {
   ...base,
@@ -6,4 +6,4 @@ module.exports = {
     // See comments in @frontend-bindings/tools-bundling-helpers .eslintrc.js
     '@typescript-eslint/no-var-requires': 'off',
   },
-};
+}

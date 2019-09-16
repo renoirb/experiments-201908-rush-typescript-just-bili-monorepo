@@ -1,5 +1,5 @@
 export interface ProviderContext {
-  packages: { [name: string]: string };
+  packages: { [name: string]: string }
 }
 
 /**
@@ -19,6 +19,6 @@ export interface ProviderContext {
 const packages = {
   bili: 'bili/package.json',
   rollup: 'rollup/package.json',
-};
+}
 
-export const provider: ProviderContext = { packages };
+export const provider: ProviderContext = { packages }

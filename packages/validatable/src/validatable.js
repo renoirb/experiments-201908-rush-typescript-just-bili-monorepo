@@ -29,24 +29,24 @@
  */
 export class ValidatableOutcome {
   constructor() {
-    this.passes = [];
-    this.failures = [];
+    this.passes = []
+    this.failures = []
   }
   hasPassed() {
-    return this.failures.length < 1 && this.passes.length > 0;
+    return this.failures.length < 1 && this.passes.length > 0
   }
   getFailures() {
-    return this.failures;
+    return this.failures
   }
   addCheck(check) {
     if (check.outcome === check.expectation) {
-      this.passes.push(check);
+      this.passes.push(check)
     } else {
-      this.failures.push(check);
+      this.failures.push(check)
     }
   }
   getFailureKeys() {
-    return [].concat(this.failures.map(f => f.key)).sort();
+    return [].concat(this.failures.map(f => f.key)).sort()
   }
 }
 
@@ -75,13 +75,13 @@ export class ValidatableOutcome {
  */
 export class ValidatableRules {
   constructor() {
-    this.rules = [];
+    this.rules = []
   }
   addRule(key, expectation, pattern) {
-    this.rules.push(new Rule(key, expectation, pattern));
+    this.rules.push(new Rule(key, expectation, pattern))
   }
   getRules() {
-    return this.rules;
+    return this.rules
   }
 }
 
@@ -94,13 +94,13 @@ export class ValidatableRules {
  */
 export class Rule {
   constructor(key, expectation, pattern) {
-    this.expectation = expectation;
-    this.key = key;
-    this.pattern = pattern;
+    this.expectation = expectation
+    this.key = key
+    this.pattern = pattern
   }
   check(value) {
-    const outcome = this.pattern.test(value);
-    return { outcome, value, key: this.key, expectation: this.expectation };
+    const outcome = this.pattern.test(value)
+    return { outcome, value, key: this.key, expectation: this.expectation }
   }
 }
 
@@ -136,14 +136,14 @@ export class Rule {
  * check.hasPassed() // => false
  */
 export const validatable = subject => {
-  subject.validatable = new ValidatableRules();
+  subject.validatable = new ValidatableRules()
   subject.validate = function(inputValue) {
-    const rules = this.validatable.getRules();
-    const outcome = new ValidatableOutcome();
+    const rules = this.validatable.getRules()
+    const outcome = new ValidatableOutcome()
     for (const rule of rules) {
-      outcome.addCheck(rule.check(inputValue));
+      outcome.addCheck(rule.check(inputValue))
     }
 
-    return outcome;
-  }.bind(subject);
-};
+    return outcome
+  }.bind(subject)
+}

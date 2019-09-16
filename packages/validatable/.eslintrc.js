@@ -1,4 +1,4 @@
-const base = require('@frontend-bindings/conventions-use-eslint');
+const base = require('@frontend-bindings/conventions-use-eslint')
 
 module.exports = {
   ...base,
@@ -8,4 +8,4 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
   },
-};
+}

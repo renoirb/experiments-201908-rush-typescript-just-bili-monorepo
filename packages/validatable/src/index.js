@@ -1,4 +1,4 @@
-import { validatable } from './validatable';
-export * from './password';
+import { validatable } from './validatable'
+export * from './password'
 
-export { validatable };
+export { validatable }

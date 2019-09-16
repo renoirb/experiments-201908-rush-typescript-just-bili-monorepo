@@ -1,13 +1,13 @@
 /* eslint-env jest */
 
-import latency from '..';
+import latency from '..'
 
 describe('latency', () => {
   test('returns a promise object', () => {
-    const subject = latency();
-    expect(subject).toHaveProperty('then');
-    expect(subject).toHaveProperty('catch');
-  });
+    const subject = latency()
+    expect(subject).toHaveProperty('then')
+    expect(subject).toHaveProperty('catch')
+  })
 
   /*
    * ------ UNFINISHED ------
@@ -30,4 +30,4 @@ describe('latency', () => {
     });
   });
   * ------ */
-});
+})

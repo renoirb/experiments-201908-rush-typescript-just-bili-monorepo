@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { PeopleField, stringifyAuthor } from '..';
+import { PeopleField, stringifyAuthor } from '..'
 
 const peopleFieldCollectionFixture: ReadonlyArray<
   [PeopleField | string, string]
@@ -29,12 +29,12 @@ const peopleFieldCollectionFixture: ReadonlyArray<
     },
     'Data N. Soong (corado://ncc-1701-e.starfleet/bridge/conn)',
   ],
-];
+]
 
 describe('people-field', () => {
   it('stringifyAuthor', () => {
     for (const [before, after] of peopleFieldCollectionFixture) {
-      expect(stringifyAuthor(before)).toBe(after);
+      expect(stringifyAuthor(before)).toBe(after)
     }
-  });
-});
+  })
+})

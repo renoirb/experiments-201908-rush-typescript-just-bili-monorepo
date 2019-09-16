@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { argv, eslintTask, option, resolveCwd, task } = require('just-scripts');
+const { argv, eslintTask, option, resolveCwd, task } = require('just-scripts')
 
 /**
  * See comments in @frontend-bindings/tools-bundling-helpers just.config.js
  */
 
-option('fix');
+option('fix')
 
 const eslintTaskOptions = {
   ignorePath: resolveCwd(
@@ -13,5 +13,5 @@ const eslintTaskOptions = {
   ),
   fix: argv().fix ? true : false,
   _: ['--report-unused-disable-directives'],
-};
-task('lint', eslintTask(eslintTaskOptions));
+}
+task('lint', eslintTask(eslintTaskOptions))

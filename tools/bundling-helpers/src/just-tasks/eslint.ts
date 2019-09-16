@@ -8,11 +8,11 @@
  * And in TypeScript.
  */
 
-import { resolveCwd, MaybeNodeProcessContext } from '..';
+import { resolveCwd, MaybeNodeProcessContext } from '..'
 
 export interface ContextualizedJustTaskOptionsInterface {
-  moduleName: string;
-  entryPoint: string;
+  moduleName: string
+  entryPoint: string
 }
 
 function main(opts: Partial<ContextualizedJustTaskOptionsInterface> = {}) {
@@ -20,13 +20,13 @@ function main(opts: Partial<ContextualizedJustTaskOptionsInterface> = {}) {
     ...opts,
     moduleName: 'eslint',
     entryPoint: 'eslint/bin/eslint.js',
-  };
+  }
 
   return function highOrderJustTaskFactory(context: MaybeNodeProcessContext) {
-    const entryPoint = options.entryPoint;
-    const resolvedEntryPoint = resolveCwd(entryPoint);
-    const ctx = JSON.stringify({ ...context });
-    console.log('eslintTask', { options, entryPoint, resolvedEntryPoint, ctx });
+    const entryPoint = options.entryPoint
+    const resolvedEntryPoint = resolveCwd(entryPoint)
+    const ctx = JSON.stringify({ ...context })
+    console.log('eslintTask', { options, entryPoint, resolvedEntryPoint, ctx })
 
     /**
      * Unfinished.
@@ -38,7 +38,7 @@ function main(opts: Partial<ContextualizedJustTaskOptionsInterface> = {}) {
      * - https://github.com/microsoft/just/blob/d4c98a4/packages/just-scripts/src/tasks/eslintTask.ts
      * - https://microsoft.github.io/just/docs/thunk
      */
-  };
+  }
 }
 
-export const justTasksEslint = main;
+export const justTasksEslint = main

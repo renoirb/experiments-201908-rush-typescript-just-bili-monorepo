@@ -2,7 +2,7 @@ import {
   getDateFromEpoch,
   getTimeNowUtcMillliseconds,
   milliseconds,
-} from './helpers';
+} from './helpers'
 
 /**
  * DateEpoch: An utility to convert UNIX Epoch Integer into a Date Object.
@@ -14,7 +14,7 @@ import {
  * [1]: https://bitsrc.io/renoirb/bindings/types/date-epoch/code
  */
 export class DateEpoch {
-  public epoch: number;
+  public epoch: number
 
   /**
    * Constructor: Optimistically take a number and try to create a Date object.
@@ -24,31 +24,31 @@ export class DateEpoch {
   constructor(arg: any = null) {
     switch (true) {
       case arg === null:
-        this.epoch = getTimeNowUtcMillliseconds();
-        break;
+        this.epoch = getTimeNowUtcMillliseconds()
+        break
 
       case Number.isFinite(arg):
-        this.epoch = milliseconds(+arg);
-        break;
+        this.epoch = milliseconds(+arg)
+        break
 
       case Reflect.has(arg, 'getTime'):
-        this.epoch = arg.getTime();
-        break;
+        this.epoch = arg.getTime()
+        break
 
       default:
-        this.epoch = getTimeNowUtcMillliseconds();
-        break;
+        this.epoch = getTimeNowUtcMillliseconds()
+        break
     }
   }
 
   public toJSON() {
     return {
       epoch: this.epoch,
-    };
+    }
   }
 
   public toString(): string {
-    return String(this.epoch);
+    return String(this.epoch)
   }
 
   /**
@@ -57,6 +57,6 @@ export class DateEpoch {
    * @returns Date
    */
   public toDate(): Date {
-    return getDateFromEpoch(this.epoch);
+    return getDateFromEpoch(this.epoch)
   }
 }

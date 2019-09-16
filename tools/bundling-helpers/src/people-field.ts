@@ -3,14 +3,14 @@
  * https://docs.npmjs.com/files/package.json#people-fields-author-contributors
  */
 export interface PeopleField {
-  name?: string;
-  email?: string;
-  url?: string;
+  name?: string
+  email?: string
+  url?: string
 }
 
 const stripSlash = (str: string): string => {
-  return String(str).replace(/\/$/, '');
-};
+  return String(str).replace(/\/$/, '')
+}
 
 /*!
  * stringify-author <https://github.com/jonschlinkert/stringify-author>
@@ -22,21 +22,21 @@ const stripSlash = (str: string): string => {
  */
 export const stringifyAuthor = (author: any): string => {
   if (typeof author !== 'object') {
-    throw new Error('expected an author to be an object');
+    throw new Error('expected an author to be an object')
   }
 
-  const tmpl = { name: ['', ''], email: ['<', '>'], url: ['(', ')'] };
-  let str = '';
+  const tmpl = { name: ['', ''], email: ['<', '>'], url: ['(', ')'] }
+  let str = ''
 
   if (author.url) {
-    author.url = stripSlash(author.url);
+    author.url = stripSlash(author.url)
   }
 
   for (const key in tmpl) {
     if (Reflect.has(author || {}, key)) {
       // @ts-ignore
-      str += tmpl[key][0] + author[key] + tmpl[key][1] + ' ';
+      str += tmpl[key][0] + author[key] + tmpl[key][1] + ' '
     }
   }
-  return str.trim();
-};
+  return str.trim()
+}

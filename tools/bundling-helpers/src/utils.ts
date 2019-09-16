@@ -11,19 +11,19 @@
  * @param {Function} fn
  */
 export function cached(fn: any): any {
-  const cache = Object.create(null);
+  const cache = Object.create(null)
   return function cachedFn(str: number | string) {
-    const hit = cache[str];
-    return hit || (cache[str] = fn.call(null, str));
-  };
+    const hit = cache[str]
+    return hit || (cache[str] = fn.call(null, str))
+  }
 }
 
 // @ts-ignore
 export const log = (...args) => {
   // @ts-ignore
-  const hasEnv = 'env' in (process || {});
+  const hasEnv = 'env' in (process || {})
   // @ts-ignore
   if (hasEnv && 'DEBUG' in process.env && process.env.DEBUG.length > 0) {
-    console.log(...args);
+    console.log(...args)
   }
-};
+}

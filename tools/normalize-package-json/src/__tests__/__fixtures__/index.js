@@ -1,3 +1,3 @@
-import path from 'path';
+import path from 'path'
 
-export default name => ({ rootDir: path.resolve(__dirname, name) });
+export default name => ({ rootDir: path.resolve(__dirname, name) })
