@@ -1,12 +1,12 @@
-const { resolve, join, normalize } = require('path');
+const { resolve, join, normalize } = require('path')
 
-const jestModuleDir = __dirname;
+const jestModuleDir = __dirname
 const prettierPath =
-  '/node_modules/@frontend-bindings/conventions-use-prettier/bin/prettier';
+  '/node_modules/@renoirb/conventions-use-prettier/bin/prettier'
 
-const processEnvKeys = Object.keys(process.env);
-const isCI = processEnvKeys.includes('CI_SERVER');
-const verbose = !isCI;
+const processEnvKeys = Object.keys(process.env)
+const isCI = processEnvKeys.includes('CI_SERVER')
+const verbose = !isCI
 
 /**
  * https://github.com/microsoft/just/blob/master/scripts/jest.config.js
@@ -36,13 +36,13 @@ const main = {
     '\\.(ts|js)x?$': 'ts-jest',
   },
   verbose,
-};
+}
 
 if (isCI) {
   // If we do not superseed the reporters, we might get errors when
-  main.reporters = [join(jestModuleDir, 'reporter.js')];
+  main.reporters = [join(jestModuleDir, 'reporter.js')]
 }
 
 // console.log('use-jest', { isCI, reporters: [...main.reporters], verbose })
 
-module.exports = main;
+module.exports = main

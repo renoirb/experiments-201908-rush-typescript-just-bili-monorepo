@@ -6,7 +6,7 @@
  * This exposes it for other modules to use.
  */
 
-// See comment also @frontend-bindings/conventions-use-jest in reporter.js #IsCiServer
+// See comment also @renoirb/conventions-use-jest in reporter.js #IsCiServer
 // https://docs.gitlab.com/ee/ci/variables/#syntax-of-environment-variables-in-job-scripts
 const processEnvKeys = Object.keys(process.env)
 const isCI = processEnvKeys.includes('CI_SERVER');

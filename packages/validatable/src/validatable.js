@@ -58,7 +58,7 @@ export class ValidatableOutcome {
  * @description Add and Get validation rules
  *
  * @example
- * import validatable from '@frontend-bindings/validatable'
+ * import validatable from '@renoirb/validatable'
  *
  * class UsernameValidator {
  *   constructor () {
@@ -116,7 +116,7 @@ export class Rule {
  * CAUTION: This has been written back in 2013 and dearly needs refactoring.
  *
  * @example
- * import validatable from '@frontend-bindings/validatable'
+ * import validatable from '@renoirb/validatable'
  *
  * // Notice this MUST either be a class, an object, or a Function, it cannot be an arrow function.
  * class UsernameValidator {

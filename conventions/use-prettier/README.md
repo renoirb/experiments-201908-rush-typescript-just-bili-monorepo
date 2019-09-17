@@ -1,3 +1,3 @@
-# @frontend-bindings/conventions-use-prettier
+# @renoirb/conventions-use-prettier
 
 Reusable Prettier configs

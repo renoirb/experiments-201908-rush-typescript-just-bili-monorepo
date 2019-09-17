@@ -19,34 +19,6 @@
       "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
-      "name": "@frontend-bindings/conventions-use-bili",
-      "allowedCategories": [ "libraries", "tools" ]
-    },
-    {
-      "name": "@frontend-bindings/conventions-use-eslint",
-      "allowedCategories": [ "conventions", "libraries", "tools" ]
-    },
-    {
-      "name": "@frontend-bindings/conventions-use-jest",
-      "allowedCategories": [ "conventions", "libraries", "tools" ]
-    },
-    {
-      "name": "@frontend-bindings/conventions-use-prettier",
-      "allowedCategories": [ "conventions", "libraries", "tools" ]
-    },
-    {
-      "name": "@frontend-bindings/conventions-use-typescript-3",
-      "allowedCategories": [ "conventions", "libraries", "tools" ]
-    },
-    {
-      "name": "@frontend-bindings/conventions-use-typescript-eslint",
-      "allowedCategories": [ "conventions", "libraries", "tools" ]
-    },
-    {
-      "name": "@frontend-bindings/tools-bundling-helpers",
-      "allowedCategories": [ "conventions", "libraries", "tools" ]
-    },
-    {
       "name": "@jest/reporters",
       "allowedCategories": [ "conventions" ]
     },
@@ -57,6 +29,34 @@
     {
       "name": "@microsoft/node-core-library",
       "allowedCategories": [ "conventions", "tools" ]
+    },
+    {
+      "name": "@renoirb/conventions-use-bili",
+      "allowedCategories": [ "libraries", "tools" ]
+    },
+    {
+      "name": "@renoirb/conventions-use-eslint",
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
+    },
+    {
+      "name": "@renoirb/conventions-use-jest",
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
+    },
+    {
+      "name": "@renoirb/conventions-use-prettier",
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
+    },
+    {
+      "name": "@renoirb/conventions-use-typescript-3",
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
+    },
+    {
+      "name": "@renoirb/conventions-use-typescript-eslint",
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
+    },
+    {
+      "name": "@renoirb/tools-bundling-helpers",
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
       "name": "@typescript-eslint/eslint-plugin",

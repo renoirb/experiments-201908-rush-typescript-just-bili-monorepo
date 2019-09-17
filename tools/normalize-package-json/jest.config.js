@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const base = require('@frontend-bindings/conventions-use-jest')
+const base = require('@renoirb/conventions-use-jest')
 
 module.exports = {
   ...base,

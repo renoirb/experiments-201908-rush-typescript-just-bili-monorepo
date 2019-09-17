@@ -21,12 +21,12 @@
  * Or, refactor like this:
  * https://github.com/microsoft/just/blob/master/scripts/jest-reporter.js
  */
-let { DefaultReporter } = require('@jest/reporters');
+let { DefaultReporter } = require('@jest/reporters')
 // console.log('DefaultReporter', DefaultReporter)
 
 // let DefaultReporter = require('@jest/reporters/build/default_reporter');
 if (!!DefaultReporter.default) {
-  DefaultReporter = DefaultReporter.default;
+  DefaultReporter = DefaultReporter.default
 }
 
 // console.log('DefaultReporter 2', DefaultReporter)
@@ -37,19 +37,19 @@ if (!!DefaultReporter.default) {
  */
 class JestReporter extends DefaultReporter {
   constructor(globalConfig) {
-    super();
-    this._globalConfig = Object.assign({}, this._globalConfig, globalConfig);
-    // See comments in @frontend-bindings/conventions-use-bili in bin/bili #IsCiServer
-    const processEnvKeys = Object.keys(process.env);
-    const isCI = processEnvKeys.includes('CI_SERVER');
-    this.IS_CI = isCI;
+    super()
+    this._globalConfig = Object.assign({}, this._globalConfig, globalConfig)
+    // See comments in @renoirb/conventions-use-bili in bin/bili #IsCiServer
+    const processEnvKeys = Object.keys(process.env)
+    const isCI = processEnvKeys.includes('CI_SERVER')
+    this.IS_CI = isCI
     // const message = `JestReporter in IS_CI ${isCI}`;
     // process.stdout.write('\n' + message + '\n\n');
   }
 
   log(message) {
-    process.stdout.write(message + '\n');
+    process.stdout.write(message + '\n')
   }
 }
 
-module.exports = JestReporter;
+module.exports = JestReporter

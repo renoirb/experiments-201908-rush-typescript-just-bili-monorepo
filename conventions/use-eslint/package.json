@@ -1,5 +1,5 @@
 {
-  "name": "@frontend-bindings/conventions-use-eslint",
+  "name": "@renoirb/conventions-use-eslint",
   "version": "1.0.1",
   "description": "Reusable ESLint configs",
   "repository": {
@@ -37,6 +37,6 @@
     "just-scripts": "~0.28.2"
   },
   "devDependencies": {
-    "@frontend-bindings/conventions-use-prettier": "~1.0.1"
+    "@renoirb/conventions-use-prettier": "~1.0.1"
   }
 }

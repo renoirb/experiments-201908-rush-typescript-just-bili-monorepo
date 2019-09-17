@@ -1,3 +1,3 @@
-# @frontend-bindings/conventions-use-eslint
+# @renoirb/conventions-use-eslint
 
 Reusable ESLint configs

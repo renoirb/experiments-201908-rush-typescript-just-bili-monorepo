@@ -1,5 +1,5 @@
 {
-  "name": "@frontend-bindings/conventions-use-prettier",
+  "name": "@renoirb/conventions-use-prettier",
   "version": "1.0.1",
   "description": "Reusable Prettier configs",
   "repository": {

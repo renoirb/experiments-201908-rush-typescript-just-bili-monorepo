@@ -1,3 +1,3 @@
-# @frontend-bindings/conventions-use-jest
+# @renoirb/conventions-use-jest
 
 Reusable Jest configs

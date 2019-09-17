@@ -45,7 +45,7 @@
      * The default value is false to avoid legacy compatibility issues.
      * It is strongly recommended to set strictPeerDependencies=true.
      */
-    "strictPeerDependencies": true,
+    "strictPeerDependencies": true
     /**
      * Configures the strategy used to select versions during installation.
      *
@@ -355,65 +355,65 @@
 
     // Tooling. Things other things will use. Regardless whether the code is PART of that present monorepo, they can be imported from any Node.js/JavaScript project.
     {
-      "packageName": "@frontend-bindings/conventions-use-bili",
+      "packageName": "@renoirb/conventions-use-bili",
       "projectFolder": "conventions/use-bili",
       "versionPolicyName": "tooling",
       "reviewCategory": "conventions"
     },
     {
-      "packageName": "@frontend-bindings/conventions-use-eslint",
+      "packageName": "@renoirb/conventions-use-eslint",
       "projectFolder": "conventions/use-eslint",
       "versionPolicyName": "tooling",
       "reviewCategory": "conventions"
     },
     {
-      "packageName": "@frontend-bindings/conventions-use-jest",
+      "packageName": "@renoirb/conventions-use-jest",
       "projectFolder": "conventions/use-jest",
       "versionPolicyName": "tooling",
       "reviewCategory": "conventions"
     },
     {
-      "packageName": "@frontend-bindings/conventions-use-prettier",
+      "packageName": "@renoirb/conventions-use-prettier",
       "projectFolder": "conventions/use-prettier",
       "versionPolicyName": "tooling",
       "reviewCategory": "conventions"
     },
     {
-      "packageName": "@frontend-bindings/conventions-use-typescript-3",
+      "packageName": "@renoirb/conventions-use-typescript-3",
       "projectFolder": "conventions/use-typescript-3",
       "versionPolicyName": "tooling",
       "reviewCategory": "conventions"
     },
 
     {
-      "packageName": "@frontend-bindings/tools-bundling-helpers",
+      "packageName": "@renoirb/tools-bundling-helpers",
       "projectFolder": "tools/bundling-helpers",
       "versionPolicyName": "tooling",
       "reviewCategory": "tools"
     },
     {
-      "packageName": "@frontend-bindings/tools-normalize-package-json",
+      "packageName": "@renoirb/tools-normalize-package-json",
       "projectFolder": "tools/normalize-package-json",
       "versionPolicyName": "tooling",
       "reviewCategory": "tools"
     },
 
     {
-      "packageName": "@frontend-bindings/date-epoch",
+      "packageName": "@renoirb/date-epoch",
       "projectFolder": "packages/date-epoch",
       "versionPolicyName": "libraries",
       "reviewCategory": "libraries"
     },
     {
-      "packageName": "@frontend-bindings/validatable",
+      "packageName": "@renoirb/validatable",
       "projectFolder": "packages/validatable",
       "versionPolicyName": "libraries",
       "reviewCategory": "libraries"
     },
     {
-      "packageName": "@frontend-bindings/polyfill-latency",
+      "packageName": "@renoirb/polyfill-latency",
       "projectFolder": "polyfill/latency",
-      "shouldPublish": true,
+      "shouldPublish": false,
       "reviewCategory": "libraries"
     }
   ]

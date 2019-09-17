@@ -33,7 +33,7 @@ if (usePackagedPrettierConfig) {
 process.argv.push('--ignore-path')
 process.argv.push(localConfigIgnorePath)
 
-const messagePrefix = '@frontend-bindings/conventions-use-prettier/bin/prettier'
+const messagePrefix = '@renoirb/conventions-use-prettier/bin/prettier'
 const message = usePackagedPrettierConfig ? ` --config ${localConfigPath}\n` : '\n'
 console.log(messagePrefix+message)
 

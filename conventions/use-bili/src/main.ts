@@ -2,7 +2,7 @@ import { Config } from 'bili'
 import { plugins as initPlugins } from './plugins'
 import { input as initInput, BiliInputDescriptor } from './input'
 
-// import { default as bundlingHelpersMain } from '@frontend-bindings/tools-bundling-helpers';
+// import { default as bundlingHelpersMain } from '@renoirb/tools-bundling-helpers';
 // import { resolve, dirname } from 'path';
 
 /**

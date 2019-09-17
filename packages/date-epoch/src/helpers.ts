@@ -64,7 +64,7 @@ export const getTimeDaysAgoMilliseconds = (
 export const getTimeNowUtcMillliseconds = (): number => new Date().getTime() // Always UTC!
 
 /*
- * See @frontend-bindings/webapi-utils
+ * See @renoirb/webapi-utils
  * in mustHaveDateUrlQueryParam middleware.
  */
 export const getDaysAgoMillisecondsAsTuple = (days = 1): [number, number] => {

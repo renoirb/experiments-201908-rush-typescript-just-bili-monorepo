@@ -56,7 +56,7 @@ const babel = (env: NodeJS.ProcessEnv = {}) => {
     runtimeHelpers: true,
     presets: [
       [
-        // '@frontend-bindings/conventions-use-bili',
+        // '@renoirb/conventions-use-bili',
         '@babel/preset-env',
         {
           /**

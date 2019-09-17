@@ -61,7 +61,7 @@ task('test', jestTask(jestTaskOptions))
 
 const eslintTaskOptions = {
   ignorePath: resolveCwd(
-    './node_modules/@frontend-bindings/conventions-use-eslint/.eslintignore',
+    './node_modules/@renoirb/conventions-use-eslint/.eslintignore',
   ),
   fix: argv().fix ? true : false,
   _: ['--report-unused-disable-directives'],
@@ -74,7 +74,7 @@ task('lint', eslintTask(eslintTaskOptions))
  * See tools/bundling-helpers/src/just-tasks/eslint.ts
  *
  * ```js
- * const { justTasksEslint } = require('@frontend-bindings/tools-bundling-helpers');
+ * const { justTasksEslint } = require('@renoirb/tools-bundling-helpers');
  * const eslintTaskTaskOptions = {
  *   config: resolveCwd('./.eslintrc.js'),
  * };

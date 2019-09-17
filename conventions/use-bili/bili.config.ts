@@ -2,7 +2,7 @@ import { Config, ConfigOutput } from 'bili'
 import {
   default as bundlingHelpersMain,
   PackageIdentityInterface,
-} from '@frontend-bindings/tools-bundling-helpers'
+} from '@renoirb/tools-bundling-helpers'
 
 const input = { index: 'src/index.ts' }
 
@@ -14,7 +14,7 @@ const output: ConfigOutput = {
 }
 
 let banner = true
-const vendor = '@frontend-bindings/conventions-use-bili Author'
+const vendor = '@renoirb/conventions-use-bili Author'
 
 /**
  * What this package will encapsulate.

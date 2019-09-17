@@ -5,7 +5,7 @@ import { cached } from './utils'
 
 /**
  * ------------------------------------------------------------------------------------------
- * @TODO: Clean this up and see to leverage @frontend-bindings/tools-normalize-package-json
+ * @TODO: Clean this up and see to leverage @renoirb/tools-normalize-package-json
  * See https://github.com/nuxt/nuxt.js/pull/6373
  * ------------------------------------------------------------------------------------------
  */
@@ -19,7 +19,7 @@ export interface DependenciesHashMap {
 }
 
 /**
- * Strip off @ sign in package name (e.g. "@frontend-bindings/foo-bar" => "frontend-bindings-foo-bar")
+ * Strip off @ sign in package name (e.g. "@renoirb/foo-bar" => "renoirb-foo-bar")
  */
 export const packageNameToModuleName = cached((name: string): string =>
   camelCase(name.replace(/@/g, '').replace('/', '-')),

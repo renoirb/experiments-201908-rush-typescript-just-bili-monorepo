@@ -1,5 +1,5 @@
 {
-  "name": "@frontend-bindings/tools-bundling-helpers",
+  "name": "@renoirb/tools-bundling-helpers",
   "version": "1.0.1",
   "repository": {
     "type": "git",
@@ -37,11 +37,11 @@
     "rimraf": "~3.0.0"
   },
   "devDependencies": {
-    "@frontend-bindings/conventions-use-eslint": "~1.0.1",
-    "@frontend-bindings/conventions-use-jest": "~1.0.1",
-    "@frontend-bindings/conventions-use-prettier": "~1.0.1",
-    "@frontend-bindings/conventions-use-typescript-3": "~1.0.1",
     "@microsoft/node-core-library": "~3.14.0",
+    "@renoirb/conventions-use-eslint": "~1.0.1",
+    "@renoirb/conventions-use-jest": "~1.0.1",
+    "@renoirb/conventions-use-prettier": "~1.0.1",
+    "@renoirb/conventions-use-typescript-3": "~1.0.1",
     "@types/core-js": "^2.5.2",
     "@types/jest": "^24.0.15",
     "@types/node": "^10.14.17",
