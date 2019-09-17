@@ -1,6 +1,6 @@
 {
   "name": "@frontend-bindings/tools-bundling-helpers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
@@ -24,7 +24,7 @@
     "build:cjs": "bili --target node --format cjs --input src/index.ts --file-name index.js --quiet",
     "build:esm": "bili --target node --format esm --input src/index.ts --file-name index.esm.js --quiet",
     "clean": "./bin/rimraf .rpt2_cache dist *.*.log",
-    "fix": "use-prettier **/*.{js,ts} --write",
+    "fix": "use-prettier --write '**/*.{js,ts}'",
     "just-scripts": "just-scripts",
     "lint": "just-scripts lint",
     "lint:fix": "just-scripts lint --fix",
@@ -37,10 +37,10 @@
     "rimraf": "~3.0.0"
   },
   "devDependencies": {
-    "@frontend-bindings/conventions-use-eslint": "~1.0.0",
-    "@frontend-bindings/conventions-use-jest": "~1.0.0",
-    "@frontend-bindings/conventions-use-prettier": "~1.0.0",
-    "@frontend-bindings/conventions-use-typescript-3": "~1.0.0",
+    "@frontend-bindings/conventions-use-eslint": "~1.0.1",
+    "@frontend-bindings/conventions-use-jest": "~1.0.1",
+    "@frontend-bindings/conventions-use-prettier": "~1.0.1",
+    "@frontend-bindings/conventions-use-typescript-3": "~1.0.1",
     "@microsoft/node-core-library": "~3.14.0",
     "@types/core-js": "^2.5.2",
     "@types/jest": "^24.0.15",

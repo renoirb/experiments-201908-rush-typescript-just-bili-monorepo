@@ -16,7 +16,7 @@
    * path segment in the "$schema" field for all your Rush config files.  This will ensure
    * correct error-underlining and tab-completion for editors such as VS Code.
    */
-  "rushVersion": "5.11.2",
+  "rushVersion": "5.12.1",
 
   /**
    * The next field selects which package manager should be installed and determines its version.
@@ -26,7 +26,7 @@
    * Specify one of: "pnpmVersion", "npmVersion", or "yarnVersion".  See the Rush documentation
    * for details about these alternatives.
    */
-  "pnpmVersion": "3.7.5",
+  "pnpmVersion": "3.8.1",
 
   // "npmVersion": "4.5.0",
   // "yarnVersion": "1.9.4",
@@ -353,60 +353,61 @@
     //   "reviewCategory": "tools"
     // }
 
+    // Tooling. Things other things will use. Regardless whether the code is PART of that present monorepo, they can be imported from any Node.js/JavaScript project.
     {
       "packageName": "@frontend-bindings/conventions-use-bili",
       "projectFolder": "conventions/use-bili",
-      "shouldPublish": true,
+      "versionPolicyName": "tooling",
       "reviewCategory": "conventions"
     },
     {
       "packageName": "@frontend-bindings/conventions-use-eslint",
       "projectFolder": "conventions/use-eslint",
-      "shouldPublish": true,
+      "versionPolicyName": "tooling",
       "reviewCategory": "conventions"
     },
     {
       "packageName": "@frontend-bindings/conventions-use-jest",
       "projectFolder": "conventions/use-jest",
-      "shouldPublish": true,
+      "versionPolicyName": "tooling",
       "reviewCategory": "conventions"
     },
     {
       "packageName": "@frontend-bindings/conventions-use-prettier",
       "projectFolder": "conventions/use-prettier",
-      "shouldPublish": true,
+      "versionPolicyName": "tooling",
       "reviewCategory": "conventions"
     },
     {
       "packageName": "@frontend-bindings/conventions-use-typescript-3",
       "projectFolder": "conventions/use-typescript-3",
-      "shouldPublish": true,
+      "versionPolicyName": "tooling",
       "reviewCategory": "conventions"
     },
 
     {
       "packageName": "@frontend-bindings/tools-bundling-helpers",
       "projectFolder": "tools/bundling-helpers",
-      "shouldPublish": true,
+      "versionPolicyName": "tooling",
       "reviewCategory": "tools"
     },
     {
       "packageName": "@frontend-bindings/tools-normalize-package-json",
       "projectFolder": "tools/normalize-package-json",
-      "shouldPublish": true,
+      "versionPolicyName": "tooling",
       "reviewCategory": "tools"
     },
 
     {
       "packageName": "@frontend-bindings/date-epoch",
       "projectFolder": "packages/date-epoch",
-      "shouldPublish": true,
+      "versionPolicyName": "libraries",
       "reviewCategory": "libraries"
     },
     {
       "packageName": "@frontend-bindings/validatable",
       "projectFolder": "packages/validatable",
-      "shouldPublish": true,
+      "versionPolicyName": "libraries",
       "reviewCategory": "libraries"
     },
     {

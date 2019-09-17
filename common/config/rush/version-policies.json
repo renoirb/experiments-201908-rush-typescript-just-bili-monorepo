@@ -87,4 +87,17 @@
   //    */
   //   "exemptFromRushChange": false
   // }
+
+  {
+    "policyName": "tooling",
+    "definitionName": "lockStepVersion",
+    "version": "1.0.1",
+    "nextBump": "patch"
+  },
+  {
+    "policyName": "libraries",
+    "definitionName": "lockStepVersion",
+    "version": "1.0.1",
+    "nextBump": "patch"
+  }
 ]

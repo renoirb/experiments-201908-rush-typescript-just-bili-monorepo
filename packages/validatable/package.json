@@ -1,6 +1,6 @@
 {
   "name": "@frontend-bindings/validatable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Add validation rules to an object, and ability to check if a given string passes the rules",
   "repository": {
     "type": "git",
@@ -36,12 +36,12 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.4.0",
-    "@frontend-bindings/conventions-use-bili": "~1.0.0",
-    "@frontend-bindings/conventions-use-eslint": "~1.0.0",
-    "@frontend-bindings/conventions-use-jest": "~1.0.0",
-    "@frontend-bindings/conventions-use-prettier": "~1.0.0",
-    "@frontend-bindings/conventions-use-typescript-3": "~1.0.0",
-    "@frontend-bindings/tools-bundling-helpers": "~1.0.0",
+    "@frontend-bindings/conventions-use-bili": "~1.0.1",
+    "@frontend-bindings/conventions-use-eslint": "~1.0.1",
+    "@frontend-bindings/conventions-use-jest": "~1.0.1",
+    "@frontend-bindings/conventions-use-prettier": "~1.0.1",
+    "@frontend-bindings/conventions-use-typescript-3": "~1.0.1",
+    "@frontend-bindings/tools-bundling-helpers": "~1.0.1",
     "@types/jest": "^24.0.15",
     "@types/node": "^10.14.17",
     "core-js": "^3.1.4",

@@ -1,6 +1,6 @@
 {
   "name": "@frontend-bindings/conventions-use-jest",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Reusable Jest configs",
   "repository": {
     "type": "git",
@@ -30,7 +30,7 @@
     "ts-jest": "^24.0.2"
   },
   "devDependencies": {
-    "@frontend-bindings/conventions-use-prettier": "~1.0.0",
+    "@frontend-bindings/conventions-use-prettier": "~1.0.1",
     "@types/babel__core": "^7.1.2",
     "@types/jest": "^24.0.15"
   }

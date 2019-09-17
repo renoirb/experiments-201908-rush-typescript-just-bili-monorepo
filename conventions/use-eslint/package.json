@@ -1,6 +1,6 @@
 {
   "name": "@frontend-bindings/conventions-use-eslint",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Reusable ESLint configs",
   "repository": {
     "type": "git",
@@ -37,6 +37,6 @@
     "just-scripts": "~0.28.2"
   },
   "devDependencies": {
-    "@frontend-bindings/conventions-use-prettier": "~1.0.0"
+    "@frontend-bindings/conventions-use-prettier": "~1.0.1"
   }
 }

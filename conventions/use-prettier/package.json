@@ -1,6 +1,6 @@
 {
   "name": "@frontend-bindings/conventions-use-prettier",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Reusable Prettier configs",
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
   },
   "scripts": {
     "build": "",
-    "fix": "./bin/prettier **/*.{js,ts} --write"
+    "fix": "./bin/prettier --write '**/*.{js,ts}'"
   },
   "dependencies": {
     "prettier": "~1.18.0",

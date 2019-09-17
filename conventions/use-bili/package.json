@@ -1,6 +1,6 @@
 {
   "name": "@frontend-bindings/conventions-use-bili",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Reusable Babel,Rollup configs leveraging https://github.com/egoist/bili",
   "repository": {
     "type": "git",
@@ -42,11 +42,11 @@
     "rollup-plugin-typescript2": "^0.22.1"
   },
   "devDependencies": {
-    "@frontend-bindings/conventions-use-eslint": "~1.0.0",
-    "@frontend-bindings/conventions-use-jest": "~1.0.0",
-    "@frontend-bindings/conventions-use-prettier": "~1.0.0",
-    "@frontend-bindings/conventions-use-typescript-3": "~1.0.0",
-    "@frontend-bindings/tools-bundling-helpers": "~1.0.0",
+    "@frontend-bindings/conventions-use-eslint": "~1.0.1",
+    "@frontend-bindings/conventions-use-jest": "~1.0.1",
+    "@frontend-bindings/conventions-use-prettier": "~1.0.1",
+    "@frontend-bindings/conventions-use-typescript-3": "~1.0.1",
+    "@frontend-bindings/tools-bundling-helpers": "~1.0.1",
     "@microsoft/node-core-library": "~3.14.0",
     "@types/jest": "^24.0.15",
     "@types/node": "^10.14.17",
