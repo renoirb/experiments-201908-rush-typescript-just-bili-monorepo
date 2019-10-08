@@ -415,6 +415,12 @@
       "projectFolder": "polyfill/latency",
       "shouldPublish": false,
       "reviewCategory": "libraries"
+    },
+    {
+      "packageName": "@renoirb/polyfill-for-of-example",
+      "projectFolder": "polyfill/for-of-example",
+      "shouldPublish": false,
+      "reviewCategory": "libraries"
     }
   ]
 }

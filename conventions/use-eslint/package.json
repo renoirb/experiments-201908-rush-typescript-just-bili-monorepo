@@ -37,6 +37,6 @@
     "just-scripts": "~0.28.2"
   },
   "devDependencies": {
-    "@renoirb/conventions-use-prettier": "~1.0.1"
+    "@renoirb/conventions-use-prettier": "^1.0.1"
   }
 }

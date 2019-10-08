@@ -1,0 +1,54 @@
+{
+  "name": "@renoirb/polyfill-for-of-example",
+  "version": "1.0.0-dev.0",
+  "private": true,
+  "description": "for of in ES5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
+    "directory": "polyfill/for-of-example"
+  },
+  "license": "UNLICENSED",
+  "files": [
+    "dist",
+    "alpha.js"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "use-run-all build:*",
+    "build:alpha": "use-cross-env BROWSERSLIST='last 1 chrome version' use-bili --target browser --format cjs --file-name index.alpha.js  --bundle-node-modules",
+    "build:bravo": "use-cross-env BROWSERSLIST='last 1 chrome version' use-bili --target browser --format esm --file-name index.bravo.js  --bundle-node-modules",
+    "build:charlie": "use-cross-env BROWSERSLIST='last 1 chrome version' use-bili --target browser --format iife --file-name index.charlie.js --module-name PolyfillFoo --bundle-node-modules",
+    "build:delta": "use-cross-env BROWSERSLIST='ie 10' use-bili --target browser --format iife --file-name index.delta.js --module-name PolyfillFoo --bundle-node-modules",
+    "build:ie6to8": "use-cross-env BROWSERSLIST='ie 6-8' use-bili --target browser --format umd --module-name PolyfillFoo --file-name ie6to8.js --bundle-node-modules",
+    "build:ie6to8cjs": "use-cross-env BROWSERSLIST='ie 6-8' use-bili --target browser --format cjs --module-name PolyfillFoo --file-name ie6to8.cjs.js --bundle-node-modules",
+    "build:main": "use-bili --target browser --format cjs --file-name index.js",
+    "clean": "use-rimraf .rpt2_cache dist *.*.log",
+    "fix": "use-prettier --write",
+    "just-scripts": "just-scripts",
+    "lint": "just-scripts lint",
+    "lint:fix": "just-scripts lint --fix",
+    "test": "use-jest --detectOpenHandles",
+    "test:snapshots": "use-jest --detectOpenHandles -u"
+  },
+  "dependencies": {
+    "@babel/runtime-corejs3": "~7.5.5"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "7.5.5",
+    "@babel/preset-env": "^7.4.0",
+    "@renoirb/conventions-use-bili": "^1.0.1",
+    "@renoirb/conventions-use-eslint": "^1.0.1",
+    "@renoirb/conventions-use-jest": "^1.0.1",
+    "@renoirb/conventions-use-prettier": "^1.0.1",
+    "@renoirb/conventions-use-typescript-3": "^1.0.1",
+    "@renoirb/tools-bundling-helpers": "^1.0.1",
+    "@types/jest": "^24.0.15",
+    "@types/node": "^10.14.17",
+    "core-js": "^3.1.4",
+    "just-scripts": "~0.28.2",
+    "tslib": "^1.10.0"
+  }
+}
