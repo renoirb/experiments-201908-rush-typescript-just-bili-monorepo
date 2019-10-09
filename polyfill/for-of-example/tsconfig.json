@@ -1,7 +1,10 @@
 {
   "extends": "./node_modules/@renoirb/conventions-use-typescript-3/includes/tsconfig.json",
   "compilerOptions": {
-    "allowJs": true
+    "declaration": false,
+    "declarationMap": false,
+    "allowJs": true,
+    "outDir": "dist"
   },
   "include": ["src"],
   "exclude": ["src/__tests__"]

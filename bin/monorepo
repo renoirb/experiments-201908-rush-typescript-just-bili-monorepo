@@ -1,0 +1,172 @@
+#!/usr/bin/env bash
+
+#
+# MonoRepo helper utility to manage code releases
+#
+# Author: Renoir Boulanger <renoir.boulanger@cgi.com>
+#
+# Some other cool bash patterns in
+# https://gist.github.com/renoirb/361e4e2817341db4be03b8f667338d47
+#
+# For the release process, refer to this ticket:
+# https://github.com/microsoft/web-build-tools/issues/1522
+#
+# TIP:
+# Before commiting changes in this file, make sure you run shellcheck and no messages are shown
+#
+# > shellcheck bin/monorepo
+#
+# For publishing, we have to do this from the maintainer's workstation, not GitLab.
+#
+# To push packages to Nexus, you need to give your Authentication token to Rush.
+# The Authentication token is a base64 string of your Nexus registry account credentials.
+# Its a semi-column separated values for username:password. Plug in your Nexus username and password.
+# Paste the value in ~/.npmrc at `_auth`
+#
+# > echo -n 'renoirb:password' | openssl base64
+#
+# For a successful publish, make sure you have ~/.npmrc with the following lines:
+#
+# > @renoirb:registry=https://nexus.foo.example.org:50043/repository/npm-hosted/
+# > email=renoirb@example.org
+# > always-auth=true
+# > _auth=...
+#
+# Then:
+# > bin/monorepo info
+# > export VERSION_POLICY=libraries
+# > bin/monorepo version
+# > bin/monorepo publish
+#
+# To get a directory with archives:
+# > bin/monorepo pack
+#
+
+set -e
+
+
+################################################################################
+# Functions. That could be distributed and re-used.
+
+function must_command_exist()
+{
+    command -v "${1}" >/dev/null 2>&1 || { echo >&2 "Command ${1} must exist."; exit 1; }
+}
+
+# https://stackoverflow.com/questions/11362250/in-bash-how-do-i-test-if-a-variable-is-defined-in-u-mode#answer-19874099
+function is_var_defined()
+{
+    if [ $# -ne 1 ]
+    then
+        echo "Expected exactly one argument: variable name as string, e.g., 'my_var'"
+        exit 1
+    fi
+    # Tricky.  Since Bash option 'set -u' may be enabled, we cannot directly test if a variable
+    # is defined with this construct: [ ! -z "$var" ].  Instead, we must use default value
+    # substitution with this construct: [ ! -z "${var:-}" ].  Normally, a default value follows the
+    # operator ':-', but here we leave it blank for empty (null) string.  Finally, we need to
+    # substitute the text from $1 as 'var'.  This is not allowed directly in Bash with this
+    # construct: [ ! -z "${$1:-}" ].  We need to use indirection with eval operator.
+    # Example: $1="var"
+    # Expansion for eval operator: "[ ! -z \${$1:-} ]" -> "[ ! -z \${var:-} ]"
+    # Code  execute: [ ! -z ${var:-} ]
+    eval "[ ! -z \${$1:-} ]"
+    return $?  # Pedantic.
+}
+
+function must_var_defined()
+{
+    is_var_defined "$1" || { echo >&2 "Variable ${1} is not defined and must exist. Aborting."; exit 1; }
+}
+
+function error { printf "Error: %s \n " "$@" >&2; exit 1; }
+
+function policy_names () {
+  npx strip-json-comments-cli common/config/rush/version-policies.json | jq .[].policyName
+}
+
+function list_versions () {
+  node common/scripts/install-run-rush.js list --version
+}
+
+function action_version () {
+  must_var_defined VERSION_POLICY
+  node common/scripts/install-run-rush.js version --bump --version-policy "${VERSION_POLICY}" --target-branch "${TARGET_BRANCH=master}"
+}
+
+function action_publish () {
+  must_var_defined VERSION_POLICY
+  must_var_defined REGISTRY
+  node common/scripts/install-run-rush.js publish --publish --apply --include-all --target-branch "${TARGET_BRANCH=master}" --version-policy "${VERSION_POLICY}" --set-access-level public -r "${REGISTRY}"
+  node common/scripts/install-run-rush.js publish --publish --pack --include-all --release-folder dist --apply-git-tags-on-pack --apply --target-branch "${TARGET_BRANCH=master}"
+}
+
+function action_pack () {
+  node common/scripts/install-run-rush.js clean
+  node common/scripts/install-run-rush.js rebuild
+  node common/scripts/install-run-rush.js publish --publish --pack --include-all --release-folder dist
+}
+
+function action_info () {
+  printf "\n\nAvailable packages:\n"
+  list_versions
+  printf "\n\nAvailable version policies:\n"
+  policy_names
+  printf "\n\n"
+}
+
+function display_usage() {
+    echo -e "\n"
+    echo "MonoRepo helper utility to manage code releases."
+    echo -e "\nUsage:\n  ${0} <ACTION>\n\n"
+    echo -e "<ACTION> being one of:"
+    printf "  * %s\n"  "${switchValidActions[@]}"
+    echo -e "\n"
+    echo -e "Examples:"
+    echo -e "  ${0}"
+    echo -e "  ${0} pack"
+    echo -e "\n"
+}
+
+################################################################################
+# Sanity checks before executing anything else.
+
+must_command_exist git
+must_command_exist jq
+must_command_exist node
+must_command_exist npx
+
+################################################################################
+# VALIDATION LOGIC DATA
+switchValidActions=(info version publish pack)
+#REGISTRY="${MONOREPO_REGISTRY=https://nexus.foo.example.org:50043/repository/npm-hosted/}"
+REGISTRY="${MONOREPO_REGISTRY=https://registry.npmjs.com/}"
+
+################################################################################
+# PRE EXECUTION
+
+if [ $# -ne 1 ]; then
+  display_usage
+  exit
+fi
+
+if [[ ! "${switchValidActions[*]}" =~ ${1} ]]; then
+    error "Invalid action \"${1}\". It must be one of: ${switchValidActions[*]}"
+fi
+ACTION="${1^^}"
+
+################################################################################
+# EXECUTION
+
+if [[ $ACTION == "INFO" ]]; then
+  action_info
+fi
+if [[ $ACTION == "VERSION" ]]; then
+  action_version
+fi
+if [[ $ACTION == "PUBLISH" ]]; then
+  action_publish
+fi
+if [[ $ACTION == "PACK" ]]; then
+  action_pack
+fi
