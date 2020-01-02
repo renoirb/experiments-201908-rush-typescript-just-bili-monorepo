@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Make TypeScript and TSLib peerDependency",
+      "packageName": "@renoirb/conventions-use-bili",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@renoirb/conventions-use-bili",
+  "email": "hello@renoirboulanger.com"
+}

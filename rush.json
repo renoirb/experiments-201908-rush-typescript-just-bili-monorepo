@@ -208,7 +208,7 @@
      * your PR branch, and in this situation "rush change" will also automatically invoke "git fetch"
      * to retrieve the latest activity for the remote master branch.
      */
-    "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git"
+    "url": "git@github.com:renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git"
   },
 
   /**

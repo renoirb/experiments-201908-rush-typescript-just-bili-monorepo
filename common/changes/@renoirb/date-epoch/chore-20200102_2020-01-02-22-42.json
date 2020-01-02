@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Make TypeScript and TSLib peerDependency",
+      "packageName": "@renoirb/date-epoch",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@renoirb/date-epoch",
+  "email": "hello@renoirboulanger.com"
+}

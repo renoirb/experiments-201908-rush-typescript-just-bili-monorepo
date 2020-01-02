@@ -184,11 +184,11 @@
     },
     {
       "name": "tslib",
-      "allowedCategories": [ "conventions", "libraries" ]
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
       "name": "typescript",
-      "allowedCategories": [ "conventions" ]
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     }
   ]
 }

@@ -90,14 +90,10 @@
 
   {
     "policyName": "tooling",
-    "definitionName": "lockStepVersion",
-    "version": "1.0.1",
-    "nextBump": "patch"
+    "definitionName": "individualVersion"
   },
   {
     "policyName": "libraries",
-    "definitionName": "lockStepVersion",
-    "version": "1.0.1",
-    "nextBump": "patch"
+    "definitionName": "individualVersion"
   }
 ]

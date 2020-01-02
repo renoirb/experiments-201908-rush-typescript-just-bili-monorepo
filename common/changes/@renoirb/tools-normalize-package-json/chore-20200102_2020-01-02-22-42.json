@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Make TypeScript and TSLib peerDependency",
+      "packageName": "@renoirb/tools-normalize-package-json",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@renoirb/tools-normalize-package-json",
+  "email": "hello@renoirboulanger.com"
+}
