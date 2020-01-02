@@ -1,6 +1,6 @@
 {
   "name": "@renoirb/conventions-use-bili",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Reusable Babel,Rollup configs leveraging https://github.com/egoist/bili",
   "repository": {
     "type": "git",
@@ -46,8 +46,8 @@
     "@renoirb/conventions-use-eslint": "^1.0.1",
     "@renoirb/conventions-use-jest": "^1.0.1",
     "@renoirb/conventions-use-prettier": "^1.0.1",
-    "@renoirb/conventions-use-typescript-3": "^1.0.1",
-    "@renoirb/tools-bundling-helpers": "^1.0.1",
+    "@renoirb/conventions-use-typescript-3": "^1.0.2",
+    "@renoirb/tools-bundling-helpers": "^1.0.2",
     "@types/jest": "^24.0.15",
     "@types/node": "^10.14.17",
     "bili": "^4.8.1",

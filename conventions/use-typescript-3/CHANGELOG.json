@@ -1,0 +1,17 @@
+{
+  "name": "@renoirb/conventions-use-typescript-3",
+  "entries": [
+    {
+      "version": "1.0.2",
+      "tag": "@renoirb/conventions-use-typescript-3_v1.0.2",
+      "date": "Thu, 02 Jan 2020 23:25:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Make TypeScript and TSLib peerDependency"
+          }
+        ]
+      }
+    }
+  ]
+}

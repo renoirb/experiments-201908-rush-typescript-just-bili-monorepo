@@ -1,0 +1,22 @@
+{
+  "name": "@renoirb/tools-bundling-helpers",
+  "entries": [
+    {
+      "version": "1.0.2",
+      "tag": "@renoirb/tools-bundling-helpers_v1.0.2",
+      "date": "Thu, 02 Jan 2020 23:25:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Make TypeScript and TSLib peerDependency"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@renoirb/conventions-use-typescript-3\" from `^1.0.1` to `^1.0.2`"
+          }
+        ]
+      }
+    }
+  ]
+}

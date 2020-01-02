@@ -1,6 +1,6 @@
 {
   "name": "@renoirb/tools-normalize-package-json",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Copy-Pasta from https://github.com/nuxt/nuxt.js/pull/6373 also a JavaScript sample to work on migrating many projects",
   "homepage": "https://github.com/nuxt/nuxt.js/pull/6373",
   "repository": {
@@ -39,12 +39,12 @@
   "devDependencies": {
     "@babel/plugin-transform-runtime": "7.5.5",
     "@babel/preset-env": "^7.4.0",
-    "@renoirb/conventions-use-bili": "^1.0.1",
+    "@renoirb/conventions-use-bili": "^1.0.2",
     "@renoirb/conventions-use-eslint": "^1.0.1",
     "@renoirb/conventions-use-jest": "^1.0.1",
     "@renoirb/conventions-use-prettier": "^1.0.1",
-    "@renoirb/conventions-use-typescript-3": "^1.0.1",
-    "@renoirb/tools-bundling-helpers": "^1.0.1",
+    "@renoirb/conventions-use-typescript-3": "^1.0.2",
+    "@renoirb/tools-bundling-helpers": "^1.0.2",
     "@types/jest": "^24.0.15",
     "@types/node": "^10.14.17",
     "core-js": "^3.1.4",

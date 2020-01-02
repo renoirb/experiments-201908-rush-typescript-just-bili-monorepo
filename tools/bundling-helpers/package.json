@@ -1,6 +1,6 @@
 {
   "name": "@renoirb/tools-bundling-helpers",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
@@ -41,7 +41,7 @@
     "@renoirb/conventions-use-eslint": "^1.0.1",
     "@renoirb/conventions-use-jest": "^1.0.1",
     "@renoirb/conventions-use-prettier": "^1.0.1",
-    "@renoirb/conventions-use-typescript-3": "^1.0.1",
+    "@renoirb/conventions-use-typescript-3": "^1.0.2",
     "@types/core-js": "^2.5.2",
     "@types/jest": "^24.0.15",
     "@types/node": "^10.14.17",
