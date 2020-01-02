@@ -3,7 +3,7 @@
 #
 # MonoRepo helper utility to manage code releases
 #
-# Author: Renoir Boulanger <renoir.boulanger@cgi.com>
+# Author: Renoir Boulanger <contribs@renoirboulanger.com>
 #
 # Some other cool bash patterns in
 # https://gist.github.com/renoirb/361e4e2817341db4be03b8f667338d47
@@ -95,15 +95,13 @@ function action_version () {
 }
 
 function action_publish () {
-  must_var_defined VERSION_POLICY
   must_var_defined REGISTRY
-  node common/scripts/install-run-rush.js publish --publish --apply --include-all --target-branch "${TARGET_BRANCH=master}" --version-policy "${VERSION_POLICY}" --set-access-level public -r "${REGISTRY}"
-  node common/scripts/install-run-rush.js publish --publish --pack --include-all --release-folder dist --apply-git-tags-on-pack --apply --target-branch "${TARGET_BRANCH=master}"
+  node common/scripts/install-run-rush.js change -v
+  node common/scripts/install-run-rush.js publish --publish --pack --apply-git-tags-on-pack --include-all --target-branch "${TARGET_BRANCH=master}" --release-folder dist --add-commit-details --apply
+  node common/scripts/install-run-rush.js publish --publish --include-all --set-access-level public --registry "${REGISTRY}" --apply
 }
 
 function action_pack () {
-  node common/scripts/install-run-rush.js clean
-  node common/scripts/install-run-rush.js rebuild
   node common/scripts/install-run-rush.js publish --publish --pack --include-all --release-folder dist
 }
 

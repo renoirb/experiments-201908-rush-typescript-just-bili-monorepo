@@ -9,7 +9,7 @@ Object {
  *
  * LicenseRef-LICENSE
  *
- * © 2015-2019 ACME Corp.
+ * © 2015-2020 ACME Corp.
  */",
   "footer": "/** ACME Corp.  */",
 }
@@ -18,7 +18,7 @@ Object {
 exports[`createBannerInfo Snapshot sample 1`] = `
 Object {
   "author": "ACME Corp.",
-  "copyright": "Copyright (c) 2015-2019 ACME Corp.",
+  "copyright": "Copyright (c) 2015-2020 ACME Corp.",
   "license": "LicenseRef-LICENSE",
   "name": "assimilate",
   "vendor": "ACME Corp.",
@@ -29,7 +29,7 @@ Object {
 exports[`createBannerInfo Supports defining own author 1`] = `
 Object {
   "author": "Seven Of Nine <7.9@adjunct.3.unimatrix.1.borg>",
-  "copyright": "Copyright (c) 2015-2019 ACME Corp.",
+  "copyright": "Copyright (c) 2015-2020 ACME Corp.",
   "license": "LicenseRef-LICENSE",
   "name": "assimilate",
   "vendor": "ACME Corp.",
@@ -40,7 +40,7 @@ Object {
 exports[`createBannerInfo Supports defining own license 1`] = `
 Object {
   "author": "ACME Corp.",
-  "copyright": "Copyright (c) 2015-2019 ACME Corp.",
+  "copyright": "Copyright (c) 2015-2020 ACME Corp.",
   "license": "MIT",
   "name": "assimilate",
   "vendor": "ACME Corp.",

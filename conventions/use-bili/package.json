@@ -54,6 +54,8 @@
     "just-scripts": "~0.28.2",
     "rollup": "^1.1.2",
     "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-typescript2": "^0.22.1"
+    "rollup-plugin-typescript2": "^0.22.1",
+    "tslib": "^1.10.0",
+    "typescript": "^3.6.0"
   }
 }

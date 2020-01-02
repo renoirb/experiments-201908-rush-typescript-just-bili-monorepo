@@ -28,7 +28,7 @@ describe('createBannerInfo', () => {
     expect(subject).toHaveProperty('author', 'ACME Corp.')
     expect(subject).toHaveProperty(
       'copyright',
-      'Copyright (c) 2015-2019 ACME Corp.',
+      'Copyright (c) 2015-' + new Date().getFullYear() + ' ACME Corp.',
     )
     expect(subject).toHaveProperty('license', 'LicenseRef-LICENSE')
     expect(subject).toHaveProperty('name', 'assimilate')
@@ -68,6 +68,7 @@ describe('createBannerFooter', () => {
     const append = ['target: node', 'browserslist: node 10']
     const seed = createBannerInfo(packageFixture)
     const subject = createBannerFooter(seed, append)
+    const YYYY = new Date().getFullYear()
     expect(subject).toHaveProperty(
       'banner',
       `/**
@@ -80,7 +81,7 @@ describe('createBannerFooter', () => {
  *
  * LicenseRef-LICENSE
  *
- * © 2015-2019 ACME Corp.
+ * © 2015-${YYYY} ACME Corp.
  */`,
     )
     expect(subject).toHaveProperty('footer', `/** ACME Corp.  */`)

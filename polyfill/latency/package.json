@@ -47,6 +47,7 @@
     "@types/node": "^10.14.17",
     "core-js": "^3.1.4",
     "just-scripts": "~0.28.2",
-    "tslib": "^1.10.0"
+    "tslib": "^1.10.0",
+    "typescript": "^3.6.0"
   }
 }
