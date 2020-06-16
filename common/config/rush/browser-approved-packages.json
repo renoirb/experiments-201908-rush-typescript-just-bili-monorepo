@@ -31,6 +31,14 @@
       "allowedCategories": [ "conventions", "tools" ]
     },
     {
+      "name": "@microsoft/node-library-build",
+      "allowedCategories": [ "conventions", "tools" ]
+    },
+    {
+      "name": "@microsoft/rush-stack-compiler-3.7",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
       "name": "@renoirb/conventions-use-bili",
       "allowedCategories": [ "libraries", "tools" ]
     },
@@ -57,6 +65,18 @@
     {
       "name": "@renoirb/tools-bundling-helpers",
       "allowedCategories": [ "conventions", "libraries", "tools" ]
+    },
+    {
+      "name": "@rollup/plugin-babel",
+      "allowedCategories": [ "conventions", "tools" ]
+    },
+    {
+      "name": "@rushstack/eslint-config",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "@rushstack/node-core-library",
+      "allowedCategories": [ "conventions", "tools" ]
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
@@ -115,11 +135,27 @@
       "allowedCategories": [ "tools" ]
     },
     {
+      "name": "gulp",
+      "allowedCategories": [ "conventions", "tools" ]
+    },
+    {
+      "name": "identity-obj-proxy",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
       "name": "jest",
       "allowedCategories": [ "conventions", "libraries" ]
     },
     {
       "name": "jest-cli",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "jest-date-mock",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "jest-diff",
       "allowedCategories": [ "conventions" ]
     },
     {
@@ -143,6 +179,10 @@
       "allowedCategories": [ "tools" ]
     },
     {
+      "name": "papaparse",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
       "name": "prettier",
       "allowedCategories": [ "conventions" ]
     },
@@ -164,7 +204,7 @@
     },
     {
       "name": "rollup-plugin-babel",
-      "allowedCategories": [ "conventions" ]
+      "allowedCategories": [ "conventions", "tools" ]
     },
     {
       "name": "rollup-plugin-typescript2",
@@ -179,12 +219,20 @@
       "allowedCategories": [ "conventions" ]
     },
     {
+      "name": "ts-jest-transformer",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
       "name": "ts-node",
       "allowedCategories": [ "conventions" ]
     },
     {
       "name": "tslib",
       "allowedCategories": [ "conventions", "libraries", "tools" ]
+    },
+    {
+      "name": "type-fest",
+      "allowedCategories": [ "conventions" ]
     },
     {
       "name": "typescript",

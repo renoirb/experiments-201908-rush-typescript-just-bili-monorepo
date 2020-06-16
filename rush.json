@@ -1,39 +1,9 @@
-/**
- * This is the main configuration file for Rush.
- * For full documentation, please see https://rushjs.io
- */
 {
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
 
-  /**
-   * (Required) This specifies the version of the Rush engine to be used in this repo.
-   * Rush's "version selector" feature ensures that the globally installed tool will
-   * behave like this release, regardless of which version is installed globally.
-   *
-   * The common/scripts/install-run-rush.js automation script also uses this version.
-   *
-   * NOTE: If you upgrade to a new major version of Rush, you should replace the "v5"
-   * path segment in the "$schema" field for all your Rush config files.  This will ensure
-   * correct error-underlining and tab-completion for editors such as VS Code.
-   */
-  "rushVersion": "5.12.1",
+  "rushVersion": "5.24.4",
+  "pnpmVersion": "4.14.4",
 
-  /**
-   * The next field selects which package manager should be installed and determines its version.
-   * Rush installs its own local copy of the package manager to ensure that your build process
-   * is fully isolated from whatever tools are present in the local environment.
-   *
-   * Specify one of: "pnpmVersion", "npmVersion", or "yarnVersion".  See the Rush documentation
-   * for details about these alternatives.
-   */
-  "pnpmVersion": "3.8.1",
-
-  // "npmVersion": "4.5.0",
-  // "yarnVersion": "1.9.4",
-
-  /**
-   * Options that are only used when the PNPM package manager is selected
-   */
   "pnpmOptions": {
     /**
      * If true, then Rush will add the "--strict-peer-dependencies" option when invoking PNPM.
@@ -45,7 +15,7 @@
      * The default value is false to avoid legacy compatibility issues.
      * It is strongly recommended to set strictPeerDependencies=true.
      */
-    "strictPeerDependencies": true
+    "strictPeerDependencies": true,
     /**
      * Configures the strategy used to select versions during installation.
      *
@@ -69,7 +39,7 @@
    * Specify a SemVer range to ensure developers use a Node.js version that is appropriate
    * for your repo.
    */
-  "nodeSupportedVersionRange": ">=10.13.0 <11.0.0",
+  "nodeSupportedVersionRange": ">=10.13.0 <11.0.0 || >=12.13.0 <13.0.0 || >=14.0.0 <15.0.0",
 
   /**
    * Odd-numbered major versions of Node.js are experimental.  Even-numbered releases
@@ -144,10 +114,10 @@
      * or you could just have a single category called "default".
      */
     "reviewCategories": [
-      "libraries", // projects that we ship as dependency
-      "tools", // non-shipping projects that are part of the developer toolchain
-      "experiments", // experiments that should mostly be ignored by the review process
-      "conventions" // meta packages that contains development dependencies for code quality
+      "conventions", // Meta packages that contains development dependencies for code quality
+      "experiments", // Experiments that should mostly be ignored by the review process
+      "libraries",   // Projects that we ship as dependency
+      "tools",       // Non-Shipping projects that are part of the developer toolchain
     ],
 
     /**
@@ -156,7 +126,7 @@
      * if the underlying package was already approved, this would imply that the typings
      * are also approved.
      */
-    "ignoredNpmScopes": ["@types"]
+    "ignoredNpmScopes": ["@types", "@babel"]
   },
 
   /**
@@ -189,7 +159,7 @@
      * you might configure your system's trigger to look for a special string such as "[skip-ci]"
      * in the commit message, and then customize Rush's message to contain that string.
      */
-    "versionBumpCommitMessage": "Applying package updates. [skip-ci]"
+    "versionBumpCommitMessage": "chore(dependencies): apply packages version bumps"
   },
 
   "repository": {
@@ -388,12 +358,6 @@
     {
       "packageName": "@renoirb/tools-bundling-helpers",
       "projectFolder": "tools/bundling-helpers",
-      "versionPolicyName": "tooling",
-      "reviewCategory": "tools"
-    },
-    {
-      "packageName": "@renoirb/tools-normalize-package-json",
-      "projectFolder": "tools/normalize-package-json",
       "versionPolicyName": "tooling",
       "reviewCategory": "tools"
     },

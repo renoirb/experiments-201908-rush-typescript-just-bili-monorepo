@@ -95,6 +95,7 @@ function action_version () {
 }
 
 function action_publish () {
+  export CI_SERVER=convention-bili-minify-please
   must_var_defined REGISTRY
   node common/scripts/install-run-rush.js change -v
   node common/scripts/install-run-rush.js publish --publish --pack --apply-git-tags-on-pack --include-all --target-branch "${TARGET_BRANCH=master}" --release-folder dist --add-commit-details --apply

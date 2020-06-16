@@ -1,9 +1,0 @@
-{
-  "extends": "./node_modules/@renoirb/conventions-use-typescript-3/includes/tsconfig.json",
-  "compilerOptions": {
-    // See packages/validatable/tsconfig.json
-    "allowJs": true
-  },
-  "include": ["src"],
-  "exclude": ["src/__tests__"]
-}

@@ -20,7 +20,7 @@
      * instead of the latest version.
      */
     // Workaround for https://github.com/microsoft/web-build-tools/issues/1466
-    "eslint": "^6.0.0"
+    // "eslint": "^6.0.0"
   },
 
   /**

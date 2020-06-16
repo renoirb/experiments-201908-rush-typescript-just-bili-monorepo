@@ -9,10 +9,6 @@
     "directory": "polyfill/for-of-example"
   },
   "license": "UNLICENSED",
-  "files": [
-    "dist",
-    "alpha.js"
-  ],
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "browser": {
@@ -20,6 +16,10 @@
     "module": "dist/index.browser.esm.min.js"
   },
   "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "alpha.js"
+  ],
   "scripts": {
     "build": "use-run-all clean build:*",
     "build:browser-ie": "use-cross-env BROWSERSLIST='ie >= 10' use-bili --target browser --format iife --module-name ForOfExample --file-name index.browser.ie.js  --bundle-node-modules",
@@ -50,7 +50,7 @@
     "@renoirb/conventions-use-prettier": "^1.0.1",
     "@renoirb/conventions-use-typescript-3": "^1.0.2",
     "@renoirb/tools-bundling-helpers": "^1.0.2",
-    "@types/jest": "^24.0.15",
+    "@types/jest": "^25.1.3",
     "@types/node": "^10.14.17",
     "core-js": "^3.1.4",
     "just-scripts": "~0.28.2",
