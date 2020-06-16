@@ -1,6 +1,11 @@
 {
   "extends": "./node_modules/@renoirb/conventions-use-typescript-3/includes/tsconfig.json",
-  "compilerOptions": {},
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true
+  },
   "include": ["src"],
   "exclude": ["src/__tests__"]
 }

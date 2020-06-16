@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { getProcessCliArgValuePair, MaybeNodeProcessContext } from '..'
+import { MaybeNodeProcessContext, getProcessCliArgValuePair } from '../process'
 
 describe('getProcessCliArgValuePair', () => {
   it('Snapshot', () => {

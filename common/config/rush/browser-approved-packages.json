@@ -72,6 +72,10 @@
     },
     {
       "name": "@rushstack/eslint-config",
+      "allowedCategories": [ "conventions", "tools" ]
+    },
+    {
+      "name": "@rushstack/eslint-plugin",
       "allowedCategories": [ "conventions" ]
     },
     {
@@ -120,10 +124,22 @@
     },
     {
       "name": "eslint",
-      "allowedCategories": [ "conventions" ]
+      "allowedCategories": [ "conventions", "tools" ]
     },
     {
       "name": "eslint-plugin-promise",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "eslint-plugin-react",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "eslint-plugin-security",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "eslint-plugin-tsdoc",
       "allowedCategories": [ "conventions" ]
     },
     {
@@ -144,7 +160,7 @@
     },
     {
       "name": "jest",
-      "allowedCategories": [ "conventions", "libraries" ]
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
       "name": "jest-cli",
@@ -216,7 +232,7 @@
     },
     {
       "name": "ts-jest",
-      "allowedCategories": [ "conventions" ]
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
       "name": "ts-jest-transformer",

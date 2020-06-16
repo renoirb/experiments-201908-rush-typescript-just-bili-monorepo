@@ -1,4 +1,4 @@
-import { IPackageJson, PackageJsonLookup } from '@microsoft/node-core-library'
+import { IPackageJson, PackageJsonLookup } from '@rushstack/node-core-library'
 import { camelCase } from './manipulation'
 import { PeopleField } from './people-field'
 import { cached } from './utils'

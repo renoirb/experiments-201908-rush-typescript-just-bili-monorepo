@@ -1,4 +1,4 @@
-import { PackageJsonLookup, IPackageJson } from '@microsoft/node-core-library'
+import { PackageJsonLookup, IPackageJson } from '@rushstack/node-core-library'
 import {
   createBannerInfo,
   BannerFooter,

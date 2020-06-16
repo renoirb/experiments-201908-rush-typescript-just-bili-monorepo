@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { camelCase } from '..'
+import { camelCase } from '../manipulation'
 
 const assertionsGroupAlpha: ReadonlyArray<[string, string]> = [
   ['foo-bar-bazz', 'fooBarBazz'],

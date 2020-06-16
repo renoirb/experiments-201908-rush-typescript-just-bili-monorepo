@@ -39,6 +39,12 @@ export interface BannerInfo {
    * ```
    */
   copyright: string
+  /**
+   * The year in which the vendor’s legal entity got legally registered.
+   *
+   * Non standard to package.json schema, but useful for copyright range.
+   */
+  firstYear?: number
 }
 
 /**
@@ -77,8 +83,8 @@ ${banner.copyright}
 export const createBannerInfo = (
   pkg: Partial<PackageJson> = {},
   vendor = 'ACME Corp.',
+  firstYear = 2003,
 ): BannerInfo => {
-  const firstYear = 2015
   const currentYear = new Date().getFullYear()
 
   const author = `${vendor}`
@@ -90,6 +96,7 @@ export const createBannerInfo = (
     version: pkg.version || '',
     vendor,
     copyright: `Copyright (c) ${firstYear}-${currentYear} ${vendor}`,
+    firstYear,
   }
 
   if (pkg) {
@@ -117,9 +124,6 @@ export const createBannerFooter = (
   info: BannerInfo,
   appendLines: string[] = [],
 ): BannerFooter => {
-  const firstYear = 2015
-
-  const currentYear = new Date().getFullYear()
 
   const bannerLines: string[] = []
 
@@ -141,7 +145,7 @@ export const createBannerFooter = (
     bannerLines.push('')
   }
 
-  bannerLines.push(`© ${firstYear}-${currentYear} ${info.vendor}`)
+  bannerLines.push(info.copyright.replace(/copyright \(c\)/i, '©'))
 
   const banner = wrapCommentBlock(bannerLines).trim()
   const footer = wrapCommentBlock([`${info.vendor}`]).trim()

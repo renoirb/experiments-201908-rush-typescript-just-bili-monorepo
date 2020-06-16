@@ -1,11 +1,15 @@
 /* eslint-env jest */
 
 import {
-  createBannerInfo,
-  PackageJson,
   PeopleField,
+} from '../people-field'
+import {
+  PackageJson,
+} from '../package'
+import {
+  createBannerInfo,
   createBannerFooter,
-} from '..'
+} from '../banner'
 
 const peopleFixture: PeopleField = {
   email: '7.9@adjunct.3.unimatrix.1.borg',
@@ -28,7 +32,7 @@ describe('createBannerInfo', () => {
     expect(subject).toHaveProperty('author', 'ACME Corp.')
     expect(subject).toHaveProperty(
       'copyright',
-      'Copyright (c) 2015-' + new Date().getFullYear() + ' ACME Corp.',
+      'Copyright (c) 2003-' + new Date().getFullYear() + ' ACME Corp.',
     )
     expect(subject).toHaveProperty('license', 'LicenseRef-LICENSE')
     expect(subject).toHaveProperty('name', 'assimilate')
@@ -81,7 +85,7 @@ describe('createBannerFooter', () => {
  *
  * LicenseRef-LICENSE
  *
- * © 2015-${YYYY} ACME Corp.
+ * © 2003-${YYYY} ACME Corp.
  */`,
     )
     expect(subject).toHaveProperty('footer', `/** ACME Corp.  */`)
