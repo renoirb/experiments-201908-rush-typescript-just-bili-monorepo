@@ -15,7 +15,7 @@ Object {
           "@babel/preset-env",
           Object {
             "corejs": 3,
-            "debug": true,
+            "debug": false,
             "useBuiltIns": "usage",
           },
         ],

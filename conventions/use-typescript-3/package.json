@@ -7,23 +7,26 @@
     "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
     "directory": "conventions/use-typescript-3"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "files": [
-    "includes",
-    "bin"
+    "includes"
   ],
-  "bin": {
-    "use-tsc": "./bin/tsc"
-  },
   "scripts": {
-    "build": ""
+    "build": "",
+    "fix": "use-cross-env use-prettier --write"
   },
-  "dependencies": {
-    "esm": "^3.2.0",
-    "ts-node": "^8.3.0"
+  "devDependencies": {
+    "@renoirb/conventions-use-prettier": "^1.0.1"
   },
   "peerDependencies": {
-    "tslib": ">=1.10.0",
-    "typescript": ">=3.6.0"
+    "@microsoft/node-library-build": "^6.4.0",
+    "@rushstack/node-core-library": "^3.24.1"
+  },
+  "optionalDependencies": {
+    "@microsoft/rush-stack-compiler-3.7": "^0.2.3",
+    "esm": "^3.2.0",
+    "gulp": "~4.0.2",
+    "ts-node": "^8.6.0",
+    "type-fest": "^0.10.0"
   }
 }

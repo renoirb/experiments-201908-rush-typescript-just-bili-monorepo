@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-const { transform } = require('@babel/core');
-const jestPreset = require('babel-preset-jest');
+const { transform } = require('@babel/core')
+const jestPreset = require('babel-preset-jest')
 
 /**
  * MIGHT BE NOT NEEDED.
@@ -37,10 +37,10 @@ const main = {
     const result = transform(sourceText, {
       filename,
       presets: [jestPreset],
-    });
+    })
 
-    return result ? result.code : sourceText;
+    return result ? result.code : sourceText
   },
-};
+}
 
-module.exports = main;
+module.exports = main

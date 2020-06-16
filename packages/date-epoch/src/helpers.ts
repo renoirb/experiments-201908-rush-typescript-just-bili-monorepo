@@ -1,51 +1,133 @@
+import numbers from './numbers'
+
+/**
+ * Date Range
+ *
+ * Two UNIX Epoch numbers.
+ *
+ * Positions:
+ * - begin
+ * - end
+ */
+export type DateRangeTuple = [number, number]
+
+export type FuzzyDateType = number | string | Date
+
+/**
+ * Calculate current timestamp.
+ * Useful for internal computations.
+ */
+export const timestamp = (): number => new Date().getTime() // Always UTC!
+
+export const convertMillisecondsToSeconds = (ms: number): number =>
+  Math.floor(ms / 1000)
+
+export const isMilliseconds = (nbr: number): boolean =>
+  numbers.countDigits(nbr) === 13
+
+export const isSeconds = (nbr: number): boolean =>
+  numbers.countDigits(nbr) === 10
+
 /**
  * Ensure we get milliseconds out of some UNIX Epoch.
  *
- * Copied from @Unify360/ui, in src/utils/time.js
- *
  * If an UNIX Epoch is already in milliseconds return the same value;
  * If an UNIX Epoch is close enough, and within hoursTreshold limit, multiply by 1000.
+ *
+ * #PURE
  */
-export const milliseconds = (
-  maybeMilliseconds = 0,
+export const coerceMilliseconds = (
+  maybeMilliseconds: number | string,
   hoursTreshold = 25,
 ): number => {
-  const ms = new Date().getTime()
-  // const millisecondsDigitCount = ((ms).toString()).length
-  const secs = Math.floor(ms / 1000)
-  const secondsDigitCount = secs.toString().length
-  const isExpressedInSeconds =
-    maybeMilliseconds.toString().length === secondsDigitCount
-  // const isExpressedInMilliSeconds = ((maybeMilliseconds).toString()).length === millisecondsDigitCount
-  // If the maybeMilliseconds is hoursTreshold hours (e.g. 25) or less, adjust the time to miliseconds
+  let value = +maybeMilliseconds
+  if (Number.isNaN(value)) {
+    const message = `Invalid argument "${value}", must be a number, or a string containing a number`
+    throw new Error(message)
+  }
+  const isValueSeconds = isSeconds(value)
+  // If the `value` is hoursTreshold hours (e.g. 25) or less, adjust the time to miliseconds
   // Otherwise let's not touch it
-  if (isExpressedInSeconds) {
-    const durationInSeconds = Math.floor(maybeMilliseconds - secs)
+  if (isValueSeconds) {
+    const now = timestamp()
+    const secs = convertMillisecondsToSeconds(now)
+    const durationInSeconds = Math.floor(value - secs)
     const hours = Math.floor(durationInSeconds / 3600)
     if (hours < hoursTreshold) {
-      /* tslint:disable-next-line:no-parameter-reassignment */
-      maybeMilliseconds *= 1000
+      value *= 1000
     }
   }
 
-  return maybeMilliseconds
+  return value
 }
 
-export const seconds = (maybeMilliseconds = 0): number => {
-  const millisecondsLen = String(+new Date()).length
-  const argCharLen = String(maybeMilliseconds).length
-  const argIsMilliseconds = millisecondsLen === argCharLen
-  let out = maybeMilliseconds
-  if (argIsMilliseconds) {
-    // const sliced = String(maybeMilliseconds).slice(0, -3)
-    // out = parseInt(sliced, 10)
-    out = Math.floor(out / 1000)
+export const coerceSeconds = (maybeMilliseconds: number | string): number => {
+  let value = +maybeMilliseconds
+  if (Number.isNaN(value)) {
+    const message = `Invalid argument "${value}", must be a number, or a string containing a number`
+    throw new Error(message)
+  }
+  const isValueMilliseconds = isMilliseconds(value)
+  if (isValueMilliseconds) {
+    // const sliced = String(value).slice(0, -3)
+    // value = parseInt(sliced, 10)
+    value = Math.floor(value / 1000)
+  }
+
+  return value
+}
+
+/**
+ * Coerce yyyymmddTHHMMSS.SSSZ (ISO 8601 standard) notation into UNIX Epoch.
+ *
+ * Take the following string;
+ *
+ * input: "20171117171040.000Z"
+ * output: 1510956640000
+ */
+export const coerceIso8601DashLessNotation = (
+  maybeDateString: string,
+): number | null => {
+  let out: number | null = null
+  const dto = maybeDateString
+  const isString = typeof maybeDateString === 'string'
+  const assertions = [
+    /\.000Z/ /* MUST end by dot 000Z */,
+    /^(18|19|20)\d{12}/,
+  ].map((r) => r.test(dto))
+
+  let hopefullyStringWillBeParsable = ''
+  /* Convert number to at least 2 digits number string */
+  const s = (n: number): string => String(n).padStart(2, '0')
+  if (assertions.includes(false) === false && isString) {
+    const yyyy = Number(dto.substr(0, 4))
+    const mm = Number(dto.substr(4, 2))
+    const dd = Number(dto.substr(6, 2))
+    const hh = Number(dto.substr(8, 2))
+    const mn = Number(dto.substr(10, 2))
+    const ss = Number(dto.substr(12, 2))
+    // Assuming new Date(...) is ALWAYS UTC, since we validated it ends by .000Z
+    // it should be fine. Because UTC and .000Z are synomyms.
+    hopefullyStringWillBeParsable = `${yyyy}-${s(mm)}-${s(dd)}T${s(hh)}:${s(
+      mn,
+    )}:${s(ss)}`
+    const attempt = new Date(hopefullyStringWillBeParsable)
+    const maybeNumber = +attempt
+    if (Number.isNaN(maybeNumber) === false) {
+      out = maybeNumber
+    }
   }
 
   return out
 }
 
-export const getMillisecondsToDaysAgo = (ms = 1000): number => ms / 86400 / 1000
+/**
+ * From a number of milliseconds, how many
+ * days does it spans?
+ *
+ * @param {number} ms — Milliseconds
+ */
+export const calculateDays = (ms: number): number => ms / 86400 / 1000
 
 /**
  * @param {number} days - Number of days ago
@@ -61,14 +143,12 @@ export const getTimeDaysAgoMilliseconds = (
   return endTimeMilliseconds - begin
 }
 
-export const getTimeNowUtcMillliseconds = (): number => new Date().getTime() // Always UTC!
-
 /*
  * See @renoirb/webapi-utils
  * in mustHaveDateUrlQueryParam middleware.
  */
-export const getDaysAgoMillisecondsAsTuple = (days = 1): [number, number] => {
-  const endTime = getTimeNowUtcMillliseconds()
+export const getDaysAgoMillisecondsAsTuple = (days = 1): DateRangeTuple => {
+  const endTime = timestamp()
   const startTime = getTimeDaysAgoMilliseconds(endTime, days)
 
   return [startTime, endTime]
@@ -82,9 +162,40 @@ export const getDeltaDaysAgoFromNowUtcMilliseconds = (days = 1): number => {
 /**
  * Convert UNIX Epoch Number into a native Date object.
  *
- * @param epoch - A number representation of an UNIX Epoch timestamp
+ * @param {number} epoch - A number representation of an UNIX Epoch timestamp
  */
-export const getDateFromEpoch = (epoch = 1539112235): Date => {
-  const ensureMillisecondsInt = milliseconds(epoch)
+export const toDate = (epoch: number): Date => {
+  const ensureMillisecondsInt = coerceMilliseconds(epoch)
   return new Date(ensureMillisecondsInt)
+}
+
+/**
+ * Check if runtime has ECMASCript Intl extension installed.
+ */
+export const hasIntl = (): boolean => {
+  let supported = false
+  try {
+    const someDateInJanuary = new Date(
+      9e8 /* some number that happens to be in january */,
+    )
+    const formatter = new Intl.DateTimeFormat('fr-CA', { month: 'long' })
+    const formatted = formatter.format(someDateInJanuary)
+    supported = 'janvier' === formatted
+  } catch (e) {
+    // Silence is golden
+  }
+  return supported
+}
+
+export default {
+  calculateDays,
+  hasIntl,
+  coerceIso8601DashLessNotation,
+  coerceMilliseconds,
+  coerceSeconds,
+  getDeltaDaysAgoFromNowUtcMilliseconds,
+  isMilliseconds,
+  isSeconds,
+  timestamp,
+  toDate,
 }

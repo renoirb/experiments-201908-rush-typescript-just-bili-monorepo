@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@renoirb/conventions-use-bili",
+      "comment": "Upgrading deps, minor refactor",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@renoirb/conventions-use-bili",
+  "email": "contribs@renoirboulanger.com"
+}

@@ -1,18 +1,13 @@
 /* eslint-env jest */
 
-import { DateEpoch } from '..'
+import { DateEpoch } from '../date-epoch'
 
 describe('DateEpoch', () => {
   const inputEpochInt = 1533762055251
   const expectEpochIntToISOString = '2018-08-08T21:00:55.251Z'
   test('DateEpoch#constructor', () => {
     const subject = new DateEpoch(inputEpochInt)
-    expect(JSON.stringify(subject)).toBe(
-      JSON.stringify({ epoch: inputEpochInt }),
-    )
-    expect(JSON.parse(JSON.stringify(subject))).toMatchObject({
-      epoch: inputEpochInt,
-    })
+    expect(JSON.parse(JSON.stringify(subject))).toBe(inputEpochInt)
     expect(String(subject)).toEqual(inputEpochInt.toString())
     expect(subject.toDate().toISOString()).toEqual(expectEpochIntToISOString)
     expect(JSON.stringify(subject)).toMatchSnapshot()
@@ -20,7 +15,7 @@ describe('DateEpoch', () => {
 
   test('DateEpoch#constructor when empty', () => {
     const subject = new DateEpoch()
-    expect(subject.epoch).toBeGreaterThan(inputEpochInt)
+    expect(+subject).toBeGreaterThan(inputEpochInt)
   })
 
   test('DateEpoch#toString', () => {

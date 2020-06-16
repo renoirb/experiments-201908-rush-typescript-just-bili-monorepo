@@ -8,45 +8,38 @@
     "directory": "packages/validatable"
   },
   "license": "UNLICENSED",
-  "files": [
-    "dist"
-  ],
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "browser": {
     "./dist/index.js": "./dist/browser.cjs.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "use-run-all build:*",
-    "build:browser": "use-bili --target browser --format cjs --file-name browser.cjs.js",
-    "build:node": "use-bili --target node --format cjs --file-name index.js",
-    "build:node-esm": "use-bili --target node --format esm --file-name index.esm.js",
+    "build:browser": "use-bili  --bundle-node-modules --target browser --format cjs --file-name browser.cjs.js",
+    "build:node": "use-bili --bundle-node-modules --target node --format cjs --file-name index.js",
+    "build:node-esm": "use-bili --bundle-node-modules --target node --format esm --file-name index.esm.js",
     "clean": "use-rimraf .rpt2_cache dist *.*.log",
-    "fix": "use-prettier --write '**/*.{js,ts}'",
-    "just-scripts": "just-scripts",
-    "lint": "just-scripts lint",
-    "lint:fix": "just-scripts lint --fix",
-    "pack": "yarn pack -f ../../pack/validatable.tgz",
-    "prepublishOnly": "rushx build",
+    "fix": "use-prettier --write",
+    "prepublishOnly": "rushx clean build",
     "test": "use-jest --detectOpenHandles",
     "test:snapshots": "use-jest --detectOpenHandles -u"
   },
-  "dependencies": {
-    "@babel/runtime-corejs3": "~7.5.5"
-  },
   "devDependencies": {
-    "@babel/preset-env": "^7.4.0",
+    "@babel/plugin-transform-runtime": "^7.10.0",
+    "@babel/preset-env": "^7.10.0",
     "@renoirb/conventions-use-bili": "^1.0.2",
     "@renoirb/conventions-use-eslint": "^1.0.1",
     "@renoirb/conventions-use-jest": "^1.0.1",
     "@renoirb/conventions-use-prettier": "^1.0.1",
     "@renoirb/conventions-use-typescript-3": "^1.0.2",
     "@renoirb/tools-bundling-helpers": "^1.0.2",
-    "@types/jest": "^24.0.15",
-    "@types/node": "^10.14.17",
+    "@types/jest": "^25.1.3",
+    "@types/node": "^10.17.13",
     "core-js": "^3.1.4",
-    "just-scripts": "~0.28.2",
-    "tslib": "^1.10.0",
-    "typescript": "^3.6.0"
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.0"
   }
 }

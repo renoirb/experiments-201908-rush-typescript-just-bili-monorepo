@@ -27,4 +27,4 @@ if (hasSnapshotsCliOption) {
 //   process.argv.push('--passWithNoTests')
 // }
 
-require('jest-cli/build/cli/index.js').run()
+require('jest').run()

@@ -1,3 +1,5 @@
+'use strict'
+
 /**
  * Might not be needed anymore.
  *

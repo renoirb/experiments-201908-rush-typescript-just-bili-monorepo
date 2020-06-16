@@ -1,59 +1,39 @@
-// @ts-nocheck
-
 import { DateEpoch } from './date-epoch'
+import type { FuzzyDateType } from './helpers'
 
 /**
- * UNFINISHED
+ * Make a number or string object property to have property getter return DateEpoch
  *
- * @todo
+ * UNFINISHED! — Tabling for now, as ECMAScript does not support natively decorators
+ * ... and ECMAScript getter can do the same. With less complexion.
  *
- * #Handle-String-Or-Number-to-Date
- * Since our APIs might return either number, floats, or strings that has numbers in them
- * we'll have to handle it.
+ * Bookmarks:
+ * - https://www.typescriptlang.org/docs/handbook/decorators.html#metadata
  */
-
-export type FuzzyDateType = number | string | Date
-
-export const createDateEpoch = (epoch: number | string): DateEpoch => {
-  const e = new DateEpoch(epoch)
-  return e
-}
-
-export const stringOrNumberToDateSetter = (newVal: FuzzyDateType): Date => {
-  if (typeof newVal === 'number' || typeof newVal === 'string') {
-    const e = createDateEpoch(newVal)
-    return e.toDate()
-  } else {
-    return newVal
-  }
-}
-
-export const epoch = (target: any, propertyKey: string) => {
-  function factory(isGet: boolean) {
-    let value = target[propertyKey]
-    return function(newValue?: FuzzyDateType) {
-      const getter = function getterClosure(): Date {
-        return value
-      }
-      const setter = function setterClosure(val: FuzzyDateType) {
-        value = stringOrNumberToDateSetter(val)
-      }
-      Object.defineProperty(target, propertyKey, {
-        get: getter,
-        set: setter,
-        enumerable: true,
-        configurable: true,
-      })
-      if (isGet) {
-        return target[propertyKey]
-      } else {
-        target[propertyKey] = newValue
-      }
+export const epoch: PropertyDecorator = (target, propertyKey) => {
+  let value = Reflect.has(target, propertyKey)
+    ? Reflect.get(target, propertyKey)
+    : void 0
+  const getter = (): DateEpoch => {
+    try {
+      const maybe = new DateEpoch(value)
+      return maybe
+    } catch (e) {
+      throw e
     }
   }
+  const setter = (val: FuzzyDateType) => {
+    try {
+      new DateEpoch(value)
+      value = val
+    } catch (e) {
+      throw e
+    }
+  }
+
   Object.defineProperty(target, propertyKey, {
-    get: factory(true),
-    set: factory(false),
+    get: getter,
+    set: setter,
     enumerable: true,
     configurable: false,
   })

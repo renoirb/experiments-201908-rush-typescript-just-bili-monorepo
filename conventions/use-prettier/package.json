@@ -7,23 +7,25 @@
     "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
     "directory": "conventions/use-prettier"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
+  "main": "prettier.config.js",
+  "bin": {
+    "use-prettier": "./bin/prettier"
+  },
   "files": [
     "prettier.config.js",
     ".prettierignore",
     "bin"
   ],
-  "main": "prettier.config.js",
-  "bin": {
-    "use-prettier": "./bin/prettier"
-  },
   "scripts": {
     "build": "",
-    "fix": "./bin/prettier --write '**/*.{js,ts}'"
+    "fix": "./bin/prettier --write '**/*.{jsx?,tsx?,json,md}'"
   },
-  "dependencies": {
-    "prettier": "~1.18.0",
-    "pretty-quick": "^1.11.1",
-    "sort-package-json": "^1.22.1"
+  "peerDependencies": {
+    "prettier": "^2.0.5"
+  },
+  "optionnalDependencies": {
+    "pretty-quick": "^2.0.1",
+    "sort-package-json": "^1.44.0"
   }
 }

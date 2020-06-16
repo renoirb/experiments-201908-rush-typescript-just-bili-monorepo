@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+const { FileSystem } = require('@rushstack/node-core-library')
+const { sep } = require('path')
+
 /* eslint-disable */
 
 /**
@@ -13,75 +16,31 @@
 const processEnvKeys = Object.keys(process.env);
 const isCI = processEnvKeys.includes('CI_SERVER');
 
-const hasReportUnusedDisableDirectives = process.argv.includes(
+const [ nodeBin, nodeScript, ...cliArgs ] = process.argv
+
+const hasReportUnusedDisableDirectives = cliArgs.includes(
   '--report-unused-disable-directives',
 );
 if (!isCI && !hasReportUnusedDisableDirectives) {
-  process.argv.push('--report-unused-disable-directives');
+  cliArgs.unshift('--report-unused-disable-directives');
 }
+const hasConfigFile = cliArgs.includes(
+  '--config',
+  '-c',
+);
+if (!hasConfigFile) {
+  const eslintFilePath = process.env.PWD + sep + '.eslintrc.js';
+  const hasFile = FileSystem.exists(eslintFilePath)
+  if (!hasFile) {
+    const message = `.eslintrc.js not found in ${eslintFilePath}`
+    throw new Error(message);
+  }
+  // Yeah, unshift makes us do this the other way around
+  cliArgs.unshift(eslintFilePath);
+  cliArgs.unshift(`--config`);
+}
+
+// Yeah, mutating the main process.argv should be fine
+process.argv = [ nodeBin, nodeScript, ...cliArgs ];
 
 Promise.all([require('eslint/bin/eslint.js')]);
-
-/*
- * SET ASIDE FOR NOW ------------------------------------------
- *
- * If we were to try to replace just-scripts.
- * We'd have to emulate the following
- *
- * But below, is bit too complex.
- * Refer to rel=#ToolsBundlingHelpersESLintJustTasks
- *
-const { exec } = require('child_process');
-const fssync = require('fs');
-const { resolve, join, normalize, dirname } = require('path');
-
-const cmdRequirePath = 'eslint/bin/eslint.js';
-const localPath = dirname(__dirname);
-const command = resolve(
-  normalize(join(localPath, 'node_modules', cmdRequirePath)),
-);
-const isCommandExists = fssync.existsSync(command);
-async function run(processObj) {
-  const [, , ...args] = processObj.argv;
-  const cwd = processObj.cwd();
-  const cmd = [command, ...args].join(' ');
-  console.log(`Executing ${cmd} in ${cwd}`);
-  return new Promise((resolve, reject) => {
-    exec(cmd, { cwd, stdio: 'inherit' }, (error, stdout) => {
-      if (error) {
-        reject(error);
-      }
-
-      resolve(stdout);
-    });
-  });
-}
-
-const hasIgnorePath = process.argv.includes('--ignore-path');
-if (!hasIgnorePath) {
-  const ignorePath = resolve(normalize(join(localPath, '.eslintignore')));
-  process.argv.push('--ignore-path');
-  process.argv.push(ignorePath);
-}
-
-const hasConfig = process.argv.includes('--config');
-if (!hasConfig) {
-  const configPath = resolve(normalize(join(localPath, '.eslintrc.js')));
-  process.argv.push('--config');
-  process.argv.push(configPath);
-}
-
-if (fssync.existsSync(command)) {
-  (async () => {
-    try {
-      await run(process);
-    } catch (e) {
-      const message = `An error occured: ${e}`;
-      throw new Error(message);
-    }
-  })();
-} else {
-  const message = `Command "${command}" not found, is the package installed`;
-  throw new Error(message);
-}
-*/

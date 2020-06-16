@@ -1,8 +1,4 @@
-import {
-  getDateFromEpoch,
-  getTimeNowUtcMillliseconds,
-  milliseconds,
-} from './helpers'
+import { toDate, timestamp, coerceMilliseconds } from './helpers'
 
 /**
  * DateEpoch: An utility to convert UNIX Epoch Integer into a Date Object.
@@ -14,41 +10,47 @@ import {
  * [1]: https://bitsrc.io/renoirb/bindings/types/date-epoch/code
  */
 export class DateEpoch {
-  public epoch: number
+  private readonly _epoch: number
+
+  get epoch(): number {
+    return this._epoch
+  }
 
   /**
    * Constructor: Optimistically take a number and try to create a Date object.
    *
-   * @param arg Hopefully a Number or a String with a Number, hopefully an UNIX Epoch.
+   * @param epoch Hopefully a Number or a String with a Number, hopefully an UNIX Epoch.
    */
-  constructor(arg: any = null) {
+  public constructor(epoch?: any) {
+    let value: number
     switch (true) {
-      case arg === null:
-        this.epoch = getTimeNowUtcMillliseconds()
+      case Number.isFinite(epoch):
+        value = coerceMilliseconds(epoch)
         break
 
-      case Number.isFinite(arg):
-        this.epoch = milliseconds(+arg)
-        break
-
-      case Reflect.has(arg, 'getTime'):
-        this.epoch = arg.getTime()
+      case epoch && 'getTime' in epoch:
+        value = epoch.getTime()
         break
 
       default:
-        this.epoch = getTimeNowUtcMillliseconds()
+        value = timestamp()
         break
     }
+    this._epoch = value
+    Object.defineProperty(this, '_epoch', {
+      value,
+      writable: false,
+      configurable: false,
+      enumerable: false,
+    })
   }
 
-  public toJSON() {
-    return {
-      epoch: this.epoch,
-    }
+  public toJSON(): number {
+    return this._epoch
   }
 
   public toString(): string {
-    return String(this.epoch)
+    return String(this._epoch)
   }
 
   /**
@@ -57,6 +59,6 @@ export class DateEpoch {
    * @returns Date
    */
   public toDate(): Date {
-    return getDateFromEpoch(this.epoch)
+    return toDate(this._epoch)
   }
 }

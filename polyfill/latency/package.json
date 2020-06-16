@@ -1,6 +1,6 @@
 {
   "name": "@renoirb/polyfill-latency",
-  "version": "1.0.0",
+  "version": "1.0.0-dev.0",
   "private": true,
   "description": "Write modern asynchronous sleep, export for older browsers. Not published to Nexus. If used in legacy, we would copy-paste contents of dist/ie6to8.js",
   "repository": {
@@ -19,24 +19,22 @@
     "dist"
   ],
   "scripts": {
-    "build": "use-run-all build:* && just-scripts copy-to-public",
+    "build": "use-run-all build:*",
     "build:ie6to8": "use-cross-env BROWSERSLIST='ie 6-8' use-bili --target browser --format umd --module-name latency --file-name ie6to8.js --bundle-node-modules",
     "build:ie6to8cjs": "use-cross-env BROWSERSLIST='ie 6-8' use-bili --target browser --format cjs --module-name latency --file-name ie6to8.cjs.js --bundle-node-modules",
     "build:main": "use-bili --target browser --format cjs --file-name index.js",
     "clean": "use-rimraf .rpt2_cache dist *.*.log public/ie6to8.js",
-    "fix": "use-prettier **/*.{js,ts} --write",
-    "just-scripts": "just-scripts",
-    "lint": "just-scripts lint",
-    "lint:fix": "just-scripts lint --fix",
+    "fix": "use-cross-env use-prettier --write",
+    "prepublishOnly": "rushx clean build",
     "test": "use-jest --detectOpenHandles",
     "test:snapshots": "use-jest --detectOpenHandles -u"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": "~7.5.5"
+    "@babel/runtime-corejs3": "^7.10.0"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "7.5.5",
-    "@babel/preset-env": "^7.4.0",
+    "@babel/plugin-transform-runtime": "^7.10.0",
+    "@babel/preset-env": "^7.10.0",
     "@renoirb/conventions-use-bili": "^1.0.2",
     "@renoirb/conventions-use-eslint": "^1.0.1",
     "@renoirb/conventions-use-jest": "^1.0.1",
@@ -44,10 +42,9 @@
     "@renoirb/conventions-use-typescript-3": "^1.0.2",
     "@renoirb/tools-bundling-helpers": "^1.0.2",
     "@types/jest": "^25.1.3",
-    "@types/node": "^10.14.17",
+    "@types/node": "^10.17.13",
     "core-js": "^3.1.4",
-    "just-scripts": "~0.28.2",
-    "tslib": "^1.10.0",
-    "typescript": "^3.6.0"
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.0"
   }
 }

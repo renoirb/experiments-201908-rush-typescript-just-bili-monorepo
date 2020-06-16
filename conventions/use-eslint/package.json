@@ -7,7 +7,11 @@
     "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
     "directory": "conventions/use-eslint"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
+  "main": "main.js",
+  "bin": {
+    "use-eslint": "./bin/eslint"
+  },
   "files": [
     "main.js",
     "ecmascript.js",
@@ -15,28 +19,26 @@
     ".eslintignore",
     "bin"
   ],
-  "main": "main.js",
-  "bin": {
-    "use-eslint": "./bin/eslint"
-  },
   "scripts": {
     "build": "",
-    "fix": "use-prettier **/*.{js,ts} --write",
-    "just-scripts": "just-scripts",
-    "lint": "just-scripts lint",
-    "lint:fix": "just-scripts lint --fix"
+    "fix": "use-cross-env use-prettier --write '*'",
+    "lint": "./bin/eslint --fix '*.s'"
   },
   "dependencies": {
-    "@microsoft/eslint-config-scalable-ts": "~0.2.2",
-    "@typescript-eslint/eslint-plugin": "^2.0.0",
-    "@typescript-eslint/experimental-utils": "^2.0.0",
-    "@typescript-eslint/parser": "^2.0.0",
-    "@typescript-eslint/typescript-estree": "^2.0.0",
-    "eslint": "^6.0.0",
+    "@rushstack/eslint-config": "0.5.8",
+    "@rushstack/eslint-plugin": "0.3.2",
+    "@rushstack/node-core-library": "^3.24.1",
+    "@typescript-eslint/eslint-plugin": "^3.3.0",
+    "@typescript-eslint/parser": "^3.3.0",
+    "@typescript-eslint/typescript-estree": "^3.3.0",
+    "eslint": "^6.5.0",
     "eslint-plugin-promise": "~4.2.1",
-    "just-scripts": "~0.28.2"
+    "eslint-plugin-react": "~7.16.0",
+    "eslint-plugin-security": "~1.4.0",
+    "eslint-plugin-tsdoc": "~0.2.4"
   },
   "devDependencies": {
-    "@renoirb/conventions-use-prettier": "^1.0.1"
+    "@renoirb/conventions-use-prettier": "^1.0.1",
+    "@rushstack/node-core-library": "^3.24.1"
   }
 }

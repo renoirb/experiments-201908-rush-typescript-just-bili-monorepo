@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@renoirb/conventions-use-eslint",
+      "comment": "Upgrading deps, minor refactor",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@renoirb/conventions-use-eslint",
+  "email": "contribs@renoirboulanger.com"
+}

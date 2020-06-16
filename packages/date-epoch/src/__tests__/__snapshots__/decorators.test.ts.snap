@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`decorators integration 1`] = `
+SomeClass {
+  "lastLogin": 1533762055251,
+}
+`;

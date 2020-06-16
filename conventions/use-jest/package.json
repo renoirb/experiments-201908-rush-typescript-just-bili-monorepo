@@ -7,31 +7,45 @@
     "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
     "directory": "conventions/use-jest"
   },
-  "license": "UNLICENSED",
-  "files": [
-    "main.js",
-    "reporter.js",
-    "ecmascript-transformer.js",
-    "bin"
-  ],
+  "license": "MIT",
   "main": "main.js",
   "bin": {
     "use-jest": "./bin/jest"
   },
+  "files": [
+    "ecmascript-transformer.js",
+    "file-transformer.js",
+    "identity-obj-proxy.js",
+    "main.js",
+    "reporter.js",
+    "test-file-stub.js",
+    "bin"
+  ],
   "scripts": {
-    "build": ""
+    "build": "",
+    "fix": "use-prettier --write '*'",
+    "lint": "use-eslint --fix '*.js'"
   },
   "dependencies": {
-    "@babel/core": "^7.4.0",
-    "@jest/reporters": "^24.9.0",
-    "jest": "^24.9.0",
-    "jest-cli": "^24.9.0",
-    "jest-expect-message": "^1.0.2",
-    "ts-jest": "^24.0.2"
+    "papaparse": "^5.1.0"
   },
   "devDependencies": {
+    "@renoirb/conventions-use-eslint": "^1.0.1",
     "@renoirb/conventions-use-prettier": "^1.0.1",
-    "@types/babel__core": "^7.1.2",
-    "@types/jest": "^24.0.15"
+    "@renoirb/tools-bundling-helpers": "^1.0.2"
+  },
+  "peerDependencies": {
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^25.1.0",
+    "jest-diff": "^25.1.0",
+    "jest-expect-message": "^1.0.1"
+  },
+  "optionalDependencies": {
+    "@jest/reporters": "^24.9.0",
+    "@types/jest": "^25.1.3",
+    "@types/jest-expect-message": "^1.0.1",
+    "jest-cli": "^25.1.0",
+    "jest-date-mock": "^1.0.8",
+    "ts-jest": "^25.2.0"
   }
 }
