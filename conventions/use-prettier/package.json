@@ -1,13 +1,18 @@
 {
   "name": "@renoirb/conventions-use-prettier",
-  "version": "1.0.1",
+  "version": "1.1.0-dev",
   "description": "Reusable Prettier configs",
+  "homepage": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/conventions/use-prettier",
   "repository": {
     "type": "git",
     "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
     "directory": "conventions/use-prettier"
   },
   "license": "MIT",
+  "author": {
+    "name": "Renoir Boulanger",
+    "email": "contribs@renoirboulanger.com"
+  },
   "main": "prettier.config.js",
   "bin": {
     "use-prettier": "./bin/prettier"

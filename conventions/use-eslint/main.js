@@ -6,8 +6,8 @@ const main = {
   ...ecmascript,
   ...typescript,
   rules: {
-    ...(ecmascript.rules||{}),
-    ...(typescript.rules||{}),
+    ...(ecmascript.rules || {}),
+    ...(typescript.rules || {}),
     '@typescript-eslint/member-delimiter-style': [
       'error',
       {

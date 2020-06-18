@@ -1,22 +1,28 @@
 {
   "name": "@renoirb/conventions-use-typescript-3",
-  "version": "1.0.2",
+  "version": "1.1.0-dev",
   "description": "Reusable TypeScript 3.x configs",
+  "homepage": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/conventions/use-typescript-3",
   "repository": {
     "type": "git",
     "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
     "directory": "conventions/use-typescript-3"
   },
   "license": "MIT",
+  "author": {
+    "name": "Renoir Boulanger",
+    "email": "contribs@renoirboulanger.com"
+  },
   "files": [
     "includes"
   ],
   "scripts": {
     "build": "",
-    "fix": "use-cross-env use-prettier --write"
+    "fix": "use-cross-env use-prettier --write '**/*.{ts,md,json,js}'"
   },
   "devDependencies": {
-    "@renoirb/conventions-use-prettier": "^1.0.1"
+    "@renoirb/conventions-use-prettier": "1.1.0-dev",
+    "@renoirb/tools-bundling-helpers": "^1.0.2"
   },
   "peerDependencies": {
     "@microsoft/node-library-build": "^6.4.0",

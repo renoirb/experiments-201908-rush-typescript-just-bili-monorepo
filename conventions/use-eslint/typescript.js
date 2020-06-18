@@ -21,14 +21,14 @@ require('@rushstack/eslint-config/patch-eslint6')
 const main = {
   // https://www.npmjs.com/package/@typescript-eslint/parser
   extends: ['@rushstack/eslint-config'],
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   plugins: [
     // https://www.npmjs.com/package/@typescript-eslint/eslint-plugin
-    "@rushstack/eslint-plugin",
-    "@typescript-eslint/eslint-plugin",
-    "eslint-plugin-promise",
-    "eslint-plugin-security",
-    "eslint-plugin-tsdoc"
+    '@rushstack/eslint-plugin',
+    '@typescript-eslint/eslint-plugin',
+    'eslint-plugin-promise',
+    'eslint-plugin-security',
+    'eslint-plugin-tsdoc',
   ],
 }
 

@@ -1,13 +1,18 @@
 {
   "name": "@renoirb/conventions-use-jest",
-  "version": "1.0.1",
+  "version": "1.1.0-dev",
   "description": "Reusable Jest configs",
+  "homepage": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/conventions/use-jest",
   "repository": {
     "type": "git",
     "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
     "directory": "conventions/use-jest"
   },
   "license": "MIT",
+  "author": {
+    "name": "Renoir Boulanger",
+    "email": "contribs@renoirboulanger.com"
+  },
   "main": "main.js",
   "bin": {
     "use-jest": "./bin/jest"
@@ -23,15 +28,15 @@
   ],
   "scripts": {
     "build": "",
-    "fix": "use-prettier --write '*'",
+    "fix": "use-cross-env use-prettier --write '**/*.{ts,md,json,js}'",
     "lint": "use-eslint --fix '*.js'"
   },
   "dependencies": {
     "papaparse": "^5.1.0"
   },
   "devDependencies": {
-    "@renoirb/conventions-use-eslint": "^1.0.1",
-    "@renoirb/conventions-use-prettier": "^1.0.1",
+    "@renoirb/conventions-use-eslint": "1.1.0-dev",
+    "@renoirb/conventions-use-prettier": "1.1.0-dev",
     "@renoirb/tools-bundling-helpers": "^1.0.2"
   },
   "peerDependencies": {

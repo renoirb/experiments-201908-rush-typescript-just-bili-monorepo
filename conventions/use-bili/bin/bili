@@ -9,7 +9,7 @@
 // See comment also @renoirb/conventions-use-jest in reporter.js #IsCiServer
 // https://docs.gitlab.com/ee/ci/variables/#syntax-of-environment-variables-in-job-scripts
 const processEnvKeys = Object.keys(process.env)
-const isCI = processEnvKeys.includes('CI_SERVER');
+const isCI = processEnvKeys.includes('CI_SERVER')
 // process.stdout.write('isCI ' + JSON.stringify(isCI))
 
 if (isCI) {
@@ -18,9 +18,9 @@ if (isCI) {
   // We can avoid inserting --quiet from ALL packages and then have to tweak
   // lines for when we're in development mode and want to run the same command and
   // we might want to see such console logs locally.
-  process.argv.push('--quiet');
+  process.argv.push('--quiet')
 } else {
-  process.argv.push('--verbose');
+  process.argv.push('--verbose')
 }
 
 /**
@@ -28,13 +28,17 @@ if (isCI) {
  * For the moment, only support toggling inlining when CLI argument is present.
  * Refer to #bundleNodeModulesBili in src/plugins.ts to learn the reasoning.
  */
-const hasBiliBundleNodeModulesOption = process.argv.includes('--bundle-node-modules')
+const hasBiliBundleNodeModulesOption = process.argv.includes(
+  '--bundle-node-modules',
+)
 if (hasBiliBundleNodeModulesOption) {
   process.env.BILI_BUNDLE_NODE_MODULES = 'true'
 }
 
 const hasTargetBiliArgument = process.argv.includes('--target')
-const indexOfTargetBiliArgument = hasTargetBiliArgument ? process.argv.indexOf('--target') : 0
+const indexOfTargetBiliArgument = hasTargetBiliArgument
+  ? process.argv.indexOf('--target')
+  : 0
 
 let BROWSERSLIST = null
 
@@ -55,22 +59,24 @@ const BROWSERLISTTARGETS = {
 if (hasTargetBiliArgument) {
   const targetIndex = indexOfTargetBiliArgument + 1
   const targetKey = process.argv[targetIndex] || null
-  BROWSERSLIST = Reflect.has(BROWSERLISTTARGETS, targetKey) ? Reflect.get(BROWSERLISTTARGETS, targetKey) : null
+  BROWSERSLIST = Reflect.has(BROWSERLISTTARGETS, targetKey)
+    ? Reflect.get(BROWSERLISTTARGETS, targetKey)
+    : null
   // If we superseeded BROWSERSLIST environment, use it instead.
   // Since we already have it, let's not superseed it.
   // set -gx BROWSERSLIST "ie >= 10, > 1%"
   // set -gx BROWSERSLIST "node 10"
   // export BROWSERSLIST "ie >= 10, > 1%"
   // export BROWSERSLIST "node 10"
-  if (!('BROWSERSLIST' in process.env)  && typeof BROWSERSLIST === 'string') {
+  if (!('BROWSERSLIST' in process.env) && typeof BROWSERSLIST === 'string') {
     process.env.BROWSERSLIST = BROWSERSLIST
   }
   // console.log('BROWSERSLIST', BROWSERSLIST)
 }
 
-if(!!process.env.BROWSERSLIST) {
-  const feedback = `Target BROWSERSLIST: "${process.env.BROWSERSLIST}"`;
-  process.stdout.write(`\n${feedback}\n`);
+if (!!process.env.BROWSERSLIST) {
+  const feedback = `Target BROWSERSLIST: "${process.env.BROWSERSLIST}"`
+  process.stdout.write(`\n${feedback}\n`)
 }
 
 Promise.all([require('bili/dist/cli')])

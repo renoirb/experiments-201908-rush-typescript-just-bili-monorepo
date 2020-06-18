@@ -6,7 +6,9 @@ const bundleInfo = bundlingHelper(__dirname, {
   vendor: 'Renoir Boulanger',
 })
 
-const config: Config = bili('src/index.ts')(process.env)
+const input = { index: 'src/index.ts' }
+
+const config: Config = bili(input)(process.env)
 
 const output: ConfigOutput = {
   ...config.output,
