@@ -1,9 +1,4 @@
 import { Config, ConfigOutput } from 'bili'
-import bundlingHelper from '@renoirb/tools-bundling-helpers'
-
-const bundleInfo = bundlingHelper(__dirname, {
-  vendor: 'Renoir Boulanger',
-})
 
 const input = { index: 'src/index.ts' }
 
@@ -15,7 +10,7 @@ const output: ConfigOutput = {
 }
 
 const config: Config = {
-  banner: bundleInfo.banners.banner,
+  banner: true,
   bundleNodeModules: true,
   input,
   output,

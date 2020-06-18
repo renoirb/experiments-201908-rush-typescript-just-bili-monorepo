@@ -6,7 +6,7 @@ dependencies:
   '@jest/reporters': 24.9.0
   '@microsoft/node-library-build': 6.4.25
   '@microsoft/rush-stack-compiler-3.7': 0.2.17
-  '@renoirb/tools-bundling-helpers': 1.0.2
+  '@renoirb/tools-bundling-helpers': 1.1.0-dev.1
   '@rollup/plugin-babel': 5.0.3_@babel+core@7.10.2+rollup@1.32.1
   '@rush-temp/conventions-use-bili': 'file:projects/conventions-use-bili.tgz_jest@25.5.4'
   '@rush-temp/conventions-use-eslint': 'file:projects/conventions-use-eslint.tgz_typescript@3.9.5'
@@ -1107,7 +1107,7 @@ packages:
   /@jest/core/25.4.0:
     dependencies:
       '@jest/console': 25.5.0
-      '@jest/reporters': 25.5.1
+      '@jest/reporters': 25.4.0
       '@jest/test-result': 25.5.0
       '@jest/transform': 25.5.1
       '@jest/types': 25.5.0
@@ -1582,15 +1582,16 @@ packages:
     dev: false
     resolution:
       integrity: sha512-/b13m37QZYPV6nCOiqkFyvlQjlTNvAcQpgFZ6ZKIqtStJxNdqVo/frULubxMUMWi6p9Uo5f4BRlguv5ViFcL0A==
-  /@renoirb/tools-bundling-helpers/1.0.2:
+  /@renoirb/tools-bundling-helpers/1.1.0-dev.1:
     dependencies:
+      '@rushstack/node-core-library': 3.24.1
       cross-env: 5.2.1
       npm-run-all: 4.1.5
       rimraf: 3.0.2
     dev: false
     hasBin: true
     resolution:
-      integrity: sha512-p2/08IrWFzcX/DA130zEGVdyQN89EHA3M6Wpzmxw8mMdLsdqzcLDE6sR/n5dxzzTiR6Y/CkBHIHIPFJWfqr6fA==
+      integrity: sha512-uUFL9UR1HtIOXYiFQRwiQUbubb+S50zEiAJa7/r4g7Dfg67rg1E4jueUIdERW6jk7gmIKeCQRv3An1U+4y/F3Q==
   /@rollup/plugin-babel/5.0.3_@babel+core@7.10.2+rollup@1.32.1:
     dependencies:
       '@babel/core': 7.10.2
@@ -2830,7 +2831,7 @@ packages:
   /browserslist/4.12.0:
     dependencies:
       caniuse-lite: 1.0.30001084
-      electron-to-chromium: 1.3.475
+      electron-to-chromium: 1.3.477
       node-releases: 1.1.58
       pkg-up: 2.0.0
     dev: false
@@ -3820,10 +3821,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-OoOpBOVDUyh4dMVkt1SThoSamMk=
-  /electron-to-chromium/1.3.475:
+  /electron-to-chromium/1.3.477:
     dev: false
     resolution:
-      integrity: sha512-vcTeLpPm4+ccoYFXnepvkFt0KujdyrBU19KNEO40Pnkhta6mUi2K0Dn7NmpRcNz7BvysnSqeuIYScP003HWuYg==
+      integrity: sha512-81p6DZ/XmHDD7O0ITJMa7ESo9bSCfE+v3Fny3MIYR0y77xmhoriu2ShNOLXcPS4eowF6dkxw6d2QqxTkS3DjBg==
   /emoji-regex/7.0.3:
     dev: false
     resolution:
@@ -4910,7 +4911,7 @@ packages:
     dependencies:
       array-union: 1.0.2
       arrify: 1.0.1
-      glob: 7.0.6
+      glob: 7.1.6
       object-assign: 4.1.1
       pify: 2.3.0
       pinkie-promise: 2.0.1
@@ -11002,7 +11003,7 @@ packages:
       '@babel/plugin-transform-runtime': 7.10.1_@babel+core@7.10.2
       '@babel/preset-env': 7.10.2_@babel+core@7.10.2
       '@babel/runtime-corejs3': 7.10.2
-      '@renoirb/tools-bundling-helpers': 1.0.2
+      '@renoirb/tools-bundling-helpers': 1.1.0-dev.1
       '@rollup/plugin-babel': 5.0.3_@babel+core@7.10.2+rollup@1.32.1
       '@rushstack/node-core-library': 3.24.1
       '@types/jest': 25.2.3
@@ -11020,12 +11021,11 @@ packages:
     peerDependencies:
       jest: '*'
     resolution:
-      integrity: sha512-heVzbM5ohaszdgptx1FGkCIlhXCPVzjaJ7AnhzSI81oY3ToNH2CCh80oVfEPF3MKyGXtNYZ63xEe7kAxjhadFA==
+      integrity: sha512-IfUtWi7wv02DWqTwhR2e5ZaANDh9Cy1tpyGK/9TrkfrGlcjVFbm2ZGXoT2V5vI0WMA60EWPppv5w9YCbaDWvyw==
       tarball: 'file:projects/conventions-use-bili.tgz'
     version: 0.0.0
   'file:projects/conventions-use-eslint.tgz_typescript@3.9.5':
     dependencies:
-      '@renoirb/tools-bundling-helpers': 1.0.2
       '@rushstack/eslint-config': 0.5.8_eslint@6.8.0+typescript@3.9.5
       '@rushstack/eslint-plugin': 0.3.2_eslint@6.8.0
       '@rushstack/node-core-library': 3.24.1
@@ -11043,12 +11043,11 @@ packages:
     peerDependencies:
       typescript: '*'
     resolution:
-      integrity: sha512-5ct49xCxCdN4I2J548BLqQM014/7c36xJsLXMRlrD7GOwOUkO4EHJuz+3yRar4zLyAg3TTkkrpjV864Uu+mDEg==
+      integrity: sha512-fSpFgeTOedDEzE6HW+31/IUTT0sg1j+u1WrN4fYY1970OBgCN+TJNplcwlFl9G5ExRp9gpHkXR8WZBz5pkVI1Q==
       tarball: 'file:projects/conventions-use-eslint.tgz'
     version: 0.0.0
   'file:projects/conventions-use-jest.tgz_typescript@3.9.5':
     dependencies:
-      '@renoirb/tools-bundling-helpers': 1.0.2
       identity-obj-proxy: 3.0.0
       jest: 25.5.4
       jest-diff: 25.5.0
@@ -11067,7 +11066,7 @@ packages:
     peerDependencies:
       typescript: '*'
     resolution:
-      integrity: sha512-WoU00T7bUGCsCaLRS9MdJtRte5xFeg5BC5pmnVJbcqcZfue8N9T4qSruDhlcZAFfdfs+MLI404n/Di2ICtBEKw==
+      integrity: sha512-OipEgsMpz9xyhkDk/xbKxCSqabaBitUHk7RCaqsUR1SRVs8yeaYpNNaQpMwUayzfhHesZkrxJ4Kx06MalaXJBw==
       tarball: 'file:projects/conventions-use-jest.tgz'
     version: 0.0.0
   'file:projects/conventions-use-prettier.tgz':
@@ -11082,7 +11081,7 @@ packages:
   'file:projects/conventions-use-typescript-3.tgz_typescript@3.9.5':
     dependencies:
       '@microsoft/node-library-build': 6.4.25
-      '@renoirb/tools-bundling-helpers': 1.0.2
+      '@renoirb/tools-bundling-helpers': 1.1.0-dev.1
       '@rushstack/node-core-library': 3.24.1
     dev: false
     id: 'file:projects/conventions-use-typescript-3.tgz'
@@ -11096,7 +11095,7 @@ packages:
     peerDependencies:
       typescript: '*'
     resolution:
-      integrity: sha512-1b1eq+4WpXs94fmhLhXpOZCdtFc79kFAD15wfxTsjp5nniUd/oppGjU7ypPPOe+muF4uXU9aBRvid9WLEuhmKw==
+      integrity: sha512-DZKfzWSAgILynNfPzypIuBmUW9GmZbraqUkC7u7vq/HRrcEe6x3z/mcP4fS8jWnIcWJp1HGrBdaps2m+OWzbmQ==
       tarball: 'file:projects/conventions-use-typescript-3.tgz'
     version: 0.0.0
   'file:projects/date-epoch.tgz_@babel+core@7.10.2':
@@ -11117,7 +11116,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-ySxoGP9GYf71g1+iaTJSPTb4flk5V+Jp4UgcddsKCz+By3kTNqxzzXmBTOIoGfjC8FCAR1FeqZXk2gmFThKk2A==
+      integrity: sha512-mfl06HTdBgiZcnYYtsxocBMo+3QnzgMz8HV32DZHN3Li9UhDB6BdTdvRXE07Ayi9VRLl4it2ibWm5ahM3/GMlg==
       tarball: 'file:projects/date-epoch.tgz'
     version: 0.0.0
   'file:projects/polyfill-for-of-example.tgz_@babel+core@7.10.2':
@@ -11135,7 +11134,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-XfKLJgTxgqco49iifXpgLtj1zf2j+O8GXp6ykWMoO6qlNmBaTzYgRrL17bWjE8Dv8b0yRifPi2yCZk8DJ0tClA==
+      integrity: sha512-QPvgg39jk/BI42N9v1uMOaoIpMZUPmhIpeYNlFcjhxI5cPR4j84WqxEGuq2jCPgXybcL6N0IwSAICVKY32YsLw==
       tarball: 'file:projects/polyfill-for-of-example.tgz'
     version: 0.0.0
   'file:projects/polyfill-latency.tgz_@babel+core@7.10.2':
@@ -11154,7 +11153,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-Lf7gEv4TzbEEa2ek6ipTxUesvwC0NB8eOvLVsRm8uHSFaT/SZX25cWlsAXMVhHTBBLL70S7YE8F6tUnk8uIeDw==
+      integrity: sha512-fzxgcirIgd5DZ/oAdent/wjPPhwDip1gnUtJsFAphswNdHhdGT8scfRpKcO/BWdQxhSLJLUxfRnW/3vAE/yrQA==
       tarball: 'file:projects/polyfill-latency.tgz'
     version: 0.0.0
   'file:projects/tools-bundling-helpers.tgz_@babel+core@7.10.2':
@@ -11182,7 +11181,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-p+Uejb8QDyPDLuax9u8ps/lNQrkyj7thXWvMIxPYvkn00YyhyBHLRvf2DO1TiKCFpc9AW3ajB8Qgg0EqepSZrQ==
+      integrity: sha512-kb+HwjnyRvKgmz7WpKkA13z1oqP/PjppZ5kgmdu3mrSCwDVVbVha5Klu9OVT+2lTGvi2RoMA0Kl5jgbujSYYdA==
       tarball: 'file:projects/tools-bundling-helpers.tgz'
     version: 0.0.0
   'file:projects/validatable.tgz_@babel+core@7.10.2':
@@ -11200,7 +11199,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-GvHURnZiyeKcg3T93fbJ++o7/+goN5sU6tl4OzFH+JgW3rpKPdsBDul08FC4ia7byUBVy8Fdu1ha0BxnWGhRsA==
+      integrity: sha512-2//jWVw3aFFIADXQKiyAtpbqsRCyFlhJxTZaRPraP5zIj+pz0SzQsNKAD7tNFDgipHNY8PyBwkDh8E9ydHhq+Q==
       tarball: 'file:projects/validatable.tgz'
     version: 0.0.0
 registry: ''
@@ -11212,7 +11211,7 @@ specifiers:
   '@jest/reporters': ^24.9.0
   '@microsoft/node-library-build': ^6.4.0
   '@microsoft/rush-stack-compiler-3.7': ^0.2.3
-  '@renoirb/tools-bundling-helpers': ^1.0.2
+  '@renoirb/tools-bundling-helpers': 1.1.0-dev.1
   '@rollup/plugin-babel': ^5.0.0
   '@rush-temp/conventions-use-bili': 'file:./projects/conventions-use-bili.tgz'
   '@rush-temp/conventions-use-eslint': 'file:./projects/conventions-use-eslint.tgz'

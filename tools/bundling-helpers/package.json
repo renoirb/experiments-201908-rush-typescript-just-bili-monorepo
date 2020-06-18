@@ -1,6 +1,6 @@
 {
   "name": "@renoirb/tools-bundling-helpers",
-  "version": "1.1.0-dev",
+  "version": "1.1.0-dev.3",
   "description": "Package bundling helper scripts",
   "homepage": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/tools/bundling-helpers",
   "repository": {
@@ -30,13 +30,13 @@
     "bin"
   ],
   "scripts": {
-    "build": "./bin/run-all build:*",
+    "build": "./bin/run-all clean build:*",
     "build:cjs": "bili --target node --format cjs --input src/index.ts --file-name index.js",
     "build:esm": "bili --target node --format esm --input src/index.ts --file-name index.mjs",
     "clean": "./bin/rimraf .rpt2_cache dist *.*.log",
     "fix": "./bin/cross-env use-prettier --write '*'",
     "lint": "use-eslint --fix 'src/**/*.ts'",
-    "prepublishOnly": "rushx clean build",
+    "prepublishOnly": "rushx build",
     "test": "use-jest --detectOpenHandles",
     "test:snapshots": "use-jest --detectOpenHandles -u"
   },
@@ -48,10 +48,10 @@
   },
   "devDependencies": {
     "@microsoft/node-library-build": "^6.4.0",
-    "@renoirb/conventions-use-eslint": "1.1.0-dev",
-    "@renoirb/conventions-use-jest": "1.1.0-dev",
-    "@renoirb/conventions-use-prettier": "1.1.0-dev",
-    "@renoirb/conventions-use-typescript-3": "1.1.0-dev",
+    "@renoirb/conventions-use-eslint": "1.1.0-dev.3",
+    "@renoirb/conventions-use-jest": "1.1.0-dev.3",
+    "@renoirb/conventions-use-prettier": "1.1.0-dev.3",
+    "@renoirb/conventions-use-typescript-3": "1.1.0-dev.3",
     "@rollup/plugin-babel": "^5.0.0",
     "@types/core-js": "^2.5.2",
     "@types/jest": "^25.1.3",
