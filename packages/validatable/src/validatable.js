@@ -46,7 +46,7 @@ export class ValidatableOutcome {
     }
   }
   getFailureKeys() {
-    return [].concat(this.failures.map(f => f.key)).sort()
+    return [].concat(this.failures.map((f) => f.key)).sort()
   }
 }
 
@@ -135,9 +135,9 @@ export class Rule {
  * const check1 = validator.validate('jjjjjj')
  * check.hasPassed() // => false
  */
-export const validatable = subject => {
+export const validatable = (subject) => {
   subject.validatable = new ValidatableRules()
-  subject.validate = function(inputValue) {
+  subject.validate = function (inputValue) {
     const rules = this.validatable.getRules()
     const outcome = new ValidatableOutcome()
     for (const rule of rules) {

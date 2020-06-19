@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @rushstack/no-null */
 
 /**
  * Create cached version of a pure function

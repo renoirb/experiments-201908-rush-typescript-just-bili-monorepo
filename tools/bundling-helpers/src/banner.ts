@@ -1,8 +1,15 @@
 import { PackageJson } from './package'
-import { stringifyAuthor } from './people-field'
+import { stringifyAuthor, PeopleField } from './people-field'
+
+export interface BrandingInterface {
+  author: PeopleField
+  authors?: PeopleField[]
+  firstYear?: number
+  vendor?: string
+}
 
 const commentedLines = (lines: string[] = []): string[] => {
-  return lines.map(line => ` * ${line}`)
+  return lines.map((line) => ` * ${line}`)
 }
 
 export interface BannerInfo {
@@ -39,20 +46,14 @@ export interface BannerInfo {
    * ```
    */
   copyright: string
-  /**
-   * The year in which the vendor’s legal entity got legally registered.
-   *
-   * Non standard to package.json schema, but useful for copyright range.
-   */
-  firstYear?: number
 }
 
 /**
  * Source code banner preformatted
  */
 export interface BannerFooter {
-  banner: string | null
-  footer: string | null
+  readonly banner: string | ''
+  readonly footer: string | ''
 }
 
 /**
@@ -63,7 +64,7 @@ export interface BannerFooter {
 export const wrapCommentBlock = (lines: string[] = []): string => {
   const copiedLines = lines.slice()
   const isOneLine = copiedLines.length < 2
-  const out: string[] = ['/**']
+  const out: string[] = ['/*!']
   if (isOneLine) {
     out.push(...copiedLines)
   } else {
@@ -82,12 +83,21 @@ ${banner.copyright}
 
 export const createBannerInfo = (
   pkg: Partial<PackageJson> = {},
-  vendor = 'ACME Corp.',
-  firstYear = 2003,
+  branding: Partial<BrandingInterface>,
 ): BannerInfo => {
   const currentYear = new Date().getFullYear()
+  const fallbackAuthor = 'Example Author'
 
-  const author = `${vendor}`
+  const author =
+    pkg.author && typeof pkg.author !== 'string' && pkg.author.name
+      ? pkg.author.name
+      : typeof pkg.author === 'string'
+      ? pkg.author
+      : fallbackAuthor
+  const vendor = branding.vendor ? branding.vendor : author
+  const firstYear = branding.firstYear ? branding.firstYear : false
+  const yearRangeStr = firstYear ? `${firstYear}-${currentYear}` : currentYear
+  const copyright = `Copyright (c) ${yearRangeStr} ${vendor}`
 
   const out: BannerInfo = {
     author,
@@ -95,8 +105,7 @@ export const createBannerInfo = (
     name: pkg.name || '',
     version: pkg.version || '',
     vendor,
-    copyright: `Copyright (c) ${firstYear}-${currentYear} ${vendor}`,
-    firstYear,
+    copyright,
   }
 
   if (pkg) {
@@ -124,7 +133,6 @@ export const createBannerFooter = (
   info: BannerInfo,
   appendLines: string[] = [],
 ): BannerFooter => {
-
   const bannerLines: string[] = []
 
   if (info) {
@@ -134,7 +142,7 @@ export const createBannerFooter = (
     bannerLines.push('')
   }
 
-  const maybeToAppend = appendLines.slice().filter(t => typeof t === 'string')
+  const maybeToAppend = appendLines.slice().filter((t) => typeof t === 'string')
   if (maybeToAppend.length > 0) {
     bannerLines.push(...maybeToAppend)
     bannerLines.push('')

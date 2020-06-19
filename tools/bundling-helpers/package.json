@@ -1,6 +1,6 @@
 {
   "name": "@renoirb/tools-bundling-helpers",
-  "version": "1.1.0-dev.4",
+  "version": "1.1.0-dev.5",
   "description": "Package bundling helper scripts",
   "homepage": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/tools/bundling-helpers",
   "repository": {
@@ -14,16 +14,16 @@
     "email": "contribs@renoirboulanger.com"
   },
   "exports": {
-    "import": "./dist/index.mjs",
+    "import": "./dist/index.esm.js",
     "require": "./dist/index.js"
   },
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "module": "dist/index.esm.js",
   "typings": "dist/index.d.ts",
   "bin": {
     "use-bundling-helpers-cross-env": "./bin/cross-env",
-    "use-bundling-helpers-use-rimraf": "./bin/rimraf",
-    "use-bundling-helpers-use-run-all": "./bin/run-all",
+    "use-bundling-helpers-rimraf": "./bin/rimraf",
+    "use-bundling-helpers-run-all": "./bin/run-all",
     "use-cross-env": "./bin/cross-env",
     "use-rimraf": "./bin/rimraf",
     "use-run-all": "./bin/run-all"
@@ -34,37 +34,36 @@
   ],
   "scripts": {
     "build": "./bin/run-all clean build:*",
-    "build:cjs": "bili --target node --format cjs --input src/index.ts --file-name index.js",
-    "build:esm": "bili --target node --format esm --input src/index.ts --file-name index.mjs",
+    "build:all": "bili -c bili.config.ts",
     "clean": "./bin/rimraf .rpt2_cache dist *.*.log",
-    "fix": "./bin/cross-env use-prettier --write '*'",
+    "fix": "./bin/cross-env use-prettier --write '**/*.{js,ts,md}'",
     "lint": "use-eslint --fix 'src/**/*.ts'",
     "prepublishOnly": "rushx build",
     "test": "use-jest --detectOpenHandles",
     "test:snapshots": "use-jest --detectOpenHandles -u"
   },
   "dependencies": {
-    "@rushstack/node-core-library": "^3.24.1",
+    "@rushstack/node-core-library": "^3.24.0",
     "cross-env": "^5.2.0",
     "npm-run-all": "^4.1.0",
     "rimraf": "~3.0.0"
   },
   "devDependencies": {
     "@microsoft/node-library-build": "^6.4.0",
-    "@renoirb/conventions-use-eslint": "1.1.0-dev.4",
-    "@renoirb/conventions-use-jest": "1.1.0-dev.4",
-    "@renoirb/conventions-use-prettier": "1.1.0-dev.4",
-    "@renoirb/conventions-use-typescript-3": "1.1.0-dev.4",
+    "@renoirb/conventions-use-eslint": "^1.1.0-dev.5",
+    "@renoirb/conventions-use-jest": "^1.1.0-dev.5",
+    "@renoirb/conventions-use-prettier": "^1.1.0-dev.5",
+    "@renoirb/conventions-use-typescript-3": "^1.1.0-dev.5",
     "@rollup/plugin-babel": "^5.0.0",
     "@types/core-js": "^2.5.2",
-    "@types/jest": "^25.1.3",
+    "@types/jest": "^26.0.0",
     "@types/node": "^10.17.13",
     "@types/resolve": "^0.0.8",
     "bili": "^4.8.1",
-    "jest": "^25.1.0",
+    "jest": "^25.5.0",
     "rollup": "^1.32.0",
     "rollup-plugin-typescript2": "^0.27.0",
-    "ts-jest": "^25.2.0",
+    "ts-jest": "^25.5.0",
     "tslib": "^2.0.0",
     "typescript": "^3.9.0"
   }

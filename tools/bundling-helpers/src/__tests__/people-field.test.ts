@@ -2,9 +2,10 @@
 
 import { PeopleField, stringifyAuthor } from '../people-field'
 
-const peopleFieldCollectionFixture: ReadonlyArray<
-  [PeopleField | string, string]
-> = [
+const peopleFieldCollectionFixture: ReadonlyArray<[
+  PeopleField | string,
+  string,
+]> = [
   [
     {
       email: 'ct@nx-01.starfleet',

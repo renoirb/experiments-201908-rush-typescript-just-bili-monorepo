@@ -1,25 +1,12 @@
-import { Config, ConfigOutput } from 'bili'
-import bili from '@renoirb/conventions-use-bili'
-import bundlingHelper from '@renoirb/tools-bundling-helpers'
+import useBili from '@renoirb/conventions-use-bili'
 
-const bundleInfo = bundlingHelper(__dirname, {
-  vendor: 'Renoir Boulanger',
-})
-
-const config: Config = bili('src/index.ts')(process)
-
-const output: ConfigOutput = {
-  ...config.output,
-  sourceMap: true,
-  minify: true,
-}
-
-const main: Config = {
-  ...config,
-  bundleNodeModules: true,
-  externals: [],
-  banner: bundleInfo.banners.banner,
-  output,
-}
+const main = useBili(
+  {
+    input: 'src/index.ts',
+    bundleNodeModules: true,
+    externals: [],
+  },
+  { firstYear: 2003 },
+)
 
 export default main

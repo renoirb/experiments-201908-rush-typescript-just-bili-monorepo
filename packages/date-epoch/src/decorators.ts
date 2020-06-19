@@ -13,7 +13,7 @@ import type { FuzzyDateType } from './helpers'
 export const epoch: PropertyDecorator = (target, propertyKey) => {
   let value = Reflect.has(target, propertyKey)
     ? Reflect.get(target, propertyKey)
-    : void 0
+    : undefined
   const getter = (): DateEpoch => {
     try {
       const maybe = new DateEpoch(value)

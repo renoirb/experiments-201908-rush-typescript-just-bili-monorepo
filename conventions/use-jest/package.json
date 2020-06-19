@@ -1,6 +1,6 @@
 {
   "name": "@renoirb/conventions-use-jest",
-  "version": "1.1.0-dev.4",
+  "version": "1.1.0-dev.5",
   "description": "Reusable Jest configs",
   "homepage": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/conventions/use-jest",
   "repository": {
@@ -16,7 +16,7 @@
   "main": "main.js",
   "bin": {
     "use-jest": "./bin/jest",
-    "conventions-use-jest": "./bin/jest"
+    "use-conventions-jest": "./bin/jest"
   },
   "files": [
     "csv-transformer.js",
@@ -30,28 +30,27 @@
   ],
   "scripts": {
     "build": "",
-    "fix": "use-cross-env use-prettier --write '**/*.{ts,md,json,js}'",
+    "fix": "use-prettier --write '*.{js,md,json}'",
     "lint": "use-eslint --fix '*.js'"
   },
   "dependencies": {
-    "papaparse": "^5.1.0"
-  },
-  "devDependencies": {
-    "@renoirb/conventions-use-eslint": "1.1.0-dev.4",
-    "@renoirb/conventions-use-prettier": "1.1.0-dev.4"
-  },
-  "peerDependencies": {
+    "papaparse": "^5.1.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^25.1.0",
-    "jest-diff": "^25.1.0",
+    "jest-diff": "^25.5.0",
     "jest-expect-message": "^1.0.1",
-    "@types/jest": "^25.1.0",
     "@jest/reporters": "^24.9.0",
     "@types/jest-expect-message": "^1.0.1",
-    "jest-cli": "^25.1.0",
     "jest-date-mock": "^1.0.8"
   },
+  "devDependencies": {
+    "@renoirb/conventions-use-eslint": "^1.1.0-dev.5",
+    "@renoirb/conventions-use-prettier": "^1.1.0-dev.5"
+  },
+  "peerDependencies": {
+    "jest": "^25.5.0",
+    "@types/jest": "^26.0.0"
+  },
   "optionalDependencies": {
-    "ts-jest": "^25.2.0"
+    "ts-jest": "^25.5.0"
   }
 }

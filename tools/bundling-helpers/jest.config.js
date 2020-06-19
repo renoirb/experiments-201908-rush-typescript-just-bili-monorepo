@@ -1,2 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-module.exports = require('@renoirb/conventions-use-jest')
+const base = require('@renoirb/conventions-use-jest')
+
+const main = {
+  ...base,
+}
+
+module.exports = main

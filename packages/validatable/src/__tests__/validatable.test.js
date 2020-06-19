@@ -3,7 +3,7 @@
 
 import { validatable, ValidatableRules } from '../validatable'
 
-const injectValidatableTo = subject => {
+const injectValidatableTo = (subject) => {
   validatable(subject)
   subject.validatable.addRule('size', true, /^[0-9a-zA-z\-_]{8,19}$/)
 

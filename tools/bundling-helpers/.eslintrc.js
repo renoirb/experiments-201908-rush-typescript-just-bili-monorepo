@@ -5,13 +5,11 @@ const main = {
   ...base,
   parserOptions: {
     tsconfigRootDir: __dirname,
-    project: './tsconfig.json',
+    project: './tsconfig.eslint.json',
   },
   rules: {
     ...base.rules,
-    // For each project, we want to make obvious what's first to be worked on.
-    // Ideally those lists should be empty.
-    // Tests passing.
+    // TODO: Make this list smaller, not bigger
     // To try it out, comment one line, then run `rushx lint`.
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/no-explicit-any': 'off',

@@ -62,13 +62,12 @@ export const coerceMilliseconds = (
 }
 
 export const coerceSeconds = (maybeMilliseconds: number | string): number => {
-  let value = +maybeMilliseconds
+  let value: number = +maybeMilliseconds
   if (Number.isNaN(value)) {
     const message = `Invalid argument "${value}", must be a number, or a string containing a number`
     throw new Error(message)
   }
-  const isValueMilliseconds = isMilliseconds(value)
-  if (isValueMilliseconds) {
+  if (isMilliseconds(value)) {
     // const sliced = String(value).slice(0, -3)
     // value = parseInt(sliced, 10)
     value = Math.floor(value / 1000)
@@ -92,7 +91,7 @@ export const coerceIso8601DashLessNotation = (
   const dto = maybeDateString
   const isString = typeof maybeDateString === 'string'
   const assertions = [
-    /\.000Z/ /* MUST end by dot 000Z */,
+    /\.\d{3}Z/ /* MUST end by dot 000Z where 0 can be any 0-9 digit */,
     /^(18|19|20)\d{12}/,
   ].map((r) => r.test(dto))
 

@@ -12,6 +12,7 @@ const output: ConfigOutput = {
 const config: Config = {
   banner: true,
   bundleNodeModules: true,
+  externals: ['@rushstack/node-core-library'],
   input,
   output,
 }

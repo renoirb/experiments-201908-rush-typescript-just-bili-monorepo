@@ -33,7 +33,7 @@ class FileTransformer extends TsJestTransformer {
 const instance = new FileTransformer()
 
 module.exports = {
-  FileTransformer: instance,
+  FileTransformer,
   default: instance,
   TsJestTransformer,
 }

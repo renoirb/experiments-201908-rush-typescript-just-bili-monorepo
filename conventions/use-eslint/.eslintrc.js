@@ -1,9 +1,14 @@
-const base = require('./main')
+/* eslint-disable @typescript-eslint/no-var-requires */
+const base = require('./ecmascript')
 
-module.exports = {
+const main = {
   ...base,
   rules: {
-    // See comments in @renoirb/tools-bundling-helpers .eslintrc.js
+    ...base.rules,
+    // TODO: Make this list smaller, not bigger
+    // To try it out, comment one line, then run `rushx lint`.
     '@typescript-eslint/no-var-requires': 'off',
   },
 }
+
+module.exports = main

@@ -6,28 +6,28 @@ and a "validate" function.
 CAUTION: This has been written back in 2013 and dearly needs refactoring.
 
 ```js
-import validatable from './validatable';
+import validatable from './validatable'
 
 // Notice this MUST either be a class, an object, or a Function, it cannot be an arrow function.
 class UsernameValidator {
   constructor() {
-    validatable(this);
-    this.validatable.addRule('size', true, /^[0-9a-zA-z\-_]{8,19}$/);
+    validatable(this)
+    this.validatable.addRule('size', true, /^[0-9a-zA-z\-_]{8,19}$/)
     this.validatable.addRule(
       'billable_format',
       false,
       /^[ABGKNPQSTWXZ]{1}[0-9]{8}$/,
-    );
+    )
   }
 }
 
 // ... later in the code
 
-const validator = new UsernameValidator();
+const validator = new UsernameValidator()
 
 // With rules above, "jjjjjj" should fail because it has less than 9 characters
-const check1 = validator.validate('jjjjjj');
-check.hasPassed(); // => false
+const check1 = validator.validate('jjjjjj')
+check.hasPassed() // => false
 ```
 
 ---

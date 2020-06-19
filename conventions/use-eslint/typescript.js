@@ -19,6 +19,10 @@ require('@rushstack/eslint-config/patch-eslint6')
  * @type {import('@types/eslint').Linter.Config}
  */
 const main = {
+  parserOptions: {
+    tsconfigRootDir: process.cwd(),
+    project: './tsconfig.eslint.json',
+  },
   // https://www.npmjs.com/package/@typescript-eslint/parser
   extends: ['@rushstack/eslint-config'],
   parser: '@typescript-eslint/parser',
@@ -30,6 +34,7 @@ const main = {
     'eslint-plugin-security',
     'eslint-plugin-tsdoc',
   ],
+  rules: {},
 }
 
 module.exports = main

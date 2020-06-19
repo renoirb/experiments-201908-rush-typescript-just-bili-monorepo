@@ -4,14 +4,9 @@ const { resolve, join, normalize } = require('path')
 
 const packageJson = resolve(normalize(join(process.cwd(), 'package.json')))
 const tsConfig = resolve(normalize(join(process.cwd(), 'tsconfig.json')))
-const prettierPath = resolve(
-  normalize(
-    join(
-      process.cwd(),
-      '/node_modules/@renoirb/conventions-use-prettier/bin/prettier',
-    ),
-  ),
-)
+const __prettier =
+  '/node_modules/@renoirb/conventions-use-prettier/bin/prettier'
+const prettierPath = resolve(normalize(join(process.cwd(), __prettier)))
 
 const processEnvKeys = Object.keys(process.env)
 const isCI = processEnvKeys.includes('CI_SERVER')
@@ -54,6 +49,7 @@ const main = {
   transform: {
     // See comment in ecmascript-transformer.js
     '\\.(ts|js)x?$': 'ts-jest',
+    '\\.(svg|css)$': join(__dirname, 'file-transformer.js'),
   },
   verbose,
 }

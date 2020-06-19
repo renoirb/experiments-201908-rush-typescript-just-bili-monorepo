@@ -1,10 +1,11 @@
+import { ProcessEnvRunTimeOptions } from './main'
+
 /**
  * If we have DEBUG string in process.env, we might also
  * want to see what Babel has to say
  */
-const babel = (env: NodeJS.ProcessEnv = {}) => {
-  const { DEBUG = '', BILI_BUNDLE_NODE_MODULES = '' } = env
-  const debug = String(DEBUG).length > 1
+const babel = (_: NodeJS.Process, opts: ProcessEnvRunTimeOptions) => {
+  const { hasBiliBundleNodeModulesOption, isDevModeVerbose } = opts
 
   // const targets = {};
 
@@ -24,12 +25,13 @@ const babel = (env: NodeJS.ProcessEnv = {}) => {
    * bili's Config `{"bundleNodeModules": true}`.
    *
    * If bili has option bundleNodeModules, we DO NOT WANT:
-   * - @babel/preset-env to has useBuiltIns with usage as value
+   * - @babel/preset-env to be `useBuiltIns: true` with usage as value
    * - We want to EXCLUDE core-js runtime so that it can be inlined.
    *
    * See https://github.com/adolt/rollup-babel-issue
    *
    * Other links found related to this:
+   * - https://github.com/rollup/plugins/tree/master/packages/babel#babelhelpers
    * - https://github.com/rollup/rollup-plugin-babel/issues/322
    * - https://github.com/rollup/rollup-plugin-babel/issues/254
    * - https://github.com/babel/babel/issues/8754
@@ -37,9 +39,9 @@ const babel = (env: NodeJS.ProcessEnv = {}) => {
    * - https://babeljs.io/docs/en/babel-plugin-transform-runtime#via-babelrc-recommended
    * - https://github.com/rollup/rollup/issues/2474#issuecomment-478130761
    */
-  const hasBiliBundleNodeModulesOption = BILI_BUNDLE_NODE_MODULES === 'true'
   const plugins = []
   const exclude = []
+
   if (hasBiliBundleNodeModulesOption) {
     plugins.push([
       'module:@babel/plugin-transform-runtime',
@@ -48,22 +50,22 @@ const babel = (env: NodeJS.ProcessEnv = {}) => {
         // TODO: Which of this here, or `/regenerator/` is needed to make it work. TBD. Later.
         // TODO: Check if package.json has required corejs deps and adjust corejs plugin config
         helpers: true,
+        useESModules: true,
       },
     ])
 
     exclude.push(...[/regenerator/, /runtime-corejs3/, /core-js/])
-
-    // console.log('1 hasBiliBundleNodeModulesOption', {
-    //   hasBiliBundleNodeModulesOption,
-    //   plugins: JSON.parse(JSON.stringify(plugins)),
-    // })
   }
+
+  // console.log('1 use-bili hasBiliBundleNodeModulesOption', {
+  //   hasBiliBundleNodeModulesOption,
+  //   plugins: JSON.parse(JSON.stringify(plugins)),
+  // })
 
   const out = {
     runtimeHelpers: true,
     presets: [
       [
-        // '@renoirb/conventions-use-bili',
         '@babel/preset-env',
         {
           /**
@@ -81,9 +83,9 @@ const babel = (env: NodeJS.ProcessEnv = {}) => {
            * But, that's not a priority for now, rework later.
            */
           useBuiltIns: hasBiliBundleNodeModulesOption ? false : 'usage',
-          corejs: 3,
+          corejs: hasBiliBundleNodeModulesOption ? undefined : 3,
           // targets,
-          debug,
+          debug: isDevModeVerbose,
         },
       ],
     ],
@@ -91,7 +93,7 @@ const babel = (env: NodeJS.ProcessEnv = {}) => {
     exclude,
   }
 
-  // console.log('2 hasBiliBundleNodeModulesOption', {
+  // console.log('2 use-bili hasBiliBundleNodeModulesOption', {
   //   hasBiliBundleNodeModulesOption,
   //   'out.presets[0]': JSON.parse(JSON.stringify(out.presets[0])),
   // })
@@ -99,4 +101,6 @@ const babel = (env: NodeJS.ProcessEnv = {}) => {
   return out
 }
 
-export const plugins = (env: NodeJS.ProcessEnv = {}) => ({ babel: babel(env) })
+export const plugins = (p: NodeJS.Process, o: ProcessEnvRunTimeOptions) => ({
+  babel: babel(p, o),
+})

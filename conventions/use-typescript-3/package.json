@@ -1,6 +1,6 @@
 {
   "name": "@renoirb/conventions-use-typescript-3",
-  "version": "1.1.0-dev.4",
+  "version": "1.1.0-dev.5",
   "description": "Reusable TypeScript 3.x configs",
   "homepage": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/conventions/use-typescript-3",
   "repository": {
@@ -18,18 +18,13 @@
   ],
   "scripts": {
     "build": "",
-    "fix": "use-cross-env use-prettier --write '**/*.{ts,md,json,js}'"
+    "fix": "use-prettier --write '**/*.{ts,md,json,js}'"
   },
   "devDependencies": {
-    "@renoirb/conventions-use-prettier": "1.1.0-dev.4",
-    "@renoirb/tools-bundling-helpers": "1.1.0-dev.3"
-  },
-  "peerDependencies": {
-    "@microsoft/node-library-build": "^6.4.0",
-    "@rushstack/node-core-library": "^3.24.0"
+    "@renoirb/conventions-use-prettier": "^1.1.0-dev.5"
   },
   "optionalDependencies": {
-    "@microsoft/rush-stack-compiler-3.7": "^0.2.3",
+    "@rushstack/node-core-library": "^3.24.0",
     "esm": "^3.2.0",
     "ts-node": "^8.10.0"
   }

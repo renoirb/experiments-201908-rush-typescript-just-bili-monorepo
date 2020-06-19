@@ -2,9 +2,19 @@
 
 exports[`main Snapshot sample 1`] = `
 Object {
-  "banner": true,
-  "input": Object {
-    "index": "foo/bar/baz/buzz/bizz.ts",
+  "banner": "/*!
+ * @renoirb/conventions-use-bili v1.1.0-dev.5
+ *
+ * Maintainer: Renoir Boulanger <contribs@renoirboulanger.com>
+ *
+ * MIT
+ *
+ * © 2020 Renoir Boulanger
+ */",
+  "input": "src/index.ts",
+  "output": Object {
+    "minify": true,
+    "sourceMap": true,
   },
   "plugins": Object {
     "babel": Object {

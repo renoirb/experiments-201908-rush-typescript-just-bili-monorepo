@@ -7,10 +7,19 @@
  * @type {import('@types/eslint').Linter.Config}
  */
 const main = {
+  parserOptions: {
+    ecmaVersion: 9,
+    sourceType: 'module',
+  },
+  // https://www.npmjs.com/package/@typescript-eslint/parser
+  extends: ['@rushstack/eslint-config'],
   plugins: [
     // https://www.npmjs.com/package/eslint-plugin-promise
     'eslint-plugin-promise',
+    '@rushstack/eslint-plugin',
+    '@typescript-eslint/eslint-plugin',
   ],
+  rules: {},
   overrides: [
     {
       files: ['*.test.js', '*.test.jsx'],

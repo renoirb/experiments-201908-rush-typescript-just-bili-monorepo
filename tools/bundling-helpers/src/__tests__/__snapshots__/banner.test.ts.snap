@@ -2,27 +2,26 @@
 
 exports[`createBannerFooter Snapshot sample 1`] = `
 Object {
-  "banner": "/**
+  "banner": "/*!
  * assimilate v436.0.1
  *
- * Maintainer: ACME Corp.
+ * Maintainer: Example Author
  *
  * LicenseRef-LICENSE
  *
- * © 2003-2020 ACME Corp.
+ * © 2003-2373 Example Author
  */",
-  "footer": "/** ACME Corp.  */",
+  "footer": "/*! Example Author  */",
 }
 `;
 
 exports[`createBannerInfo Snapshot sample 1`] = `
 Object {
-  "author": "ACME Corp.",
-  "copyright": "Copyright (c) 2003-2020 ACME Corp.",
-  "firstYear": 2003,
+  "author": "Borg Collective",
+  "copyright": "Copyright (c) 1484-2373 Borg Collective",
   "license": "LicenseRef-LICENSE",
   "name": "assimilate",
-  "vendor": "ACME Corp.",
+  "vendor": "Borg Collective",
   "version": "436.0.1",
 }
 `;
@@ -30,23 +29,45 @@ Object {
 exports[`createBannerInfo Supports defining own author 1`] = `
 Object {
   "author": "Seven Of Nine <7.9@adjunct.3.unimatrix.1.borg>",
-  "copyright": "Copyright (c) 2003-2020 ACME Corp.",
-  "firstYear": 2003,
+  "copyright": "Copyright (c) 1484-2373 Borg Collective",
   "license": "LicenseRef-LICENSE",
   "name": "assimilate",
-  "vendor": "ACME Corp.",
+  "vendor": "Borg Collective",
   "version": "436.0.1",
 }
 `;
 
+exports[`createBannerInfo Supports defining own author 2`] = `
+"/*!
+ * assimilate v436.0.1
+ *
+ * Maintainer: Seven Of Nine <7.9@adjunct.3.unimatrix.1.borg>
+ *
+ * LicenseRef-LICENSE
+ *
+ * © 1484-2373 Borg Collective
+ */"
+`;
+
 exports[`createBannerInfo Supports defining own license 1`] = `
 Object {
-  "author": "ACME Corp.",
-  "copyright": "Copyright (c) 2003-2020 ACME Corp.",
-  "firstYear": 2003,
+  "author": "Seven Of Nine <7.9@adjunct.3.unimatrix.1.borg>",
+  "copyright": "Copyright (c) 1484-2373 Seven Of Nine",
   "license": "MIT",
   "name": "assimilate",
-  "vendor": "ACME Corp.",
+  "vendor": "Seven Of Nine",
   "version": "436.0.1",
 }
+`;
+
+exports[`createBannerInfo Supports defining own license 2`] = `
+"/*!
+ * assimilate v436.0.1
+ *
+ * Maintainer: Seven Of Nine <7.9@adjunct.3.unimatrix.1.borg>
+ *
+ * MIT
+ *
+ * © 1484-2373 Seven Of Nine
+ */"
 `;

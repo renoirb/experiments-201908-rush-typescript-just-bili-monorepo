@@ -1,4 +1,4 @@
-export type BiliInputDescriptor = Record<string | 'index', string>
+export type BiliInputConfigEntryObject = Record<string | 'index', string>
 
 const isObject = (obj: unknown): obj is object => {
   return obj !== null && typeof obj === 'object'
@@ -16,7 +16,9 @@ const isPlainObject = (obj: unknown): obj is object => {
   )
 }
 
-const validateDescriptor = (input: unknown): input is BiliInputDescriptor => {
+const validateConfigEntryObject = (
+  input: unknown,
+): input is BiliInputConfigEntryObject => {
   const inputArgIsValid = isPlainObject(input)
   if (inputArgIsValid === false) {
     const message = `Unexpected input, it must be a Record<string, string> object hash-map.`
@@ -35,14 +37,20 @@ const validateDescriptor = (input: unknown): input is BiliInputDescriptor => {
 }
 
 export const input = (
-  input: string | BiliInputDescriptor = 'src/index.js',
-): BiliInputDescriptor => {
-  let out = Object.create(null) as BiliInputDescriptor
+  input:
+    | string
+    | BiliInputConfigEntryObject
+    | (BiliInputConfigEntryObject | string)[],
+): BiliInputConfigEntryObject => {
+  // eslint-disable-next-line @rushstack/no-null
+  const out = Object.create(null)
 
   if (typeof input === 'string') {
     out.index = input
-  } else if (isPlainObject(input)) {
+  }
+  if (isPlainObject(input)) {
     Object.assign(out, { ...input })
   }
-  return validateDescriptor(out) ? out : {}
+
+  return validateConfigEntryObject(out) ? out : {}
 }

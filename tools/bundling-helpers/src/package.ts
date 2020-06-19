@@ -1,14 +1,21 @@
-import { IPackageJson, PackageJsonLookup } from '@rushstack/node-core-library'
+import {
+  IPackageJson,
+  PackageJsonLookup,
+  INodePackageJson,
+} from '@rushstack/node-core-library'
 import { camelCase } from './manipulation'
 import { PeopleField } from './people-field'
+import { BannerFooter, BannerInfo } from './banner'
 import { cached } from './utils'
 
-/**
- * ------------------------------------------------------------------------------------------
- * @TODO: Clean this up and see to leverage @renoirb/tools-normalize-package-json
- * See https://github.com/nuxt/nuxt.js/pull/6373
- * ------------------------------------------------------------------------------------------
- */
+export type { IPackageJson, INodePackageJson }
+
+export interface PackageIdentityInterface {
+  banners: BannerFooter
+  info: BannerInfo
+  pkg: IPackageJson
+  projectPath: string
+}
 
 export interface PackageJson extends IPackageJson {
   author?: string | PeopleField
@@ -31,13 +38,13 @@ export const packageNameToModuleName = cached((name: string): string =>
  * @param {string} packageName The package.json package name to pick version string for
  * @param {Object.<string, string>=} dependenciesHashMap package.json’s dependencies hash map
  *
- * @returns {String|null} If core-js exists in the versions, the version number will be returned, otherwise null
+ * @returns {String|false} If core-js exists in the versions, the version number will be returned, otherwise null
  */
 export const packageExtractVersion = (
   packageName: string,
   dependenciesHashMap: DependenciesHashMap = {},
-): string | null => {
-  let version = null
+): string | false => {
+  let version: string | false = false
   if (typeof packageName === 'string') {
     const dependenciesKeys: string[] = dependenciesHashMap
       ? Object.keys(dependenciesHashMap)
@@ -54,16 +61,43 @@ export const packageExtractVersion = (
 /**
  * Prevent transpiling what is in dependencies and peerDependencies
  */
-export const packageExtractExternals = (pkg: IPackageJson): string[] => {
+export const packageExtractExternals = (
+  pkg: INodePackageJson | IPackageJson,
+): string[] => {
   const { peerDependencies = {}, dependencies = {} } = pkg
 
   const deps = Object.keys(dependencies)
 
   const externals = deps
-    .concat(Object.keys(peerDependencies).filter(d => !deps.includes(d)))
+    .concat(Object.keys(peerDependencies).filter((d) => !deps.includes(d)))
     .sort((a, b) => String(a).localeCompare(b))
 
   return externals
+}
+
+export type DependencyType =
+  | 'optionalDependencies'
+  | 'peerDependencies'
+  | 'devDependencies'
+  | 'dependencies'
+
+/**
+ * Package Dependency Checker
+ *
+ * From a package, check if a package is declared in a given dependency HashMap.
+ */
+export type PackageDependencyChecker = (
+  name: string,
+  type: DependencyType,
+) => boolean
+
+export const createPackageDependencyChecker = (
+  pkg: INodePackageJson | IPackageJson,
+): PackageDependencyChecker => (
+  name: string,
+  type: DependencyType = 'dependencies',
+): boolean => {
+  return type in pkg && Object.getOwnPropertyNames(pkg[type]).includes(name)
 }
 
 export const tryLoadPackageJsonFor = (

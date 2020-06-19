@@ -329,52 +329,37 @@
       "projectFolder": "conventions/use-bili",
       "versionPolicyName": "tooling",
       "reviewCategory": "conventions",
-      "cyclicDependencyProjects": [
-        "@renoirb/tools-bundling-helpers"
-      ],
     },
     {
       "packageName": "@renoirb/conventions-use-eslint",
       "projectFolder": "conventions/use-eslint",
       "versionPolicyName": "tooling",
       "reviewCategory": "conventions",
-      "cyclicDependencyProjects": [
-        "@renoirb/tools-bundling-helpers"
-      ],
     },
     {
       "packageName": "@renoirb/conventions-use-jest",
       "projectFolder": "conventions/use-jest",
       "versionPolicyName": "tooling",
       "reviewCategory": "conventions",
-      "cyclicDependencyProjects": [
-        "@renoirb/tools-bundling-helpers"
-      ],
     },
     {
       "packageName": "@renoirb/conventions-use-prettier",
       "projectFolder": "conventions/use-prettier",
       "versionPolicyName": "tooling",
       "reviewCategory": "conventions",
-      "cyclicDependencyProjects": [
-        "@renoirb/tools-bundling-helpers"
-      ],
     },
     {
       "packageName": "@renoirb/conventions-use-typescript-3",
       "projectFolder": "conventions/use-typescript-3",
       "versionPolicyName": "tooling",
       "reviewCategory": "conventions",
-      "cyclicDependencyProjects": [
-        "@renoirb/tools-bundling-helpers"
-      ],
     },
 
     {
       "packageName": "@renoirb/tools-bundling-helpers",
       "projectFolder": "tools/bundling-helpers",
       "versionPolicyName": "tooling",
-      "reviewCategory": "tools",
+      "reviewCategory": "tools"
     },
 
     {
