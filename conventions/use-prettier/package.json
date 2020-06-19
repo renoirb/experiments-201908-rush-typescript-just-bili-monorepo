@@ -15,7 +15,8 @@
   },
   "main": "prettier.config.js",
   "bin": {
-    "use-prettier": "./bin/prettier"
+    "use-prettier": "./bin/prettier",
+    "conventions-use-prettier": "./bin/prettier"
   },
   "files": [
     "prettier.config.js",

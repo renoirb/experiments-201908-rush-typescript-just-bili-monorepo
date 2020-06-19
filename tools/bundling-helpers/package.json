@@ -21,6 +21,9 @@
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
   "bin": {
+    "use-bundling-helpers-cross-env": "./bin/cross-env",
+    "use-bundling-helpers-use-rimraf": "./bin/rimraf",
+    "use-bundling-helpers-use-run-all": "./bin/run-all",
     "use-cross-env": "./bin/cross-env",
     "use-rimraf": "./bin/rimraf",
     "use-run-all": "./bin/run-all"

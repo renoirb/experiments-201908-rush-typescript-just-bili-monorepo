@@ -22,17 +22,15 @@
   },
   "devDependencies": {
     "@renoirb/conventions-use-prettier": "1.1.0-dev.3",
-    "@renoirb/tools-bundling-helpers": "1.1.0-dev.1"
+    "@renoirb/tools-bundling-helpers": "1.1.0-dev.3"
   },
   "peerDependencies": {
     "@microsoft/node-library-build": "^6.4.0",
-    "@rushstack/node-core-library": "^3.24.1"
+    "@rushstack/node-core-library": "^3.24.0"
   },
   "optionalDependencies": {
     "@microsoft/rush-stack-compiler-3.7": "^0.2.3",
     "esm": "^3.2.0",
-    "gulp": "~4.0.2",
-    "ts-node": "^8.6.0",
-    "type-fest": "^0.10.0"
+    "ts-node": "^8.10.0"
   }
 }

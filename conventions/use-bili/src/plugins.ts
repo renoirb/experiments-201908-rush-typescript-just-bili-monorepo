@@ -46,10 +46,17 @@ const babel = (env: NodeJS.ProcessEnv = {}) => {
       {
         corejs: 3,
         // TODO: Which of this here, or `/regenerator/` is needed to make it work. TBD. Later.
+        // TODO: Check if package.json has required corejs deps and adjust corejs plugin config
         helpers: true,
       },
     ])
+
     exclude.push(...[/regenerator/, /runtime-corejs3/, /core-js/])
+
+    // console.log('1 hasBiliBundleNodeModulesOption', {
+    //   hasBiliBundleNodeModulesOption,
+    //   plugins: JSON.parse(JSON.stringify(plugins)),
+    // })
   }
 
   const out = {
@@ -60,6 +67,8 @@ const babel = (env: NodeJS.ProcessEnv = {}) => {
         '@babel/preset-env',
         {
           /**
+           * @TODO: Check if package.json has required corejs deps and adjust corejs plugin config
+           *
            * https://babeljs.io/docs/en/babel-plugin-transform-runtime#options
            *
            * @TODO: There might be a logic error here when we want bundleNodeModules
@@ -82,7 +91,10 @@ const babel = (env: NodeJS.ProcessEnv = {}) => {
     exclude,
   }
 
-  // console.log('hasBiliBundleNodeModulesOption', hasBiliBundleNodeModulesOption, JSON.stringify(out))
+  // console.log('2 hasBiliBundleNodeModulesOption', {
+  //   hasBiliBundleNodeModulesOption,
+  //   'out.presets[0]': JSON.parse(JSON.stringify(out.presets[0])),
+  // })
 
   return out
 }

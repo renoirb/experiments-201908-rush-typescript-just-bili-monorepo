@@ -6,7 +6,7 @@ dependencies:
   '@jest/reporters': 24.9.0
   '@microsoft/node-library-build': 6.4.25
   '@microsoft/rush-stack-compiler-3.7': 0.2.17
-  '@renoirb/tools-bundling-helpers': 1.1.0-dev.1
+  '@renoirb/tools-bundling-helpers': 1.1.0-dev.3
   '@rollup/plugin-babel': 5.0.3_@babel+core@7.10.2+rollup@1.32.1
   '@rush-temp/conventions-use-bili': 'file:projects/conventions-use-bili.tgz_jest@25.5.4'
   '@rush-temp/conventions-use-eslint': 'file:projects/conventions-use-eslint.tgz_typescript@3.9.5'
@@ -20,9 +20,7 @@ dependencies:
   '@rush-temp/validatable': 'file:projects/validatable.tgz_@babel+core@7.10.2'
   '@rushstack/eslint-config': 0.5.8_eslint@6.8.0+typescript@3.9.5
   '@rushstack/eslint-plugin': 0.3.2_eslint@6.8.0
-  '@rushstack/node-core-library': 3.24.1
   '@types/core-js': 2.5.3
-  '@types/jest': 25.2.3
   '@types/jest-expect-message': 1.0.2
   '@types/node': 10.17.26
   '@types/resolve': 0.0.8
@@ -38,7 +36,6 @@ dependencies:
   eslint-plugin-security: 1.4.0
   eslint-plugin-tsdoc: 0.2.5
   esm: 3.2.25
-  gulp: 4.0.2
   identity-obj-proxy: 3.0.0
   jest: 25.5.4
   jest-cli: 25.5.4
@@ -54,7 +51,6 @@ dependencies:
   ts-jest: 25.5.1_jest@25.5.4+typescript@3.9.5
   ts-node: 8.10.2_typescript@3.9.5
   tslib: 2.0.0
-  type-fest: 0.10.0
   typescript: 3.9.5
 lockfileVersion: 5.1
 packages:
@@ -1107,7 +1103,7 @@ packages:
   /@jest/core/25.4.0:
     dependencies:
       '@jest/console': 25.5.0
-      '@jest/reporters': 25.4.0
+      '@jest/reporters': 25.5.1
       '@jest/test-result': 25.5.0
       '@jest/transform': 25.5.1
       '@jest/types': 25.5.0
@@ -1582,7 +1578,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-/b13m37QZYPV6nCOiqkFyvlQjlTNvAcQpgFZ6ZKIqtStJxNdqVo/frULubxMUMWi6p9Uo5f4BRlguv5ViFcL0A==
-  /@renoirb/tools-bundling-helpers/1.1.0-dev.1:
+  /@renoirb/tools-bundling-helpers/1.1.0-dev.3:
     dependencies:
       '@rushstack/node-core-library': 3.24.1
       cross-env: 5.2.1
@@ -1591,7 +1587,7 @@ packages:
     dev: false
     hasBin: true
     resolution:
-      integrity: sha512-uUFL9UR1HtIOXYiFQRwiQUbubb+S50zEiAJa7/r4g7Dfg67rg1E4jueUIdERW6jk7gmIKeCQRv3An1U+4y/F3Q==
+      integrity: sha512-KV8sAwLyaHVjU0VxMy2tfrDWhki9a7Esa6VLH7AjBzLpxhT7K9hAug/V2Clqpxt5lgkDm6uONMkWZTpquj8zmA==
   /@rollup/plugin-babel/5.0.3_@babel+core@7.10.2+rollup@1.32.1:
     dependencies:
       '@babel/core': 7.10.2
@@ -1829,7 +1825,7 @@ packages:
       integrity: sha512-P/W9yOX/3oPZSpaYOCQzGqgCQRXn0FFO/V8bWrCQs+wLmvVVxk6CRBXALEvNs9OHIatlnlFokfhuDo2ug01ciw==
   /@types/jest-expect-message/1.0.2:
     dependencies:
-      '@types/jest': 25.2.3
+      '@types/jest': 26.0.0
     dev: false
     resolution:
       integrity: sha512-a6En2I1lLW0oW1FmukuPR056n+zGBN6CIctrQN9znBrC+6/GsBRg1ICtZUzHtRn9U0hd4vXjRMd2D2BMefMy2Q==
@@ -1847,6 +1843,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-JXc1nK/tXHiDhV55dvfzqtmP4S3sy3T3ouV2tkViZgxY/zeUkcpQcQPGRlgF4KmWzWW5oiWYSZwtCB+2RsE4Fw==
+  /@types/jest/26.0.0:
+    dependencies:
+      jest-diff: 25.5.0
+      pretty-format: 25.5.0
+    dev: false
+    resolution:
+      integrity: sha512-/yeMsH9HQ1RLORlXAwoLXe8S98xxvhNtUz3yrgrwbaxYjT+6SFPZZRksmRKRA6L5vsUtSHeN71viDOTTyYAD+g==
   /@types/json-schema/7.0.5:
     dev: false
     resolution:
@@ -4911,7 +4914,7 @@ packages:
     dependencies:
       array-union: 1.0.2
       arrify: 1.0.1
-      glob: 7.1.6
+      glob: 7.0.6
       object-assign: 4.1.1
       pify: 2.3.0
       pinkie-promise: 2.0.1
@@ -10341,12 +10344,6 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g==
-  /type-fest/0.10.0:
-    dev: false
-    engines:
-      node: '>=8'
-    resolution:
-      integrity: sha512-EUV9jo4sffrwlg8s0zDhP0T2WD3pru5Xi0+HTE3zTUmBaZNhfkite9PdSJwdXLwPVW0jnAHT56pZHIOYckPEiw==
   /type-fest/0.11.0:
     dev: false
     engines:
@@ -11003,7 +11000,7 @@ packages:
       '@babel/plugin-transform-runtime': 7.10.1_@babel+core@7.10.2
       '@babel/preset-env': 7.10.2_@babel+core@7.10.2
       '@babel/runtime-corejs3': 7.10.2
-      '@renoirb/tools-bundling-helpers': 1.1.0-dev.1
+      '@renoirb/tools-bundling-helpers': 1.1.0-dev.3
       '@rollup/plugin-babel': 5.0.3_@babel+core@7.10.2+rollup@1.32.1
       '@rushstack/node-core-library': 3.24.1
       '@types/jest': 25.2.3
@@ -11021,7 +11018,7 @@ packages:
     peerDependencies:
       jest: '*'
     resolution:
-      integrity: sha512-IfUtWi7wv02DWqTwhR2e5ZaANDh9Cy1tpyGK/9TrkfrGlcjVFbm2ZGXoT2V5vI0WMA60EWPppv5w9YCbaDWvyw==
+      integrity: sha512-1yski7HEs+KlrfbDZwMJmqwVnVU+4RXEH2wJwMVoywpIgoAS0R6QvLSORB+MMcpcXJdcZIkoVQBU43BOoMusPw==
       tarball: 'file:projects/conventions-use-bili.tgz'
     version: 0.0.0
   'file:projects/conventions-use-eslint.tgz_typescript@3.9.5':
@@ -11043,13 +11040,18 @@ packages:
     peerDependencies:
       typescript: '*'
     resolution:
-      integrity: sha512-fSpFgeTOedDEzE6HW+31/IUTT0sg1j+u1WrN4fYY1970OBgCN+TJNplcwlFl9G5ExRp9gpHkXR8WZBz5pkVI1Q==
+      integrity: sha512-4dr5H8yW7bE+R4BHU8VLIWTUfWZeOSJon83Rq6i4EoJj8aijWa8mF/F+gvp3mEEy8CrCYYPaZD1DmruxG4GdxA==
       tarball: 'file:projects/conventions-use-eslint.tgz'
     version: 0.0.0
   'file:projects/conventions-use-jest.tgz_typescript@3.9.5':
     dependencies:
+      '@jest/reporters': 24.9.0
+      '@types/jest': 25.2.3
+      '@types/jest-expect-message': 1.0.2
       identity-obj-proxy: 3.0.0
       jest: 25.5.4
+      jest-cli: 25.5.4
+      jest-date-mock: 1.0.8
       jest-diff: 25.5.0
       jest-expect-message: 1.0.2
       papaparse: 5.2.0
@@ -11057,16 +11059,11 @@ packages:
     id: 'file:projects/conventions-use-jest.tgz'
     name: '@rush-temp/conventions-use-jest'
     optionalDependencies:
-      '@jest/reporters': 24.9.0
-      '@types/jest': 25.2.3
-      '@types/jest-expect-message': 1.0.2
-      jest-cli: 25.5.4
-      jest-date-mock: 1.0.8
       ts-jest: 25.5.1_jest@25.5.4+typescript@3.9.5
     peerDependencies:
       typescript: '*'
     resolution:
-      integrity: sha512-OipEgsMpz9xyhkDk/xbKxCSqabaBitUHk7RCaqsUR1SRVs8yeaYpNNaQpMwUayzfhHesZkrxJ4Kx06MalaXJBw==
+      integrity: sha512-aqo33bL8wuw8Sv6ynIJfQrl2W3KbmJfdXTyv8i3dJNuZIpChIwOhlYx6L1oCYaMJRAkZTcd9zTiqoLpden2Okw==
       tarball: 'file:projects/conventions-use-jest.tgz'
     version: 0.0.0
   'file:projects/conventions-use-prettier.tgz':
@@ -11081,7 +11078,7 @@ packages:
   'file:projects/conventions-use-typescript-3.tgz_typescript@3.9.5':
     dependencies:
       '@microsoft/node-library-build': 6.4.25
-      '@renoirb/tools-bundling-helpers': 1.1.0-dev.1
+      '@renoirb/tools-bundling-helpers': 1.1.0-dev.3
       '@rushstack/node-core-library': 3.24.1
     dev: false
     id: 'file:projects/conventions-use-typescript-3.tgz'
@@ -11089,13 +11086,11 @@ packages:
     optionalDependencies:
       '@microsoft/rush-stack-compiler-3.7': 0.2.17
       esm: 3.2.25
-      gulp: 4.0.2
       ts-node: 8.10.2_typescript@3.9.5
-      type-fest: 0.10.0
     peerDependencies:
       typescript: '*'
     resolution:
-      integrity: sha512-DZKfzWSAgILynNfPzypIuBmUW9GmZbraqUkC7u7vq/HRrcEe6x3z/mcP4fS8jWnIcWJp1HGrBdaps2m+OWzbmQ==
+      integrity: sha512-Emf3KQxcRxkRlE8Wkfc/LF5TMQ7uj2zkw4seoxnBkFG+4zvLhvepvHyPRjj+4hhImkFjSLoFTnUsx694p2UIeA==
       tarball: 'file:projects/conventions-use-typescript-3.tgz'
     version: 0.0.0
   'file:projects/date-epoch.tgz_@babel+core@7.10.2':
@@ -11116,7 +11111,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-mfl06HTdBgiZcnYYtsxocBMo+3QnzgMz8HV32DZHN3Li9UhDB6BdTdvRXE07Ayi9VRLl4it2ibWm5ahM3/GMlg==
+      integrity: sha512-bq6vr/ZuLOIzG51jhekSSkPeCRoleW60VajMnPWoXoOdrVz8V5RDfyf8m1zLJEliNC3b2LlW5/kHPxWZ9TB3cg==
       tarball: 'file:projects/date-epoch.tgz'
     version: 0.0.0
   'file:projects/polyfill-for-of-example.tgz_@babel+core@7.10.2':
@@ -11134,7 +11129,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-QPvgg39jk/BI42N9v1uMOaoIpMZUPmhIpeYNlFcjhxI5cPR4j84WqxEGuq2jCPgXybcL6N0IwSAICVKY32YsLw==
+      integrity: sha512-T4JAsIEnoam5jHcsIUFxE946PhUILRvW8hmGA1xdWnP1f+2iIVqc+3kzMmEI2IgXOZ28SFPewDG1zWDfe706Dw==
       tarball: 'file:projects/polyfill-for-of-example.tgz'
     version: 0.0.0
   'file:projects/polyfill-latency.tgz_@babel+core@7.10.2':
@@ -11153,7 +11148,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-fzxgcirIgd5DZ/oAdent/wjPPhwDip1gnUtJsFAphswNdHhdGT8scfRpKcO/BWdQxhSLJLUxfRnW/3vAE/yrQA==
+      integrity: sha512-OEX/KpNDDYcbmSZThPMQOD8kmnrVurQl+CJ6uOxwlZT/R8PMkcDDcoIBnssHivErW2z0LiWgCFF7fAWlKhYq3Q==
       tarball: 'file:projects/polyfill-latency.tgz'
     version: 0.0.0
   'file:projects/tools-bundling-helpers.tgz_@babel+core@7.10.2':
@@ -11181,7 +11176,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-kb+HwjnyRvKgmz7WpKkA13z1oqP/PjppZ5kgmdu3mrSCwDVVbVha5Klu9OVT+2lTGvi2RoMA0Kl5jgbujSYYdA==
+      integrity: sha512-m+btUIh0tFC7b5cCgTPDHzHBwiIxXG6BdqczQqpTwuiXpQ2IG7gScUA2alYNuogVEeBWDFfps1sh6AU30WXHNg==
       tarball: 'file:projects/tools-bundling-helpers.tgz'
     version: 0.0.0
   'file:projects/validatable.tgz_@babel+core@7.10.2':
@@ -11199,7 +11194,7 @@ packages:
     peerDependencies:
       '@babel/core': '*'
     resolution:
-      integrity: sha512-2//jWVw3aFFIADXQKiyAtpbqsRCyFlhJxTZaRPraP5zIj+pz0SzQsNKAD7tNFDgipHNY8PyBwkDh8E9ydHhq+Q==
+      integrity: sha512-AoFWWqhCVPsRmrrH9XDIFu5hrZEJT+RL95uZXDL9aJ9I9KjEfnXE61T58MeucszosoK9GMBnwDhweYIosLtpYA==
       tarball: 'file:projects/validatable.tgz'
     version: 0.0.0
 registry: ''
@@ -11211,7 +11206,7 @@ specifiers:
   '@jest/reporters': ^24.9.0
   '@microsoft/node-library-build': ^6.4.0
   '@microsoft/rush-stack-compiler-3.7': ^0.2.3
-  '@renoirb/tools-bundling-helpers': 1.1.0-dev.1
+  '@renoirb/tools-bundling-helpers': 1.1.0-dev.3
   '@rollup/plugin-babel': ^5.0.0
   '@rush-temp/conventions-use-bili': 'file:./projects/conventions-use-bili.tgz'
   '@rush-temp/conventions-use-eslint': 'file:./projects/conventions-use-eslint.tgz'
@@ -11225,9 +11220,7 @@ specifiers:
   '@rush-temp/validatable': 'file:./projects/validatable.tgz'
   '@rushstack/eslint-config': 0.5.8
   '@rushstack/eslint-plugin': 0.3.2
-  '@rushstack/node-core-library': ^3.24.1
   '@types/core-js': ^2.5.2
-  '@types/jest': ^25.1.3
   '@types/jest-expect-message': ^1.0.1
   '@types/node': ^10.17.13
   '@types/resolve': ^0.0.8
@@ -11243,7 +11236,6 @@ specifiers:
   eslint-plugin-security: ~1.4.0
   eslint-plugin-tsdoc: ~0.2.4
   esm: ^3.2.0
-  gulp: ~4.0.2
   identity-obj-proxy: ^3.0.0
   jest: ^25.1.0
   jest-cli: ^25.1.0
@@ -11257,7 +11249,6 @@ specifiers:
   rollup: ^1.32.0
   rollup-plugin-typescript2: ^0.27.0
   ts-jest: ^25.2.0
-  ts-node: ^8.6.0
+  ts-node: ^8.10.0
   tslib: ^2.0.0
-  type-fest: ^0.10.0
   typescript: ^3.9.0
