@@ -3,7 +3,7 @@
 exports[`main Snapshot sample 1`] = `
 Object {
   "banner": "/*!
- * @renoirb/conventions-use-bili v1.1.0-dev.5
+ * @renoirb/conventions-use-bili v1.1.0-dev.6
  *
  * Maintainer: Renoir Boulanger <contribs@renoirboulanger.com>
  *
@@ -11,6 +11,7 @@ Object {
  *
  * © 2020 Renoir Boulanger
  */",
+  "bundleNodeModules": false,
   "input": "src/index.ts",
   "output": Object {
     "minify": true,

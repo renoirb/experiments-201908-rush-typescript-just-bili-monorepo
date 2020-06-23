@@ -11,6 +11,8 @@ import bundlingHelpers, {
 } from '@renoirb/tools-bundling-helpers'
 import { resolve } from 'path'
 
+export { BrandingInterface }
+
 export interface ProcessEnvRunTimeOptions {
   hasBiliBundleNodeModulesOption: boolean
   isDevModeVerbose: boolean
