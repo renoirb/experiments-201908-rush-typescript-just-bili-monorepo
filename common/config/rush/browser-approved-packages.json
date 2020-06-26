@@ -168,7 +168,7 @@
     },
     {
       "name": "jest-date-mock",
-      "allowedCategories": [ "conventions" ]
+      "allowedCategories": [ "conventions", "libraries" ]
     },
     {
       "name": "jest-diff",

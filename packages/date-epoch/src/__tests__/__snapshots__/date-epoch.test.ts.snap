@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DateEpoch DateEpoch#constructor 1`] = `"1533762055251"`;
+exports[`DateEpoch DateEpoch#constructor when argument is a Date 1`] = `1592971200000`;
+
+exports[`DateEpoch DateEpoch#constructor when argument is a Date 2`] = `2020-06-24T04:00:00.000Z`;

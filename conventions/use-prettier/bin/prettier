@@ -37,6 +37,6 @@ const messagePrefix = '@renoirb/conventions-use-prettier/bin/prettier'
 const message = usePackagedPrettierConfig ? ` --config ${localConfigPath}\n` : '\n'
 console.log(messagePrefix+message)
 
-require('prettier/bin-prettier')
+require('prettier/bin-prettier.js')
 
 

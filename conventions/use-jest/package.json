@@ -15,8 +15,8 @@
   },
   "main": "main.js",
   "bin": {
-    "use-jest": "./bin/jest",
-    "use-conventions-jest": "./bin/jest"
+    "use-conventions-jest": "./bin/jest",
+    "use-jest": "./bin/jest"
   },
   "files": [
     "csv-transformer.js",
@@ -34,23 +34,23 @@
     "lint": "use-eslint --fix '*.js'"
   },
   "dependencies": {
-    "papaparse": "^5.1.0",
+    "@jest/reporters": "^24.9.0",
+    "@types/jest-expect-message": "^1.0.1",
     "identity-obj-proxy": "^3.0.0",
     "jest-diff": "^25.5.0",
     "jest-expect-message": "^1.0.1",
-    "@jest/reporters": "^24.9.0",
-    "@types/jest-expect-message": "^1.0.1",
-    "jest-date-mock": "^1.0.8"
+    "papaparse": "^5.1.0"
   },
   "devDependencies": {
     "@renoirb/conventions-use-eslint": "1.1.0-dev.6",
     "@renoirb/conventions-use-prettier": "1.1.0-dev.6"
   },
   "peerDependencies": {
-    "jest": "^25.5.0",
-    "@types/jest": "^26.0.0"
+    "@types/jest": "^26.0.0",
+    "jest": "^25.5.0"
   },
   "optionalDependencies": {
+    "jest-date-mock": "^1.0.8",
     "ts-jest": "^25.5.0"
   }
 }

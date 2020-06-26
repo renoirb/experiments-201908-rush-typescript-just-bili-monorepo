@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@renoirb/date-epoch",
+      "comment": "Make DateEpoch behave more closely to Date",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@renoirb/date-epoch",
+  "email": "contribs@renoirboulanger.com"
+}

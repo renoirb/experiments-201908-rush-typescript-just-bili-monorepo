@@ -24,11 +24,11 @@ export class DateEpoch {
   public constructor(epoch?: any) {
     let value: number
     switch (true) {
-      case Number.isFinite(epoch):
+      case Number.isFinite(+epoch):
         value = coerceMilliseconds(epoch)
         break
 
-      case epoch && 'getTime' in epoch:
+      case Object.prototype.toString.call(epoch) === '[object Date]':
         value = epoch.getTime()
         break
 
@@ -43,14 +43,37 @@ export class DateEpoch {
       configurable: false,
       enumerable: false,
     })
+    Object.defineProperty(this, Symbol.toStringTag, { value: 'DateEpoch' })
   }
 
-  public toJSON(): number {
-    return this._epoch
+  [Symbol.toPrimitive](hint: 'default'): string
+  [Symbol.toPrimitive](hint: 'string'): string
+  [Symbol.toPrimitive](hint: 'number'): number
+
+  /**
+   * Converts a Date object to a string or number.
+   *
+   * Notes: This is ECMAScript's "well known" protocol.
+   * See https://exploringjs.com/deep-js/ch_type-coercion.html#example-coercion-algorithms
+   *
+   * @param hint The strings "number", "string", or "default" to specify what primitive to return.
+   *
+   * @returns A number if 'hint' was "number", a string if 'hint' was "string" or "default".
+   */
+  [Symbol.toPrimitive](hint: string): string | number {
+    if (/number/.test(hint)) {
+      return this._epoch
+    } else {
+      return this.toString()
+    }
+  }
+
+  public toJSON(): Date {
+    return this.toDate()
   }
 
   public toString(): string {
-    return String(this._epoch)
+    return String(this.toDate())
   }
 
   /**
