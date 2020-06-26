@@ -1,6 +1,6 @@
 {
   "name": "@renoirb/conventions-use-prettier",
-  "version": "1.1.0-dev.6",
+  "version": "1.1.0-dev.7",
   "description": "Reusable Prettier configs",
   "homepage": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/conventions/use-prettier",
   "repository": {
@@ -27,7 +27,7 @@
     "build": "",
     "fix": "./bin/prettier --write '**/*.{jsx?,tsx?,json,md}'"
   },
-  "peerDependencies": {
+  "dependencies": {
     "prettier": "^2.0.5"
   },
   "optionnalDependencies": {
