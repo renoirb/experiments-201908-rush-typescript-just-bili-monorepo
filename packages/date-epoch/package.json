@@ -15,20 +15,22 @@
   },
   "exports": {
     "browser": "./dist/index-browser.js",
-    "import": "./dist/index.esm.js",
+    "import": "./index.mjs",
     "require": "./dist/index.js"
   },
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
   "module": "dist/index.esm.js",
   "typings": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "index.mjs"
   ],
   "scripts": {
     "build": "use-cross-env use-run-all clean build:*",
     "build:browser": "use-cross-env use-bili -c bili.config.ts --target browser --format iife --module-name DateEpoch --input src/index-browser.ts --file-name index-browser.js",
     "build:node": "use-cross-env use-bili -c bili.config.ts --target node --format cjs --file-name index.js",
     "build:node-esm": "use-cross-env use-bili -c bili.config.ts --target node --format esm --file-name index.esm.js",
+    "build:node-mjs": "use-cross-env use-bili -c bili.config.ts --target node --format esm --file-name index.mjs",
     "clean": "use-cross-env use-rimraf .rpt2_cache dist *.*.log",
     "fix": "use-cross-env use-prettier --write '**/*.{ts,md,json,js}'",
     "lint": "use-cross-env use-eslint --fix 'src/**/*.ts'",

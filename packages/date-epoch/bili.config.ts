@@ -4,9 +4,6 @@ const main = useBili(
   {
     input: 'src/index.ts',
     bundleNodeModules: true,
-    output: {
-      format: ['cjs', 'iife', 'esm'],
-    },
   },
   { firstYear: 2003 },
 )

@@ -14,7 +14,7 @@
     "email": "contribs@renoirboulanger.com"
   },
   "exports": {
-    "import": "./dist/index.esm.js",
+    "import": "./index.mjs",
     "require": "./dist/index.js"
   },
   "main": "dist/index.js",
@@ -29,6 +29,7 @@
     "use-run-all": "./bin/run-all"
   },
   "files": [
+    "index.mjs",
     "dist",
     "bin"
   ],
