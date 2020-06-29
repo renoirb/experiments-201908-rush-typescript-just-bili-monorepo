@@ -2,6 +2,37 @@
   "name": "@renoirb/tools-bundling-helpers",
   "entries": [
     {
+      "version": "1.1.0",
+      "tag": "@renoirb/tools-bundling-helpers_v1.1.0",
+      "date": "Mon, 29 Jun 2020 02:44:25 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Upgrading deps, minor refactor"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Use new method signature so @renoirb/conventions-use-bili can use plus new CommandLineUtilities class"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@renoirb/conventions-use-eslint\" from `1.1.0-dev.7` to `1.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@renoirb/conventions-use-jest\" from `1.1.0-dev.7` to `1.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@renoirb/conventions-use-prettier\" from `1.1.0-dev.7` to `1.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@renoirb/conventions-use-typescript-3\" from `1.1.0-dev.7` to `1.1.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.2",
       "tag": "@renoirb/tools-bundling-helpers_v1.0.2",
       "date": "Thu, 02 Jan 2020 23:25:02 GMT",
