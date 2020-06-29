@@ -1,6 +1,13 @@
 # Change Log - @renoirb/date-epoch
 
-This log was last generated on Mon, 29 Jun 2020 02:44:25 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jun 2020 04:36:05 GMT and should not be manually modified.
+
+## 1.1.1
+Mon, 29 Jun 2020 04:36:05 GMT
+
+### Patches
+
+- ESM/MJS module
 
 ## 1.1.0
 Mon, 29 Jun 2020 02:44:25 GMT
