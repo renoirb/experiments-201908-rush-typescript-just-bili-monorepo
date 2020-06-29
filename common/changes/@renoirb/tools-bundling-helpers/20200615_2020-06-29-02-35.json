@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@renoirb/tools-bundling-helpers",
+      "comment": "Use new method signature so @renoirb/conventions-use-bili can use plus new CommandLineUtilities class",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@renoirb/tools-bundling-helpers",
+  "email": "contribs@renoirboulanger.com"
+}

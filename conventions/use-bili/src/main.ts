@@ -13,7 +13,7 @@ import { resolve } from 'path'
 
 export { BrandingInterface }
 
-export interface ProcessEnvRunTimeOptions {
+export interface IProcessEnvRunTimeOptions {
   hasBiliBundleNodeModulesOption: boolean
   isDevModeVerbose: boolean
 }
@@ -40,14 +40,14 @@ const createDepChecker = (depChecker: PackageDependencyChecker) => (
 export const resolveRunTimeOptions = (
   p: NodeJS.Process,
   cfg: Config,
-): Readonly<ProcessEnvRunTimeOptions> => {
+): Readonly<IProcessEnvRunTimeOptions> => {
   const { DEBUG = '', BILI_BUNDLE_NODE_MODULES = '' } = p.env
   const isDevModeVerbose = String(DEBUG).length > 1
   let hasBiliBundleNodeModulesOption = BILI_BUNDLE_NODE_MODULES === 'true'
   if (cfg.bundleNodeModules) {
     hasBiliBundleNodeModulesOption = cfg.bundleNodeModules === true
   }
-  const out: ProcessEnvRunTimeOptions = {
+  const out: IProcessEnvRunTimeOptions = {
     hasBiliBundleNodeModulesOption,
     isDevModeVerbose,
   }

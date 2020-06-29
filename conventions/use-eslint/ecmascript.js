@@ -1,3 +1,5 @@
+'use strict'
+
 /**
  * JavaScript/ECMAScript only ruleset.
  *
@@ -8,7 +10,7 @@
  */
 const main = {
   parserOptions: {
-    ecmaVersion: 9,
+    ecmaVersion: 2018,
     sourceType: 'module',
   },
   // https://www.npmjs.com/package/@typescript-eslint/parser
@@ -18,18 +20,6 @@ const main = {
     'eslint-plugin-promise',
     '@rushstack/eslint-plugin',
     '@typescript-eslint/eslint-plugin',
-  ],
-  rules: {},
-  overrides: [
-    {
-      files: ['*.test.js', '*.test.jsx'],
-      globals: {
-        it: 'readonly',
-        expect: 'readonly',
-        test: 'readonly',
-        describe: 'readonly',
-      },
-    },
   ],
 }
 

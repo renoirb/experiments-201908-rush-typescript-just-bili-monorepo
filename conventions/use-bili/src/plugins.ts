@@ -1,10 +1,10 @@
-import { ProcessEnvRunTimeOptions } from './main'
+import { IProcessEnvRunTimeOptions } from './main'
 
 /**
  * If we have DEBUG string in process.env, we might also
  * want to see what Babel has to say
  */
-const babel = (_: NodeJS.Process, opts: ProcessEnvRunTimeOptions) => {
+const babel = (__: NodeJS.Process, opts: IProcessEnvRunTimeOptions) => {
   const { hasBiliBundleNodeModulesOption, isDevModeVerbose } = opts
 
   // const targets = {};
@@ -101,6 +101,6 @@ const babel = (_: NodeJS.Process, opts: ProcessEnvRunTimeOptions) => {
   return out
 }
 
-export const plugins = (p: NodeJS.Process, o: ProcessEnvRunTimeOptions) => ({
+export const plugins = (p: NodeJS.Process, o: IProcessEnvRunTimeOptions) => ({
   babel: babel(p, o),
 })

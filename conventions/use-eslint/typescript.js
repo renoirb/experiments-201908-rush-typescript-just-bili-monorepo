@@ -1,9 +1,7 @@
-// See https://github.com/microsoft/tsdoc/blob/master/playground/.eslintrc.js#L2
-// This is a workaround for https://github.com/eslint/eslint/issues/3458
-require('@rushstack/eslint-config/patch-eslint6')
+'use strict'
 
 /**
- * TypeScript ruleset.
+ * TypeScript only ruleset.
  *
  * https://eslint.org/blog/2019/01/future-typescript-eslint
  *
@@ -34,7 +32,6 @@ const main = {
     'eslint-plugin-security',
     'eslint-plugin-tsdoc',
   ],
-  rules: {},
 }
 
 module.exports = main

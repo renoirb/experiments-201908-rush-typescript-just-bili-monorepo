@@ -1,4 +1,4 @@
-export interface ProviderContext {
+export interface IProviderContext {
   packages: { [name: string]: string }
 }
 
@@ -21,4 +21,4 @@ const packages = {
   rollup: 'rollup/package.json',
 }
 
-export const provider: ProviderContext = { packages }
+export const provider: IProviderContext = { packages }

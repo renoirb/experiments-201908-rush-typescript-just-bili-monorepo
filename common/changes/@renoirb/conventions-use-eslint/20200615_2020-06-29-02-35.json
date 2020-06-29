@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@renoirb/conventions-use-eslint",
+      "comment": "Upgraded to ESLint 7",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@renoirb/conventions-use-eslint",
+  "email": "contribs@renoirboulanger.com"
+}

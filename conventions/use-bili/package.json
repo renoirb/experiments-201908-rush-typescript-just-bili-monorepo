@@ -21,8 +21,8 @@
   "module": "dist/index.esm.js",
   "typings": "./dist/index.d.ts",
   "bin": {
-    "use-conventions-bili": "./bin/bili",
-    "use-bili": "./bin/bili"
+    "use-bili": "./bin/bili",
+    "use-conventions-bili": "./bin/bili"
   },
   "files": [
     "dist",

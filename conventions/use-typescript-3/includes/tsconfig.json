@@ -10,25 +10,27 @@
   ],
   "files": [],
   "compilerOptions": {
-    "skipLibCheck": false,
-    "target": "esnext",
-    "module": "esnext",
-    "lib": ["dom", "esnext"],
-    "downlevelIteration": true,
-    "strict": true,
-    "removeComments": false,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "downlevelIteration": true,
     // https://github.com/RyanCavanaugh/learn-a/#tsconfigsettingsjson
     "declaration": true,
     "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "lib": ["dom", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "newLine": "lf",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": false,
+    "skipLibCheck": false,
     // Let bili do this.
-    "sourceMap": false
+    "sourceMap": false,
+    "strict": true,
+    "target": "esnext"
   }
 }

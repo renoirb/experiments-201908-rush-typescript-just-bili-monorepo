@@ -1,40 +1,35 @@
-import { DateEpoch } from './date-epoch'
-import type { FuzzyDateType } from './helpers'
+/* eslint-disable */
 
 /**
  * Make a number or string object property to have property getter return DateEpoch
  *
- * UNFINISHED! — Tabling for now, as ECMAScript does not support natively decorators
+ * UNFINISHED! — Tabling (and disabling ESLint) for now, as ECMAScript does not support natively decorators
  * ... and ECMAScript getter can do the same. With less complexion.
  *
  * Bookmarks:
  * - https://www.typescriptlang.org/docs/handbook/decorators.html#metadata
+ * - https://blog.wizardsoftheweb.pro/typescript-decorators-property-decorators/
  */
-export const epoch: PropertyDecorator = (target, propertyKey) => {
-  let value = Reflect.has(target, propertyKey)
-    ? Reflect.get(target, propertyKey)
-    : undefined
-  const getter = (): DateEpoch => {
-    try {
-      const maybe = new DateEpoch(value)
-      return maybe
-    } catch (e) {
-      throw e
-    }
-  }
-  const setter = (val: FuzzyDateType) => {
-    try {
-      new DateEpoch(value)
-      value = val
-    } catch (e) {
-      throw e
-    }
-  }
 
-  Object.defineProperty(target, propertyKey, {
-    get: getter,
-    set: setter,
-    enumerable: true,
-    configurable: false,
-  })
+import { DateEpoch } from './date-epoch'
+
+export const epoch = (): PropertyDecorator => {
+  let value: number | string
+  return (target: any, propertyKey: string | symbol) => {
+    const update = Reflect.defineProperty(target, propertyKey, {
+      configurable: true,
+      enumerable: true,
+      get: (): DateEpoch => {
+        return new DateEpoch(value)
+      },
+      set: (newValue: number | string) => {
+        value = newValue
+      },
+    })
+    // If the update failed, something went wrong
+    if (!update) {
+      // Kill everything
+      throw new Error('Unable to update property')
+    }
+  }
 }

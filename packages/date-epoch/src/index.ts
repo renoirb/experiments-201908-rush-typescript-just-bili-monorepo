@@ -1,6 +1,6 @@
 import { DateEpoch } from './date-epoch'
 
-export * from './decorators'
+export { epoch } from './decorators'
 
 export { default as helpers, DateRangeTuple, FuzzyDateType } from './helpers'
 

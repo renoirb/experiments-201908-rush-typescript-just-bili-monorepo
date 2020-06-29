@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const base = require('@renoirb/conventions-use-eslint/ecmascript')
 
 const main = {
@@ -12,7 +11,5 @@ const main = {
     '@typescript-eslint/no-unused-vars': 'off',
   },
 }
-
-console.log('eslintrc', { parserOptions: main.parserOptions })
 
 module.exports = main

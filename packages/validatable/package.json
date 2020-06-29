@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "build": "use-cross-env use-run-all clean build:*",
-    "build:browser": "use-cross-env use-bili  --bundle-node-modules --target browser --format cjs --file-name browser.cjs.js",
+    "build:browser": "use-cross-env use-bili --bundle-node-modules --target browser --format cjs --file-name browser.cjs.js",
     "build:node": "use-cross-env use-bili --bundle-node-modules --target node --format cjs --file-name index.js",
     "build:node-esm": "use-cross-env use-bili --bundle-node-modules --target node --format esm --file-name index.esm.js",
     "clean": "use-cross-env use-rimraf .rpt2_cache dist *.*.log",

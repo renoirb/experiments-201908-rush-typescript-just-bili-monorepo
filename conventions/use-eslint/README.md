@@ -2,7 +2,11 @@
 
 [repo-url]: https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/conventions/use-eslint
 
-Reusable ESLint configs
+Reusable (*and configuration free*) **ESLint 7** utility.
+
+This package wraps as a one-dependency drop-in ESLint utility, with `use-eslint` CLI.
+
+Alternatively, refer to [**@rushstack/eslint-config**](https://github.com/microsoft/rushstack/tree/%40rushstack/eslint-config_v1.0.2/stack/eslint-config#usage) and setup manually for all packages.
 
 | Version                                                                                                                                                                                          | Size                                                                                                              | Dependencies                                                                                                                                                                             |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10,9 +14,5 @@ Reusable ESLint configs
 
 ## Bookmarks
 
-- **@typescript-eslint** [GitHub](https://github.com/typescript-eslint/typescript-eslint/tree/master/packages):
-  - **@typescript-eslint/eslint-plugin** [NPM](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
-  - **@typescript-eslint/experimental-utils** [NPM](https://www.npmjs.com/package/@typescript-eslint/experimental-utils)
-  - **@typescript-eslint/parser** [NPM](https://www.npmjs.com/package/@typescript-eslint/parser)
-  - **@typescript-eslint/typescript-estree** [NPM](https://www.npmjs.com/package/@typescript-eslint/typescript-estree)
-- **@rushstack/eslint-config** [NPM](https://www.npmjs.com/package/@rushstack/eslint-config) [GitHub](https://github.com/microsoft/rushstack/tree/master/stack/eslint-config)
+- **@rushstack/eslint-config** [GitHub](https://github.com/microsoft/rushstack/tree/%40rushstack/eslint-config_v1.0.2/stack/eslint-config)
+- **@rushstack/eslint-plugin** [GitHub](https://github.com/microsoft/rushstack/tree/%40rushstack/eslint-config_v1.0.2/stack/eslint-plugin)

@@ -15,8 +15,8 @@
   },
   "main": "main.js",
   "bin": {
-    "use-eslint": "./bin/eslint",
-    "use-conventions-eslint": "./bin/eslint"
+    "use-conventions-eslint": "./bin/eslint",
+    "use-eslint": "./bin/eslint"
   },
   "files": [
     "main.js",
@@ -31,17 +31,18 @@
     "lint": "./bin/eslint --fix '*.js'"
   },
   "dependencies": {
-    "@rushstack/eslint-config": "0.5.8",
-    "@rushstack/eslint-plugin": "0.3.2",
+    "@rushstack/eslint-config": "1.0.2",
+    "@rushstack/eslint-patch": "1.0.2",
+    "@rushstack/eslint-plugin": "0.4.1",
     "@rushstack/node-core-library": "^3.24.0",
     "@typescript-eslint/eslint-plugin": "^3.3.0",
     "@typescript-eslint/parser": "^3.3.0",
     "@typescript-eslint/typescript-estree": "^3.3.0",
-    "eslint": "^6.5.0",
+    "eslint": "~7.2.0",
     "eslint-plugin-promise": "~4.2.1",
-    "eslint-plugin-react": "~7.16.0",
+    "eslint-plugin-react": "~7.20.0",
     "eslint-plugin-security": "~1.4.0",
-    "eslint-plugin-tsdoc": "~0.2.4"
+    "eslint-plugin-tsdoc": "~0.2.5"
   },
   "devDependencies": {
     "@renoirb/conventions-use-prettier": "1.1.0-dev.7",

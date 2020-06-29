@@ -2,6 +2,6 @@
 
 exports[`decorators integration 1`] = `
 SomeClass {
-  "lastLogin": 1533762055251,
+  "lastLogin": 1592971200,
 }
 `;

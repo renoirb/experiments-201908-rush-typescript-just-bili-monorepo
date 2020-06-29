@@ -1,5 +1,8 @@
 'use strict'
 
+// This is a workaround for https://github.com/eslint/eslint/issues/3458
+require('@rushstack/eslint-config/patch/modern-module-resolution')
+
 const ecmascript = require('./ecmascript')
 const typescript = require('./typescript')
 
@@ -28,6 +31,17 @@ const main = {
     '@typescript-eslint/interface-name-prefix': 'off',
   },
   plugins,
+  overrides: [
+    {
+      files: ['*.test.js', '*.test.jsx', '*.test.ts'],
+      globals: {
+        it: 'readonly',
+        expect: 'readonly',
+        test: 'readonly',
+        describe: 'readonly',
+      },
+    },
+  ],
 }
 
 module.exports = main
