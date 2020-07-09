@@ -127,7 +127,7 @@
       "name": "sort-package-json",
       "summary": "Runs sort-package-json on ALL monorepo package.json for each project.",
       "description": "In order to keep predictable package.json files, we run sort-package-json for each package managed in this monorepo.",
-      "shellCommand": "node common/temp/node_modules/sort-package-json/index.js */*/package.json"
+      "shellCommand": "conventions/use-prettier/bin/sort-package-json '{conventions,packages,polyfill,tools}/*/package.json'"
     },
     {
       "commandKind": "global",

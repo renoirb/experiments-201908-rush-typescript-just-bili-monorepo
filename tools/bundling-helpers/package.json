@@ -21,9 +21,6 @@
   "module": "dist/index.esm.js",
   "typings": "dist/index.d.ts",
   "bin": {
-    "use-bundling-helpers-cross-env": "./bin/cross-env",
-    "use-bundling-helpers-rimraf": "./bin/rimraf",
-    "use-bundling-helpers-run-all": "./bin/run-all",
     "use-cross-env": "./bin/cross-env",
     "use-rimraf": "./bin/rimraf",
     "use-run-all": "./bin/run-all"
@@ -44,7 +41,7 @@
     "test:snapshots": "use-jest --detectOpenHandles -u"
   },
   "dependencies": {
-    "@rushstack/node-core-library": "^3.24.0",
+    "@rushstack/node-core-library": "^3.25.0",
     "cross-env": "^5.2.0",
     "npm-run-all": "^4.1.0",
     "rimraf": "~3.0.0"

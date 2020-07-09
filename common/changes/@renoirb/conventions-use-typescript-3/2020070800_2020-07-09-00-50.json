@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@renoirb/conventions-use-typescript-3",
+      "comment": "Upgrading deps",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@renoirb/conventions-use-typescript-3",
+  "email": "contribs@renoirboulanger.com"
+}

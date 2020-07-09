@@ -24,7 +24,7 @@
     "@renoirb/conventions-use-prettier": "1.1.0"
   },
   "optionalDependencies": {
-    "@rushstack/node-core-library": "^3.24.0",
+    "@rushstack/node-core-library": "^3.25.0",
     "esm": "^3.2.0",
     "ts-node": "^8.10.0"
   }

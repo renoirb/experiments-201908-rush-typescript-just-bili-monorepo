@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 
-const { FileSystem } = require('@rushstack/node-core-library')
-const { sep } = require('path')
+'use strict'
+
+const { FileSystem } = require('@rushstack/node-core-library');
+const { CommandLineUtilities } = require('@renoirb/tools-bundling-helpers');
+const { sep } = require('path');
 
 /* eslint-disable */
 
@@ -12,35 +15,87 @@ const { sep } = require('path')
  */
 
 // See comment also @renoirb/conventions-use-jest in reporter.js #IsCiServer
-// https://docs.gitlab.com/ee/ci/variables/#syntax-of-environment-variables-in-job-scripts
-const processEnvKeys = Object.keys(process.env);
-const isCI = processEnvKeys.includes('CI_SERVER');
+const isCI = CommandLineUtilities.hasEnvFlag('CI_SERVER')
 
-const [ nodeBin, nodeScript, ...cliArgs ] = process.argv
+const [nodeBin, nodeScript, ...cliArgs] = process.argv
 
 const hasReportUnusedDisableDirectives = cliArgs.includes(
   '--report-unused-disable-directives',
-);
+)
+
 if (!isCI && !hasReportUnusedDisableDirectives) {
-  cliArgs.unshift('--report-unused-disable-directives');
+  cliArgs.unshift('--report-unused-disable-directives')
 }
-const hasConfigFile = cliArgs.includes(
-  '--config',
-  '-c',
-);
+const hasConfigFile = cliArgs.includes('--config', '-c')
+
 if (!hasConfigFile) {
-  const eslintFilePath = process.env.PWD + sep + '.eslintrc.js';
-  const hasFile = FileSystem.exists(eslintFilePath)
+  const eslintFilePath = process.env.PWD + sep + '.eslintrc.js'
+  const tsConfigFilePath = process.env.PWD + sep + 'tsconfig.json'
+  let hasFile = FileSystem.exists(eslintFilePath)
   if (!hasFile) {
-    const message = `.eslintrc.js not found in ${eslintFilePath}`
-    throw new Error(message);
+    // But maybe there is already an eslintr file with a different name
+    // Just to be safe!
+    const files = FileSystem.readFolder(process.env.PWD)
+    hasFile = files.filter((f) => /eslintrc/i.test(f)).length > 0
   }
-  // Yeah, unshift makes us do this the other way around
-  cliArgs.unshift(eslintFilePath);
-  cliArgs.unshift(`--config`);
+  if (!hasFile) {
+    /**
+     * Idea is to provide own ESLint config if none found.
+     * Maybe it's not a good idea to hard-code here, this is
+     * just to see if that's something desirable.
+     */
+    const hasTsConfigFile = FileSystem.exists(tsConfigFilePath)
+    const parserOptionsHackyTemplate = []
+    if (hasTsConfigFile) {
+      parserOptionsHackyTemplate.push(
+        ...['tsconfigRootDir: process.cwd()', `project: './tsconfig.json'`, ''],
+      )
+    }
+
+    /**
+     * When no config file, let's create one so we can avoid
+     * asking users to do it themselves.
+     */
+    const boilerplateEslintRcString = `
+/**
+ * Boilerplate ESLint config, adjust to your requirements
+ * See: https://www.npmjs.com/package/@renoirb/conventions-use-eslint
+ */
+const base = require('@renoirb/conventions-use-eslint')
+
+/**
+ * @type {import('@types/eslint').Linter.Config}
+ */
+const main = {
+  ...base,
+  parserOptions: {
+    ${parserOptionsHackyTemplate.join(', ')}
+    ...(base.parserOptions|| {}),
+  },
+  rules: {
+    ...base.rules,
+    // TODO: Make this list smaller, not bigger
+    '@typescript-eslint/typedef': 'off',
+  },
+}
+
+module.exports = main
+    `
+
+    try {
+      FileSystem.writeFile(eslintFilePath, boilerplateEslintRcString)
+    } catch (error) {
+      const message = `.eslintrc.js not found in ${eslintFilePath} and we could not write one: ${error}`
+      throw new Error(message)
+    }
+  } else {
+    // Yeah, unshift makes us do this the other way around
+    cliArgs.unshift(eslintFilePath)
+    cliArgs.unshift(`--config`)
+  }
 }
 
 // Yeah, mutating the main process.argv should be fine
-process.argv = [ nodeBin, nodeScript, ...cliArgs ];
+process.argv = [nodeBin, nodeScript, ...cliArgs]
 
-Promise.all([require('eslint/bin/eslint.js')]);
+Promise.all([require('eslint/bin/eslint.js')])

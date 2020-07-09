@@ -1,5 +1,8 @@
 'use strict'
 
+const { normalize, resolve } = require('path')
+const { existsSync } = require('fs')
+
 /**
  * TypeScript only ruleset.
  *
@@ -17,21 +20,26 @@
  * @type {import('@types/eslint').Linter.Config}
  */
 const main = {
-  parserOptions: {
-    tsconfigRootDir: process.cwd(),
-    project: './tsconfig.eslint.json',
-  },
-  // https://www.npmjs.com/package/@typescript-eslint/parser
   extends: ['@rushstack/eslint-config'],
-  parser: '@typescript-eslint/parser',
   plugins: [
-    // https://www.npmjs.com/package/@typescript-eslint/eslint-plugin
-    '@rushstack/eslint-plugin',
-    '@typescript-eslint/eslint-plugin',
     'eslint-plugin-promise',
     'eslint-plugin-security',
     'eslint-plugin-tsdoc',
   ],
+  rules: {
+    '@typescript-eslint/explicit-member-accessibility': 'off',
+  },
+}
+
+const tsconfigRootDir = process.cwd()
+const projectHasTsConfigFullPath = normalize(
+  resolve(tsconfigRootDir, 'tsconfig.eslint.json'),
+)
+if (existsSync(projectHasTsConfigFullPath)) {
+  main.parserOptions = {
+    tsconfigRootDir,
+    project: './tsconfig.eslint.json',
+  }
 }
 
 module.exports = main

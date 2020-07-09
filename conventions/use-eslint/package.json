@@ -10,12 +10,11 @@
   },
   "license": "MIT",
   "author": {
-    "name": "Renoir Boulanger",
+    "name": "Renoir Boulanger1",
     "email": "contribs@renoirboulanger.com"
   },
   "main": "main.js",
   "bin": {
-    "use-conventions-eslint": "./bin/eslint",
     "use-eslint": "./bin/eslint"
   },
   "files": [
@@ -27,17 +26,12 @@
   ],
   "scripts": {
     "build": "",
-    "fix": "use-prettier --write '**/*.{js,json,md}'",
-    "lint": "./bin/eslint --fix '*.js'"
+    "fix": "use-prettier --write '**/*.{js,json,md}'"
   },
   "dependencies": {
     "@rushstack/eslint-config": "1.0.2",
     "@rushstack/eslint-patch": "1.0.2",
-    "@rushstack/eslint-plugin": "0.4.1",
-    "@rushstack/node-core-library": "^3.24.0",
-    "@typescript-eslint/eslint-plugin": "^3.3.0",
-    "@typescript-eslint/parser": "^3.3.0",
-    "@typescript-eslint/typescript-estree": "^3.3.0",
+    "@rushstack/node-core-library": "^3.25.0",
     "eslint": "~7.2.0",
     "eslint-plugin-promise": "~4.2.1",
     "eslint-plugin-react": "~7.20.0",
@@ -46,6 +40,7 @@
   },
   "devDependencies": {
     "@renoirb/conventions-use-prettier": "1.1.0",
-    "@rushstack/node-core-library": "^3.24.0"
+    "@renoirb/tools-bundling-helpers": "1.1.0",
+    "@rushstack/node-core-library": "^3.25.0"
   }
 }

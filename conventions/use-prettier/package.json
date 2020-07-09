@@ -15,8 +15,8 @@
   },
   "main": "prettier.config.js",
   "bin": {
-    "use-conventions-prettier": "./bin/prettier",
-    "use-prettier": "./bin/prettier"
+    "use-prettier": "./bin/prettier",
+    "use-sort-package-json": "./bin/sort-package-json"
   },
   "files": [
     "prettier.config.js",
@@ -28,10 +28,10 @@
     "fix": "./bin/prettier --write '**/*.{jsx?,tsx?,json,md}'"
   },
   "dependencies": {
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "sort-package-json": "^1.44.0"
   },
   "optionnalDependencies": {
-    "pretty-quick": "^2.0.1",
-    "sort-package-json": "^1.44.0"
+    "pretty-quick": "^2.0.1"
   }
 }

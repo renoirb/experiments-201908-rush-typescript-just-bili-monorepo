@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@renoirb/tools-bundling-helpers",
+      "comment": "Upgrading deps",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@renoirb/tools-bundling-helpers",
+  "email": "contribs@renoirboulanger.com"
+}

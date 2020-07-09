@@ -2,7 +2,7 @@
 
 [repo-url]: https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/conventions/use-eslint
 
-Reusable (*and configuration free*) **ESLint 7** utility.
+Reusable (_and configuration free_) **ESLint 7** utility.
 
 This package wraps as a one-dependency drop-in ESLint utility, with `use-eslint` CLI.
 
@@ -14,5 +14,5 @@ Alternatively, refer to [**@rushstack/eslint-config**](https://github.com/micros
 
 ## Bookmarks
 
-- **@rushstack/eslint-config** [GitHub](https://github.com/microsoft/rushstack/tree/%40rushstack/eslint-config_v1.0.2/stack/eslint-config)
+- [**@rushstack/eslint-config**](https://www.npmjs.com/package/@rushstack/eslint-config) [GitHub](https://github.com/microsoft/rushstack/tree/%40rushstack/eslint-config_v1.0.2/stack/eslint-config)
 - **@rushstack/eslint-plugin** [GitHub](https://github.com/microsoft/rushstack/tree/%40rushstack/eslint-config_v1.0.2/stack/eslint-plugin)

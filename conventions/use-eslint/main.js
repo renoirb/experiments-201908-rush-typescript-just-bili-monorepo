@@ -6,11 +6,19 @@ require('@rushstack/eslint-config/patch/modern-module-resolution')
 const ecmascript = require('./ecmascript')
 const typescript = require('./typescript')
 
-const plugins = [...ecmascript.plugins, ...typescript.plugins]
+const plugins = new Set([...ecmascript.plugins, ...typescript.plugins])
+const extending = new Set([
+  ...(ecmascript.extends || []),
+  ...(typescript.extends || []),
+])
 
+/**
+ * @type {import('@types/eslint').Linter.Config}
+ */
 const main = {
   ...ecmascript,
   ...typescript,
+  extends: [...extending],
   rules: {
     ...(ecmascript.rules || {}),
     ...(typescript.rules || {}),
@@ -28,9 +36,8 @@ const main = {
         },
       },
     ],
-    '@typescript-eslint/interface-name-prefix': 'off',
   },
-  plugins,
+  plugins: [...plugins],
   overrides: [
     {
       files: ['*.test.js', '*.test.jsx', '*.test.ts'],

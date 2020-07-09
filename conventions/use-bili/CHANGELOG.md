@@ -3,6 +3,7 @@
 This log was last generated on Mon, 29 Jun 2020 02:44:24 GMT and should not be manually modified.
 
 ## 1.1.0
+
 Mon, 29 Jun 2020 02:44:24 GMT
 
 ### Minor changes
@@ -14,9 +15,9 @@ Mon, 29 Jun 2020 02:44:24 GMT
 - Changed usage signature and branding utility at usage time
 
 ## 1.0.2
+
 Thu, 02 Jan 2020 23:25:02 GMT
 
 ### Patches
 
 - Make TypeScript and TSLib peerDependency
-

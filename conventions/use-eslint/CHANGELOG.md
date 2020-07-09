@@ -3,6 +3,7 @@
 This log was last generated on Mon, 29 Jun 2020 02:44:24 GMT and should not be manually modified.
 
 ## 1.1.0
+
 Mon, 29 Jun 2020 02:44:24 GMT
 
 ### Minor changes
@@ -12,4 +13,3 @@ Mon, 29 Jun 2020 02:44:24 GMT
 ### Patches
 
 - Upgraded to ESLint 7
-

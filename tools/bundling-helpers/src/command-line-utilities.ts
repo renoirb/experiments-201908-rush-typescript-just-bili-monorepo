@@ -38,6 +38,8 @@ const getCliArg = (name: string): false | [string, string | true] => {
 /**
  * Check if process.env has a flag we are looking for
  *
+ * https://docs.gitlab.com/ee/ci/variables/#syntax-of-environment-variables-in-job-scripts
+ *
  * @param {string} name — name of the environment variable
  */
 const hasEnvFlag = (name: string): boolean => {

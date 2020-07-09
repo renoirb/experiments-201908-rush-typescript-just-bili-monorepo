@@ -13,14 +13,8 @@ const main = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  // https://www.npmjs.com/package/@typescript-eslint/parser
   extends: ['@rushstack/eslint-config'],
-  plugins: [
-    // https://www.npmjs.com/package/eslint-plugin-promise
-    'eslint-plugin-promise',
-    '@rushstack/eslint-plugin',
-    '@typescript-eslint/eslint-plugin',
-  ],
+  plugins: ['eslint-plugin-promise'],
 }
 
 module.exports = main
