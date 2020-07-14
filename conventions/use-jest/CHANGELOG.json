@@ -2,6 +2,26 @@
   "name": "@renoirb/conventions-use-jest",
   "entries": [
     {
+      "version": "1.1.1",
+      "tag": "@renoirb/conventions-use-jest_v1.1.1",
+      "date": "Tue, 14 Jul 2020 03:23:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Upgrading deps"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@renoirb/conventions-use-eslint\" from `1.1.0` to `1.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@renoirb/conventions-use-prettier\" from `1.1.0` to `1.1.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.1.0",
       "tag": "@renoirb/conventions-use-jest_v1.1.0",
       "date": "Mon, 29 Jun 2020 02:44:24 GMT",
