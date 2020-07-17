@@ -21,8 +21,7 @@
   },
   "typings": "dist/index.d.ts",
   "files": [
-    "dist",
-    "alpha.js"
+    "dist"
   ],
   "scripts": {
     "build": "use-run-all clean build:*",

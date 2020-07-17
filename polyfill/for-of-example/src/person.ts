@@ -41,9 +41,20 @@ export class Person implements PersonLikeInterface {
     }
   }
 
-  toString(): string {
+  talk(message: string): string {
     const name = this.name
-    const text = this.lang ? introductions[this.lang] : introductions.en
-    return `${text} ${name}`
+    return `${name}: ${message}`
+  }
+
+  introduction(): string {
+    const name = this.name
+    const { lang = 'en' } = this
+    const message =
+      lang in introductions ? introductions[lang] : introductions.en
+    return this.talk(`${message} ${name}`)
+  }
+
+  toString(): string {
+    return this.introduction()
   }
 }
