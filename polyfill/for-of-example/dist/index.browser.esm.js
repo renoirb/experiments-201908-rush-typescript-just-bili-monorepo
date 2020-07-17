@@ -1,5 +1,5 @@
 /*!
- * @renoirb/polyfill-for-of-example v1.0.0-dev.0
+ * @renoirb/polyfill-for-of-example v1.0.0-dev.1
  *
  * Maintainer: Renoir Boulanger <contribs@renoirboulanger.com>
  *
@@ -8,7 +8,7 @@
  * © 2003-2020 Renoir Boulanger
  */
 /*!
- * @renoirb/polyfill-for-of-example v1.0.0-dev.0
+ * @renoirb/polyfill-for-of-example v1.0.0-dev.1
  *
  * Maintainer: Renoir Boulanger <contribs@renoirboulanger.com>
  *
@@ -1372,7 +1372,8 @@ var ae = {
           arguments.length > 0 && void 0 !== arguments[0]
             ? arguments[0]
             : 'John Doe',
-        n = arguments.length > 1 ? arguments[1] : void 0
+        n =
+          arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 'en'
       ie(this, t), (this.name = r), (this.lang = n), n && (this.lang = n)
     }
     var r, n, e
@@ -1475,15 +1476,20 @@ function se(t, r) {
   for (var n = 0, e = new Array(r); n < r; n++) e[n] = t[n]
   return e
 }
-export default function (t) {
-  var r,
+export default function () {
+  var t,
+    r = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : [],
     n = [],
-    e = le(t)
+    e = le(r)
   try {
-    for (e.s(); !(r = e.n()).done; ) {
-      var o = (r.value || {}).name,
-        i = new fe(void 0 === o ? 'John Doe' : o)
-      n.push(i)
+    for (e.s(); !(t = e.n()).done; ) {
+      var o = t.value,
+        i = o || {},
+        u = i.name,
+        c = void 0 === u ? 'John Doe' : u,
+        a = i.lang,
+        f = new fe(c, a)
+      n.push(f)
     }
   } catch (t) {
     e.e(t)

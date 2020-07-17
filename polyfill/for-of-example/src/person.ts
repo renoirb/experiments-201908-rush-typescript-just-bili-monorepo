@@ -1,23 +1,14 @@
-export type LangType = 'fr' | 'pt' | 'en'
-export type GenderType = 'M' | 'F' | 'A' | 'N'
+export type LangCodeType = 'fr' | 'pt' | 'en'
 
-export interface PersonLikeInterface {
+export interface IPersonLikeInterface {
   /**
    * The first name of the person
    */
   name: string
   /**
-   * The age of the person
-   */
-  age?: number
-  /**
-   * Gender of the person
-   */
-  gender?: GenderType
-  /**
    * Spoken language of the person (excluding region)
    */
-  lang?: LangType
+  lang: LangCodeType
 }
 
 // Private constant, only included from Person class.
@@ -27,14 +18,10 @@ const introductions: { [lang: string]: string } = {
   en: 'Hello, my name is',
 }
 
-export class Person implements PersonLikeInterface {
-  age?: number
-
-  gender?: GenderType
-
+export class Person implements IPersonLikeInterface {
   constructor(
     public readonly name = 'John Doe',
-    public readonly lang?: LangType,
+    public readonly lang: LangCodeType = 'en',
   ) {
     if (lang) {
       this.lang = lang

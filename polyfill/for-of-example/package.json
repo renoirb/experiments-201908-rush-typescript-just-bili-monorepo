@@ -1,6 +1,6 @@
 {
   "name": "@renoirb/polyfill-for-of-example",
-  "version": "1.0.0-dev.0",
+  "version": "1.0.0-dev.1",
   "private": true,
   "description": "for of in ES5",
   "repository": {
@@ -13,32 +13,38 @@
     "name": "Renoir Boulanger",
     "email": "contribs@renoirboulanger.com"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "browser": {
-    "main": "dist/index.browser.min.js",
-    "module": "dist/index.browser.esm.min.js"
+  "type": "module",
+  "exports": {
+    "browser": {
+      "import": "./dist/index.browser.esm.js",
+      "require": "./dist/index.browser.js"
+    },
+    "node": {
+      "import": "./dist/index.mjs",
+      "require": "./main.cjs"
+    }
   },
+  "main": "main.cjs",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "use-run-all clean build:*",
-    "build:browser-ie": "use-cross-env BROWSERSLIST='ie >= 10' use-bili --target browser --format iife --module-name ForOfExample --file-name index.browser.ie.js --bundle-node-modules",
-    "build:browser-ie6to9": "use-cross-env BROWSERSLIST='ie 6-9' use-bili --target browser --format iife --module-name ForOfExample --file-name index.browser.ie6to9.js --bundle-node-modules",
-    "build:browser-modern-esm": "use-cross-env BROWSERSLIST='> 0.5%, last 2 versions' use-bili --target browser --format esm --file-name index.browser.esm.js --bundle-node-modules",
-    "build:browser-modern-esm-min": "use-cross-env BROWSERSLIST='> 0.5%, last 2 versions' use-bili --target browser --format esm --file-name index.browser.esm.min.js --bundle-node-modules --minify",
-    "build:browser-modern-iife": "use-cross-env BROWSERSLIST='> 0.5%, last 2 versions' use-bili --target browser --module-name ForOfExample --format iife --file-name index.browser.js --bundle-node-modules",
-    "build:browser-modern-iife-min": "use-cross-env BROWSERSLIST='> 0.5%, last 2 versions' use-bili --target browser --module-name ForOfExample --format iife --file-name index.browser.min.js --bundle-node-modules --minify",
-    "build:node": "use-cross-env BROWSERSLIST='current node' use-bili --target node --format cjs --file-name index.js --bundle-node-modules",
-    "build:node-esm": "use-cross-env BROWSERSLIST='current node' use-bili --target node --format esm --file-name index.esm.js --bundle-node-modules",
+    "build:browser-ie": "use-cross-env BROWSERSLIST='ie >= 10' use-bili --config bili.config.ts --target browser --format iife --module-name ForOfExample --file-name index.browser.ie.js",
+    "build:browser-ie6to9": "use-cross-env BROWSERSLIST='ie 6-9' use-bili --config bili.config.ts --target browser --format iife --module-name ForOfExample --file-name index.browser.ie6to9.js",
+    "build:browser-modern-esm": "use-cross-env BROWSERSLIST='> 0.5%, last 2 versions' use-bili --config bili.config.ts --target browser --format esm --file-name index.browser.esm.js",
+    "build:browser-modern-iife": "use-cross-env BROWSERSLIST='> 0.5%, last 2 versions' use-bili --config bili.config.ts --target browser --module-name ForOfExample --format iife --file-name index.browser.js",
+    "build:node-esm": "use-cross-env BROWSERSLIST='current node' use-bili --config bili.config.ts --target node --format esm --file-name index.mjs",
     "clean": "use-rimraf .rpt2_cache dist *.*.log",
     "fix": "use-cross-env use-prettier --write '**/*.{ts,md,json,js}'",
     "lint": "use-cross-env use-eslint --fix 'src/**/*.ts'",
     "prepublishOnly": "rushx build",
     "test": "use-jest --detectOpenHandles",
     "test:snapshots": "use-jest --detectOpenHandles -u"
+  },
+  "dependencies": {
+    "esm": "^3.2.0"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.10.0",

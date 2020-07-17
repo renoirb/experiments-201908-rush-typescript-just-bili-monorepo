@@ -148,7 +148,7 @@
     },
     {
       "name": "esm",
-      "allowedCategories": [ "conventions" ]
+      "allowedCategories": [ "conventions", "libraries" ]
     },
     {
       "name": "fs-extra",
