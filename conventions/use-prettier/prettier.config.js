@@ -5,8 +5,10 @@
  * http://json.schemastore.org/prettierrc
  * Match with .gitattributes AND .editorconfig
  * https://prettier.io/docs/en/configuration.html#sharing-configurations
+ *
+ * @type {import('prettier').RequiredOptions}
  */
-module.exports = {
+const main = {
   endOfLine: 'lf',
   printWidth: 80,
   semi: false,
@@ -23,3 +25,5 @@ module.exports = {
     },
   ],
 }
+
+module.exports = main

@@ -40,7 +40,7 @@
     },
     {
       "name": "@renoirb/conventions-use-bili",
-      "allowedCategories": [ "libraries", "tools" ]
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
       "name": "@renoirb/conventions-use-eslint",
@@ -85,6 +85,10 @@
     {
       "name": "@rushstack/node-core-library",
       "allowedCategories": [ "conventions", "tools" ]
+    },
+    {
+      "name": "@rushstack/ts-command-line",
+      "allowedCategories": [ "conventions" ]
     },
     {
       "name": "@typescript-eslint/eslint-plugin",

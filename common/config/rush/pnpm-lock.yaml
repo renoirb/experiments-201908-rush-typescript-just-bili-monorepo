@@ -19,10 +19,12 @@ dependencies:
   '@rushstack/eslint-config': 1.0.2_eslint@7.2.0+typescript@3.9.6
   '@rushstack/eslint-patch': 1.0.2
   '@rushstack/node-core-library': 3.25.0
+  '@rushstack/ts-command-line': 4.4.6
   '@types/core-js': 2.5.3
   '@types/jest': 26.0.4
   '@types/jest-expect-message': 1.0.2
   '@types/node': 10.17.27
+  '@types/prettier': 2.0.2
   '@types/resolve': 0.0.8
   bili: 4.10.1
   core-js: 3.6.5
@@ -1644,12 +1646,24 @@ packages:
     dev: false
     resolution:
       integrity: sha512-e2NCFtAu/eu14b8nlzRX6ZrE9Sb3J2wVt+pninQmTn/IgfnRLAtM0D4PzUO4+ktZwF9fCnpqrOGokLzw6RSVNw==
+  /@rushstack/ts-command-line/4.4.6:
+    dependencies:
+      '@types/argparse': 1.0.38
+      argparse: 1.0.10
+      colors: 1.2.5
+    dev: false
+    resolution:
+      integrity: sha512-ue3p2m773Yea/s4Ef2Q3gEyLd9T0NDjXCl+PlodGTrJHgxoiRwbROSWHAdYJL/LceGWa6Biqizu9qxUDEWFweQ==
   /@sinonjs/commons/1.8.0:
     dependencies:
       type-detect: 4.0.8
     dev: false
     resolution:
       integrity: sha512-wEj54PfsZ5jGSwMX68G8ZXFawcSglQSXqCftWX3ec8MDUzQdHgcKvw97awHbY0efQEL5iKUOAmmVtoYgmrSG4Q==
+  /@types/argparse/1.0.38:
+    dev: false
+    resolution:
+      integrity: sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==
   /@types/babel__core/7.1.9:
     dependencies:
       '@babel/parser': 7.10.4
@@ -1808,6 +1822,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-5qOlnZscTn4xxM5MeGXAMOsIOIKIbh9e85zJWfBRVPlRMEVawzoPhINYbRGkBZCI8LxvBe7tJCdWiarA99OZfQ==
+  /@types/prettier/2.0.2:
+    dev: false
+    resolution:
+      integrity: sha512-IkVfat549ggtkZUthUzEX49562eGikhSYeVGX97SkMFn+sTZrgRewXjQ4tPKFPCykZHkX1Zfd9OoELGqKU2jJA==
   /@types/q/1.5.4:
     dev: false
     resolution:
@@ -10828,12 +10846,15 @@ packages:
     version: 0.0.0
   'file:projects/conventions-use-prettier.tgz':
     dependencies:
+      '@rushstack/node-core-library': 3.25.0
+      '@rushstack/ts-command-line': 4.4.6
+      '@types/prettier': 2.0.2
       prettier: 2.0.5
       sort-package-json: 1.44.0
     dev: false
     name: '@rush-temp/conventions-use-prettier'
     resolution:
-      integrity: sha512-UzTjc8fM1T0qpa9TVuzQ9D7tyRU9wJhKtE159Elj6fVb2LzXWx4wy1VV7M9dcfAN5QXLOsYNSKrQanQ1RUQGwQ==
+      integrity: sha512-TH+ywn/DXZCdLjtWSTymHGhUpKHM1Qjxc8KIyKul7/2av7c3HY4+9aJsw7MrbicnitbI6AnCQGmB5+T1vzGCYg==
       tarball: 'file:projects/conventions-use-prettier.tgz'
     version: 0.0.0
   'file:projects/conventions-use-typescript-3.tgz_typescript@3.9.6':
@@ -10991,10 +11012,12 @@ specifiers:
   '@rushstack/eslint-config': 1.0.2
   '@rushstack/eslint-patch': 1.0.2
   '@rushstack/node-core-library': ^3.25.0
+  '@rushstack/ts-command-line': ~4.4.6
   '@types/core-js': ^2.5.2
   '@types/jest': ^26.0.0
   '@types/jest-expect-message': ^1.0.1
   '@types/node': ^10.17.13
+  '@types/prettier': ^2.0.2
   '@types/resolve': ^0.0.8
   bili: ^4.8.1
   core-js: ^3.6.0

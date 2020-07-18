@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CodeFormatterCommandLineParser parses an action input with remainder 1`] = `
+Array [
+  "### --config output: ###",
+  "--config",
+  "/fakepath/to/prettier.config.js",
+  "### remainder output: ###",
+  "\\"**/*.ts\\"",
+  "--write",
+]
+`;
