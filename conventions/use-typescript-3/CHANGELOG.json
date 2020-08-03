@@ -2,6 +2,18 @@
   "name": "@renoirb/conventions-use-typescript-3",
   "entries": [
     {
+      "version": "1.1.2",
+      "tag": "@renoirb/conventions-use-typescript-3_v1.1.2",
+      "date": "Mon, 03 Aug 2020 23:53:08 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@renoirb/conventions-use-prettier\" from `1.1.1` to `1.2.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.1.1",
       "tag": "@renoirb/conventions-use-typescript-3_v1.1.1",
       "date": "Tue, 14 Jul 2020 03:23:31 GMT",

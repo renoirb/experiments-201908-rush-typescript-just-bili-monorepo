@@ -2,6 +2,35 @@
   "name": "@renoirb/conventions-use-prettier",
   "entries": [
     {
+      "version": "1.2.0",
+      "tag": "@renoirb/conventions-use-prettier_v1.2.0",
+      "date": "Mon, 03 Aug 2020 23:53:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Instead of exposing prettier and sort-package-json binaries directly, use only one wrapper for both"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@renoirb/conventions-use-bili\" from `1.1.1` to `1.1.2`"
+          },
+          {
+            "comment": "Updating dependency \"@renoirb/conventions-use-eslint\" from `1.1.1` to `1.1.2`"
+          },
+          {
+            "comment": "Updating dependency \"@renoirb/conventions-use-jest\" from `1.1.1` to `1.1.2`"
+          },
+          {
+            "comment": "Updating dependency \"@renoirb/conventions-use-typescript-3\" from `1.1.1` to `1.1.2`"
+          },
+          {
+            "comment": "Updating dependency \"@renoirb/tools-bundling-helpers\" from `1.1.1` to `1.1.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.1.1",
       "tag": "@renoirb/conventions-use-prettier_v1.1.1",
       "date": "Tue, 14 Jul 2020 03:23:31 GMT",

@@ -1,6 +1,11 @@
 # Change Log - @renoirb/conventions-use-typescript-3
 
-This log was last generated on Tue, 14 Jul 2020 03:23:31 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Aug 2020 23:53:08 GMT and should not be manually modified.
+
+## 1.1.2
+Mon, 03 Aug 2020 23:53:08 GMT
+
+*Version update only*
 
 ## 1.1.1
 Tue, 14 Jul 2020 03:23:31 GMT

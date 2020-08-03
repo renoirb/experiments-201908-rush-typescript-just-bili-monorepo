@@ -1,6 +1,6 @@
 {
   "name": "@renoirb/conventions-use-eslint",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Reusable ESLint configs",
   "homepage": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/conventions/use-eslint",
   "repository": {
@@ -39,8 +39,8 @@
     "eslint-plugin-tsdoc": "~0.2.5"
   },
   "devDependencies": {
-    "@renoirb/conventions-use-prettier": "1.1.1",
-    "@renoirb/tools-bundling-helpers": "1.1.1",
+    "@renoirb/conventions-use-prettier": "1.2.0",
+    "@renoirb/tools-bundling-helpers": "1.1.2",
     "@rushstack/node-core-library": "^3.25.0"
   }
 }
