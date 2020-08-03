@@ -18,6 +18,13 @@ const main = {
   useTabs: false,
   overrides: [
     {
+      files: '*.md',
+      options: {
+        parser: 'markdown',
+        proseWrap: 'always'
+      },
+    },
+    {
       files: '*.aspx,cmd,config,cs,csproj,ps1,rels,resx,sln',
       options: {
         endOfLine: 'clrf',
