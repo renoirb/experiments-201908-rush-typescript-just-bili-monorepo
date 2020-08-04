@@ -327,51 +327,51 @@
     {
       "packageName": "@renoirb/conventions-use-bili",
       "projectFolder": "conventions/use-bili",
-      "versionPolicyName": "tooling",
+      "versionPolicyName": "conventionsLockStepedVersioned",
       "reviewCategory": "conventions",
     },
     {
       "packageName": "@renoirb/conventions-use-eslint",
       "projectFolder": "conventions/use-eslint",
-      "versionPolicyName": "tooling",
+      "versionPolicyName": "conventionsLockStepedVersioned",
       "reviewCategory": "conventions",
     },
     {
       "packageName": "@renoirb/conventions-use-jest",
       "projectFolder": "conventions/use-jest",
-      "versionPolicyName": "tooling",
+      "versionPolicyName": "conventionsLockStepedVersioned",
       "reviewCategory": "conventions",
     },
     {
       "packageName": "@renoirb/conventions-use-prettier",
       "projectFolder": "conventions/use-prettier",
-      "versionPolicyName": "tooling",
+      "versionPolicyName": "conventionsLockStepedVersioned",
       "reviewCategory": "conventions",
     },
     {
       "packageName": "@renoirb/conventions-use-typescript-3",
       "projectFolder": "conventions/use-typescript-3",
-      "versionPolicyName": "tooling",
+      "versionPolicyName": "conventionsLockStepedVersioned",
       "reviewCategory": "conventions",
     },
 
     {
       "packageName": "@renoirb/tools-bundling-helpers",
       "projectFolder": "tools/bundling-helpers",
-      "versionPolicyName": "tooling",
+      "versionPolicyName": "conventionsLockStepedVersioned",
       "reviewCategory": "tools"
     },
 
     {
       "packageName": "@renoirb/date-epoch",
       "projectFolder": "packages/date-epoch",
-      "versionPolicyName": "libraries",
+      "shouldPublish": true,
       "reviewCategory": "libraries"
     },
     {
       "packageName": "@renoirb/validatable",
       "projectFolder": "packages/validatable",
-      "versionPolicyName": "libraries",
+      "shouldPublish": true,
       "reviewCategory": "libraries"
     },
     {

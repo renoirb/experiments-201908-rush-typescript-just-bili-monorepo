@@ -1,6 +1,6 @@
 {
   "name": "@renoirb/tools-bundling-helpers",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Package bundling helper scripts",
   "homepage": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/tools/bundling-helpers",
   "repository": {
@@ -17,9 +17,9 @@
     "import": "./index.mjs",
     "require": "./dist/index.js"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "typings": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.esm.js",
+  "typings": "./dist/index.d.ts",
   "bin": {
     "use-cross-env": "./bin/cross-env",
     "use-rimraf": "./bin/rimraf",
@@ -48,10 +48,10 @@
   },
   "devDependencies": {
     "@microsoft/node-library-build": "^6.4.0",
-    "@renoirb/conventions-use-eslint": "1.1.2",
-    "@renoirb/conventions-use-jest": "1.1.2",
+    "@renoirb/conventions-use-eslint": "1.2.0",
+    "@renoirb/conventions-use-jest": "1.2.0",
     "@renoirb/conventions-use-prettier": "1.2.0",
-    "@renoirb/conventions-use-typescript-3": "1.1.2",
+    "@renoirb/conventions-use-typescript-3": "1.2.0",
     "@rollup/plugin-babel": "^5.0.0",
     "@types/core-js": "^2.5.2",
     "@types/jest": "^26.0.0",

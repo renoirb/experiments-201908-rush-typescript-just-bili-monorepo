@@ -1,6 +1,6 @@
 {
   "name": "@renoirb/conventions-use-eslint",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Reusable ESLint configs",
   "homepage": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/conventions/use-eslint",
   "repository": {
@@ -13,10 +13,13 @@
     "name": "Renoir Boulanger1",
     "email": "contribs@renoirboulanger.com"
   },
-  "main": "main.js",
-  "bin": {
-    "use-eslint": "./bin/eslint"
+  "exports": {
+    ".": "./main.js",
+    "./ecmascript": "./ecmascript.js",
+    "./typescript": "./typescript.js"
   },
+  "main": "./main.js",
+  "bin": "./bin/eslint",
   "files": [
     "main.js",
     "ecmascript.js",
@@ -40,7 +43,7 @@
   },
   "devDependencies": {
     "@renoirb/conventions-use-prettier": "1.2.0",
-    "@renoirb/tools-bundling-helpers": "1.1.2",
+    "@renoirb/tools-bundling-helpers": "1.2.0",
     "@rushstack/node-core-library": "^3.25.0"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@renoirb/conventions-use-bili",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Reusable Babel,Rollup configs leveraging https://github.com/egoist/bili",
   "homepage": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/conventions/use-bili",
   "repository": {
@@ -51,11 +51,11 @@
     "rollup-plugin-typescript2": "^0.27.0"
   },
   "devDependencies": {
-    "@renoirb/conventions-use-eslint": "1.1.2",
-    "@renoirb/conventions-use-jest": "1.1.2",
+    "@renoirb/conventions-use-eslint": "1.2.0",
+    "@renoirb/conventions-use-jest": "1.2.0",
     "@renoirb/conventions-use-prettier": "1.2.0",
-    "@renoirb/conventions-use-typescript-3": "1.1.2",
-    "@renoirb/tools-bundling-helpers": "1.1.2",
+    "@renoirb/conventions-use-typescript-3": "1.2.0",
+    "@renoirb/tools-bundling-helpers": "1.2.0",
     "@rollup/plugin-babel": "^5.0.0",
     "@rushstack/node-core-library": "^3.25.0",
     "@types/jest": "^26.0.0",
