@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@renoirb/conventions-use-prettier",
+      "comment": "Forgot prettier.config export to work for both Node 10 and 14",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@renoirb/conventions-use-prettier",
+  "email": "contribs@renoirboulanger.com"
+}

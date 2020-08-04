@@ -15,9 +15,10 @@
   },
   "exports": {
     ".": "./dist/index.cjs",
+    "./prettier.config": "./prettier.config.js",
     "./start": "./dist/start.cjs"
   },
-  "main": "prettier.config.js",
+  "main": "./prettier.config.js",
   "typings": "dist/index.d.ts",
   "bin": "./bin/code-formatter",
   "files": [
