@@ -1,6 +1,13 @@
 # Change Log - @renoirb/conventions-use-prettier
 
-This log was last generated on Mon, 03 Aug 2020 23:53:08 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Aug 2020 00:09:40 GMT and should not be manually modified.
+
+## 1.2.1
+Tue, 04 Aug 2020 00:09:40 GMT
+
+### Patches
+
+- Forgot prettier.config export to work for both Node 10 and 14
 
 ## 1.2.0
 Mon, 03 Aug 2020 23:53:08 GMT

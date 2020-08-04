@@ -1,6 +1,11 @@
 # Change Log - @renoirb/tools-bundling-helpers
 
-This log was last generated on Mon, 03 Aug 2020 23:53:08 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Aug 2020 00:09:41 GMT and should not be manually modified.
+
+## 1.1.3
+Tue, 04 Aug 2020 00:09:41 GMT
+
+*Version update only*
 
 ## 1.1.2
 Mon, 03 Aug 2020 23:53:08 GMT
