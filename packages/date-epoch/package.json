@@ -38,6 +38,7 @@
     "test:snapshots": "use-cross-env use-jest --detectOpenHandles -u"
   },
   "devDependencies": {
+    "@babel/core": "^7.10.0",
     "@babel/plugin-transform-runtime": "^7.10.0",
     "@babel/preset-env": "^7.10.0",
     "@babel/runtime-corejs3": "^7.10.0",
@@ -50,9 +51,7 @@
     "@types/jest": "^26.0.0",
     "@types/node": "^10.17.13",
     "core-js": "^3.6.0",
-    "jest": "^25.5.0",
     "jest-date-mock": "^1.0.8",
-    "ts-jest": "^25.5.0",
     "tslib": "^2.0.0",
     "typescript": "^3.9.0"
   }

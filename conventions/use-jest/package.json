@@ -29,9 +29,7 @@
     "bin"
   ],
   "scripts": {
-    "build": "",
-    "fix": "use-prettier --write '*.{js,md,json}'",
-    "lint": "use-eslint --fix '*.js'"
+    "build": ""
   },
   "dependencies": {
     "@jest/reporters": "^24.9.0",
@@ -41,16 +39,11 @@
     "jest-expect-message": "^1.0.1",
     "papaparse": "^5.1.0"
   },
-  "devDependencies": {
-    "@renoirb/conventions-use-eslint": "1.1.2",
-    "@renoirb/conventions-use-prettier": "1.2.0"
-  },
   "peerDependencies": {
     "@types/jest": "^26.0.0",
     "jest": "^25.5.0"
   },
   "optionalDependencies": {
-    "jest-date-mock": "^1.0.8",
-    "ts-jest": "^25.5.0"
+    "jest-date-mock": "^1.0.8"
   }
 }

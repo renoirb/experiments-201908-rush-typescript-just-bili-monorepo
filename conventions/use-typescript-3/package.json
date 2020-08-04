@@ -17,15 +17,10 @@
     "includes"
   ],
   "scripts": {
-    "build": "",
-    "fix": "use-prettier --write '**/*.{ts,md,json,js}'"
-  },
-  "devDependencies": {
-    "@renoirb/conventions-use-prettier": "1.2.0"
+    "build": ""
   },
   "optionalDependencies": {
     "@rushstack/node-core-library": "^3.25.0",
-    "esm": "^3.2.0",
-    "ts-node": "^8.10.0"
+    "esm": "^3.2.0"
   }
 }
