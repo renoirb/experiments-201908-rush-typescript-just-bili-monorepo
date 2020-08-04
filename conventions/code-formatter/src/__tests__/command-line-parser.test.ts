@@ -13,8 +13,8 @@ jest.spyOn(console, 'log').mockImplementation(() => undefined)
 
 describe('CodeFormatterCommandLineParser', () => {
   let commandLineParser: CommandLineParser
-  let fileSystemExistsSpy = jest.spyOn(FileSystem, 'exists')
-  let resolveSpy = jest.spyOn(path, 'resolve')
+  const fileSystemExistsSpy = jest.spyOn(FileSystem, 'exists')
+  const resolveSpy = jest.spyOn(path, 'resolve')
 
   it('parses an action input with remainder', () => {
     resolveSpy.mockReturnValueOnce('/fakepath/to/prettier.config.js')

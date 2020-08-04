@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { IProcessEnvRunTimeOptions } from './main'
 
 /**
@@ -43,30 +45,40 @@ const babel = (__: NodeJS.Process, opts: IProcessEnvRunTimeOptions) => {
   const exclude = []
 
   if (hasBiliBundleNodeModulesOption) {
-    plugins.push([
-      'module:@babel/plugin-transform-runtime',
-      {
-        corejs: 3,
-        // TODO: Which of this here, or `/regenerator/` is needed to make it work. TBD. Later.
-        // TODO: Check if package.json has required corejs deps and adjust corejs plugin config
-        helpers: true,
-        useESModules: true,
-      },
-    ])
+    // plugins.push([
+    //   'module:@babel/plugin-transform-runtime',
+    //   {
+    //     corejs: 3,
+    //     // TODO: Which of this here, or `/regenerator/` is needed to make it work. TBD. Later.
+    //     // TODO: Check if package.json has required corejs deps and adjust corejs plugin config
+    //     helpers: true,
+    //     useESModules: true,
+    //   },
+    // ])
 
-    exclude.push(...[/regenerator/, /runtime-corejs3/, /core-js/])
+    exclude.push(
+      ...[
+        /regenerator/,
+        /runtime-corejs3/,
+        /core-js/,
+        /spawn-sync/,
+        /term-size/,
+      ],
+    )
   }
 
   // console.log('1 use-bili hasBiliBundleNodeModulesOption', {
   //   hasBiliBundleNodeModulesOption,
   //   plugins: JSON.parse(JSON.stringify(plugins)),
+  //   exclude: JSON.parse(JSON.stringify(exclude)),
   // })
 
   const out = {
-    runtimeHelpers: true,
+    // runtimeHelpers: true,
     presets: [
       [
-        '@babel/preset-env',
+        // require('@babel/preset-env'),
+        'module:@babel/preset-env',
         {
           /**
            * @TODO: Check if package.json has required corejs deps and adjust corejs plugin config

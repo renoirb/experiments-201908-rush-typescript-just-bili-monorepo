@@ -12,6 +12,8 @@ const main = {
     // TODO: Make this list smaller, not bigger
     // To try it out, comment one line, then run `rushx lint`.
     '@typescript-eslint/ban-ts-ignore': 'off',
+    '@typescript-eslint/explicit-member-accessibility': 'off',
+    '@typescript-eslint/naming-convention': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/typedef': 'off',
   },

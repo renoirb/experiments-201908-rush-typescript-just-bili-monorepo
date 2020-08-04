@@ -12,7 +12,7 @@ export interface IPersonLikeInterface {
 }
 
 // Private constant, only included from Person class.
-const introductions: { [lang: string]: string } = {
+export const introductions: { [lang: string]: string } = {
   fr: 'Bonsoir, mon nom est',
   pt: 'Oi gente, meu nome é',
   en: 'Hello, my name is',

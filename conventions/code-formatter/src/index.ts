@@ -14,4 +14,6 @@ export type {
   RequiredOptions,
 }
 
+export { CodeFormatterCommandLineParser }
+
 export default CodeFormatterCommandLineParser

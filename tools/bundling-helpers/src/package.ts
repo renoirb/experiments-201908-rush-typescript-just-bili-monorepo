@@ -5,14 +5,14 @@ import {
 } from '@rushstack/node-core-library'
 import { camelCase } from './manipulation'
 import { PeopleField } from './people-field'
-import { BannerFooter, BannerInfo } from './banner'
+import { IBannerFooter, IBannerInfo } from './banner'
 import { cached } from './utils'
 
 export type { IPackageJson, INodePackageJson }
 
-export interface PackageIdentityInterface {
-  banners: BannerFooter
-  info: BannerInfo
+export interface IPackageIdentityInterface {
+  banners: IBannerFooter
+  info: IBannerInfo
   pkg: IPackageJson
   projectPath: string
 }

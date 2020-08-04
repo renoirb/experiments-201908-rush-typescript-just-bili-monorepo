@@ -39,6 +39,14 @@
       "allowedCategories": [ "conventions" ]
     },
     {
+      "name": "@microsoft/rush-stack-compiler-3.9",
+      "allowedCategories": [ "conventions" ]
+    },
+    {
+      "name": "@renoirb/conventions-code-formatter",
+      "allowedCategories": [ "libraries" ]
+    },
+    {
       "name": "@renoirb/conventions-use-bili",
       "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
@@ -88,7 +96,7 @@
     },
     {
       "name": "@rushstack/ts-command-line",
-      "allowedCategories": [ "conventions" ]
+      "allowedCategories": [ "conventions", "tools" ]
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
@@ -208,7 +216,11 @@
     },
     {
       "name": "prettier",
-      "allowedCategories": [ "conventions" ]
+      "allowedCategories": [ "conventions", "tools" ]
+    },
+    {
+      "name": "prettier-plugin-organize-imports",
+      "allowedCategories": [ "conventions", "tools" ]
     },
     {
       "name": "pretty-quick",

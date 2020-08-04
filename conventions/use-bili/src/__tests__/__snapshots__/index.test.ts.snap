@@ -3,7 +3,7 @@
 exports[`main Snapshot sample 1`] = `
 Object {
   "banner": "/*!
- * @renoirb/conventions-use-bili v1.1.0-dev.6
+ * @renoirb/conventions-use-bili v1.2.0
  *
  * Maintainer: Renoir Boulanger <contribs@renoirboulanger.com>
  *
@@ -14,7 +14,7 @@ Object {
   "bundleNodeModules": false,
   "input": "src/index.ts",
   "output": Object {
-    "minify": true,
+    "minify": false,
     "sourceMap": true,
   },
   "plugins": Object {
@@ -23,15 +23,14 @@ Object {
       "plugins": Array [],
       "presets": Array [
         Array [
-          "@babel/preset-env",
+          "module:@babel/preset-env",
           Object {
             "corejs": 3,
-            "debug": false,
+            "debug": true,
             "useBuiltIns": "usage",
           },
         ],
       ],
-      "runtimeHelpers": true,
     },
   },
 }

@@ -1,7 +1,7 @@
 # Validatable
 
-Curries an object/function with a "validatable" property containing ValidatableRules
-and a "validate" function.
+Curries an object/function with a "validatable" property containing
+ValidatableRules and a "validate" function.
 
 CAUTION: This has been written back in 2013 and dearly needs refactoring.
 
@@ -34,14 +34,19 @@ check.hasPassed() // => false
 
 ## Context
 
-In this package, we've migrated ECMAScript from **@bit/renoirb.curries.curries.validatable**, and copied it here.
-We could have had [written the code here and exported it in isolation to bit](https://docs.bitsrc.io/docs/isolating-and-tracking-components.html).
-That could be done. But it isn't, it's also copied over to [GitHub.com/renoirb/bits **curries/**](https://github.com/renoirb/bits/tree/master/src/curries).
-The use-case here was to migrate ECMAScript with modules, managed by TypeScript, without being converted to it just yet.
-We also wanted to have Jest test to work.
+In this package, we've migrated ECMAScript from
+**@bit/renoirb.curries.curries.validatable**, and copied it here. We could have
+had
+[written the code here and exported it in isolation to bit](https://docs.bitsrc.io/docs/isolating-and-tracking-components.html).
+That could be done. But it isn't, it's also copied over to
+[GitHub.com/renoirb/bits **curries/**](https://github.com/renoirb/bits/tree/master/src/curries).
+The use-case here was to migrate ECMAScript with modules, managed by TypeScript,
+without being converted to it just yet. We also wanted to have Jest test to
+work.
 
 ## Next Steps
 
 ### Migrate to TypeScript?
 
-Assuming we want to rework that package, we could [migrate it to TypeScript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
+Assuming we want to rework that package, we could
+[migrate it to TypeScript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)

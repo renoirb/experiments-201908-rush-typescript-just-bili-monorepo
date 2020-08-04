@@ -1,9 +1,9 @@
 import { Config, ConfigOutput } from 'bili'
-import { plugins as initPlugins } from './plugins'
-import { input as initInput } from './input'
+import { input } from './input'
+import { plugins } from './plugins'
 
 import bundlingHelpers, {
-  BrandingInterface,
+  IBrandingInterface,
   createPackageDependencyChecker,
   DependencyType,
   PackageDependencyChecker,
@@ -11,7 +11,7 @@ import bundlingHelpers, {
 } from '@renoirb/tools-bundling-helpers'
 import { resolve } from 'path'
 
-export { BrandingInterface }
+export { IBrandingInterface }
 
 export interface IProcessEnvRunTimeOptions {
   hasBiliBundleNodeModulesOption: boolean
@@ -42,8 +42,13 @@ export const resolveRunTimeOptions = (
   cfg: Config,
 ): Readonly<IProcessEnvRunTimeOptions> => {
   const { DEBUG = '', BILI_BUNDLE_NODE_MODULES = '' } = p.env
-  const isDevModeVerbose = String(DEBUG).length > 1
+  const processEnvKeys = Object.keys(p.env)
   let hasBiliBundleNodeModulesOption = BILI_BUNDLE_NODE_MODULES === 'true'
+  let isDevModeVerbose = String(DEBUG).length > 1
+  const isCI = processEnvKeys.includes('CI_SERVER')// || processEnvKeys.includes('CI')
+  if (!isCI) {
+    isDevModeVerbose = true
+  }
   if (cfg.bundleNodeModules) {
     hasBiliBundleNodeModulesOption = cfg.bundleNodeModules === true
   }
@@ -60,11 +65,12 @@ export const resolveRunTimeOptions = (
  */
 export const main = (
   cfg: Config,
-  branding: Partial<BrandingInterface> = {},
+  branding: Partial<IBrandingInterface> = {},
 ): Config => {
   const runtimeOpts = resolveRunTimeOptions(process, cfg)
-  const plugins = initPlugins(process, runtimeOpts)
-  const input = initInput(cfg && cfg.input ? cfg.input : 'src/index.js')
+
+  const initPlugins = plugins(process, runtimeOpts)
+  const initInput = input(cfg && cfg.input ? cfg.input : 'src/index.js')
 
   const output: ConfigOutput = {
     sourceMap: true,
@@ -75,8 +81,8 @@ export const main = (
   const config: Config = {
     banner: true,
     bundleNodeModules: false,
-    input,
-    plugins,
+    input: initInput,
+    plugins: initPlugins,
     ...(cfg || {}),
     output,
   }
@@ -128,15 +134,16 @@ export const main = (
 
       depChecker('@babel/runtime-corejs3', 'devDependencies', true)
       depChecker('@babel/plugin-transform-runtime', 'devDependencies', true)
+      depChecker('@babel/core', 'devDependencies', true)
       depChecker('@babel/preset-env', 'devDependencies', true)
     }
 
     // console.log('4 use-bili bundlingHelpers', {
     //   config,
-    //   'config.externals': config.externals,
+    //   // 'config.externals': config.externals,
     //   bundle,
     //   runtimeOpts,
-    //   'process.env': JSON.parse(JSON.stringify(process.env)),
+    //   // 'process.env': JSON.parse(JSON.stringify(process.env)),
     // })
   }
 

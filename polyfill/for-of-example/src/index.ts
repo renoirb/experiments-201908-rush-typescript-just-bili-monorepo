@@ -4,12 +4,19 @@ import { Person } from './person'
 export type { IPersonLikeInterface, LangCodeType }
 export { Person }
 
-export default (people: Partial<IPersonLikeInterface>[] = []): Person[] => {
-  const out: Person[] = []
+const talk = (args: { name?: string; message: string }): string => {
+  const name: string = typeof args.name === 'string' ? `${args.name}: ` : ''
+  const message: string =
+    typeof args.message === 'string' ? `${args.message}` : '...'
+  return `${name}${message}`
+}
+
+export default (people: Partial<IPersonLikeInterface>[] = []): string[] => {
+  const out: string[] = []
   for (const someone of people) {
-    const { name = 'John Doe', lang } = someone || {}
-    const p = new Person(name, lang)
-    out.push(p)
+    const { name = 'John Doe' } = someone || {}
+    const message = 'Hiya!'
+    out.push(talk({ name, message }))
   }
   return out
 }

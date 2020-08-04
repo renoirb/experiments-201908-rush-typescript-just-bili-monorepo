@@ -2,9 +2,9 @@ export * from './plugins'
 export * from './input'
 export * from './provider'
 
-import { main, BrandingInterface } from './main'
+import { main, IBrandingInterface } from './main'
 
-export { BrandingInterface }
+export { IBrandingInterface }
 
 export default main
 

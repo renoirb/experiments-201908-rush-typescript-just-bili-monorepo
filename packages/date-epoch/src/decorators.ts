@@ -1,4 +1,3 @@
-/* eslint-disable */
 
 /**
  * Make a number or string object property to have property getter return DateEpoch

@@ -12,6 +12,9 @@ const main = useBili(
       fileName: '[name].cjs',
       minify: false,
     },
+    externals: [
+      'spawn-sync', // from cross-spawn which is from execa which is from term-size which is from boxen
+    ],
   },
   { firstYear: 2003 },
 )
