@@ -19,7 +19,9 @@
     "./typescript": "./typescript.js"
   },
   "main": "./main.js",
-  "bin": "./bin/eslint",
+  "bin": {
+    "use-eslint": "./bin/eslint"
+  },
   "files": [
     "main.js",
     "ecmascript.js",
@@ -33,17 +35,12 @@
   },
   "dependencies": {
     "@rushstack/eslint-config": "1.0.2",
-    "@rushstack/eslint-patch": "1.0.2",
     "@rushstack/node-core-library": "^3.25.0",
+    "@types/eslint": "7.2.0",
     "eslint": "~7.2.0",
     "eslint-plugin-promise": "~4.2.1",
     "eslint-plugin-react": "~7.20.0",
     "eslint-plugin-security": "~1.4.0",
     "eslint-plugin-tsdoc": "~0.2.5"
-  },
-  "devDependencies": {
-    "@renoirb/conventions-use-prettier": "1.2.0",
-    "@renoirb/tools-bundling-helpers": "1.2.0",
-    "@rushstack/node-core-library": "^3.25.0"
   }
 }

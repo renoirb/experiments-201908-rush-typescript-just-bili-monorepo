@@ -35,20 +35,19 @@
     "test:snapshots": "use-jest --detectOpenHandles -u"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.10.0",
-    "@babel/preset-env": "^7.10.0",
-    "@babel/runtime-corejs3": "^7.10.0",
-    "@renoirb/conventions-use-bili": "1.2.0",
-    "@renoirb/conventions-use-eslint": "1.2.0",
-    "@renoirb/conventions-use-jest": "1.2.0",
-    "@renoirb/conventions-use-prettier": "1.2.0",
-    "@renoirb/conventions-use-typescript-3": "1.2.0",
-    "@renoirb/tools-bundling-helpers": "1.2.0",
-    "@types/jest": "^26.0.0",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/core": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-typescript": "^7.10.1",
+    "@babel/runtime-corejs3": "^7.10.1",
+    "@renoirb/conventions-use-bili": "workspace:*",
+    "@renoirb/conventions-use-eslint": "workspace:*",
+    "@renoirb/conventions-use-jest": "workspace:*",
+    "@renoirb/conventions-use-prettier": "workspace:*",
+    "@renoirb/conventions-use-typescript-3": "workspace:*",
+    "@renoirb/tools-bundling-helpers": "workspace:*",
+    "@types/jest": "^25.2.3",
     "@types/node": "^10.17.13",
-    "core-js": "^3.6.0",
-    "ts-jest": "^25.5.0",
-    "tslib": "^2.0.0",
-    "typescript": "^3.9.0"
+    "core-js": "^3.6.0"
   }
 }

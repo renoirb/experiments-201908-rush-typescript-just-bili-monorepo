@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { IProcessEnvRunTimeOptions } from './main'
 
 /**
@@ -63,10 +65,10 @@ const babel = (__: NodeJS.Process, opts: IProcessEnvRunTimeOptions) => {
   // })
 
   const out = {
-    runtimeHelpers: true,
+    // runtimeHelpers: true,
     presets: [
       [
-        '@babel/preset-env',
+        require('@babel/preset-env'),
         {
           /**
            * @TODO: Check if package.json has required corejs deps and adjust corejs plugin config

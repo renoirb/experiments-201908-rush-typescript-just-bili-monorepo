@@ -1,13 +1,16 @@
 # Change Log - @renoirb/conventions-use-bili
 
-This log was last generated on Mon, 03 Aug 2020 23:53:08 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Aug 2020 23:53:08 GMT and should not be
+manually modified.
 
 ## 1.1.2
+
 Mon, 03 Aug 2020 23:53:08 GMT
 
-*Version update only*
+_Version update only_
 
 ## 1.1.1
+
 Tue, 14 Jul 2020 03:23:31 GMT
 
 ### Patches
@@ -16,6 +19,7 @@ Tue, 14 Jul 2020 03:23:31 GMT
 - @typescript-eslint/eslint-plugin ^3.6.0
 
 ## 1.1.0
+
 Mon, 29 Jun 2020 02:44:24 GMT
 
 ### Minor changes
@@ -27,9 +31,9 @@ Mon, 29 Jun 2020 02:44:24 GMT
 - Changed usage signature and branding utility at usage time
 
 ## 1.0.2
+
 Thu, 02 Jan 2020 23:25:02 GMT
 
 ### Patches
 
 - Make TypeScript and TSLib peerDependency
-

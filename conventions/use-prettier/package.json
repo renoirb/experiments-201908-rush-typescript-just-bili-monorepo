@@ -19,50 +19,19 @@
     "./start": "./dist/start.cjs"
   },
   "main": "./prettier.config.js",
-  "typings": "dist/index.d.ts",
-  "bin": "./bin/code-formatter",
+  "bin": {
+    "use-prettier": "./bin/prettier"
+  },
   "files": [
     "prettier.config.js",
     ".prettierignore",
-    "bin",
-    "dist"
+    "bin"
   ],
   "scripts": {
-    "build": "use-cross-env use-run-all clean build:*",
-    "build:node-cjs": "use-cross-env use-bili -c bili.config.ts",
-    "build:typings": "tsc --declarationDir dist --declarationMap --declaration --listEmittedFiles --emitDeclarationOnly -p tsconfig.json",
-    "clean": "use-cross-env use-rimraf .rpt2_cache dist *.*.log",
-    "fix": "./bin/prettier --write '**/*.{js,ts,json,md}'",
-    "lint": "use-cross-env use-eslint --fix 'src/**/*.ts'",
-    "prepublishOnly": "rushx build",
-    "test": "use-jest --detectOpenHandles",
-    "test:snapshots": "use-jest --detectOpenHandles -u"
+    "build": ""
   },
   "dependencies": {
-    "@rushstack/node-core-library": "^3.25.0",
-    "@rushstack/ts-command-line": "~4.4.6",
-    "@types/prettier": "^2.0.2",
     "prettier": "^2.0.5",
     "sort-package-json": "^1.44.0"
-  },
-  "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.10.0",
-    "@babel/preset-env": "^7.10.0",
-    "@babel/runtime-corejs3": "^7.10.0",
-    "@renoirb/conventions-use-bili": "1.2.0",
-    "@renoirb/conventions-use-eslint": "1.2.0",
-    "@renoirb/conventions-use-jest": "1.2.0",
-    "@renoirb/conventions-use-typescript-3": "1.2.0",
-    "@renoirb/tools-bundling-helpers": "1.2.0",
-    "@types/jest": "^26.0.0",
-    "@types/node": "^10.17.13",
-    "core-js": "^3.6.0",
-    "jest": "^25.5.0",
-    "ts-jest": "^25.5.0",
-    "tslib": "^2.0.0",
-    "typescript": "^3.9.0"
-  },
-  "optionnalDependencies": {
-    "pretty-quick": "^2.0.1"
   }
 }

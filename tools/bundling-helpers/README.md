@@ -7,11 +7,14 @@ Bundling helpers such as CLI utilities and packaging branding utilities
 | ![Bundle size][shields-bundle-size] | ![Libraries.io dependency status for latest release][shields-dependabot] |
 
 [url-npmjs]: https://www.npmjs.com/package/%40renoirb%2Ftools-bundling-helpers
-[url-repo]: https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/tools/bundling-helpers
-[shields-npm]: https://img.shields.io/npm/v/%40renoirb%2Ftools-bundling-helpers?style=flat-square&logo=appveyor&label=npm&logo=npm
-[shields-bundle-size]: https://img.shields.io/bundlephobia/min/%40renoirb%2Ftools-bundling-helpers?style=flat-square
-[shields-dependabot]: https://img.shields.io/librariesio/release/npm/%40renoirb%2Ftools-bundling-helpers?style=flat-square&logo=appveyor&logo=dependabot
-
+[url-repo]:
+  https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/tools/bundling-helpers
+[shields-npm]:
+  https://img.shields.io/npm/v/%40renoirb%2Ftools-bundling-helpers?style=flat-square&logo=appveyor&label=npm&logo=npm
+[shields-bundle-size]:
+  https://img.shields.io/bundlephobia/min/%40renoirb%2Ftools-bundling-helpers?style=flat-square
+[shields-dependabot]:
+  https://img.shields.io/librariesio/release/npm/%40renoirb%2Ftools-bundling-helpers?style=flat-square&logo=appveyor&logo=dependabot
 
 ## Usage
 
@@ -70,7 +73,8 @@ Would return
 }
 ```
 
-We can pass this to `createBannerFooter` and get a banner and footer string for bundling tools such as Rollup.
+We can pass this to `createBannerFooter` and get a banner and footer string for
+bundling tools such as Rollup.
 
 ```js
 // From example above

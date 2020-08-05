@@ -1,8 +1,10 @@
 # [@renoirb/date-epoch][repo-url]
 
-[repo-url]: https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/packages/date-epoch
+[repo-url]:
+  https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/packages/date-epoch
 
-Take either a string or number that are seconds since January 1<sup>st</sup> 1970 (a.k.a. UNIX Epoch), transform into an ECMAScript Date object.
+Take either a string or number that are seconds since January 1<sup>st</sup>
+1970 (a.k.a. UNIX Epoch), transform into an ECMAScript Date object.
 
 | Version                                                                                                                                                                  | Size                                                                                                  | Dependencies                                                                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

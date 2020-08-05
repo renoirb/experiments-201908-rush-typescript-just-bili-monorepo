@@ -1,6 +1,6 @@
 import { Config, ConfigOutput } from 'bili'
-import { plugins as initPlugins } from './plugins'
-import { input as initInput } from './input'
+import { input } from './input'
+// import { plugins } from './plugins'
 
 import bundlingHelpers, {
   BrandingInterface,
@@ -63,8 +63,9 @@ export const main = (
   branding: Partial<BrandingInterface> = {},
 ): Config => {
   const runtimeOpts = resolveRunTimeOptions(process, cfg)
-  const plugins = initPlugins(process, runtimeOpts)
-  const input = initInput(cfg && cfg.input ? cfg.input : 'src/index.js')
+
+  const initPlugins = {} // plugins(process, runtimeOpts)
+  const initInput = input(cfg && cfg.input ? cfg.input : 'src/index.js')
 
   const output: ConfigOutput = {
     sourceMap: true,
@@ -75,8 +76,8 @@ export const main = (
   const config: Config = {
     banner: true,
     bundleNodeModules: false,
-    input,
-    plugins,
+    input: initInput,
+    plugins: initPlugins,
     ...(cfg || {}),
     output,
   }
@@ -113,7 +114,7 @@ export const main = (
      */
     if (runtimeOpts.hasBiliBundleNodeModulesOption === false) {
       // if is false, make sure the host package HAS runtime dependencies
-      depChecker('@babel/runtime-corejs3', 'dependencies', true)
+      // depChecker('@babel/runtime-corejs3', 'dependencies', true)
     } else {
       /**
        * Add any package.json dependencies, peerDependencies as externals
@@ -126,8 +127,9 @@ export const main = (
         externals: [...externals, ...packageExtractExternals(bundle.pkg)],
       })
 
-      depChecker('@babel/runtime-corejs3', 'devDependencies', true)
+      // depChecker('@babel/runtime-corejs3', 'devDependencies', true)
       depChecker('@babel/plugin-transform-runtime', 'devDependencies', true)
+      depChecker('@babel/core', 'devDependencies', true)
       depChecker('@babel/preset-env', 'devDependencies', true)
     }
 
