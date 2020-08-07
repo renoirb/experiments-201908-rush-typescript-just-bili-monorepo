@@ -394,7 +394,7 @@
     {
       "packageName": "@renoirb/conventions-code-formatter",
       "projectFolder": "conventions/code-formatter",
-      "shouldPublish": true,
+      "versionPolicyName": "conventionsLockStepedVersioned",
       "reviewCategory": "tools"
     },
     {
@@ -431,7 +431,7 @@
     {
       "packageName": "@renoirb/tools-bundling-helpers",
       "projectFolder": "tools/bundling-helpers",
-      "versionPolicyName": "conventionsLockStepedVersioned",
+      "shouldPublish": true,
       "reviewCategory": "tools"
     },
 

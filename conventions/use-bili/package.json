@@ -21,6 +21,7 @@
   "module": "dist/index.esm.js",
   "typings": "./dist/index.d.ts",
   "bin": {
+    "conventions-use-bili": "./bin/bili",
     "use-bili": "./bin/bili"
   },
   "files": [
@@ -31,7 +32,7 @@
     "build": "use-cross-env use-run-all clean build:*",
     "build:all": "use-cross-env ./bin/bili -c bili.config.ts",
     "clean": "use-cross-env use-rimraf .rpt2_cache dist *.*.log",
-    "fix": "use-cross-env use-prettier --write '**/*.{js,ts,md,json}'",
+    "fix": "use-cross-env use-prettier '**/*.{js,ts,md,json}' --write",
     "lint": "use-cross-env use-eslint --fix 'src/**/*.ts'",
     "prepublishOnly": "rushx build",
     "test": "use-cross-env use-jest --detectOpenHandles",
@@ -45,8 +46,8 @@
     "@babel/runtime-corejs3": "^7.10.1",
     "@rollup/plugin-babel": "~5.0.0",
     "@rushstack/node-core-library": "^3.25.0",
-    "core-js": "^3.6.0",
     "bili": "~5.0.5",
+    "core-js": "^3.6.0",
     "rollup": "^2.16.1",
     "rollup-plugin-typescript2": "^0.27.1"
   },
@@ -58,10 +59,13 @@
     "@renoirb/tools-bundling-helpers": "workspace:*",
     "@rushstack/node-core-library": "^3.25.0",
     "@types/jest": "^25.2.3",
-    "typescript": "~3.9.7",
-    "@types/node": "^10.17.13"
+    "@types/node": "^10.17.13",
+    "typescript": "~3.9.5"
   },
   "peerDependencies": {
     "@renoirb/tools-bundling-helpers": "1.1.2"
+  },
+  "optionalDependencies": {
+    "tslib": "^2.0.0"
   }
 }

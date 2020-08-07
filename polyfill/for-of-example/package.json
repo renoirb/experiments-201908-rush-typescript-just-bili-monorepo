@@ -37,7 +37,7 @@
     "build:browser-modern-iife": "use-cross-env BROWSERSLIST='> 0.5%, last 2 versions' use-bili --config bili.config.ts --target browser --module-name ForOfExample --format iife --file-name index.browser.js",
     "build:node-esm": "use-cross-env BROWSERSLIST='current node' use-bili --config bili.config.ts --target node --format esm --file-name index.mjs",
     "clean": "use-rimraf .rpt2_cache dist *.*.log",
-    "fix": "use-cross-env use-prettier --write '**/*.{ts,md,json,js}'",
+    "fix": "use-cross-env use-prettier '**/*.{ts,md,json,js}' --write",
     "lint": "use-cross-env use-eslint --fix 'src/**/*.ts'",
     "prepublishOnly": "rushx build",
     "test": "use-jest --detectOpenHandles",
@@ -47,8 +47,8 @@
     "esm": "^3.2.0"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.10.1",
     "@babel/core": "^7.10.1",
+    "@babel/plugin-transform-runtime": "^7.10.1",
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-typescript": "^7.10.1",
     "@babel/runtime-corejs3": "^7.10.1",
@@ -60,6 +60,7 @@
     "@renoirb/tools-bundling-helpers": "workspace:*",
     "@types/jest": "^25.2.3",
     "@types/node": "^10.17.13",
-    "core-js": "^3.6.0"
+    "core-js": "^3.6.0",
+    "typescript": "~3.9.5"
   }
 }

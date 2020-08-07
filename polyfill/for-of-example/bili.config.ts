@@ -7,7 +7,7 @@ const main = useBili(
     externals: [],
     output: {
       minify: false,
-    }
+    },
   },
   { firstYear: 2003 },
 )

@@ -1,11 +1,11 @@
 /* eslint-env jest */
 
-import { PackageJson } from '../package'
+import { IPackageJson } from '../package'
 import { createBannerInfo, createBannerFooter } from '../banner'
 
 jest.spyOn(global.Date.prototype, 'getFullYear').mockImplementation(() => 2373)
 
-const pkg: PackageJson = {
+const pkg: IPackageJson = {
   name: 'assimilate',
   version: '436.0.1',
 }

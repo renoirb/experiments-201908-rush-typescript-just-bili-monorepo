@@ -100,21 +100,6 @@ export class PrettierAction extends CommandLineAction {
     const _configFileParameter = this._configFileParameter
     // TODO: Make configFilePath picking from argv
     let configFilePath = _configFileParameter.value
-    // @ts-ignore
-    let argp: any
-    // @ts-ignore
-    if (this._getArgumentParser) {
-      // @ts-ignore
-      argp = this._getArgumentParser()
-    }
-    // console.log(
-    //   'onExecute 1',
-    //   {
-    //     'argp.parseArgs()': argp.parseArgs ? argp.parseArgs() : null,
-    //     configFilePath,
-    //   },
-    //   this,
-    // )
     // Either our own config, or use the provided one.
     // If file not found, fall-back to our own, to be sure, fail if file can't be found.
     if (configFilePath) {

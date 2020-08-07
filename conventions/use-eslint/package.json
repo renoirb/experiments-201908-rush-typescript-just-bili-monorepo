@@ -20,6 +20,7 @@
   },
   "main": "./main.js",
   "bin": {
+    "conventions-use-eslint": "./bin/eslint",
     "use-eslint": "./bin/eslint"
   },
   "files": [
@@ -30,11 +31,11 @@
     "bin"
   ],
   "scripts": {
-    "build": "",
-    "fix": "use-prettier --write '**/*.{js,json,md}'"
+    "build": ""
   },
   "dependencies": {
-    "@rushstack/eslint-config": "1.0.2",
+    "@rushstack/eslint-config": "1.0.3",
+    "@rushstack/eslint-plugin": "0.4.1",
     "@rushstack/node-core-library": "^3.25.0",
     "@types/eslint": "7.2.0",
     "eslint": "~7.2.0",
@@ -42,5 +43,8 @@
     "eslint-plugin-react": "~7.20.0",
     "eslint-plugin-security": "~1.4.0",
     "eslint-plugin-tsdoc": "~0.2.5"
+  },
+  "devDependencies": {
+    "typescript": "~3.9.5"
   }
 }

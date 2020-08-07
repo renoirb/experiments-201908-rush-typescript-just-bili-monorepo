@@ -18,10 +18,9 @@
   ],
   "scripts": {
     "build": "",
-    "fix": "use-prettier --write '**/*.{ts,md,json,js}'"
+    "fix": "use-prettier '**/*.{ts,md,json,js}' --write"
   },
   "dependencies": {
-    "typescript": "~3.9.7",
     "tslib": "^2.0.0"
   },
   "devDependencies": {

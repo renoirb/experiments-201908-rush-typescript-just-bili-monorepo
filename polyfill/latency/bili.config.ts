@@ -6,7 +6,7 @@ const main = useBili(
     bundleNodeModules: true,
     output: {
       minify: false,
-    }
+    },
   },
   { firstYear: 2003 },
 )

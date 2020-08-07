@@ -31,15 +31,15 @@
     "build:node": "use-cross-env use-bili -c bili.config.ts --target node --format cjs --file-name index.js",
     "build:node-mjs": "use-cross-env use-bili -c bili.config.ts --target node --format esm --file-name index.mjs",
     "clean": "use-cross-env use-rimraf .rpt2_cache dist *.*.log",
-    "fix": "use-cross-env use-prettier --write '**/*.{ts,md,json,js}'",
+    "fix": "use-cross-env use-prettier '**/*.{ts,md,json,js}' --write",
     "lint": "use-cross-env use-eslint --fix 'src/**/*.ts'",
     "prepublishOnly": "rushx build",
     "test": "use-cross-env use-jest --detectOpenHandles",
     "test:snapshots": "use-cross-env use-jest --detectOpenHandles -u"
   },
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.10.1",
     "@babel/core": "^7.10.1",
+    "@babel/plugin-transform-runtime": "^7.10.1",
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-typescript": "^7.10.1",
     "@babel/runtime-corejs3": "^7.10.1",
@@ -52,6 +52,7 @@
     "@types/jest": "^25.2.3",
     "@types/node": "^10.17.13",
     "core-js": "^3.6.0",
-    "jest-date-mock": "^1.0.8"
+    "jest-date-mock": "^1.0.8",
+    "typescript": "~3.9.5"
   }
 }

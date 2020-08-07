@@ -1,4 +1,4 @@
-const base = require('@renoirb/conventions-use-eslint/ecmascript')
+const base = require('@renoirb/conventions-use-eslint')
 
 const main = {
   ...base,

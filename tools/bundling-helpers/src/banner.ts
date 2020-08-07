@@ -1,7 +1,7 @@
 import { PackageJson } from './package'
 import { stringifyAuthor, PeopleField } from './people-field'
 
-export interface BrandingInterface {
+export interface IBrandingInterface {
   author: PeopleField
   authors?: PeopleField[]
   firstYear?: number
@@ -12,7 +12,7 @@ const commentedLines = (lines: string[] = []): string[] => {
   return lines.map((line) => ` * ${line}`)
 }
 
-export interface BannerInfo {
+export interface IBannerInfo {
   /** Project Author as a string */
   author: string
   /** Project name */
@@ -51,7 +51,7 @@ export interface BannerInfo {
 /**
  * Source code banner preformatted
  */
-export interface BannerFooter {
+export interface IBannerFooter {
   readonly banner: string | ''
   readonly footer: string | ''
 }
@@ -75,7 +75,7 @@ export const wrapCommentBlock = (lines: string[] = []): string => {
   return stringified.replace(/\s\n/g, `\n`)
 }
 
-export const createLicenseFileContents = (banner: BannerInfo): string => {
+export const createLicenseFileContents = (banner: IBannerInfo): string => {
   return `
 ${banner.copyright}
   `
@@ -83,8 +83,8 @@ ${banner.copyright}
 
 export const createBannerInfo = (
   pkg: Partial<PackageJson> = {},
-  branding: Partial<BrandingInterface>,
-): BannerInfo => {
+  branding: Partial<IBrandingInterface>,
+): IBannerInfo => {
   const currentYear = new Date().getFullYear()
   const fallbackAuthor = 'Example Author'
 
@@ -99,7 +99,7 @@ export const createBannerInfo = (
   const yearRangeStr = firstYear ? `${firstYear}-${currentYear}` : currentYear
   const copyright = `Copyright (c) ${yearRangeStr} ${vendor}`
 
-  const out: BannerInfo = {
+  const out: IBannerInfo = {
     author,
     license: pkg.license || 'LicenseRef-LICENSE',
     name: pkg.name || '',
@@ -130,9 +130,9 @@ export const createBannerInfo = (
  * @public
  */
 export const createBannerFooter = (
-  info: BannerInfo,
+  info: IBannerInfo,
   appendLines: string[] = [],
-): BannerFooter => {
+): IBannerFooter => {
   const bannerLines: string[] = []
 
   if (info) {
@@ -158,7 +158,7 @@ export const createBannerFooter = (
   const banner = wrapCommentBlock(bannerLines).trim()
   const footer = wrapCommentBlock([`${info.vendor}`]).trim()
 
-  const out: BannerFooter = {
+  const out: IBannerFooter = {
     banner,
     footer,
   }

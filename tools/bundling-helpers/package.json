@@ -34,7 +34,7 @@
     "build": "./bin/run-all clean build:*",
     "build:all": "bili -c bili.config.ts",
     "clean": "./bin/rimraf .rpt2_cache dist *.*.log",
-    "fix": "./bin/cross-env use-prettier --write '**/*.{js,ts,md}'",
+    "fix": "./bin/cross-env use-prettier '**/*.{js,ts,md}' --write",
     "lint": "use-eslint --fix 'src/**/*.ts'",
     "prepublishOnly": "rushx build",
     "test": "use-jest --detectOpenHandles",
@@ -61,7 +61,7 @@
     "@types/resolve": "^0.0.8",
     "bili": "~5.0.5",
     "rollup": "^2.16.1",
-    "typescript": "~3.9.7",
-    "rollup-plugin-typescript2": "^0.27.1"
+    "rollup-plugin-typescript2": "^0.27.1",
+    "typescript": "~3.9.5"
   }
 }
