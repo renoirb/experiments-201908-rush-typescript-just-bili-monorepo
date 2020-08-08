@@ -1,6 +1,7 @@
 import { Config, ConfigOutput } from 'bili'
 import { input } from './input'
 import { plugins } from './plugins'
+import { extendRollupConfig } from './extend-rollup-config'
 
 import bundlingHelpers, {
   IBrandingInterface,
@@ -45,7 +46,7 @@ export const resolveRunTimeOptions = (
   const processEnvKeys = Object.keys(p.env)
   let hasBiliBundleNodeModulesOption = BILI_BUNDLE_NODE_MODULES === 'true'
   let isDevModeVerbose = String(DEBUG).length > 1
-  const isCI = processEnvKeys.includes('CI_SERVER')// || processEnvKeys.includes('CI')
+  const isCI = processEnvKeys.includes('CI_SERVER') // || processEnvKeys.includes('CI')
   if (!isCI) {
     isDevModeVerbose = true
   }
@@ -81,9 +82,9 @@ export const main = (
   const config: Config = {
     banner: true,
     bundleNodeModules: false,
+    ...(cfg || {}),
     input: initInput,
     plugins: initPlugins,
-    ...(cfg || {}),
     output,
   }
 
@@ -107,6 +108,7 @@ export const main = (
      * Leverage bundlingHelpers' banner utility
      */
     Object.assign(config, { banner: bundle.banners.banner })
+    Object.assign(config, { extendRollupConfig: extendRollupConfig(bundle) })
 
     // console.log('4 use-bili bundlingHelpers', {
     //   runtimeOpts,
