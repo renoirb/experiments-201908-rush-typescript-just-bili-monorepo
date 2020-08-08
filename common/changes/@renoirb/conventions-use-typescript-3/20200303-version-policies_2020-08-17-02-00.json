@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@renoirb/conventions-use-typescript-3",
+      "comment": "Dependency update",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@renoirb/conventions-use-typescript-3",
+  "email": "contribs@renoirboulanger.com"
+}

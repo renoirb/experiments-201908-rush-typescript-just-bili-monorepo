@@ -18,12 +18,15 @@
   ],
   "scripts": {
     "build": "",
-    "fix": "use-prettier '**/*.{ts,md,json,js}' --write"
+    "fix": "conventions-use-prettier '**/*.{ts,md,json,js}' --write"
   },
   "dependencies": {
     "tslib": "^2.0.0"
   },
   "devDependencies": {
     "@renoirb/conventions-use-prettier": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

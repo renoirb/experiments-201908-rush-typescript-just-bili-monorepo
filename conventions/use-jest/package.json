@@ -30,25 +30,29 @@
   ],
   "scripts": {
     "build": "",
-    "fix": "use-prettier '**/*.{js,md,json}' --write",
-    "lint": "use-eslint --fix '**/*.js'"
+    "fix": "conventions-use-prettier '**/*.{js,md,json}' --write",
+    "lint": "conventions-use-eslint --fix '**/*.js'"
   },
   "dependencies": {
     "@jest/reporters": "^24.9.0",
-    "@types/jest": "^25.2.3",
-    "@types/jest-expect-message": "^1.0.1",
+    "@types/jest": "^26.0.0",
+    "@types/jest-expect-message": "^1.0.2",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "~25.4.0",
-    "jest-diff": "^25.5.0",
-    "jest-expect-message": "^1.0.1",
+    "jest-diff": "^26.0.0",
+    "jest-expect-message": "^1.0.2",
     "papaparse": "^5.1.0"
   },
   "devDependencies": {
     "@renoirb/conventions-use-eslint": "workspace:*",
     "@renoirb/conventions-use-prettier": "workspace:*"
   },
+  "peerDependencies": {
+    "jest": "^26.2.0"
+  },
   "optionalDependencies": {
-    "jest-date-mock": "^1.0.8",
-    "ts-jest": "~25.1.0"
+    "jest-date-mock": "^1.0.8"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

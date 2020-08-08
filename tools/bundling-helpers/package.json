@@ -35,10 +35,10 @@
     "build:all": "bili -c bili.config.ts",
     "clean": "./bin/rimraf .rpt2_cache dist *.*.log",
     "fix": "./bin/cross-env use-prettier '**/*.{js,ts,md}' --write",
-    "lint": "use-eslint --fix 'src/**/*.ts'",
+    "lint": "conventions-use-eslint --fix 'src/**/*.ts'",
     "prepublishOnly": "rushx build",
-    "test": "use-jest --detectOpenHandles",
-    "test:snapshots": "use-jest --detectOpenHandles -u"
+    "test": "conventions-use-jest --detectOpenHandles",
+    "test:snapshots": "conventions-use-jest --detectOpenHandles -u"
   },
   "dependencies": {
     "@rushstack/node-core-library": "^3.25.0",
@@ -47,21 +47,27 @@
     "rimraf": "~3.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.1",
-    "@babel/preset-env": "^7.10.2",
+    "@babel/core": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
     "@microsoft/node-library-build": "^6.4.0",
     "@renoirb/conventions-use-eslint": "workspace:*",
     "@renoirb/conventions-use-jest": "workspace:*",
     "@renoirb/conventions-use-prettier": "workspace:*",
     "@renoirb/conventions-use-typescript-3": "workspace:*",
-    "@rollup/plugin-babel": "~5.0.0",
+    "@rollup/plugin-babel": "~5.1.0",
     "@types/core-js": "^2.5.2",
-    "@types/jest": "^25.2.3",
-    "@types/node": "^10.17.13",
+    "@types/jest": "^26.0.0",
+    "@types/node": "^12.12.0",
     "@types/resolve": "^0.0.8",
-    "bili": "~5.0.5",
-    "rollup": "^2.16.1",
+    "bili": "^5.0.0",
+    "jest": "^26.2.0",
+    "rollup": "~2.23.0",
     "rollup-plugin-typescript2": "^0.27.1",
+    "ts-jest": "^26.2.0",
+    "tslib": "^2.0.0",
     "typescript": "~3.9.5"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

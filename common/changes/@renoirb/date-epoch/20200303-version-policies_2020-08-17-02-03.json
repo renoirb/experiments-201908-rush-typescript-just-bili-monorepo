@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@renoirb/date-epoch",
+      "comment": "Browser package is now IIFE",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@renoirb/date-epoch",
+  "email": "contribs@renoirboulanger.com"
+}

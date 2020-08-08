@@ -1,59 +1,13 @@
-import { PackageJson } from './package'
-import { stringifyAuthor, PeopleField } from './people-field'
+import type {
+  IPackageJson,
+  IBannerInfo,
+  IBrandingInterface,
+  IBannerFooter,
+} from './types'
+import { stringifyAuthor } from './utils'
 
-export interface IBrandingInterface {
-  author: PeopleField
-  authors?: PeopleField[]
-  firstYear?: number
-  vendor?: string
-}
-
-const commentedLines = (lines: string[] = []): string[] => {
+const wrapCommentLines = (lines: string[] = []): string[] => {
   return lines.map((line) => ` * ${line}`)
-}
-
-export interface IBannerInfo {
-  /** Project Author as a string */
-  author: string
-  /** Project name */
-  name: string
-  /** Package version */
-  version: string
-  /**
-   * License name
-   *
-   * MUST BE [SPDX format][spdx].
-   * Notice that LicenseRef-LICENSE make it possible to tell anything
-   * non standard to be included.
-   * Which will be where we'll tell it's All Rights Reserved ACME Corp.
-   *
-   * ```
-   * LicenseRef-LICENSE
-   * ```
-   *
-   * [spdx]: https://spdx.org/licenses/
-   */
-  license: string
-  /** Vendor name, non standard to package.json schema, e.g. ACME Corp. */
-  vendor: string
-  /**
-   * Vendor name
-   *
-   * Non standard to package.json schema
-   *
-   * ```
-   * Copyright (c) ACME Corp. 2015-2019
-   * ```
-   */
-  copyright: string
-}
-
-/**
- * Source code banner preformatted
- */
-export interface IBannerFooter {
-  readonly banner: string | ''
-  readonly footer: string | ''
 }
 
 /**
@@ -68,21 +22,22 @@ export const wrapCommentBlock = (lines: string[] = []): string => {
   if (isOneLine) {
     out.push(...copiedLines)
   } else {
-    out.push(...commentedLines(copiedLines))
+    out.push(...wrapCommentLines(copiedLines))
   }
   out.push(' */\n\n')
   const stringified = isOneLine ? out.join(' ') : out.join('\n')
   return stringified.replace(/\s\n/g, `\n`)
 }
 
-export const createLicenseFileContents = (banner: IBannerInfo): string => {
-  return `
-${banner.copyright}
-  `
-}
-
+/**
+ * From a package.json, pick properties
+ * and attempt at guessing properties for handling
+ * banner.
+ *
+ * @public
+ */
 export const createBannerInfo = (
-  pkg: Partial<PackageJson> = {},
+  pkg: Partial<IPackageJson> = {},
   branding: Partial<IBrandingInterface>,
 ): IBannerInfo => {
   const currentYear = new Date().getFullYear()
@@ -129,7 +84,7 @@ export const createBannerInfo = (
  *
  * @public
  */
-export const createBannerFooter = (
+export const handleBannerInfo = (
   info: IBannerInfo,
   appendLines: string[] = [],
 ): IBannerFooter => {
@@ -165,3 +120,10 @@ export const createBannerFooter = (
 
   return out
 }
+
+export const createBannerFooter = (
+  pkg: Partial<IPackageJson> = {},
+  branding: Partial<IBrandingInterface> = {},
+  appendLines: string[] = [],
+): IBannerFooter =>
+  handleBannerInfo(createBannerInfo(pkg, branding), appendLines)

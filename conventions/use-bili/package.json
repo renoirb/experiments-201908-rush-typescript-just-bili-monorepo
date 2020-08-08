@@ -30,42 +30,49 @@
   ],
   "scripts": {
     "build": "use-cross-env use-run-all clean build:*",
-    "build:all": "use-cross-env ./bin/bili -c bili.config.ts",
+    "build:all": "use-cross-env ./bin/bili --config bili.config.ts",
     "clean": "use-cross-env use-rimraf .rpt2_cache dist *.*.log",
-    "fix": "use-cross-env use-prettier '**/*.{js,ts,md,json}' --write",
-    "lint": "use-cross-env use-eslint --fix 'src/**/*.ts'",
+    "fix": "use-cross-env conventions-use-prettier '**/*.{js,ts,md,json}' --write",
+    "lint": "use-cross-env conventions-use-eslint --fix 'src/**/*.ts'",
     "prepublishOnly": "rushx build",
-    "test": "use-cross-env use-jest --detectOpenHandles",
-    "test:snapshots": "use-cross-env use-jest --detectOpenHandles -u"
+    "test": "use-cross-env conventions-use-jest --detectOpenHandles",
+    "test:snapshots": "use-cross-env conventions-use-jest --detectOpenHandles -u"
   },
   "dependencies": {
-    "@babel/core": "^7.10.1",
-    "@babel/plugin-transform-runtime": "^7.10.1",
-    "@babel/preset-env": "^7.10.2",
-    "@babel/preset-typescript": "^7.10.1",
-    "@babel/runtime-corejs3": "^7.10.1",
+    "@babel/core": "^7.11.0",
+    "@babel/plugin-transform-regenerator": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
+    "@babel/runtime-corejs3": "^7.11.0",
     "@rollup/plugin-babel": "~5.1.0",
     "@rushstack/node-core-library": "^3.25.0",
-    "bili": "~5.0.5",
+    "bili": "^5.0.0",
     "core-js": "^3.6.0",
     "rollup": "~2.23.0",
     "rollup-plugin-typescript2": "^0.27.1"
   },
   "devDependencies": {
-    "@types/babel__plugin-transform-runtime": "7.9.0",
-    "@types/babel__preset-env": "7.9.0",
-    "@babel/types": "^7.10.1",
+    "@babel/types": "^7.11.0",
     "@renoirb/conventions-use-eslint": "workspace:*",
     "@renoirb/conventions-use-jest": "workspace:*",
     "@renoirb/conventions-use-prettier": "workspace:*",
     "@renoirb/conventions-use-typescript-3": "workspace:*",
+    "@renoirb/package-json-utils": "workspace:*",
     "@renoirb/tools-bundling-helpers": "workspace:*",
     "@rushstack/node-core-library": "^3.25.0",
-    "@types/jest": "^25.2.3",
-    "@types/node": "^10.17.13",
+    "@types/babel__plugin-transform-runtime": "7.9.0",
+    "@types/babel__preset-env": "7.9.0",
+    "@types/jest": "^26.0.0",
+    "@types/node": "^12.12.0",
+    "jest": "^26.2.0",
+    "ts-jest": "^26.2.0",
     "typescript": "~3.9.5"
   },
   "optionalDependencies": {
     "tslib": "^2.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -1,9 +1,8 @@
-/* eslint-env jest */
-
-import { PeopleField, stringifyAuthor } from '../people-field'
+import { IPeopleField } from '../types'
+import { stringifyAuthor, camelCase } from '../utils'
 
 const peopleFieldCollectionFixture: ReadonlyArray<[
-  PeopleField | string,
+  IPeopleField | string,
   string,
 ]> = [
   [
@@ -32,8 +31,20 @@ const peopleFieldCollectionFixture: ReadonlyArray<[
   ],
 ]
 
-describe('people-field', () => {
-  it('stringifyAuthor', () => {
+const assertionsGroupAlpha: ReadonlyArray<[string, string]> = [
+  ['foo-bar-bazz', 'fooBarBazz'],
+]
+
+describe('camelCase', () => {
+  it('Happy-Path', () => {
+    for (const [before, after] of assertionsGroupAlpha) {
+      expect(camelCase(before)).toBe(after)
+    }
+  })
+})
+
+describe('stringifyAuthor', () => {
+  it('Happy-Path', () => {
     for (const [before, after] of peopleFieldCollectionFixture) {
       expect(stringifyAuthor(before)).toBe(after)
     }

@@ -13,41 +13,54 @@
     "name": "Renoir Boulanger",
     "email": "contribs@renoirboulanger.com"
   },
+  "exports": {
+    "browser": "./dist/index-browser.js",
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.js"
+  },
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "jsdelivr": "dist/index-browser.js",
+  "module": "dist/index.mjs",
   "browser": {
-    "./dist/index.js": "./dist/browser.cjs.js"
+    "./dist/index.js": "./dist/index-browser.js"
   },
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "use-cross-env use-run-all clean build:*",
-    "build:browser": "use-cross-env use-bili --bundle-node-modules --target browser --format cjs --file-name browser.cjs.js",
-    "build:node": "use-cross-env use-bili --bundle-node-modules --target node --format cjs --file-name index.js",
-    "build:node-esm": "use-cross-env use-bili --bundle-node-modules --target node --format esm --file-name index.esm.js",
+    "build:browser": "use-cross-env BROWSERSLIST='> 0.5%, last 2 versions' use-bili --config bili.config.ts --target browser --format iife --module-name Validatable --file-name index-browser.js",
+    "build:node": "use-cross-env BROWSERSLIST='maintained node versions' use-bili --config bili.config.ts --target node --format cjs --file-name index.js",
+    "build:node-esm": "use-cross-env BROWSERSLIST='maintained node versions' use-bili --config bili.config.ts --target node --format esm --file-name index.mjs",
     "clean": "use-cross-env use-rimraf .rpt2_cache dist *.*.log",
-    "fix": "use-cross-env use-prettier '**/*.{ts,md,json,js}' --write",
-    "lint": "use-cross-env use-eslint --fix '*.js'",
+    "fix": "use-cross-env conventions-code-formatter prettier '**/*.{ts,md,json,js}' --write",
+    "lint": "use-cross-env conventions-use-eslint --fix 'src/**/*.ts'",
     "prepublishOnly": "rushx build",
-    "test": "use-cross-env use-jest --detectOpenHandles",
-    "test:snapshots": "use-cross-env use-jest --detectOpenHandles -u"
+    "test": "use-cross-env conventions-use-jest --detectOpenHandles",
+    "test:snapshots": "use-cross-env conventions-use-jest --detectOpenHandles -u"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.1",
-    "@babel/plugin-transform-runtime": "^7.10.1",
-    "@babel/preset-env": "^7.10.2",
-    "@babel/preset-typescript": "^7.10.1",
-    "@babel/runtime-corejs3": "^7.10.1",
-    "@renoirb/conventions-use-bili": "1.1.2",
+    "@babel/core": "^7.11.0",
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
+    "@babel/runtime-corejs3": "^7.11.0",
+    "@renoirb/conventions-code-formatter": "workspace:*",
+    "@renoirb/conventions-use-bili": "workspace:*",
     "@renoirb/conventions-use-eslint": "workspace:*",
     "@renoirb/conventions-use-jest": "workspace:*",
-    "@renoirb/conventions-use-prettier": "workspace:*",
     "@renoirb/conventions-use-typescript-3": "workspace:*",
-    "@renoirb/tools-bundling-helpers": "1.1.2",
-    "@types/jest": "^25.2.3",
-    "@types/node": "^10.17.13",
+    "@renoirb/tools-bundling-helpers": "workspace:*",
+    "@types/jest": "^26.0.0",
+    "@types/node": "^12.12.0",
     "core-js": "^3.6.0",
+    "jest": "^26.2.0",
+    "jest-date-mock": "^1.0.8",
+    "ts-jest": "^26.2.0",
+    "tslib": "^2.0.0",
     "typescript": "~3.9.5"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

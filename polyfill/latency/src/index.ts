@@ -1,6 +1,6 @@
-export const latency = async (ms: number = 1000) => {
+export const latency = async <C>(ms: number = 1000): Promise<C> => {
   const delay = +ms
-  return new Promise((resolve) => setTimeout(resolve, delay))
+  return new Promise<C>((resolve) => setTimeout(resolve, delay))
 }
 
 export default latency

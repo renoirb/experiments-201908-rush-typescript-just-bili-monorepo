@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@renoirb/package-json-utils",
+      "comment": "New package trimming package.json logic from @renoirb/tools-bundling-helpers",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@renoirb/package-json-utils",
+  "email": "contribs@renoirboulanger.com"
+}

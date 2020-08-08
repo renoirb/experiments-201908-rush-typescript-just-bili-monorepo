@@ -1,11 +1,8 @@
-export * from './plugins'
-export * from './input'
-export * from './provider'
-
-import { main, IBrandingInterface } from './main'
-
-export { IBrandingInterface }
-
-export default main
-
 export { Config, Options, ConfigOutput } from 'bili'
+export * from './types'
+
+import { useBili } from './main'
+
+export { useBili }
+
+export default useBili

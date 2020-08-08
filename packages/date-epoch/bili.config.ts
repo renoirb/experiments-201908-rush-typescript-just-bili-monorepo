@@ -4,11 +4,14 @@ const main = useBili(
   {
     input: 'src/index.ts',
     bundleNodeModules: true,
-    externals: [
-      'spawn-sync', // from cross-spawn which is from execa which is from term-size which is from boxen
-    ],
+    externals: [],
   },
-  { firstYear: 2003 },
+  {
+    firstYear: 2003,
+  },
+  {
+    withCore: true,
+  },
 )
 
 export default main

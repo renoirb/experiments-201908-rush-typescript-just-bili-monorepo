@@ -44,11 +44,15 @@
     },
     {
       "name": "@renoirb/conventions-code-formatter",
-      "allowedCategories": [ "libraries" ]
+      "allowedCategories": [ "conventions", "libraries" ]
     },
     {
       "name": "@renoirb/conventions-use-bili",
       "allowedCategories": [ "conventions", "libraries", "tools" ]
+    },
+    {
+      "name": "@renoirb/conventions-use-code-formatter",
+      "allowedCategories": [ "libraries" ]
     },
     {
       "name": "@renoirb/conventions-use-eslint",
@@ -69,6 +73,10 @@
     {
       "name": "@renoirb/conventions-use-typescript-eslint",
       "allowedCategories": [ "conventions", "libraries", "tools" ]
+    },
+    {
+      "name": "@renoirb/package-json-utils",
+      "allowedCategories": [ "conventions" ]
     },
     {
       "name": "@renoirb/tools-bundling-helpers",
@@ -92,7 +100,7 @@
     },
     {
       "name": "@rushstack/node-core-library",
-      "allowedCategories": [ "conventions", "tools" ]
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
       "name": "@rushstack/ts-command-line",
@@ -124,7 +132,7 @@
     },
     {
       "name": "bili",
-      "allowedCategories": [ "conventions", "tools" ]
+      "allowedCategories": [ "conventions", "libraries", "tools" ]
     },
     {
       "name": "consola",

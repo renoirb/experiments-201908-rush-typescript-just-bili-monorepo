@@ -1,12 +1,7 @@
 {
   "extends": "./node_modules/@renoirb/conventions-use-typescript-3/includes/tsconfig.json",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "importHelpers": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "types": ["@renoirb/package-json-utils", "jest", "node"]
   },
   "include": ["src"],
   "exclude": ["src/__tests__"]

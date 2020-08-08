@@ -1,4 +1,3 @@
-
 import { log } from './utils'
 
 const hasCliArg = (name: string): boolean => {

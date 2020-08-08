@@ -1,5 +1,4 @@
-/* eslint-env jest */
-/* global describe,beforeAll,afterAll,beforeEach,afterEach,test,expect */
+// @ts-nocheck
 
 import {
   validatable,

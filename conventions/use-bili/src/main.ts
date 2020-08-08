@@ -1,77 +1,54 @@
 import { Config, ConfigOutput } from 'bili'
-import { input } from './input'
-import { plugins } from './plugins'
-import { extendRollupConfig } from './extend-rollup-config'
-
-import bundlingHelpers, {
-  IBrandingInterface,
-  createPackageDependencyChecker,
-  DependencyType,
-  PackageDependencyChecker,
-  packageExtractExternals,
-} from '@renoirb/tools-bundling-helpers'
 import { resolve } from 'path'
+import { PackageJsonLookup } from '@rushstack/node-core-library'
 
-export { IBrandingInterface }
+import initInput from './input'
+import initPlugins from './plugins'
+import initExtendRollupConfig from './extend-rollup-config'
+import resolveRunTimeOptions from './runtime'
 
-export interface IProcessEnvRunTimeOptions {
-  hasBiliBundleNodeModulesOption: boolean
-  isDevModeVerbose: boolean
-}
+import type { IExternals, IBundlingOptions } from './types'
 
-const createDepChecker = (depChecker: PackageDependencyChecker) => (
-  name: string,
-  type: DependencyType,
-  mustHave: boolean = false,
-): boolean => {
-  const hasDependency = depChecker(name, type)
-  if (hasDependency === false && mustHave === true) {
-    const message = `
-      Caution, make sure you add ${name} in your package.json ${type},
-      the recommended version is in this @renoirb/conventions-use-bili's ${type}
-    `
-      .replace(/[\n\s]+/g, ' ')
-      .trim()
-    throw new Error(message)
-  }
-
-  return hasDependency
-}
-
-export const resolveRunTimeOptions = (
-  p: NodeJS.Process,
-  cfg: Config,
-): Readonly<IProcessEnvRunTimeOptions> => {
-  const { DEBUG = '', BILI_BUNDLE_NODE_MODULES = '' } = p.env
-  const processEnvKeys = Object.keys(p.env)
-  let hasBiliBundleNodeModulesOption = BILI_BUNDLE_NODE_MODULES === 'true'
-  let isDevModeVerbose = String(DEBUG).length > 1
-  const isCI = processEnvKeys.includes('CI_SERVER') // || processEnvKeys.includes('CI')
-  if (!isCI) {
-    isDevModeVerbose = true
-  }
-  if (cfg.bundleNodeModules) {
-    hasBiliBundleNodeModulesOption = cfg.bundleNodeModules === true
-  }
-  const out: IProcessEnvRunTimeOptions = {
-    hasBiliBundleNodeModulesOption,
-    isDevModeVerbose,
-  }
-
-  return Object.freeze(out)
-}
+import {
+  IBrandingInterface,
+  packageExtractExternals,
+  createDependencyChecker,
+  createBannerFooter,
+} from '@renoirb/package-json-utils'
 
 /**
  * @public
  */
-export const main = (
+export const useBili = (
   cfg: Config,
   branding: Partial<IBrandingInterface> = {},
+  bundlingOptions: Partial<IBundlingOptions> = {},
 ): Config => {
   const runtimeOpts = resolveRunTimeOptions(process, cfg)
+  const rootDir = resolve(process.cwd())
+  const ownPackageJson = PackageJsonLookup.loadOwnPackageJson(rootDir)
 
-  const initPlugins = plugins(process, runtimeOpts)
-  const initInput = input(cfg && cfg.input ? cfg.input : 'src/index.js')
+  const bannerFooter = createBannerFooter(ownPackageJson, branding)
+
+  /**
+   * Utility to check for build-time dependency.
+   * And to make sure host package has what's needed.
+   * In other words, it helps avoid build config mistakes for some easy to forget dependencies.
+   */
+  const devDepsChecker = createDependencyChecker(
+    ownPackageJson,
+    'devDependencies',
+  )
+  const depsChecker = createDependencyChecker(ownPackageJson, 'dependencies')
+
+  const input = initInput(cfg && cfg.input ? cfg.input : 'src/index.js')
+
+  const plugins = initPlugins(runtimeOpts)
+
+  if ('index' in input && runtimeOpts.isDevModeVerbose) {
+    // https://babeljs.io/docs/en/configuration
+    process.env.BABEL_SHOW_CONFIG_FOR = `./${input.index}`
+  }
 
   const output: ConfigOutput = {
     sourceMap: true,
@@ -80,74 +57,59 @@ export const main = (
   }
 
   const config: Config = {
-    banner: true,
+    banner: bannerFooter.banner,
     bundleNodeModules: false,
     ...(cfg || {}),
-    input: initInput,
-    plugins: initPlugins,
+    input,
     output,
+    plugins: {
+      ...plugins,
+      ...(cfg.plugins || {}),
+    },
   }
 
   /**
-   * If we can get process.cwd, let's leverage bundlingHelpers'
-   * ability to read host package.json
+   * Make sure that if we ask to hasBiliBundleNodeModulesOption or
+   * bundleNodeModules, that the host package ACTUALLY DOES
+   * have its runtime dependency.
    */
-  if (process && process.cwd) {
-    const bundle = bundlingHelpers(resolve(process.cwd()), branding)
-
-    /**
-     * Utility to check for build-time dependency.
-     * And to make sure host package has what's needed.
-     * In other words, it helps avoid build config mistakes for some easy to forget dependencies.
-     */
-    const depChecker = createDepChecker(
-      createPackageDependencyChecker(bundle.pkg),
-    )
-
-    /**
-     * Leverage bundlingHelpers' banner utility
-     */
-    Object.assign(config, { banner: bundle.banners.banner })
-    Object.assign(config, { extendRollupConfig: extendRollupConfig(bundle) })
-
-    // console.log('4 use-bili bundlingHelpers', {
-    //   runtimeOpts,
-    // })
-
-    /**
-     * Make sure that if we ask to hasBiliBundleNodeModulesOption or
-     * bundleNodeModules, that the host package ACTUALLY DOES
-     * have its runtime dependency.
-     */
-    if (runtimeOpts.hasBiliBundleNodeModulesOption === false) {
-      // if is false, make sure the host package HAS runtime dependencies
-      depChecker('@babel/runtime-corejs3', 'dependencies', true)
-    } else {
-      /**
-       * Add any package.json dependencies, peerDependencies as externals
-       */
-      const externals =
-        'externals' in config && Array.isArray(config.externals)
-          ? config.externals
-          : []
-      Object.assign(config, {
-        externals: [...externals, ...packageExtractExternals(bundle.pkg)],
-      })
-
-      depChecker('@babel/runtime-corejs3', 'devDependencies', true)
-      depChecker('@babel/plugin-transform-runtime', 'devDependencies', true)
-      depChecker('@babel/core', 'devDependencies', true)
-      depChecker('@babel/preset-env', 'devDependencies', true)
+  if (runtimeOpts.hasBiliBundleNodeModulesOption === false) {
+    // if is false, make sure the host package HAS runtime dependencies
+    if (bundlingOptions.withCore === true) {
+      depsChecker('@babel/runtime-corejs3', true)
     }
+  } else {
+    /**
+     * Add any package.json dependencies, peerDependencies as externals
+     */
+    const externals = ('externals' in config && Array.isArray(config.externals)
+      ? config.externals
+      : []) as IExternals[]
+    Object.assign(config, {
+      externals: [...externals, ...packageExtractExternals(ownPackageJson)],
+    })
 
-    // console.log('4 use-bili bundlingHelpers', {
-    //   config,
-    //   // 'config.externals': config.externals,
-    //   bundle,
-    //   runtimeOpts,
-    //   // 'process.env': JSON.parse(JSON.stringify(process.env)),
-    // })
+    if (bundlingOptions.withCore === true) {
+      devDepsChecker('@babel/runtime-corejs3', true)
+    }
+    devDepsChecker('@babel/plugin-transform-runtime', true)
+    devDepsChecker('@babel/core', true)
+    devDepsChecker('@babel/preset-env', true)
   }
+
+  config.extendRollupConfig = initExtendRollupConfig(
+    bannerFooter,
+    // @ts-ignore
+    config.externals,
+  )
+
+  // console.log('use-bili', {
+  //   config,
+  //   // 'config.externals': config.externals,
+  //   bundle,
+  //   runtimeOpts,
+  //   // 'process.env': JSON.parse(JSON.stringify(process.env)),
+  // })
 
   return config
 }

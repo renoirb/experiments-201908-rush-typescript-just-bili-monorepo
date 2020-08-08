@@ -1,0 +1,66 @@
+{
+  "name": "@renoirb/package-json-utils",
+  "version": "0.1.0",
+  "description": "Utilities to help poking at a package.json file",
+  "homepage": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/packages/package-json-utils",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
+    "directory": "packages/package-json-utils"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Renoir Boulanger",
+    "email": "contribs@renoirboulanger.com"
+  },
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./main.cjs"
+  },
+  "main": "main.cjs",
+  "module": "dist/index.mjs",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "main.cjs"
+  ],
+  "scripts": {
+    "build": "use-cross-env use-run-all clean build:*",
+    "build2:node": "use-cross-env bili --config bili.config.ts --format cjs --file-name index.js",
+    "build2:typings": "tsc --declarationDir dist --declarationMap --declaration --listEmittedFiles --emitDeclarationOnly -p tsconfig.json",
+    "build:node-mjs": "use-cross-env bili --config bili.config.ts --format esm --file-name index.mjs",
+    "clean": "use-cross-env use-rimraf .rpt2_cache dist *.*.log",
+    "fix": "use-cross-env conventions-use-prettier '**/*.{ts,md,json,js}' --write",
+    "lint": "use-cross-env conventions-use-eslint --fix 'src/**/*.ts'",
+    "prepublishOnly": "rushx build",
+    "test": "use-cross-env conventions-use-jest --detectOpenHandles",
+    "test:snapshots": "use-cross-env conventions-use-jest --detectOpenHandles -u"
+  },
+  "dependencies": {
+    "esm": "^3.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.0",
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
+    "@babel/runtime-corejs3": "^7.11.0",
+    "@renoirb/conventions-use-eslint": "workspace:*",
+    "@renoirb/conventions-use-jest": "workspace:*",
+    "@renoirb/conventions-use-prettier": "workspace:*",
+    "@renoirb/conventions-use-typescript-3": "workspace:*",
+    "@renoirb/tools-bundling-helpers": "workspace:*",
+    "@types/jest": "^26.0.0",
+    "@types/node": "^12.12.0",
+    "bili": "^5.0.0",
+    "core-js": "^3.6.0",
+    "jest": "^26.2.0",
+    "jest-date-mock": "^1.0.8",
+    "ts-jest": "^26.2.0",
+    "tslib": "^2.0.0",
+    "typescript": "~3.9.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

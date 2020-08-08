@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { main } from '../main'
+import { useBili } from '../main'
 import * as path from 'path'
 
 jest
@@ -19,14 +19,14 @@ jest
 const bizz = 'src/bar/baz/buzz/bizz.ts'
 const index = 'src/index.ts'
 
-describe('main', () => {
+describe('useBili', () => {
   it('Snapshot sample', () => {
-    const subject = main({ input: index })
+    const subject = useBili({ input: index })
     expect(subject).toMatchSnapshot()
-    expect(subject).toHaveProperty('input', index)
+    expect(subject).toHaveProperty('input', { index })
   })
   it('When input has more than one item', () => {
-    const subject = main({ input: { index, bizz } })
+    const subject = useBili({ input: { index, bizz } })
     expect(subject).toHaveProperty('input', { index, bizz })
   })
 })

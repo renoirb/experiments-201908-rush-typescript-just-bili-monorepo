@@ -28,14 +28,14 @@
   ],
   "scripts": {
     "build": "use-cross-env use-run-all clean build:*",
-    "build:node-cjs": "use-cross-env use-bili -c bili.config.ts",
+    "build:node-cjs": "use-cross-env use-bili --config bili.config.ts",
     "build:typings": "tsc --declarationDir dist --declarationMap --declaration --listEmittedFiles --emitDeclarationOnly -p tsconfig.json",
     "clean": "use-cross-env use-rimraf .rpt2_cache dist *.*.log",
-    "fix": "use-cross-env use-prettier '**/*.{js,ts,json,md}' --write",
-    "lint": "use-cross-env use-eslint --fix 'src/**/*.ts'",
+    "fix": "use-cross-env conventions-use-prettier '**/*.{js,ts,json,md}' --write",
+    "lint": "use-cross-env conventions-use-eslint --fix 'src/**/*.ts'",
     "prepublishOnly": "rushx build",
-    "test": "use-jest --detectOpenHandles",
-    "test:snapshots": "use-jest --detectOpenHandles -u"
+    "test": "use-cross-env conventions-use-jest --detectOpenHandles",
+    "test:snapshots": "use-cross-env conventions-use-jest --detectOpenHandles -u"
   },
   "dependencies": {
     "@renoirb/conventions-use-prettier": "workspace:*",
@@ -46,22 +46,27 @@
     "sort-package-json": "^1.44.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.1",
-    "@babel/plugin-transform-runtime": "^7.10.1",
-    "@babel/preset-env": "^7.10.2",
-    "@babel/preset-typescript": "^7.10.1",
-    "@babel/runtime-corejs3": "^7.10.1",
-    "@renoirb/conventions-use-bili": "1.1.2",
+    "@babel/core": "^7.11.0",
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
+    "@babel/runtime-corejs3": "^7.11.0",
+    "@renoirb/conventions-use-bili": "workspace:*",
     "@renoirb/conventions-use-eslint": "workspace:*",
     "@renoirb/conventions-use-jest": "workspace:*",
     "@renoirb/conventions-use-prettier": "workspace:*",
     "@renoirb/conventions-use-typescript-3": "workspace:*",
-    "@renoirb/tools-bundling-helpers": "1.1.2",
-    "@types/jest": "^25.2.3",
-    "@types/node": "^10.17.13",
+    "@renoirb/tools-bundling-helpers": "workspace:*",
+    "@types/jest": "^26.0.0",
+    "@types/node": "^12.12.0",
     "core-js": "^3.6.0",
+    "jest": "^26.2.0",
+    "ts-jest": "^26.2.0",
     "tslib": "^2.0.0",
     "typescript": "~3.9.5"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "optionnalDependencies": {
     "pretty-quick": "^2.0.1"

@@ -394,46 +394,46 @@
     {
       "packageName": "@renoirb/conventions-code-formatter",
       "projectFolder": "conventions/code-formatter",
-      "versionPolicyName": "conventionsLockStepedVersioned",
+      "shouldPublish": true,
       "reviewCategory": "tools",
     },
-    // {
-    //   "packageName": "@renoirb/conventions-use-bili",
-    //   "projectFolder": "conventions/use-bili",
-    //   "versionPolicyName": "conventionsLockStepedVersioned",
-    //   "reviewCategory": "conventions",
-    // },
+    {
+      "packageName": "@renoirb/conventions-use-bili",
+      "projectFolder": "conventions/use-bili",
+      "shouldPublish": true,
+      "reviewCategory": "conventions",
+    },
     {
       "packageName": "@renoirb/conventions-use-eslint",
       "projectFolder": "conventions/use-eslint",
-      "versionPolicyName": "conventionsLockStepedVersioned",
+      "shouldPublish": true,
       "reviewCategory": "conventions",
     },
     {
       "packageName": "@renoirb/conventions-use-jest",
       "projectFolder": "conventions/use-jest",
-      "versionPolicyName": "conventionsLockStepedVersioned",
+      "shouldPublish": true,
       "reviewCategory": "conventions",
     },
     {
       "packageName": "@renoirb/conventions-use-prettier",
       "projectFolder": "conventions/use-prettier",
-      "versionPolicyName": "conventionsLockStepedVersioned",
+      "shouldPublish": true,
       "reviewCategory": "conventions",
     },
     {
       "packageName": "@renoirb/conventions-use-typescript-3",
       "projectFolder": "conventions/use-typescript-3",
-      "versionPolicyName": "conventionsLockStepedVersioned",
+      "shouldPublish": true,
       "reviewCategory": "conventions",
     },
 
-    // {
-    //   "packageName": "@renoirb/tools-bundling-helpers",
-    //   "projectFolder": "tools/bundling-helpers",
-    //   "shouldPublish": true,
-    //   "reviewCategory": "tools"
-    // },
+    {
+      "packageName": "@renoirb/tools-bundling-helpers",
+      "projectFolder": "tools/bundling-helpers",
+      "shouldPublish": true,
+      "reviewCategory": "tools"
+    },
 
     {
       "packageName": "@renoirb/date-epoch",
@@ -444,6 +444,12 @@
     {
       "packageName": "@renoirb/validatable",
       "projectFolder": "packages/validatable",
+      "shouldPublish": true,
+      "reviewCategory": "libraries"
+    },
+    {
+      "packageName": "@renoirb/package-json-utils",
+      "projectFolder": "packages/package-json-utils",
       "shouldPublish": true,
       "reviewCategory": "libraries"
     },

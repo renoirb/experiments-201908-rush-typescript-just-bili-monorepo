@@ -13,11 +13,6 @@
     "name": "Renoir Boulanger",
     "email": "contribs@renoirboulanger.com"
   },
-  "exports": {
-    ".": "./dist/index.cjs",
-    "./prettier.config": "./prettier.config.js",
-    "./start": "./dist/start.cjs"
-  },
   "main": "./prettier.config.js",
   "bin": {
     "conventions-use-prettier": "./bin/prettier",
@@ -34,5 +29,8 @@
   "dependencies": {
     "prettier": "^2.0.5",
     "sort-package-json": "^1.44.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

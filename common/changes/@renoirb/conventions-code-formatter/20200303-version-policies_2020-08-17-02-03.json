@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@renoirb/conventions-code-formatter",
+      "comment": "New package, forked off from @renoirb/conventions-use-prettier",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@renoirb/conventions-code-formatter",
+  "email": "contribs@renoirboulanger.com"
+}

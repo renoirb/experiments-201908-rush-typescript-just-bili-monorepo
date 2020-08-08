@@ -1,9 +1,9 @@
 import { Config, ConfigOutput } from 'bili'
 
-const input = { index: 'src/index.ts' }
+const input = 'src/index.ts'
 
 const output: ConfigOutput = {
-  minify: true,
+  minify: false,
   sourceMap: true,
   target: 'node',
   format: ['esm', 'cjs'],
@@ -12,10 +12,6 @@ const output: ConfigOutput = {
 const config: Config = {
   banner: true,
   bundleNodeModules: true,
-  externals: [
-    '@rushstack/node-core-library',
-    'spawn-sync', // from cross-spawn which is from execa which is from term-size which is from boxen
-  ],
   input,
   output,
 }

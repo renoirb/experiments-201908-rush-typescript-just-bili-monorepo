@@ -4,11 +4,17 @@ const main = useBili(
   {
     input: 'src/index.ts',
     bundleNodeModules: true,
+    externals: [],
     output: {
       minify: false,
     },
   },
-  { firstYear: 2003 },
+  {
+    firstYear: 2003,
+  },
+  {
+    withCore: true,
+  },
 )
 
 export default main

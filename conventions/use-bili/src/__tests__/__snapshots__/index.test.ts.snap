@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`main Snapshot sample 1`] = `
+exports[`useBili Snapshot sample 1`] = `
 Object {
   "banner": "/*!
  * @renoirb/conventions-use-bili v1.2.0
@@ -12,23 +12,28 @@ Object {
  * © 2020 Renoir Boulanger
  */",
   "bundleNodeModules": false,
-  "input": "src/index.ts",
+  "extendRollupConfig": [Function],
+  "input": Object {
+    "index": "src/index.ts",
+  },
   "output": Object {
     "minify": false,
     "sourceMap": true,
   },
   "plugins": Object {
     "babel": Object {
+      "babelHelpers": "bundled",
       "exclude": Array [],
       "plugins": Array [],
       "presets": Array [
         Array [
           "module:@babel/preset-env",
           Object {
-            "corejs": 3,
+            "corejs": undefined,
             "debug": true,
             "useBuiltIns": "usage",
           },
+          "@renoirb/conventinos-use-bili babel/preset-env",
         ],
       ],
     },

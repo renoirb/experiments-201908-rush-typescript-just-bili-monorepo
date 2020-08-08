@@ -4,12 +4,14 @@ const main = useBili(
   {
     input: 'src/index.ts',
     bundleNodeModules: true,
-    externals: [],
+    externals: ['esm'],
     output: {
       minify: false,
     },
   },
-  { firstYear: 2003 },
+  {
+    firstYear: 2003,
+  },
 )
 
 export default main

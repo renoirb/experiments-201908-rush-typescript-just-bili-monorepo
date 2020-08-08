@@ -1,20 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`createBannerFooter Snapshot sample 1`] = `
-Object {
-  "banner": "/*!
- * assimilate v436.0.1
- *
- * Maintainer: Example Author
- *
- * LicenseRef-LICENSE
- *
- * © 2003-2373 Example Author
- */",
-  "footer": "/*! Example Author  */",
-}
-`;
-
 exports[`createBannerInfo Snapshot sample 1`] = `
 Object {
   "author": "Borg Collective",
@@ -49,6 +34,24 @@ exports[`createBannerInfo Supports defining own author 2`] = `
  */"
 `;
 
+exports[`createBannerInfo Supports defining own author 3`] = `
+Object {
+  "banner": "/*!
+ * assimilate v436.0.1
+ *
+ * Maintainer: Seven Of Nine <7.9@adjunct.3.unimatrix.1.borg>
+ *
+ * target: node
+ * browserslist: node 10
+ *
+ * LicenseRef-LICENSE
+ *
+ * © 1484-2373 Borg Collective
+ */",
+  "footer": "/*! Borg Collective  */",
+}
+`;
+
 exports[`createBannerInfo Supports defining own license 1`] = `
 Object {
   "author": "Seven Of Nine <7.9@adjunct.3.unimatrix.1.borg>",
@@ -70,4 +73,37 @@ exports[`createBannerInfo Supports defining own license 2`] = `
  *
  * © 1484-2373 Seven Of Nine
  */"
+`;
+
+exports[`createBannerInfo Supports defining own license 3`] = `
+Object {
+  "banner": "/*!
+ * assimilate v436.0.1
+ *
+ * Maintainer: Seven Of Nine <7.9@adjunct.3.unimatrix.1.borg>
+ *
+ * target: node
+ * browserslist: node 10
+ *
+ * MIT
+ *
+ * © 1484-2373 Seven Of Nine
+ */",
+  "footer": "/*! Seven Of Nine  */",
+}
+`;
+
+exports[`handleBannerInfo(createBannerFooter) Snapshot sample 1`] = `
+Object {
+  "banner": "/*!
+ * assimilate v436.0.1
+ *
+ * Maintainer: Example Author
+ *
+ * LicenseRef-LICENSE
+ *
+ * © 2003-2373 Example Author
+ */",
+  "footer": "/*! Example Author  */",
+}
 `;

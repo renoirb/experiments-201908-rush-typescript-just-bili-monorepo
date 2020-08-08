@@ -1,7 +1,7 @@
-/* eslint-env jest */
-/* global describe,beforeAll,afterAll,beforeEach,afterEach,test,expect */
+// @ts-nocheck
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 
-import { validatable, ValidatableRules } from '../validatable'
+import { validatable } from '../validatable'
 
 const injectValidatableTo = (subject) => {
   validatable(subject)
@@ -26,6 +26,7 @@ describe('validatable', () => {
 
   // Almost everything is an object, let's stretch a bit.
   test('Using other types of JavaScript objects, forms', () => {
+    // eslint-disable-next-line @rushstack/no-null
     const bravo = injectValidatableTo(Object.create(null))
     expect(bravo.validatable).toMatchSnapshot()
 

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@renoirb/conventions-use-prettier",
+      "comment": "Trimmed out CLI utility to go to @renoirb/conventions-code-formatter",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@renoirb/conventions-use-prettier",
+  "email": "contribs@renoirboulanger.com"
+}

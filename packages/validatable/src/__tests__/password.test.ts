@@ -1,5 +1,4 @@
-/* eslint-env jest */
-/* global describe,beforeAll,afterAll,beforeEach,afterEach,test,expect */
+// @ts-nocheck
 
 import { PasswordValidator } from '../password'
 import { ValidatableRules } from '../validatable'
@@ -19,11 +18,11 @@ describe('PasswordValidator rules dry-run', () => {
   const runs = []
 
   const ek = [
-    /* 0 */ 'lbl_PasswordMustLength',
-    /* 1 */ 'lbl_PasswordMustContainCapitals',
-    /* 2 */ 'lbl_PasswordMustContainDigits',
-    /* 3 */ 'lbl_PasswordMustContainSpecial',
-    /* 4 */ 'lbl_PasswordMustNotRepeatCharacters',
+    /* 0 */ 'mustBeLength',
+    /* 1 */ 'mustContainCapitals',
+    /* 2 */ 'mustContainDigits',
+    /* 3 */ 'mustContainSpecial',
+    /* 4 */ 'mustNotRepeatCharacters',
   ]
 
   runs.push(['jjjjjjj', false, 'case 1: Less than minimum length', [...ek]])

@@ -7,16 +7,16 @@ const main = useBili(
       start: 'src/start.ts',
     },
     bundleNodeModules: true,
+    externals: [],
     output: {
       target: 'node',
       fileName: '[name].cjs',
       minify: false,
     },
-    externals: [
-      'spawn-sync', // from cross-spawn which is from execa which is from term-size which is from boxen
-    ],
   },
-  { firstYear: 2003 },
+  {
+    firstYear: 2003,
+  },
 )
 
 export default main

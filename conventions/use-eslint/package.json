@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "author": {
-    "name": "Renoir Boulanger1",
+    "name": "Renoir Boulanger",
     "email": "contribs@renoirboulanger.com"
   },
   "exports": {
@@ -46,5 +46,8 @@
   },
   "devDependencies": {
     "typescript": "~3.9.5"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
