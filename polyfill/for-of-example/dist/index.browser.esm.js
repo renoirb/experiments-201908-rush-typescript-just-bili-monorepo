@@ -7,1496 +7,827 @@
  *
  * © 2003-2020 Renoir Boulanger
  */
-/*!
- * @renoirb/polyfill-for-of-example v1.0.0-dev.1
- *
- * Maintainer: Renoir Boulanger <contribs@renoirboulanger.com>
- *
- * UNLICENSED
- *
- * © 2003-2020 Renoir Boulanger
- */
-var t = function (t) {
-    try {
-      return !!t()
-    } catch (t) {
-      return !0
-    }
-  },
-  r = {}.toString,
-  n = function (t) {
-    return r.call(t).slice(8, -1)
-  },
-  e = ''.split,
-  o = t(function () {
-    return !Object('z').propertyIsEnumerable(0)
-  })
-    ? function (t) {
-        return 'String' == n(t) ? e.call(t, '') : Object(t)
-      }
-    : Object,
-  i = function (t) {
-    if (null == t) throw TypeError("Can't call method on " + t)
-    return t
-  },
-  u = function (t) {
-    return o(i(t))
-  },
-  c = {},
-  a =
-    'undefined' != typeof globalThis
-      ? globalThis
-      : 'undefined' != typeof window
-      ? window
-      : 'undefined' != typeof global
-      ? global
-      : 'undefined' != typeof self
-      ? self
-      : {}
-function f(t, r) {
-  return t((r = { exports: {} }), r.exports), r.exports
+var commonjsGlobal =
+  typeof globalThis !== 'undefined'
+    ? globalThis
+    : typeof window !== 'undefined'
+    ? window
+    : typeof global !== 'undefined'
+    ? global
+    : typeof self !== 'undefined'
+    ? self
+    : {}
+
+function createCommonjsModule(fn, basedir, module) {
+  return (
+    (module = {
+      path: basedir,
+      exports: {},
+      require: function (path, base) {
+        return commonjsRequire(
+          path,
+          base === undefined || base === null ? module.path : base,
+        )
+      },
+    }),
+    fn(module, module.exports),
+    module.exports
+  )
 }
-var l = function (t) {
-    return t && t.Math == Math && t
-  },
-  s =
-    l('object' == typeof globalThis && globalThis) ||
-    l('object' == typeof window && window) ||
-    l('object' == typeof self && self) ||
-    l('object' == typeof a && a) ||
-    Function('return this')(),
-  p = !t(function () {
+
+function commonjsRequire() {
+  throw new Error(
+    'Dynamic requires are not currently supported by @rollup/plugin-commonjs',
+  )
+}
+
+var check = function (it) {
+  return it && it.Math == Math && it
+}
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global_1 =
+  // eslint-disable-next-line no-undef
+  check(typeof globalThis == 'object' && globalThis) ||
+  check(typeof window == 'object' && window) ||
+  check(typeof self == 'object' && self) ||
+  check(typeof commonjsGlobal == 'object' && commonjsGlobal) ||
+  // eslint-disable-next-line no-new-func
+  Function('return this')()
+
+var fails = function (exec) {
+  try {
+    return !!exec()
+  } catch (error) {
+    return true
+  }
+}
+
+// Thank's IE8 for his funny defineProperty
+var descriptors = !fails(function () {
+  return (
+    Object.defineProperty({}, 1, {
+      get: function () {
+        return 7
+      },
+    })[1] != 7
+  )
+})
+
+var nativePropertyIsEnumerable = {}.propertyIsEnumerable
+var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor
+
+// Nashorn ~ JDK8 bug
+var NASHORN_BUG =
+  getOwnPropertyDescriptor && !nativePropertyIsEnumerable.call({ 1: 2 }, 1)
+
+// `Object.prototype.propertyIsEnumerable` method implementation
+// https://tc39.github.io/ecma262/#sec-object.prototype.propertyisenumerable
+var f = NASHORN_BUG
+  ? function propertyIsEnumerable(V) {
+      var descriptor = getOwnPropertyDescriptor(this, V)
+      return !!descriptor && descriptor.enumerable
+    }
+  : nativePropertyIsEnumerable
+
+var objectPropertyIsEnumerable = {
+  f: f,
+}
+
+var createPropertyDescriptor = function (bitmap, value) {
+  return {
+    enumerable: !(bitmap & 1),
+    configurable: !(bitmap & 2),
+    writable: !(bitmap & 4),
+    value: value,
+  }
+}
+
+var toString = {}.toString
+
+var classofRaw = function (it) {
+  return toString.call(it).slice(8, -1)
+}
+
+var split = ''.split
+
+// fallback for non-array-like ES3 and non-enumerable old V8 strings
+var indexedObject = fails(function () {
+  // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
+  // eslint-disable-next-line no-prototype-builtins
+  return !Object('z').propertyIsEnumerable(0)
+})
+  ? function (it) {
+      return classofRaw(it) == 'String' ? split.call(it, '') : Object(it)
+    }
+  : Object
+
+// `RequireObjectCoercible` abstract operation
+// https://tc39.github.io/ecma262/#sec-requireobjectcoercible
+var requireObjectCoercible = function (it) {
+  if (it == undefined) throw TypeError("Can't call method on " + it)
+  return it
+}
+
+// toObject with fallback for non-array-like ES3 strings
+
+var toIndexedObject = function (it) {
+  return indexedObject(requireObjectCoercible(it))
+}
+
+var isObject = function (it) {
+  return typeof it === 'object' ? it !== null : typeof it === 'function'
+}
+
+// `ToPrimitive` abstract operation
+// https://tc39.github.io/ecma262/#sec-toprimitive
+// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+// and the second argument - flag - preferred type is a string
+var toPrimitive = function (input, PREFERRED_STRING) {
+  if (!isObject(input)) return input
+  var fn, val
+  if (
+    PREFERRED_STRING &&
+    typeof (fn = input.toString) == 'function' &&
+    !isObject((val = fn.call(input)))
+  )
+    return val
+  if (
+    typeof (fn = input.valueOf) == 'function' &&
+    !isObject((val = fn.call(input)))
+  )
+    return val
+  if (
+    !PREFERRED_STRING &&
+    typeof (fn = input.toString) == 'function' &&
+    !isObject((val = fn.call(input)))
+  )
+    return val
+  throw TypeError("Can't convert object to primitive value")
+}
+
+var hasOwnProperty = {}.hasOwnProperty
+
+var has = function (it, key) {
+  return hasOwnProperty.call(it, key)
+}
+
+var document = global_1.document
+// typeof document.createElement is 'object' in old IE
+var EXISTS = isObject(document) && isObject(document.createElement)
+
+var documentCreateElement = function (it) {
+  return EXISTS ? document.createElement(it) : {}
+}
+
+// Thank's IE8 for his funny defineProperty
+var ie8DomDefine =
+  !descriptors &&
+  !fails(function () {
     return (
-      7 !=
-      Object.defineProperty({}, 1, {
+      Object.defineProperty(documentCreateElement('div'), 'a', {
         get: function () {
           return 7
         },
-      })[1]
+      }).a != 7
     )
-  }),
-  y = function (t) {
-    return 'object' == typeof t ? null !== t : 'function' == typeof t
-  },
-  v = s.document,
-  h = y(v) && y(v.createElement),
-  d = function (t) {
-    return h ? v.createElement(t) : {}
-  },
-  g =
-    !p &&
-    !t(function () {
-      return (
-        7 !=
-        Object.defineProperty(d('div'), 'a', {
-          get: function () {
-            return 7
-          },
-        }).a
-      )
-    }),
-  m = function (t) {
-    if (!y(t)) throw TypeError(String(t) + ' is not an object')
-    return t
-  },
-  b = function (t, r) {
-    if (!y(t)) return t
-    var n, e
-    if (r && 'function' == typeof (n = t.toString) && !y((e = n.call(t))))
-      return e
-    if ('function' == typeof (n = t.valueOf) && !y((e = n.call(t)))) return e
-    if (!r && 'function' == typeof (n = t.toString) && !y((e = n.call(t))))
-      return e
-    throw TypeError("Can't convert object to primitive value")
-  },
-  S = Object.defineProperty,
-  w = {
-    f: p
-      ? S
-      : function (t, r, n) {
-          if ((m(t), (r = b(r, !0)), m(n), g))
-            try {
-              return S(t, r, n)
-            } catch (t) {}
-          if ('get' in n || 'set' in n)
-            throw TypeError('Accessors not supported')
-          return 'value' in n && (t[r] = n.value), t
-        },
-  },
-  O = function (t, r) {
-    return {
-      enumerable: !(1 & t),
-      configurable: !(2 & t),
-      writable: !(4 & t),
-      value: r,
-    }
-  },
-  A = p
-    ? function (t, r, n) {
-        return w.f(t, r, O(1, n))
-      }
-    : function (t, r, n) {
-        return (t[r] = n), t
-      },
-  j =
-    s['__core-js_shared__'] ||
-    (function (t, r) {
-      try {
-        A(s, t, r)
-      } catch (n) {
-        s[t] = r
-      }
-      return r
-    })('__core-js_shared__', {}),
-  P = Function.toString
-'function' != typeof j.inspectSource &&
-  (j.inspectSource = function (t) {
-    return P.call(t)
   })
-var T,
-  x,
-  E,
-  L = j.inspectSource,
-  I = s.WeakMap,
-  k = 'function' == typeof I && /native code/.test(L(I)),
-  M = {}.hasOwnProperty,
-  C = function (t, r) {
-    return M.call(t, r)
-  },
-  _ = f(function (t) {
-    ;(t.exports = function (t, r) {
-      return j[t] || (j[t] = void 0 !== r ? r : {})
-    })('versions', []).push({
-      version: '3.6.4',
-      mode: 'pure',
-      copyright: '© 2020 Denis Pushkarev (zloirock.ru)',
-    })
-  }),
-  N = 0,
-  F = Math.random(),
-  R = function (t) {
-    return (
-      'Symbol(' + String(void 0 === t ? '' : t) + ')_' + (++N + F).toString(36)
-    )
-  },
-  D = _('keys'),
-  G = function (t) {
-    return D[t] || (D[t] = R(t))
-  },
-  V = {},
-  J = s.WeakMap
-if (k) {
-  var z = new J(),
-    B = z.get,
-    H = z.has,
-    W = z.set
-  ;(T = function (t, r) {
-    return W.call(z, t, r), r
-  }),
-    (x = function (t) {
-      return B.call(z, t) || {}
-    }),
-    (E = function (t) {
-      return H.call(z, t)
-    })
-} else {
-  var U = G('state')
-  ;(V[U] = !0),
-    (T = function (t, r) {
-      return A(t, U, r), r
-    }),
-    (x = function (t) {
-      return C(t, U) ? t[U] : {}
-    }),
-    (E = function (t) {
-      return C(t, U)
-    })
-}
-var Y,
-  q,
-  Q,
-  X = {
-    set: T,
-    get: x,
-    has: E,
-    enforce: function (t) {
-      return E(t) ? x(t) : T(t, {})
-    },
-    getterFor: function (t) {
-      return function (r) {
-        var n
-        if (!y(r) || (n = x(r)).type !== t)
-          throw TypeError('Incompatible receiver, ' + t + ' required')
-        return n
-      }
-    },
-  },
-  $ = {}.propertyIsEnumerable,
-  K = Object.getOwnPropertyDescriptor,
-  Z = {
-    f:
-      K && !$.call({ 1: 2 }, 1)
-        ? function (t) {
-            var r = K(this, t)
-            return !!r && r.enumerable
-          }
-        : $,
-  },
-  tt = Object.getOwnPropertyDescriptor,
-  rt = {
-    f: p
-      ? tt
-      : function (t, r) {
-          if (((t = u(t)), (r = b(r, !0)), g))
-            try {
-              return tt(t, r)
-            } catch (t) {}
-          if (C(t, r)) return O(!Z.f.call(t, r), t[r])
-        },
-  },
-  nt = /#|\.prototype\./,
-  et = function (r, n) {
-    var e = it[ot(r)]
-    return e == ct || (e != ut && ('function' == typeof n ? t(n) : !!n))
-  },
-  ot = (et.normalize = function (t) {
-    return String(t).replace(nt, '.').toLowerCase()
-  }),
-  it = (et.data = {}),
-  ut = (et.NATIVE = 'N'),
-  ct = (et.POLYFILL = 'P'),
-  at = et,
-  ft = {},
-  lt = function (t, r, n) {
-    if (
-      ((function (t) {
-        if ('function' != typeof t)
-          throw TypeError(String(t) + ' is not a function')
-      })(t),
-      void 0 === r)
-    )
-      return t
-    switch (n) {
-      case 0:
-        return function () {
-          return t.call(r)
+
+var nativeGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor
+
+// `Object.getOwnPropertyDescriptor` method
+// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptor
+var f$1 = descriptors
+  ? nativeGetOwnPropertyDescriptor
+  : function getOwnPropertyDescriptor(O, P) {
+      O = toIndexedObject(O)
+      P = toPrimitive(P, true)
+      if (ie8DomDefine)
+        try {
+          return nativeGetOwnPropertyDescriptor(O, P)
+        } catch (error) {
+          /* empty */
         }
-      case 1:
-        return function (n) {
-          return t.call(r, n)
-        }
-      case 2:
-        return function (n, e) {
-          return t.call(r, n, e)
-        }
-      case 3:
-        return function (n, e, o) {
-          return t.call(r, n, e, o)
-        }
-    }
-    return function () {
-      return t.apply(r, arguments)
-    }
-  },
-  st = rt.f,
-  pt = function (t) {
-    var r = function (r, n, e) {
-      if (this instanceof t) {
-        switch (arguments.length) {
-          case 0:
-            return new t()
-          case 1:
-            return new t(r)
-          case 2:
-            return new t(r, n)
-        }
-        return new t(r, n, e)
-      }
-      return t.apply(this, arguments)
-    }
-    return (r.prototype = t.prototype), r
-  },
-  yt = function (t, r) {
-    var n,
-      e,
-      o,
-      i,
-      u,
-      c,
-      a,
-      f,
-      l = t.target,
-      p = t.global,
-      y = t.stat,
-      v = t.proto,
-      h = p ? s : y ? s[l] : (s[l] || {}).prototype,
-      d = p ? ft : ft[l] || (ft[l] = {}),
-      g = d.prototype
-    for (o in r)
-      (n = !at(p ? o : l + (y ? '.' : '#') + o, t.forced) && h && C(h, o)),
-        (u = d[o]),
-        n && (c = t.noTargetGet ? (f = st(h, o)) && f.value : h[o]),
-        (i = n && c ? c : r[o]),
-        (n && typeof u == typeof i) ||
-          ((a =
-            t.bind && n
-              ? lt(i, s)
-              : t.wrap && n
-              ? pt(i)
-              : v && 'function' == typeof i
-              ? lt(Function.call, i)
-              : i),
-          (t.sham || (i && i.sham) || (u && u.sham)) && A(a, 'sham', !0),
-          (d[o] = a),
-          v &&
-            (C(ft, (e = l + 'Prototype')) || A(ft, e, {}),
-            (ft[e][o] = i),
-            t.real && g && !g[o] && A(g, o, i)))
-  },
-  vt = function (t) {
-    return Object(i(t))
-  },
-  ht = !t(function () {
-    function t() {}
-    return (
-      (t.prototype.constructor = null),
-      Object.getPrototypeOf(new t()) !== t.prototype
-    )
-  }),
-  dt = G('IE_PROTO'),
-  gt = Object.prototype,
-  mt = ht
-    ? Object.getPrototypeOf
-    : function (t) {
-        return (
-          (t = vt(t)),
-          C(t, dt)
-            ? t[dt]
-            : 'function' == typeof t.constructor && t instanceof t.constructor
-            ? t.constructor.prototype
-            : t instanceof Object
-            ? gt
-            : null
+      if (has(O, P))
+        return createPropertyDescriptor(
+          !objectPropertyIsEnumerable.f.call(O, P),
+          O[P],
         )
-      },
-  bt =
-    !!Object.getOwnPropertySymbols &&
-    !t(function () {
-      return !String(Symbol())
-    }),
-  St = bt && !Symbol.sham && 'symbol' == typeof Symbol.iterator,
-  wt = _('wks'),
-  Ot = s.Symbol,
-  At = St ? Ot : (Ot && Ot.withoutSetter) || R,
-  jt = function (t) {
-    return (
-      C(wt, t) ||
-        (bt && C(Ot, t) ? (wt[t] = Ot[t]) : (wt[t] = At('Symbol.' + t))),
-      wt[t]
-    )
-  },
-  Pt = (jt('iterator'), !1)
-;[].keys &&
-  ('next' in (Q = [].keys())
-    ? (q = mt(mt(Q))) !== Object.prototype && (Y = q)
-    : (Pt = !0)),
-  null == Y && (Y = {})
-var Tt,
-  xt = { IteratorPrototype: Y, BUGGY_SAFARI_ITERATORS: Pt },
-  Et = Math.ceil,
-  Lt = Math.floor,
-  It = function (t) {
-    return isNaN((t = +t)) ? 0 : (t > 0 ? Lt : Et)(t)
-  },
-  kt = Math.min,
-  Mt = function (t) {
-    return t > 0 ? kt(It(t), 9007199254740991) : 0
-  },
-  Ct = Math.max,
-  _t = Math.min,
-  Nt = function (t, r) {
-    var n = It(t)
-    return n < 0 ? Ct(n + r, 0) : _t(n, r)
-  },
-  Ft = function (t) {
-    return function (r, n, e) {
-      var o,
-        i = u(r),
-        c = Mt(i.length),
-        a = Nt(e, c)
-      if (t && n != n) {
-        for (; c > a; ) if ((o = i[a++]) != o) return !0
-      } else
-        for (; c > a; a++) if ((t || a in i) && i[a] === n) return t || a || 0
-      return !t && -1
     }
-  },
-  Rt = { includes: Ft(!0), indexOf: Ft(!1) }.indexOf,
-  Dt = function (t, r) {
-    var n,
-      e = u(t),
-      o = 0,
-      i = []
-    for (n in e) !C(V, n) && C(e, n) && i.push(n)
-    for (; r.length > o; ) C(e, (n = r[o++])) && (~Rt(i, n) || i.push(n))
-    return i
-  },
-  Gt = [
-    'constructor',
-    'hasOwnProperty',
-    'isPrototypeOf',
-    'propertyIsEnumerable',
-    'toLocaleString',
-    'toString',
-    'valueOf',
-  ],
-  Vt =
-    Object.keys ||
-    function (t) {
-      return Dt(t, Gt)
-    },
-  Jt = p
-    ? Object.defineProperties
-    : function (t, r) {
-        m(t)
-        for (var n, e = Vt(r), o = e.length, i = 0; o > i; )
-          w.f(t, (n = e[i++]), r[n])
-        return t
-      },
-  zt = function (t) {
-    return 'function' == typeof t ? t : void 0
-  },
-  Bt = function (t, r) {
-    return arguments.length < 2
-      ? zt(ft[t]) || zt(s[t])
-      : (ft[t] && ft[t][r]) || (s[t] && s[t][r])
-  },
-  Ht = Bt('document', 'documentElement'),
-  Wt = G('IE_PROTO'),
-  Ut = function () {},
-  Yt = function (t) {
-    return '<script>' + t + '</script>'
-  },
-  qt = function () {
-    try {
-      Tt = document.domain && new ActiveXObject('htmlfile')
-    } catch (t) {}
-    var t, r
-    qt = Tt
-      ? (function (t) {
-          t.write(Yt('')), t.close()
-          var r = t.parentWindow.Object
-          return (t = null), r
-        })(Tt)
-      : (((r = d('iframe')).style.display = 'none'),
-        Ht.appendChild(r),
-        (r.src = String('javascript:')),
-        (t = r.contentWindow.document).open(),
-        t.write(Yt('document.F=Object')),
-        t.close(),
-        t.F)
-    for (var n = Gt.length; n--; ) delete qt.prototype[Gt[n]]
-    return qt()
-  }
-V[Wt] = !0
-var Qt =
-    Object.create ||
-    function (t, r) {
-      var n
-      return (
-        null !== t
-          ? ((Ut.prototype = m(t)),
-            (n = new Ut()),
-            (Ut.prototype = null),
-            (n[Wt] = t))
-          : (n = qt()),
-        void 0 === r ? n : Jt(n, r)
-      )
-    },
-  Xt = {}
-Xt[jt('toStringTag')] = 'z'
-var $t = '[object z]' === String(Xt),
-  Kt = jt('toStringTag'),
-  Zt =
-    'Arguments' ==
-    n(
-      (function () {
-        return arguments
-      })(),
-    ),
-  tr = $t
-    ? n
-    : function (t) {
-        var r, e, o
-        return void 0 === t
-          ? 'Undefined'
-          : null === t
-          ? 'Null'
-          : 'string' ==
-            typeof (e = (function (t, r) {
-              try {
-                return t[r]
-              } catch (t) {}
-            })((r = Object(t)), Kt))
-          ? e
-          : Zt
-          ? n(r)
-          : 'Object' == (o = n(r)) && 'function' == typeof r.callee
-          ? 'Arguments'
-          : o
-      },
-  rr = $t
-    ? {}.toString
-    : function () {
-        return '[object ' + tr(this) + ']'
-      },
-  nr = w.f,
-  er = jt('toStringTag'),
-  or = function (t, r, n, e) {
-    if (t) {
-      var o = n ? t : t.prototype
-      C(o, er) || nr(o, er, { configurable: !0, value: r }),
-        e && !$t && A(o, 'toString', rr)
-    }
-  },
-  ir = xt.IteratorPrototype,
-  ur = function () {
-    return this
-  },
-  cr =
-    (Object.setPrototypeOf ||
-      ('__proto__' in {} &&
-        (function () {
-          var t,
-            r = !1,
-            n = {}
-          try {
-            ;(t = Object.getOwnPropertyDescriptor(Object.prototype, '__proto__')
-              .set).call(n, []),
-              (r = n instanceof Array)
-          } catch (t) {}
-        })()),
-    function (t, r, n, e) {
-      e && e.enumerable ? (t[r] = n) : A(t, r, n)
-    }),
-  ar = xt.IteratorPrototype,
-  fr = xt.BUGGY_SAFARI_ITERATORS,
-  lr = jt('iterator'),
-  sr = function () {
-    return this
-  },
-  pr = function (t, r, n, e, o, i, u) {
-    !(function (t, r, n) {
-      var e = r + ' Iterator'
-      ;(t.prototype = Qt(ir, { next: O(1, n) })), or(t, e, !1, !0), (c[e] = ur)
-    })(n, r, e)
-    var a,
-      f,
-      l,
-      s = function (t) {
-        if (t === o && d) return d
-        if (!fr && t in v) return v[t]
-        switch (t) {
-          case 'keys':
-          case 'values':
-          case 'entries':
-            return function () {
-              return new n(this, t)
-            }
-        }
-        return function () {
-          return new n(this)
-        }
-      },
-      p = r + ' Iterator',
-      y = !1,
-      v = t.prototype,
-      h = v[lr] || v['@@iterator'] || (o && v[o]),
-      d = (!fr && h) || s(o),
-      g = ('Array' == r && v.entries) || h
-    if (
-      (g &&
-        ((a = mt(g.call(new t()))),
-        ar !== Object.prototype && a.next && (or(a, p, !0, !0), (c[p] = sr))),
-      'values' == o &&
-        h &&
-        'values' !== h.name &&
-        ((y = !0),
-        (d = function () {
-          return h.call(this)
-        })),
-      u && v[lr] !== d && A(v, lr, d),
-      (c[r] = d),
-      o)
-    )
-      if (
-        ((f = {
-          values: s('values'),
-          keys: i ? d : s('keys'),
-          entries: s('entries'),
-        }),
-        u)
-      )
-        for (l in f) (fr || y || !(l in v)) && cr(v, l, f[l])
-      else yt({ target: r, proto: !0, forced: fr || y }, f)
-    return f
-  },
-  yr = X.set,
-  vr = X.getterFor('Array Iterator')
-pr(
-  Array,
-  'Array',
-  function (t, r) {
-    yr(this, { type: 'Array Iterator', target: u(t), index: 0, kind: r })
-  },
-  function () {
-    var t = vr(this),
-      r = t.target,
-      n = t.kind,
-      e = t.index++
-    return !r || e >= r.length
-      ? ((t.target = void 0), { value: void 0, done: !0 })
-      : 'keys' == n
-      ? { value: e, done: !1 }
-      : 'values' == n
-      ? { value: r[e], done: !1 }
-      : { value: [e, r[e]], done: !1 }
-  },
-  'values',
-)
-c.Arguments = c.Array
-var hr = jt('toStringTag')
-for (var dr in {
-  CSSRuleList: 0,
-  CSSStyleDeclaration: 0,
-  CSSValueList: 0,
-  ClientRectList: 0,
-  DOMRectList: 0,
-  DOMStringList: 0,
-  DOMTokenList: 1,
-  DataTransferItemList: 0,
-  FileList: 0,
-  HTMLAllCollection: 0,
-  HTMLCollection: 0,
-  HTMLFormElement: 0,
-  HTMLSelectElement: 0,
-  MediaList: 0,
-  MimeTypeArray: 0,
-  NamedNodeMap: 0,
-  NodeList: 1,
-  PaintRequestList: 0,
-  Plugin: 0,
-  PluginArray: 0,
-  SVGLengthList: 0,
-  SVGNumberList: 0,
-  SVGPathSegList: 0,
-  SVGPointList: 0,
-  SVGStringList: 0,
-  SVGTransformList: 0,
-  SourceBufferList: 0,
-  StyleSheetList: 0,
-  TextTrackCueList: 0,
-  TextTrackList: 0,
-  TouchList: 0,
-}) {
-  var gr = s[dr],
-    mr = gr && gr.prototype
-  mr && tr(mr) !== hr && A(mr, hr, dr), (c[dr] = c.Array)
+
+var objectGetOwnPropertyDescriptor = {
+  f: f$1,
 }
-var br = function (t) {
-    return function (r, n) {
-      var e,
-        o,
-        u = String(i(r)),
-        c = It(n),
-        a = u.length
-      return c < 0 || c >= a
-        ? t
-          ? ''
-          : void 0
-        : (e = u.charCodeAt(c)) < 55296 ||
-          e > 56319 ||
-          c + 1 === a ||
-          (o = u.charCodeAt(c + 1)) < 56320 ||
-          o > 57343
-        ? t
-          ? u.charAt(c)
-          : e
-        : t
-        ? u.slice(c, c + 2)
-        : o - 56320 + ((e - 55296) << 10) + 65536
-    }
-  },
-  Sr = { codeAt: br(!1), charAt: br(!0) }.charAt,
-  wr = X.set,
-  Or = X.getterFor('String Iterator')
-pr(
-  String,
-  'String',
-  function (t) {
-    wr(this, { type: 'String Iterator', string: String(t), index: 0 })
-  },
-  function () {
-    var t,
-      r = Or(this),
-      n = r.string,
-      e = r.index
-    return e >= n.length
-      ? { value: void 0, done: !0 }
-      : ((t = Sr(n, e)), (r.index += t.length), { value: t, done: !1 })
-  },
-)
-var Ar = jt('iterator'),
-  jr = function (t) {
-    if (null != t) return t[Ar] || t['@@iterator'] || c[tr(t)]
-  },
-  Pr = function (t) {
-    var r = jr(t)
-    if ('function' != typeof r) throw TypeError(String(t) + ' is not iterable')
-    return m(r.call(t))
-  },
-  Tr =
-    Array.isArray ||
-    function (t) {
-      return 'Array' == n(t)
-    }
-yt({ target: 'Array', stat: !0 }, { isArray: Tr })
-var xr,
-  Er,
-  Lr = ft.Array.isArray,
-  Ir = jr,
-  kr = function (t, r, n) {
-    var e = b(r)
-    e in t ? w.f(t, e, O(0, n)) : (t[e] = n)
-  },
-  Mr = jt('species'),
-  Cr = function (t, r) {
-    var n
-    return (
-      Tr(t) &&
-        ('function' != typeof (n = t.constructor) ||
-        (n !== Array && !Tr(n.prototype))
-          ? y(n) && null === (n = n[Mr]) && (n = void 0)
-          : (n = void 0)),
-      new (void 0 === n ? Array : n)(0 === r ? 0 : r)
-    )
-  },
-  _r = Bt('navigator', 'userAgent') || '',
-  Nr = s.process,
-  Fr = Nr && Nr.versions,
-  Rr = Fr && Fr.v8
-Rr
-  ? (Er = (xr = Rr.split('.'))[0] + xr[1])
-  : _r &&
-    (!(xr = _r.match(/Edge\/(\d+)/)) || xr[1] >= 74) &&
-    (xr = _r.match(/Chrome\/(\d+)/)) &&
-    (Er = xr[1])
-var Dr = Er && +Er,
-  Gr = jt('species'),
-  Vr = function (r) {
-    return (
-      Dr >= 51 ||
-      !t(function () {
-        var t = []
-        return (
-          ((t.constructor = {})[Gr] = function () {
-            return { foo: 1 }
-          }),
-          1 !== t[r](Boolean).foo
-        )
-      })
-    )
-  },
-  Jr = jt('isConcatSpreadable'),
-  zr =
-    Dr >= 51 ||
-    !t(function () {
-      var t = []
-      return (t[Jr] = !1), t.concat()[0] !== t
-    }),
-  Br = Vr('concat'),
-  Hr = function (t) {
-    if (!y(t)) return !1
-    var r = t[Jr]
-    return void 0 !== r ? !!r : Tr(t)
+
+var replacement = /#|\.prototype\./
+
+var isForced = function (feature, detection) {
+  var value = data[normalize(feature)]
+  return value == POLYFILL
+    ? true
+    : value == NATIVE
+    ? false
+    : typeof detection == 'function'
+    ? fails(detection)
+    : !!detection
+}
+
+var normalize = (isForced.normalize = function (string) {
+  return String(string).replace(replacement, '.').toLowerCase()
+})
+
+var data = (isForced.data = {})
+var NATIVE = (isForced.NATIVE = 'N')
+var POLYFILL = (isForced.POLYFILL = 'P')
+
+var isForced_1 = isForced
+
+var path = {}
+
+var aFunction = function (it) {
+  if (typeof it != 'function') {
+    throw TypeError(String(it) + ' is not a function')
   }
-yt(
-  { target: 'Array', proto: !0, forced: !zr || !Br },
-  {
-    concat: function (t) {
-      var r,
-        n,
-        e,
-        o,
-        i,
-        u = vt(this),
-        c = Cr(u, 0),
-        a = 0
-      for (r = -1, e = arguments.length; r < e; r++)
-        if (Hr((i = -1 === r ? u : arguments[r]))) {
-          if (a + (o = Mt(i.length)) > 9007199254740991)
-            throw TypeError('Maximum allowed index exceeded')
-          for (n = 0; n < o; n++, a++) n in i && kr(c, a, i[n])
-        } else {
-          if (a >= 9007199254740991)
-            throw TypeError('Maximum allowed index exceeded')
-          kr(c, a++, i)
-        }
-      return (c.length = a), c
-    },
-  },
-)
-var Wr = Gt.concat('length', 'prototype'),
-  Ur = {
-    f:
-      Object.getOwnPropertyNames ||
-      function (t) {
-        return Dt(t, Wr)
-      },
-  },
-  Yr = Ur.f,
-  qr = {}.toString,
-  Qr =
-    'object' == typeof window && window && Object.getOwnPropertyNames
-      ? Object.getOwnPropertyNames(window)
-      : [],
-  Xr = {
-    f: function (t) {
-      return Qr && '[object Window]' == qr.call(t)
-        ? (function (t) {
-            try {
-              return Yr(t)
-            } catch (t) {
-              return Qr.slice()
-            }
-          })(t)
-        : Yr(u(t))
-    },
-  },
-  $r = { f: Object.getOwnPropertySymbols },
-  Kr = { f: jt },
-  Zr = w.f,
-  tn = function (t) {
-    var r = ft.Symbol || (ft.Symbol = {})
-    C(r, t) || Zr(r, t, { value: Kr.f(t) })
-  },
-  rn = [].push,
-  nn = function (t) {
-    var r = 1 == t,
-      n = 2 == t,
-      e = 3 == t,
-      i = 4 == t,
-      u = 6 == t,
-      c = 5 == t || u
-    return function (a, f, l, s) {
-      for (
-        var p,
-          y,
-          v = vt(a),
-          h = o(v),
-          d = lt(f, l, 3),
-          g = Mt(h.length),
-          m = 0,
-          b = s || Cr,
-          S = r ? b(a, g) : n ? b(a, 0) : void 0;
-        g > m;
-        m++
-      )
-        if ((c || m in h) && ((y = d((p = h[m]), m, v)), t))
-          if (r) S[m] = y
-          else if (y)
-            switch (t) {
-              case 3:
-                return !0
-              case 5:
-                return p
-              case 6:
-                return m
-              case 2:
-                rn.call(S, p)
-            }
-          else if (i) return !1
-      return u ? -1 : e || i ? i : S
-    }
-  },
-  en = {
-    forEach: nn(0),
-    map: nn(1),
-    filter: nn(2),
-    some: nn(3),
-    every: nn(4),
-    find: nn(5),
-    findIndex: nn(6),
-  }.forEach,
-  on = G('hidden'),
-  un = jt('toPrimitive'),
-  cn = X.set,
-  an = X.getterFor('Symbol'),
-  fn = Object.prototype,
-  ln = s.Symbol,
-  sn = Bt('JSON', 'stringify'),
-  pn = rt.f,
-  yn = w.f,
-  vn = Xr.f,
-  hn = Z.f,
-  dn = _('symbols'),
-  gn = _('op-symbols'),
-  mn = _('string-to-symbol-registry'),
-  bn = _('symbol-to-string-registry'),
-  Sn = _('wks'),
-  wn = s.QObject,
-  On = !wn || !wn.prototype || !wn.prototype.findChild,
-  An =
-    p &&
-    t(function () {
-      return (
-        7 !=
-        Qt(
-          yn({}, 'a', {
-            get: function () {
-              return yn(this, 'a', { value: 7 }).a
-            },
-          }),
-        ).a
-      )
-    })
-      ? function (t, r, n) {
-          var e = pn(fn, r)
-          e && delete fn[r], yn(t, r, n), e && t !== fn && yn(fn, r, e)
-        }
-      : yn,
-  jn = function (t, r) {
-    var n = (dn[t] = Qt(ln.prototype))
-    return (
-      cn(n, { type: 'Symbol', tag: t, description: r }),
-      p || (n.description = r),
-      n
-    )
-  },
-  Pn = St
-    ? function (t) {
-        return 'symbol' == typeof t
+  return it
+}
+
+// optional / simple context binding
+var functionBindContext = function (fn, that, length) {
+  aFunction(fn)
+  if (that === undefined) return fn
+  switch (length) {
+    case 0:
+      return function () {
+        return fn.call(that)
       }
-    : function (t) {
-        return Object(t) instanceof ln
-      },
-  Tn = function (t, r, n) {
-    t === fn && Tn(gn, r, n), m(t)
-    var e = b(r, !0)
-    return (
-      m(n),
-      C(dn, e)
-        ? (n.enumerable
-            ? (C(t, on) && t[on][e] && (t[on][e] = !1),
-              (n = Qt(n, { enumerable: O(0, !1) })))
-            : (C(t, on) || yn(t, on, O(1, {})), (t[on][e] = !0)),
-          An(t, e, n))
-        : yn(t, e, n)
-    )
-  },
-  xn = function (t, r) {
-    m(t)
-    var n = u(r),
-      e = Vt(n).concat(kn(n))
-    return (
-      en(e, function (r) {
-        ;(p && !En.call(n, r)) || Tn(t, r, n[r])
-      }),
-      t
-    )
-  },
-  En = function (t) {
-    var r = b(t, !0),
-      n = hn.call(this, r)
-    return (
-      !(this === fn && C(dn, r) && !C(gn, r)) &&
-      (!(n || !C(this, r) || !C(dn, r) || (C(this, on) && this[on][r])) || n)
-    )
-  },
-  Ln = function (t, r) {
-    var n = u(t),
-      e = b(r, !0)
-    if (n !== fn || !C(dn, e) || C(gn, e)) {
-      var o = pn(n, e)
-      return !o || !C(dn, e) || (C(n, on) && n[on][e]) || (o.enumerable = !0), o
-    }
-  },
-  In = function (t) {
-    var r = vn(u(t)),
-      n = []
-    return (
-      en(r, function (t) {
-        C(dn, t) || C(V, t) || n.push(t)
-      }),
-      n
-    )
-  },
-  kn = function (t) {
-    var r = t === fn,
-      n = vn(r ? gn : u(t)),
-      e = []
-    return (
-      en(n, function (t) {
-        !C(dn, t) || (r && !C(fn, t)) || e.push(dn[t])
-      }),
-      e
-    )
+    case 1:
+      return function (a) {
+        return fn.call(that, a)
+      }
+    case 2:
+      return function (a, b) {
+        return fn.call(that, a, b)
+      }
+    case 3:
+      return function (a, b, c) {
+        return fn.call(that, a, b, c)
+      }
   }
-if (
-  (bt ||
-    (cr(
-      (ln = function () {
-        if (this instanceof ln) throw TypeError('Symbol is not a constructor')
-        var t =
-            arguments.length && void 0 !== arguments[0]
-              ? String(arguments[0])
-              : void 0,
-          r = R(t),
-          n = function (t) {
-            this === fn && n.call(gn, t),
-              C(this, on) && C(this[on], r) && (this[on][r] = !1),
-              An(this, r, O(1, t))
-          }
-        return p && On && An(fn, r, { configurable: !0, set: n }), jn(r, t)
-      }).prototype,
-      'toString',
-      function () {
-        return an(this).tag
-      },
-    ),
-    cr(ln, 'withoutSetter', function (t) {
-      return jn(R(t), t)
-    }),
-    (Z.f = En),
-    (w.f = Tn),
-    (rt.f = Ln),
-    (Ur.f = Xr.f = In),
-    ($r.f = kn),
-    (Kr.f = function (t) {
-      return jn(jt(t), t)
-    }),
-    p &&
-      yn(ln.prototype, 'description', {
-        configurable: !0,
-        get: function () {
-          return an(this).description
-        },
-      })),
-  yt({ global: !0, wrap: !0, forced: !bt, sham: !bt }, { Symbol: ln }),
-  en(Vt(Sn), function (t) {
-    tn(t)
-  }),
-  yt(
-    { target: 'Symbol', stat: !0, forced: !bt },
-    {
-      for: function (t) {
-        var r = String(t)
-        if (C(mn, r)) return mn[r]
-        var n = ln(r)
-        return (mn[r] = n), (bn[n] = r), n
-      },
-      keyFor: function (t) {
-        if (!Pn(t)) throw TypeError(t + ' is not a symbol')
-        if (C(bn, t)) return bn[t]
-      },
-      useSetter: function () {
-        On = !0
-      },
-      useSimple: function () {
-        On = !1
-      },
-    },
-  ),
-  yt(
-    { target: 'Object', stat: !0, forced: !bt, sham: !p },
-    {
-      create: function (t, r) {
-        return void 0 === r ? Qt(t) : xn(Qt(t), r)
-      },
-      defineProperty: Tn,
-      defineProperties: xn,
-      getOwnPropertyDescriptor: Ln,
-    },
-  ),
-  yt(
-    { target: 'Object', stat: !0, forced: !bt },
-    { getOwnPropertyNames: In, getOwnPropertySymbols: kn },
-  ),
-  yt(
-    {
-      target: 'Object',
-      stat: !0,
-      forced: t(function () {
-        $r.f(1)
-      }),
-    },
-    {
-      getOwnPropertySymbols: function (t) {
-        return $r.f(vt(t))
-      },
-    },
-  ),
-  sn)
-) {
-  var Mn =
-    !bt ||
-    t(function () {
-      var t = ln()
-      return (
-        '[null]' != sn([t]) || '{}' != sn({ a: t }) || '{}' != sn(Object(t))
+  return function (/* ...args */) {
+    return fn.apply(that, arguments)
+  }
+}
+
+var anObject = function (it) {
+  if (!isObject(it)) {
+    throw TypeError(String(it) + ' is not an object')
+  }
+  return it
+}
+
+var nativeDefineProperty = Object.defineProperty
+
+// `Object.defineProperty` method
+// https://tc39.github.io/ecma262/#sec-object.defineproperty
+var f$2 = descriptors
+  ? nativeDefineProperty
+  : function defineProperty(O, P, Attributes) {
+      anObject(O)
+      P = toPrimitive(P, true)
+      anObject(Attributes)
+      if (ie8DomDefine)
+        try {
+          return nativeDefineProperty(O, P, Attributes)
+        } catch (error) {
+          /* empty */
+        }
+      if ('get' in Attributes || 'set' in Attributes)
+        throw TypeError('Accessors not supported')
+      if ('value' in Attributes) O[P] = Attributes.value
+      return O
+    }
+
+var objectDefineProperty = {
+  f: f$2,
+}
+
+var createNonEnumerableProperty = descriptors
+  ? function (object, key, value) {
+      return objectDefineProperty.f(
+        object,
+        key,
+        createPropertyDescriptor(1, value),
       )
-    })
-  yt(
-    { target: 'JSON', stat: !0, forced: Mn },
-    {
-      stringify: function (t, r, n) {
-        for (var e, o = [t], i = 1; arguments.length > i; )
-          o.push(arguments[i++])
-        if (((e = r), (y(r) || void 0 !== t) && !Pn(t)))
-          return (
-            Tr(r) ||
-              (r = function (t, r) {
-                if (
-                  ('function' == typeof e && (r = e.call(this, t, r)), !Pn(r))
-                )
-                  return r
-              }),
-            (o[1] = r),
-            sn.apply(null, o)
-          )
-      },
-    },
+    }
+  : function (object, key, value) {
+      object[key] = value
+      return object
+    }
+
+var getOwnPropertyDescriptor$1 = objectGetOwnPropertyDescriptor.f
+
+var wrapConstructor = function (NativeConstructor) {
+  var Wrapper = function (a, b, c) {
+    if (this instanceof NativeConstructor) {
+      switch (arguments.length) {
+        case 0:
+          return new NativeConstructor()
+        case 1:
+          return new NativeConstructor(a)
+        case 2:
+          return new NativeConstructor(a, b)
+      }
+      return new NativeConstructor(a, b, c)
+    }
+    return NativeConstructor.apply(this, arguments)
+  }
+  Wrapper.prototype = NativeConstructor.prototype
+  return Wrapper
+}
+
+/*
+  options.target      - name of the target object
+  options.global      - target is the global object
+  options.stat        - export as static methods of target
+  options.proto       - export as prototype methods of target
+  options.real        - real prototype method for the `pure` version
+  options.forced      - export even if the native feature is available
+  options.bind        - bind methods to the target, required for the `pure` version
+  options.wrap        - wrap constructors to preventing global pollution, required for the `pure` version
+  options.unsafe      - use the simple assignment of property instead of delete + defineProperty
+  options.sham        - add a flag to not completely full polyfills
+  options.enumerable  - export as enumerable property
+  options.noTargetGet - prevent calling a getter on target
+*/
+var _export = function (options, source) {
+  var TARGET = options.target
+  var GLOBAL = options.global
+  var STATIC = options.stat
+  var PROTO = options.proto
+
+  var nativeSource = GLOBAL
+    ? global_1
+    : STATIC
+    ? global_1[TARGET]
+    : (global_1[TARGET] || {}).prototype
+
+  var target = GLOBAL ? path : path[TARGET] || (path[TARGET] = {})
+  var targetPrototype = target.prototype
+
+  var FORCED, USE_NATIVE, VIRTUAL_PROTOTYPE
+  var key,
+    sourceProperty,
+    targetProperty,
+    nativeProperty,
+    resultProperty,
+    descriptor
+
+  for (key in source) {
+    FORCED = isForced_1(
+      GLOBAL ? key : TARGET + (STATIC ? '.' : '#') + key,
+      options.forced,
+    )
+    // contains in native
+    USE_NATIVE = !FORCED && nativeSource && has(nativeSource, key)
+
+    targetProperty = target[key]
+
+    if (USE_NATIVE)
+      if (options.noTargetGet) {
+        descriptor = getOwnPropertyDescriptor$1(nativeSource, key)
+        nativeProperty = descriptor && descriptor.value
+      } else nativeProperty = nativeSource[key]
+
+    // export native or implementation
+    sourceProperty = USE_NATIVE && nativeProperty ? nativeProperty : source[key]
+
+    if (USE_NATIVE && typeof targetProperty === typeof sourceProperty) continue
+
+    // bind timers to global for call from export context
+    if (options.bind && USE_NATIVE)
+      resultProperty = functionBindContext(sourceProperty, global_1)
+    // wrap global constructors for prevent changs in this version
+    else if (options.wrap && USE_NATIVE)
+      resultProperty = wrapConstructor(sourceProperty)
+    // make static versions for prototype methods
+    else if (PROTO && typeof sourceProperty == 'function')
+      resultProperty = functionBindContext(Function.call, sourceProperty)
+    // default case
+    else resultProperty = sourceProperty
+
+    // add a flag to not completely full polyfills
+    if (
+      options.sham ||
+      (sourceProperty && sourceProperty.sham) ||
+      (targetProperty && targetProperty.sham)
+    ) {
+      createNonEnumerableProperty(resultProperty, 'sham', true)
+    }
+
+    target[key] = resultProperty
+
+    if (PROTO) {
+      VIRTUAL_PROTOTYPE = TARGET + 'Prototype'
+      if (!has(path, VIRTUAL_PROTOTYPE)) {
+        createNonEnumerableProperty(path, VIRTUAL_PROTOTYPE, {})
+      }
+      // export virtual prototype methods
+      path[VIRTUAL_PROTOTYPE][key] = sourceProperty
+      // export real prototype methods
+      if (options.real && targetPrototype && !targetPrototype[key]) {
+        createNonEnumerableProperty(targetPrototype, key, sourceProperty)
+      }
+    }
+  }
+}
+
+// `IsArray` abstract operation
+// https://tc39.github.io/ecma262/#sec-isarray
+var isArray =
+  Array.isArray ||
+  function isArray(arg) {
+    return classofRaw(arg) == 'Array'
+  }
+
+// `ToObject` abstract operation
+// https://tc39.github.io/ecma262/#sec-toobject
+var toObject = function (argument) {
+  return Object(requireObjectCoercible(argument))
+}
+
+var ceil = Math.ceil
+var floor = Math.floor
+
+// `ToInteger` abstract operation
+// https://tc39.github.io/ecma262/#sec-tointeger
+var toInteger = function (argument) {
+  return isNaN((argument = +argument))
+    ? 0
+    : (argument > 0 ? floor : ceil)(argument)
+}
+
+var min = Math.min
+
+// `ToLength` abstract operation
+// https://tc39.github.io/ecma262/#sec-tolength
+var toLength = function (argument) {
+  return argument > 0 ? min(toInteger(argument), 0x1fffffffffffff) : 0 // 2 ** 53 - 1 == 9007199254740991
+}
+
+var createProperty = function (object, key, value) {
+  var propertyKey = toPrimitive(key)
+  if (propertyKey in object)
+    objectDefineProperty.f(
+      object,
+      propertyKey,
+      createPropertyDescriptor(0, value),
+    )
+  else object[propertyKey] = value
+}
+
+var setGlobal = function (key, value) {
+  try {
+    createNonEnumerableProperty(global_1, key, value)
+  } catch (error) {
+    global_1[key] = value
+  }
+  return value
+}
+
+var SHARED = '__core-js_shared__'
+var store = global_1[SHARED] || setGlobal(SHARED, {})
+
+var sharedStore = store
+
+var shared = createCommonjsModule(function (module) {
+  ;(module.exports = function (key, value) {
+    return (
+      sharedStore[key] || (sharedStore[key] = value !== undefined ? value : {})
+    )
+  })('versions', []).push({
+    version: '3.6.4',
+    mode: 'pure',
+    copyright: '© 2020 Denis Pushkarev (zloirock.ru)',
+  })
+})
+
+var id = 0
+var postfix = Math.random()
+
+var uid = function (key) {
+  return (
+    'Symbol(' +
+    String(key === undefined ? '' : key) +
+    ')_' +
+    (++id + postfix).toString(36)
   )
 }
-ln.prototype[un] || A(ln.prototype, un, ln.prototype.valueOf),
-  or(ln, 'Symbol'),
-  (V[on] = !0),
-  tn('asyncIterator'),
-  tn('hasInstance'),
-  tn('isConcatSpreadable'),
-  tn('iterator'),
-  tn('match'),
-  tn('matchAll'),
-  tn('replace'),
-  tn('search'),
-  tn('species'),
-  tn('split'),
-  tn('toPrimitive'),
-  tn('toStringTag'),
-  tn('unscopables'),
-  or(Math, 'Math', !0),
-  or(s.JSON, 'JSON', !0)
-var Cn = ft.Symbol,
-  _n = function (t, r, n, e) {
-    try {
-      return e ? r(m(n)[0], n[1]) : r(n)
-    } catch (r) {
-      var o = t.return
-      throw (void 0 !== o && m(o.call(t)), r)
-    }
-  },
-  Nn = jt('iterator'),
-  Fn = Array.prototype,
-  Rn = function (t) {
-    return void 0 !== t && (c.Array === t || Fn[Nn] === t)
-  },
-  Dn = jt('iterator'),
-  Gn = !1
-try {
-  var Vn = 0,
-    Jn = {
-      next: function () {
-        return { done: !!Vn++ }
-      },
-      return: function () {
-        Gn = !0
-      },
-    }
-  ;(Jn[Dn] = function () {
-    return this
-  }),
-    Array.from(Jn, function () {
-      throw 2
-    })
-} catch (t) {}
-var zn = !(function (t, r) {
-  if (!r && !Gn) return !1
-  var n = !1
-  try {
-    var e = {}
-    ;(e[Dn] = function () {
-      return {
-        next: function () {
-          return { done: (n = !0) }
-        },
-      }
-    }),
-      t(e)
-  } catch (t) {}
-  return n
-})(function (t) {
-  Array.from(t)
-})
-yt(
-  { target: 'Array', stat: !0, forced: zn },
-  {
-    from: function (t) {
-      var r,
-        n,
-        e,
-        o,
-        i,
-        u,
-        c = vt(t),
-        a = 'function' == typeof this ? this : Array,
-        f = arguments.length,
-        l = f > 1 ? arguments[1] : void 0,
-        s = void 0 !== l,
-        p = jr(c),
-        y = 0
-      if (
-        (s && (l = lt(l, f > 2 ? arguments[2] : void 0, 2)),
-        null == p || (a == Array && Rn(p)))
-      )
-        for (n = new a((r = Mt(c.length))); r > y; y++)
-          (u = s ? l(c[y], y) : c[y]), kr(n, y, u)
-      else
-        for (i = (o = p.call(c)).next, n = new a(); !(e = i.call(o)).done; y++)
-          (u = s ? _n(o, l, [e.value, y], !0) : e.value), kr(n, y, u)
-      return (n.length = y), n
-    },
-  },
-)
-var Bn = ft.Array.from,
-  Hn = Object.defineProperty,
-  Wn = {},
-  Un = function (t) {
-    throw t
-  },
-  Yn = Vr('slice'),
-  qn = (function (r, n) {
-    if (C(Wn, r)) return Wn[r]
-    n || (n = {})
-    var e = [][r],
-      o = !!C(n, 'ACCESSORS') && n.ACCESSORS,
-      i = C(n, 0) ? n[0] : Un,
-      u = C(n, 1) ? n[1] : void 0
-    return (Wn[r] =
-      !!e &&
-      !t(function () {
-        if (o && !p) return !0
-        var t = { length: -1 }
-        o ? Hn(t, 1, { enumerable: !0, get: Un }) : (t[1] = 1), e.call(t, i, u)
-      }))
-  })('slice', { ACCESSORS: !0, 0: 0, 1: 2 }),
-  Qn = jt('species'),
-  Xn = [].slice,
-  $n = Math.max
-yt(
-  { target: 'Array', proto: !0, forced: !Yn || !qn },
-  {
-    slice: function (t, r) {
-      var n,
-        e,
-        o,
-        i = u(this),
-        c = Mt(i.length),
-        a = Nt(t, c),
-        f = Nt(void 0 === r ? c : r, c)
-      if (
-        Tr(i) &&
-        ('function' != typeof (n = i.constructor) ||
-        (n !== Array && !Tr(n.prototype))
-          ? y(n) && null === (n = n[Qn]) && (n = void 0)
-          : (n = void 0),
-        n === Array || void 0 === n)
-      )
-        return Xn.call(i, a, f)
-      for (
-        e = new (void 0 === n ? Array : n)($n(f - a, 0)), o = 0;
-        a < f;
-        a++, o++
-      )
-        a in i && kr(e, o, i[a])
-      return (e.length = o), e
-    },
-  },
-)
-var Kn = function (t) {
-    return ft[t + 'Prototype']
-  },
-  Zn = Kn('Array').slice,
-  te = Array.prototype,
-  re = function (t) {
-    var r = t.slice
-    return t === te || (t instanceof Array && r === te.slice) ? Zn : r
-  },
-  ne = Kn('Array').concat,
-  ee = Array.prototype,
-  oe = function (t) {
-    var r = t.concat
-    return t === ee || (t instanceof Array && r === ee.concat) ? ne : r
+
+var nativeSymbol =
+  !!Object.getOwnPropertySymbols &&
+  !fails(function () {
+    // Chrome 38 Symbol has incorrect toString conversion
+    // eslint-disable-next-line no-undef
+    return !String(Symbol())
+  })
+
+var useSymbolAsUid =
+  nativeSymbol &&
+  // eslint-disable-next-line no-undef
+  !Symbol.sham &&
+  // eslint-disable-next-line no-undef
+  typeof Symbol.iterator == 'symbol'
+
+var WellKnownSymbolsStore = shared('wks')
+var Symbol$1 = global_1.Symbol
+var createWellKnownSymbol = useSymbolAsUid
+  ? Symbol$1
+  : (Symbol$1 && Symbol$1.withoutSetter) || uid
+
+var wellKnownSymbol = function (name) {
+  if (!has(WellKnownSymbolsStore, name)) {
+    if (nativeSymbol && has(Symbol$1, name))
+      WellKnownSymbolsStore[name] = Symbol$1[name]
+    else WellKnownSymbolsStore[name] = createWellKnownSymbol('Symbol.' + name)
   }
-function ie(t, r) {
-  if (!(t instanceof r))
+  return WellKnownSymbolsStore[name]
+}
+
+var SPECIES = wellKnownSymbol('species')
+
+// `ArraySpeciesCreate` abstract operation
+// https://tc39.github.io/ecma262/#sec-arrayspeciescreate
+var arraySpeciesCreate = function (originalArray, length) {
+  var C
+  if (isArray(originalArray)) {
+    C = originalArray.constructor
+    // cross-realm fallback
+    if (typeof C == 'function' && (C === Array || isArray(C.prototype)))
+      C = undefined
+    else if (isObject(C)) {
+      C = C[SPECIES]
+      if (C === null) C = undefined
+    }
+  }
+  return new (C === undefined ? Array : C)(length === 0 ? 0 : length)
+}
+
+var aFunction$1 = function (variable) {
+  return typeof variable == 'function' ? variable : undefined
+}
+
+var getBuiltIn = function (namespace, method) {
+  return arguments.length < 2
+    ? aFunction$1(path[namespace]) || aFunction$1(global_1[namespace])
+    : (path[namespace] && path[namespace][method]) ||
+        (global_1[namespace] && global_1[namespace][method])
+}
+
+var engineUserAgent = getBuiltIn('navigator', 'userAgent') || ''
+
+var process = global_1.process
+var versions = process && process.versions
+var v8 = versions && versions.v8
+var match, version
+
+if (v8) {
+  match = v8.split('.')
+  version = match[0] + match[1]
+} else if (engineUserAgent) {
+  match = engineUserAgent.match(/Edge\/(\d+)/)
+  if (!match || match[1] >= 74) {
+    match = engineUserAgent.match(/Chrome\/(\d+)/)
+    if (match) version = match[1]
+  }
+}
+
+var engineV8Version = version && +version
+
+var SPECIES$1 = wellKnownSymbol('species')
+
+var arrayMethodHasSpeciesSupport = function (METHOD_NAME) {
+  // We can't use this feature detection in V8 since it causes
+  // deoptimization and serious performance degradation
+  // https://github.com/zloirock/core-js/issues/677
+  return (
+    engineV8Version >= 51 ||
+    !fails(function () {
+      var array = []
+      var constructor = (array.constructor = {})
+      constructor[SPECIES$1] = function () {
+        return { foo: 1 }
+      }
+      return array[METHOD_NAME](Boolean).foo !== 1
+    })
+  )
+}
+
+var IS_CONCAT_SPREADABLE = wellKnownSymbol('isConcatSpreadable')
+var MAX_SAFE_INTEGER = 0x1fffffffffffff
+var MAXIMUM_ALLOWED_INDEX_EXCEEDED = 'Maximum allowed index exceeded'
+
+// We can't use this feature detection in V8 since it causes
+// deoptimization and serious performance degradation
+// https://github.com/zloirock/core-js/issues/679
+var IS_CONCAT_SPREADABLE_SUPPORT =
+  engineV8Version >= 51 ||
+  !fails(function () {
+    var array = []
+    array[IS_CONCAT_SPREADABLE] = false
+    return array.concat()[0] !== array
+  })
+
+var SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('concat')
+
+var isConcatSpreadable = function (O) {
+  if (!isObject(O)) return false
+  var spreadable = O[IS_CONCAT_SPREADABLE]
+  return spreadable !== undefined ? !!spreadable : isArray(O)
+}
+
+var FORCED = !IS_CONCAT_SPREADABLE_SUPPORT || !SPECIES_SUPPORT
+
+// `Array.prototype.concat` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.concat
+// with adding support of @@isConcatSpreadable and @@species
+_export(
+  { target: 'Array', proto: true, forced: FORCED },
+  {
+    concat: function concat(arg) {
+      // eslint-disable-line no-unused-vars
+      var O = toObject(this)
+      var A = arraySpeciesCreate(O, 0)
+      var n = 0
+      var i, k, length, len, E
+      for (i = -1, length = arguments.length; i < length; i++) {
+        E = i === -1 ? O : arguments[i]
+        if (isConcatSpreadable(E)) {
+          len = toLength(E.length)
+          if (n + len > MAX_SAFE_INTEGER)
+            throw TypeError(MAXIMUM_ALLOWED_INDEX_EXCEEDED)
+          for (k = 0; k < len; k++, n++) if (k in E) createProperty(A, n, E[k])
+        } else {
+          if (n >= MAX_SAFE_INTEGER)
+            throw TypeError(MAXIMUM_ALLOWED_INDEX_EXCEEDED)
+          createProperty(A, n++, E)
+        }
+      }
+      A.length = n
+      return A
+    },
+  },
+)
+
+var entryVirtual = function (CONSTRUCTOR) {
+  return path[CONSTRUCTOR + 'Prototype']
+}
+
+var concat = entryVirtual('Array').concat
+
+var ArrayPrototype = Array.prototype
+
+var concat_1 = function (it) {
+  var own = it.concat
+  return it === ArrayPrototype ||
+    (it instanceof Array && own === ArrayPrototype.concat)
+    ? concat
+    : own
+}
+
+var concat$1 = concat_1
+
+var concat$2 = concat$1
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
     throw new TypeError('Cannot call a class as a function')
-}
-yt(
-  { target: 'Object', stat: !0, forced: !p, sham: !p },
-  { defineProperty: w.f },
-)
-var ue = f(function (t) {
-  var r = ft.Object,
-    n = (t.exports = function (t, n, e) {
-      return r.defineProperty(t, n, e)
-    })
-  r.defineProperty.sham && (n.sham = !0)
-})
-function ce(t, r) {
-  for (var n = 0; n < r.length; n++) {
-    var e = r[n]
-    ;(e.enumerable = e.enumerable || !1),
-      (e.configurable = !0),
-      'value' in e && (e.writable = !0),
-      ue(t, e.key, e)
   }
 }
-var ae = {
-    fr: 'Bonsoir, mon nom est',
-    pt: 'Oi gente, meu nome é',
-    en: 'Hello, my name is',
+
+// `Object.defineProperty` method
+// https://tc39.github.io/ecma262/#sec-object.defineproperty
+_export(
+  { target: 'Object', stat: true, forced: !descriptors, sham: !descriptors },
+  {
+    defineProperty: objectDefineProperty.f,
   },
-  fe = (function () {
-    function t() {
-      var r =
-          arguments.length > 0 && void 0 !== arguments[0]
-            ? arguments[0]
-            : 'John Doe',
-        n =
-          arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 'en'
-      ie(this, t), (this.name = r), (this.lang = n), n && (this.lang = n)
+)
+
+var defineProperty_1 = createCommonjsModule(function (module) {
+  var Object = path.Object
+
+  var defineProperty = (module.exports = function defineProperty(
+    it,
+    key,
+    desc,
+  ) {
+    return Object.defineProperty(it, key, desc)
+  })
+
+  if (Object.defineProperty.sham) defineProperty.sham = true
+})
+
+var defineProperty = defineProperty_1
+
+var defineProperty$1 = defineProperty
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i]
+    descriptor.enumerable = descriptor.enumerable || false
+    descriptor.configurable = true
+    if ('value' in descriptor) descriptor.writable = true
+
+    defineProperty$1(target, descriptor.key, descriptor)
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps)
+  if (staticProps) _defineProperties(Constructor, staticProps)
+  return Constructor
+}
+
+// Private constant, only included from Person class.
+var introductions = {
+  fr: 'Bonsoir, mon nom est',
+  pt: 'Oi gente, meu nome é',
+  en: 'Hello, my name is',
+}
+var Person = /*#__PURE__*/ (function () {
+  function Person() {
+    var name =
+      arguments.length > 0 && arguments[0] !== undefined
+        ? arguments[0]
+        : 'John Doe'
+    var lang =
+      arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'en'
+
+    _classCallCheck(this, Person)
+
+    this.name = name
+    this.lang = lang
+
+    if (lang) {
+      this.lang = lang
     }
-    var r, n, e
-    return (
-      (r = t),
-      (n = [
-        {
-          key: 'talk',
-          value: function (t) {
-            var r,
-              n = this.name
-            return oe((r = ''.concat(n, ': '))).call(r, t)
-          },
-        },
-        {
-          key: 'introduction',
-          value: function () {
-            var t,
-              r = this.name,
-              n = this.lang,
-              e = void 0 === n ? 'en' : n,
-              o = e in ae ? ae[e] : ae.en
-            return this.talk(oe((t = ''.concat(o, ' '))).call(t, r))
-          },
-        },
-        {
-          key: 'toString',
-          value: function () {
-            return this.introduction()
-          },
-        },
-      ]) && ce(r.prototype, n),
-      e && ce(r, e),
-      t
-    )
-  })()
-function le(t, r) {
-  var n
-  if (void 0 === Cn || null == Ir(t)) {
-    if (
-      Lr(t) ||
-      (n = (function (t, r) {
-        var n
-        if (!t) return
-        if ('string' == typeof t) return se(t, r)
-        var e = re((n = Object.prototype.toString.call(t))).call(n, 8, -1)
-        'Object' === e && t.constructor && (e = t.constructor.name)
-        if ('Map' === e || 'Set' === e) return Bn(t)
-        if (
-          'Arguments' === e ||
-          /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e)
+  }
+
+  _createClass(Person, [
+    {
+      key: 'talk',
+      value: function talk(message) {
+        var _context
+
+        var name = this.name
+        return concat$2((_context = ''.concat(name, ': '))).call(
+          _context,
+          message,
         )
-          return se(t, r)
-      })(t)) ||
-      (r && t && 'number' == typeof t.length)
-    ) {
-      n && (t = n)
-      var e = 0,
-        o = function () {}
-      return {
-        s: o,
-        n: function () {
-          return e >= t.length ? { done: !0 } : { done: !1, value: t[e++] }
-        },
-        e: function (t) {
-          throw t
-        },
-        f: o,
-      }
-    }
-    throw new TypeError(
-      'Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
-    )
-  }
-  var i,
-    u = !0,
-    c = !1
-  return {
-    s: function () {
-      n = Pr(t)
+      },
     },
-    n: function () {
-      var t = n.next()
-      return (u = t.done), t
+    {
+      key: 'introduction',
+      value: function introduction() {
+        var _context2
+
+        var name = this.name
+        var _this$lang = this.lang,
+          lang = _this$lang === void 0 ? 'en' : _this$lang
+        var message =
+          lang in introductions ? introductions[lang] : introductions.en
+        return this.talk(
+          concat$2((_context2 = ''.concat(message, ' '))).call(_context2, name),
+        )
+      },
     },
-    e: function (t) {
-      ;(c = !0), (i = t)
+    {
+      key: 'toString',
+      value: function toString() {
+        return this.introduction()
+      },
     },
-    f: function () {
-      try {
-        u || null == n.return || n.return()
-      } finally {
-        if (c) throw i
-      }
-    },
-  }
+  ])
+
+  return Person
+})()
+
+const talk = (args) => {
+  const name = typeof args.name === 'string' ? `${args.name}: ` : ''
+  const message = typeof args.message === 'string' ? `${args.message}` : '...'
+  return `${name}${message}`
 }
-function se(t, r) {
-  ;(null == r || r > t.length) && (r = t.length)
-  for (var n = 0, e = new Array(r); n < r; n++) e[n] = t[n]
-  return e
-}
-export default function () {
-  var t,
-    r = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : [],
-    n = [],
-    e = le(r)
-  try {
-    for (e.s(); !(t = e.n()).done; ) {
-      var o = t.value,
-        i = o || {},
-        u = i.name,
-        c = void 0 === u ? 'John Doe' : u,
-        a = i.lang,
-        f = new fe(c, a)
-      n.push(f)
-    }
-  } catch (t) {
-    e.e(t)
-  } finally {
-    e.f()
+var index = (people = []) => {
+  const out = []
+  for (const someone of people) {
+    const { name = 'John Doe' } = someone || {}
+    const message = 'Hiya!'
+    out.push(talk({ name, message }))
   }
-  return n
+  return out
 }
-export { fe as Person }
+
+export default index
+export { Person }
+/*! Renoir Boulanger  */
 //# sourceMappingURL=index.browser.esm.js.map

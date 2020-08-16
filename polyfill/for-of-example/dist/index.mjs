@@ -7,45 +7,58 @@
  *
  * © 2003-2020 Renoir Boulanger
  */
-/*!
- * @renoirb/polyfill-for-of-example v1.0.0-dev.1
- *
- * Maintainer: Renoir Boulanger <contribs@renoirboulanger.com>
- *
- * UNLICENSED
- *
- * © 2003-2020 Renoir Boulanger
- */
-const n = {
+// Private constant, only included from Person class.
+const introductions = {
   fr: 'Bonsoir, mon nom est',
   pt: 'Oi gente, meu nome é',
-  en: 'Hello, my name is',
-}
-class t {
-  constructor(n = 'John Doe', t = 'en') {
-    ;(this.name = n), (this.lang = t), t && (this.lang = t)
+  en: 'Hello, my name is'
+};
+class Person {
+  constructor(name = 'John Doe', lang = 'en') {
+    this.name = name;
+    this.lang = lang;
+
+    if (lang) {
+      this.lang = lang;
+    }
   }
-  talk(n) {
-    return `${this.name}: ${n}`
+
+  talk(message) {
+    const name = this.name;
+    return `${name}: ${message}`;
   }
+
   introduction() {
-    const t = this.name,
-      { lang: o = 'en' } = this,
-      e = o in n ? n[o] : n.en
-    return this.talk(`${e} ${t}`)
+    const name = this.name;
+    const {
+      lang = 'en'
+    } = this;
+    const message = lang in introductions ? introductions[lang] : introductions.en;
+    return this.talk(`${message} ${name}`);
   }
+
   toString() {
-    return this.introduction()
+    return this.introduction();
   }
+
 }
-export default (n = []) => {
-  const o = []
-  for (const e of n) {
-    const { name: n = 'John Doe', lang: s } = e || {},
-      r = new t(n, s)
-    o.push(r)
-  }
-  return o
-}
-export { t as Person }
+
+const talk = (args) => {
+    const name = typeof args.name === 'string' ? `${args.name}: ` : '';
+    const message = typeof args.message === 'string' ? `${args.message}` : '...';
+    return `${name}${message}`;
+};
+var index = (people = []) => {
+    const out = [];
+    for (const someone of people) {
+        const { name = 'John Doe' } = someone || {};
+        const message = 'Hiya!';
+        out.push(talk({ name, message }));
+    }
+    return out;
+};
+
+export default index;
+export { Person };
+/*! Renoir Boulanger  */
 //# sourceMappingURL=index.mjs.map
