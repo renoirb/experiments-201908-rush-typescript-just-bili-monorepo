@@ -1,6 +1,6 @@
 {
   "name": "@renoirb/conventions-use-prettier",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Reusable Prettier configs",
   "homepage": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/conventions/use-prettier",
   "repository": {

@@ -1,0 +1,34 @@
+{
+  "name": "@renoirb/package-json-utils",
+  "entries": [
+    {
+      "version": "0.1.1",
+      "tag": "@renoirb/package-json-utils_v0.1.1",
+      "date": "Mon, 17 Aug 2020 02:57:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "New package trimming package.json logic from @renoirb/tools-bundling-helpers"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@renoirb/conventions-use-eslint\" to `1.2.1`"
+          },
+          {
+            "comment": "Updating dependency \"@renoirb/conventions-use-jest\" to `1.2.1`"
+          },
+          {
+            "comment": "Updating dependency \"@renoirb/conventions-use-prettier\" to `1.3.0`"
+          },
+          {
+            "comment": "Updating dependency \"@renoirb/conventions-use-typescript-3\" to `1.2.1`"
+          },
+          {
+            "comment": "Updating dependency \"@renoirb/tools-bundling-helpers\" to `1.2.1`"
+          }
+        ]
+      }
+    }
+  ]
+}

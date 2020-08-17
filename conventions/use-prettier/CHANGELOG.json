@@ -2,6 +2,23 @@
   "name": "@renoirb/conventions-use-prettier",
   "entries": [
     {
+      "version": "1.3.0",
+      "tag": "@renoirb/conventions-use-prettier_v1.3.0",
+      "date": "Mon, 17 Aug 2020 02:57:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Trimmed out CLI utility to go to @renoirb/conventions-code-formatter"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Forgot prettier.config export to work for both Node 10 and 14"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.0",
       "tag": "@renoirb/conventions-use-prettier_v1.2.0",
       "date": "Mon, 03 Aug 2020 23:53:08 GMT",
