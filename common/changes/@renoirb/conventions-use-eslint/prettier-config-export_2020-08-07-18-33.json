@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@renoirb/conventions-use-eslint",
+      "comment": "Update package.json exports",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@renoirb/conventions-use-eslint",
+  "email": "contribs@renoirboulanger.com"
+}

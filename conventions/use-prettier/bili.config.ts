@@ -1,19 +1,24 @@
-import useBili from '@renoirb/conventions-use-bili'
+import { Config, ConfigOutput } from 'bili'
 
-const main = useBili(
-  {
-    input: {
-      index: 'src/index.ts',
-      start: 'src/start.ts',
-    },
-    bundleNodeModules: true,
-    output: {
-      target: 'node',
-      fileName: '[name].cjs',
-      minify: false,
-    },
-  },
-  { firstYear: 2003 },
-)
+const input = {
+  index: 'src/index.ts',
+  start: 'src/start.ts',
+}
 
-export default main
+const output: ConfigOutput = {
+  target: 'node',
+  fileName: '[name].cjs',
+  minify: false,
+  sourceMap: true,
+  format: 'cjs',
+}
+
+const config: Config = {
+  banner: true,
+  bundleNodeModules: true,
+  externals: ['@rushstack/node-core-library'],
+  input,
+  output,
+}
+
+export default config

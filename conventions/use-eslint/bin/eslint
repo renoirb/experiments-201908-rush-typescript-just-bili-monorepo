@@ -3,7 +3,6 @@
 'use strict'
 
 const { FileSystem } = require('@rushstack/node-core-library');
-const { CommandLineUtilities } = require('@renoirb/tools-bundling-helpers');
 const { sep } = require('path');
 
 /* eslint-disable */
@@ -15,7 +14,8 @@ const { sep } = require('path');
  */
 
 // See comment also @renoirb/conventions-use-jest in reporter.js #IsCiServer
-const isCI = CommandLineUtilities.hasEnvFlag('CI_SERVER')
+const processEnvKeys = Object.keys(process.env)
+const isCI = processEnvKeys.includes('CI_SERVER')
 
 const [nodeBin, nodeScript, ...cliArgs] = process.argv
 

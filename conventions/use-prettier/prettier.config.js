@@ -21,7 +21,7 @@ const main = {
       files: '*.md',
       options: {
         parser: 'markdown',
-        proseWrap: 'always'
+        proseWrap: 'always',
       },
     },
     {

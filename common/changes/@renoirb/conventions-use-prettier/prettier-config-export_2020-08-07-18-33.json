@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@renoirb/conventions-use-prettier",
+      "comment": "Update package.json exports",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@renoirb/conventions-use-prettier",
+  "email": "contribs@renoirboulanger.com"
+}
