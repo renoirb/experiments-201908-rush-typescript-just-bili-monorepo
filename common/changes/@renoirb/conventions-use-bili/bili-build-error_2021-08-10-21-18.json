@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@renoirb/conventions-use-bili",
+      "comment": "babel/preset-env error corejs",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@renoirb/conventions-use-bili",
+  "email": "contribs@renoirboulanger.com"
+}

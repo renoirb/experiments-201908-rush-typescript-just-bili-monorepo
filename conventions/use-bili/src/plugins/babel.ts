@@ -98,7 +98,7 @@ export const babel = (opts: IProcessEnvRunTimeOptions) => {
           // https://github.com/babel/babel/issues/8754
           // https://github.com/rollup/rollup-plugin-babel/issues/254
           useBuiltIns: hasBiliBundleNodeModulesOption ? false : 'usage',
-          corejs: hasBiliBundleNodeModulesOption ? 3 : undefined,
+          corejs: hasBiliBundleNodeModulesOption ? undefined : 3,
           debug: isDevModeVerbose,
         } as BabelPresetEnvOptions,
         '@renoirb/conventinos-use-bili babel/preset-env',
