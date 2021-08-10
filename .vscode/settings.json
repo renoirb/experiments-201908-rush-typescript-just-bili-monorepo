@@ -1,4 +1,5 @@
 {
+  "window.title": "${activeEditorLong}",
   "yaml.schemas": {
     "http://json.schemastore.org/gitlab-ci": ["gitlab-ci.yml"]
   },
