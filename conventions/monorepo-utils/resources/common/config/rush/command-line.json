@@ -1,0 +1,44 @@
+{
+  "commands": [
+    {
+      "name": "meta",
+      "autoinstallerName": "rush-meta",
+      "commandKind": "global",
+      "summary": "Get this repository metadata.",
+      "shellCommand": "common/autoinstallers/rush-meta/bin/rush-meta",
+      "safeForSimultaneousRushProcesses": true
+    },
+  ],
+  "parameters": [
+    {
+      "parameterKind": "choice",
+      "longName": "--stage",
+      "description": "A custom choice parameter for the \"meta\" rush command to be run in Jenkins a stage",
+      "associatedCommands": ["meta"],
+      "required": false,
+      "defaultValue": "setup",
+      "alternatives": [
+        {
+          "name": "setup",
+          "description": "The initial seteu (the default)"
+        },
+        {
+          "name": "publish",
+          "description": "At publish time, figure out each package's changelog for GitHub releases"
+        }
+      ]
+    },
+    {
+      "parameterKind": "flag",
+      "longName": "--verbose",
+      "description": "Gives more info during execution",
+      "associatedCommands": ["meta"]
+    },
+    {
+      "parameterKind": "flag",
+      "longName": "--write-github-repo-json",
+      "description": "Write github-repo.json to filesystem",
+      "associatedCommands": ["meta"]
+    }
+  ]
+}

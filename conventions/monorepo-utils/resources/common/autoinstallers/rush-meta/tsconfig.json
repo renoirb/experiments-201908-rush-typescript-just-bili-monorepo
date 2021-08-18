@@ -1,0 +1,8 @@
+{
+  "files": ["./main.mjs"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "allowJs": true,
+    "types": ["node"],
+  },
+}
