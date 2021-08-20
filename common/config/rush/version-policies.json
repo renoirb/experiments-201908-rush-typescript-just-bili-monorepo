@@ -91,11 +91,11 @@
     "policyName": "conventionsLockStepedVersioned",
     "definitionName": "lockStepVersion",
     "version": "1.2.0",
-    "nextBump": "patch",
+    "nextBump": "patch"
   },
   {
     "policyName": "tooling",
-    "definitionName": "individualVersion",
+    "definitionName": "individualVersion"
   },
   {
     "policyName": "libraries",

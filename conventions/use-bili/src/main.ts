@@ -17,6 +17,8 @@ import {
 } from '@renoirb/package-json-utils'
 
 /**
+ * Wrapper around Rollup and Bili and WebPack
+ *
  * @public
  */
 export const useBili = (
