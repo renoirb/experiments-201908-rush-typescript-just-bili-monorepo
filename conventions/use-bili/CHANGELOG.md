@@ -1,6 +1,13 @@
 # Change Log - @renoirb/conventions-use-bili
 
-This log was last generated on Tue, 10 Aug 2021 21:33:57 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Aug 2021 18:24:34 GMT and should not be manually modified.
+
+## 1.3.2
+Fri, 20 Aug 2021 18:24:34 GMT
+
+### Patches
+
+- Experimenting with Rush publish using this package
 
 ## 1.3.1
 Tue, 10 Aug 2021 21:33:57 GMT
