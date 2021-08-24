@@ -1,6 +1,6 @@
 {
   "name": "@renoirb/conventions-use-bili",
-  "version": "1.3.2-dev",
+  "version": "1.3.2-dev.2021082400",
   "description": "Reusable Babel,Rollup configs leveraging https://github.com/egoist/bili",
   "homepage": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo/tree/v1.x-dev/conventions/use-bili",
   "repository": {
