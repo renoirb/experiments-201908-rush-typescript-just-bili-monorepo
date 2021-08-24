@@ -90,7 +90,7 @@
   {
     "policyName": "conventions-lock-step",
     "definitionName": "lockStepVersion",
-    "version": "1.3.2-SNAPSHOT",
+    "version": "1.3.2-SNAPSHOT.264f",
     "nextBump": "patch"
   },
   {
