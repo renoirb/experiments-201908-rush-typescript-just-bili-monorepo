@@ -392,28 +392,30 @@
 
     // Tooling. Things other things will use. Regardless whether the code is PART of that present monorepo, they can be imported from any Node.js/JavaScript project.
     {
-      "packageName": "@renoirb/conventions-code-formatter",
-      "projectFolder": "conventions/code-formatter",
-      "shouldPublish": true,
-      "reviewCategory": "tools",
-    },
-    {
       "packageName": "@renoirb/conventions-use-bili",
       "projectFolder": "conventions/use-bili",
-      "shouldPublish": true,
+      "versionPolicyName": "conventions-lock-step",
       "reviewCategory": "conventions",
     },
     {
       "packageName": "@renoirb/conventions-use-eslint",
       "projectFolder": "conventions/use-eslint",
-      "shouldPublish": true,
+      "versionPolicyName": "conventions-lock-step",
       "reviewCategory": "conventions",
     },
     {
       "packageName": "@renoirb/conventions-use-jest",
       "projectFolder": "conventions/use-jest",
-      "shouldPublish": true,
+      "versionPolicyName": "conventions-lock-step",
       "reviewCategory": "conventions",
+    },
+
+
+    {
+      "packageName": "@renoirb/conventions-code-formatter",
+      "projectFolder": "conventions/code-formatter",
+      "shouldPublish": true,
+      "reviewCategory": "tools",
     },
     {
       "packageName": "@renoirb/conventions-use-prettier",

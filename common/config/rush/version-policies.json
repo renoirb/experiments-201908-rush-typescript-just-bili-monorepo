@@ -88,9 +88,9 @@
   //   "exemptFromRushChange": false
   // }
   {
-    "policyName": "conventionsLockStepedVersioned",
+    "policyName": "conventions-lock-step",
     "definitionName": "lockStepVersion",
-    "version": "1.2.1",
+    "version": "1.3.2-dev",
     "nextBump": "patch"
   },
   {
