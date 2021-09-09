@@ -1,0 +1,6 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/heft/api-extractor-task.schema.json",
+  "extends": "../node_modules/@rushstack/heft-node-rig/profiles/default/config/api-extractor-task.json",
+  "mainEntryPointFilePath": "<projectFolder>/dist/index.d.ts",
+  "newlineKind": "lf"
+}

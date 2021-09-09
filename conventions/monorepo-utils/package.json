@@ -1,0 +1,55 @@
+{
+  "name": "@renoirb/conventions-monorepo-utils",
+  "version": "0.1.5",
+  "description": "Used to execute various operations on a monorepo, preferably running RushJS.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renoirb/experiments-201908-rush-typescript-just-bili-monorepo.git",
+    "directory": "conventions/monorepo-utils"
+  },
+  "license": "UNLICENSED",
+  "sideEffects": false,
+  "typings": "dist/conventions-monorepo-utils.d.ts",
+  "bin": {
+    "conventions-monorepo-utils": "./bin/conventions-monorepo-utils"
+  },
+  "files": [
+    "dist",
+    "docs",
+    "bin"
+  ],
+  "scripts": {
+    "readme": "node ./dist/start.js readme",
+    "build:clean": "heft build --clean",
+    "build": "use-cross-env use-run-all clean build:* lint",
+    "build:api-documenter": "use-cross-env api-documenter markdown --input temp --output docs",
+    "clean": "use-cross-env use-rimraf .rpt2_cache .heft/build-cache temp lib dist *.*.log",
+    "lint": "use-cross-env use-run-all lint:*",
+    "lint:eslint": "use-cross-env eslint --fix 'src/**/*.ts'",
+    "lint:sort-imports": "prettier --plugin @trivago/prettier-plugin-sort-imports --ignore-path ../../.prettierignore --write '**/*.{ts,js,md,json}' --list-different",
+    "prepublishOnly": "rushx build",
+    "test": "use-cross-env use-run-all lint:* test:*",
+    "test:run": "heft test --clean --detect-open-handles"
+  },
+  "dependencies": {
+    "@microsoft/rush-lib": "^5.51.0",
+    "@rushstack/node-core-library": "^3.40.0",
+    "@rushstack/ts-command-line": "^4.9.0",
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^2.0.0",
+    "@microsoft/api-documenter": "^7.13.0",
+    "@renoirb/tools-bundling-helpers": "^1.1.1",
+    "@rushstack/eslint-config": "^2.3.4",
+    "@rushstack/heft": "^0.35.0",
+    "@rushstack/heft-jest-plugin": "^0.1.0",
+    "@rushstack/heft-node-rig": "^1.1.0",
+    "@trivago/prettier-plugin-sort-imports": "^2.0.0",
+    "@types/heft-jest": "1.0.2",
+    "@types/node": "^14.0.0",
+    "eslint": "~7.12.1",
+    "prettier": "^2.3.0",
+    "typescript": "^4.3.0"
+  }
+}
